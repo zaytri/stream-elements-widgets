@@ -78,13 +78,13 @@
   "color5": {
     "type": "colorpicker",
     "label": "Color 5",
-    "value": "#a451f5",
+    "value": "#00fff3",
     "group": "Colors"
   },
   "color6": {
     "type": "colorpicker",
     "label": "Color 6",
-    "value": "#00fff3",
+    "value": "#a451f5",
     "group": "Colors"
   },
   "glowType": {
