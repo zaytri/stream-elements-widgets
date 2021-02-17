@@ -130,6 +130,6 @@
   },
   "widgetUpdateUrl": {
     "type": "hidden",
-    "value": ""
+    "value": "https://github.com/zaytri/stream-elements-widgets/blob/main/AnimatedGradientFrame"
   }
 }
