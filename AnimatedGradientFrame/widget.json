@@ -1,0 +1,135 @@
+{
+  "type": {
+    "type": "dropdown",
+    "label": "Animation Type",
+    "value": "rotation",
+    "options": {
+      "rotation": "Rotating",
+      "vertical": "Vertical",
+      "horizontal": "Horizontal",
+      "diagonal": "Diagonal",
+      "diagonal-alt": "Diagonal (Alternate)"
+    },
+    "group": "Main"
+  },
+  "thickness": {
+    "type": "number",
+    "label": "Thickness (px)",
+    "value": 10,
+    "min": 0,
+    "max": 500,
+    "step": 1,
+    "group": "Main"
+  },
+  "borderRadius": {
+    "type": "number",
+    "label": "Rounded Corner Radius (px)",
+    "value": 0,
+    "min": 0,
+    "max": 500,
+    "step": 1,
+    "group": "Main"
+  },
+  "speed": {
+    "type": "number",
+    "label": "Speed (seconds)",
+    "value": 3,
+    "min": 0,
+    "max": 30,
+    "group": "Main"
+  },
+  "colorsAmount": {
+    "type": "dropdown",
+    "label": "Number of Colors",
+    "value": "2",
+    "options": {
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "6": "6"
+    },
+    "group": "Colors"
+  },
+  "color1": {
+    "type": "colorpicker",
+    "label": "Color 1",
+    "value": "#ff00cb",
+    "group": "Colors"
+  },
+  "color2": {
+    "type": "colorpicker",
+    "label": "Color 2",
+    "value": "#ffd400",
+    "group": "Colors"
+  },
+  "color3": {
+    "type": "colorpicker",
+    "label": "Color 3",
+    "value": "#fff100",
+    "group": "Colors"
+  },
+  "color4": {
+    "type": "colorpicker",
+    "label": "Color 4",
+    "value": "#7bc714",
+    "group": "Colors"
+  },
+  "color5": {
+    "type": "colorpicker",
+    "label": "Color 5",
+    "value": "#a451f5",
+    "group": "Colors"
+  },
+  "color6": {
+    "type": "colorpicker",
+    "label": "Color 6",
+    "value": "#00fff3",
+    "group": "Colors"
+  },
+  "glowType": {
+    "type": "dropdown",
+    "label": "Glow Type",
+    "value": "default",
+    "options": {
+      "default": "Default",
+      "outer": "Outer",
+      "inner": "Inner"
+    },
+    "group": "Glow"
+  },
+  "glowRadius": {
+    "type": "number",
+    "label": "Glow Radius (px)",
+    "value": 0,
+    "min": 0,
+    "max": 100,
+    "step": 1,
+    "group": "Glow"
+  },
+  "glowOpacity": {
+    "type": "slider",
+    "label": "Glow Opacity",
+    "value": 1,
+    "min": 0,
+    "max": 1,
+    "step": 0.01,
+    "group": "Glow"
+  },
+  "widgetName": {
+    "type": "hidden",
+    "value": "Animated Gradient Frame"
+  },
+  "widgetAuthor": {
+    "type": "hidden",
+    "value": "Zaytri"
+  },
+  "widgetVersion": {
+    "type": "hidden",
+    "value": "1.0"
+  },
+  "widgetUpdateUrl": {
+    "type": "hidden",
+    "value": ""
+  }
+}

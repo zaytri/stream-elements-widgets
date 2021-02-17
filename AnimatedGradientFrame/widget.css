@@ -1,0 +1,148 @@
+.animated-gradient-frame {
+  width: 100%;
+  height: 100%;
+  clip-path: polygon(
+    0% 0%,
+    0% 100%,
+    100% 100%,
+    100% 0%,
+    0% 0%,
+    {thickness}px {thickness}px,
+    calc(100% - {thickness}px) {thickness}px,
+    calc(100% - {thickness}px) calc(100% - {thickness}px),
+    {thickness}px calc(100% - {thickness}px),
+    {thickness}px {thickness}px
+  );
+  border-radius: {borderRadius}px;
+}
+
+.gradient-rotation {
+  animation: gradientRotation {speed}s linear infinite;
+}
+
+.gradient-diagonal, .gradient-diagonal-alt, .gradient-vertical, .gradient-horizontal {
+  background-size: calc({colorsAmount}00% + 100%) calc({colorsAmount}00% + 100%);
+}
+
+.gradient-diagonal-2, .gradient-diagonal-alt-2, .gradient-vertical-2, .gradient-horizontal-2 {
+  background-image: linear-gradient(var(--angle), {color1}, {color2}, {color1}, {color2});
+}
+
+.gradient-diagonal-3, .gradient-diagonal-alt-3, .gradient-vertical-3, .gradient-horizontal-3 {
+  background-image: linear-gradient(var(--angle), {color1}, {color2}, {color3}, {color1}, {color2});
+}
+
+.gradient-diagonal-4, .gradient-diagonal-alt-4, .gradient-vertical-4, .gradient-horizontal-4 {
+  background-image: linear-gradient(var(--angle), {color1}, {color2}, {color3}, {color4}, {color1}, {color2});
+}
+
+.gradient-diagonal-5, .gradient-diagonal-alt-5, .gradient-vertical-5, .gradient-horizontal-5 {
+  background-image: linear-gradient(var(--angle), {color1}, {color2}, {color3}, {color4}, {color5}, {color1}, {color2});
+}
+
+.gradient-diagonal-6, .gradient-diagonal-alt-6, .gradient-vertical-6, .gradient-horizontal-6 {
+  background-image: linear-gradient(var(--angle), {color1}, {color2}, {color3}, {color4}, {color5}, {color6}, {color1}, {color2});
+}
+
+.gradient-diagonal {
+  --angle: -45deg;
+  animation: gradientShiftDiagonal {speed}s linear infinite;
+}
+
+.gradient-diagonal-alt {
+  --angle: 45deg;
+  animation: gradientShiftDiagonalAlt {speed}s linear infinite;
+}
+
+.gradient-vertical {
+  --angle: 0deg;
+  animation: gradientShiftVertical {speed}s linear infinite;
+}
+
+.gradient-horizontal {
+  --angle: 90deg;
+  animation: gradientShiftHorizontal {speed}s linear infinite;
+}
+
+.gradient-rotation-2 {
+  background-image: linear-gradient(var(--angle), {color1}, {color2});
+}
+
+.gradient-rotation-3 {
+  background-image: linear-gradient(var(--angle), {color1}, {color2}, {color3});
+}
+
+.gradient-rotation-4 {
+  background-image: linear-gradient(var(--angle), {color1}, {color2}, {color3}, {color4});
+}
+
+.gradient-rotation-5 {
+  background-image: linear-gradient(var(--angle), {color1}, {color2}, {color3}, {color4}, {color5});
+}
+
+.gradient-rotation-6 {
+  background-image: linear-gradient(var(--angle), {color1}, {color2}, {color3}, {color4}, {color5}, {color6});
+}
+
+.glow {
+  filter: blur({glowRadius}px);
+  opacity: {glowOpacity};
+  z-index: -1;
+}
+
+.glow-default {
+  padding: calc({glowRadius}px * 2);
+}
+
+.glow-inner {
+  padding: 0;
+}
+
+.glow-outer {
+  padding: calc({glowRadius}px * 2);
+  clip-path: polygon(
+    0% 0%,
+    0% 100%,
+    100% 100%,
+    100% 0%,
+    0% 0%,
+    calc({glowRadius}px * 2 + {thickness}px) calc({glowRadius}px * 2 + {thickness}px),
+  	calc(100% - {glowRadius}px * 2 - {thickness}px) calc({glowRadius}px * 2 + {thickness}px),
+  	calc(100% - {glowRadius}px * 2 - {thickness}px) calc(100% - {glowRadius}px * 2 - {thickness}px),
+  	calc({glowRadius}px * 2 + {thickness}px) calc(100% - {glowRadius}px * 2 - {thickness}px),
+  	calc({glowRadius}px * 2 + {thickness}px) calc({glowRadius}px * 2 + {thickness}px)
+  );
+}
+
+.wrapper {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+@keyframes gradientRotation {
+  to { --angle: 1turn; }
+}
+
+@keyframes gradientShiftVertical {
+  from { background-position: 0 0; }
+  to { background-position: 0 100%; }
+}
+
+@keyframes gradientShiftHorizontal {
+  from { background-position: 0 0; }
+  to { background-position: 100% 0; }
+}
+
+@keyframes gradientShiftDiagonal {
+  from { background-position: 0 0; }
+  to { background-position: 100% 100%; }
+}
+
+@keyframes gradientShiftDiagonalAlt {
+  from { background-position: 0 100%; }
+  to { background-position: 100% 0; }
+}
