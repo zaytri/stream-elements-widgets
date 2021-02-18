@@ -7,17 +7,17 @@
     100% 100%,
     100% 0%,
     0% 0%,
-    {thickness}px {thickness}px,
-    calc(100% - {thickness}px) {thickness}px,
-    calc(100% - {thickness}px) calc(100% - {thickness}px),
-    {thickness}px calc(100% - {thickness}px),
-    {thickness}px {thickness}px
+    {borderWidth}px {borderWidth}px,
+    calc(100% - {borderWidth}px) {borderWidth}px,
+    calc(100% - {borderWidth}px) calc(100% - {borderWidth}px),
+    {borderWidth}px calc(100% - {borderWidth}px),
+    {borderWidth}px {borderWidth}px
   );
   border-radius: {borderRadius}px;
 }
 
 .gradient-rotation {
-  animation: gradientRotation {speed}s linear infinite;
+  animation: gradientRotation {animationDuration}s linear infinite;
 }
 
 .gradient-diagonal, .gradient-diagonal-alt, .gradient-vertical, .gradient-horizontal {
@@ -46,22 +46,22 @@
 
 .gradient-diagonal {
   --angle: -45deg;
-  animation: gradientShiftDiagonal {speed}s linear infinite;
+  animation: gradientShiftDiagonal {animationDuration}s linear infinite;
 }
 
 .gradient-diagonal-alt {
   --angle: 45deg;
-  animation: gradientShiftDiagonalAlt {speed}s linear infinite;
+  animation: gradientShiftDiagonalAlt {animationDuration}s linear infinite;
 }
 
 .gradient-vertical {
   --angle: 0deg;
-  animation: gradientShiftVertical {speed}s linear infinite;
+  animation: gradientShiftVertical {animationDuration}s linear infinite;
 }
 
 .gradient-horizontal {
   --angle: 90deg;
-  animation: gradientShiftHorizontal {speed}s linear infinite;
+  animation: gradientShiftHorizontal {animationDuration}s linear infinite;
 }
 
 .gradient-rotation-2 {
@@ -86,7 +86,7 @@
 
 .glow {
   filter: blur({glowRadius}px);
-  opacity: {glowOpacity};
+  opacity: calc({glowOpacity} / 100);
   z-index: -1;
 }
 
@@ -106,11 +106,11 @@
     100% 100%,
     100% 0%,
     0% 0%,
-    calc({glowRadius}px * 2 + {thickness}px) calc({glowRadius}px * 2 + {thickness}px),
-  	calc(100% - {glowRadius}px * 2 - {thickness}px) calc({glowRadius}px * 2 + {thickness}px),
-  	calc(100% - {glowRadius}px * 2 - {thickness}px) calc(100% - {glowRadius}px * 2 - {thickness}px),
-  	calc({glowRadius}px * 2 + {thickness}px) calc(100% - {glowRadius}px * 2 - {thickness}px),
-  	calc({glowRadius}px * 2 + {thickness}px) calc({glowRadius}px * 2 + {thickness}px)
+    calc({glowRadius}px * 2 + {borderWidth}px) calc({glowRadius}px * 2 + {borderWidth}px),
+  	calc(100% - {glowRadius}px * 2 - {borderWidth}px) calc({glowRadius}px * 2 + {borderWidth}px),
+  	calc(100% - {glowRadius}px * 2 - {borderWidth}px) calc(100% - {glowRadius}px * 2 - {borderWidth}px),
+  	calc({glowRadius}px * 2 + {borderWidth}px) calc(100% - {glowRadius}px * 2 - {borderWidth}px),
+  	calc({glowRadius}px * 2 + {borderWidth}px) calc({glowRadius}px * 2 + {borderWidth}px)
   );
 }
 

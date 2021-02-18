@@ -7,8 +7,8 @@ window.addEventListener('onWidgetLoad', function (obj) {
       inherits: true
     })
   } else {
-    const { speed } = obj.detail.fieldData
-    const frames = speed * 60
+    const { animationDuration } = obj.detail.fieldData
+    const frames = animationDuration * 60
 
     let percentages = ''
     for (let i = 0; i <= frames; i++) {

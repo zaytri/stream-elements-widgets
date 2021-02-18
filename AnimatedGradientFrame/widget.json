@@ -1,5 +1,5 @@
 {
-  "type": {
+  "animationType": {
     "type": "dropdown",
     "label": "Animation Type",
     "value": "rotation",
@@ -10,34 +10,34 @@
       "diagonal": "Diagonal",
       "diagonal-alt": "Diagonal (Alternate)"
     },
-    "group": "Main"
+    "group": "Frame"
   },
-  "thickness": {
+  "borderWidth": {
     "type": "number",
     "label": "Thickness (px)",
     "value": 10,
     "min": 0,
     "max": 500,
     "step": 1,
-    "group": "Main"
+    "group": "Frame"
   },
   "borderRadius": {
     "type": "number",
-    "label": "Rounded Corner Radius (px)",
+    "label": "Rounded Corner Size (px)",
     "value": 0,
     "min": 0,
     "max": 500,
     "step": 1,
-    "group": "Main"
+    "group": "Frame"
   },
-  "speed": {
+  "animationDuration": {
     "type": "number",
     "label": "Speed (seconds)",
     "value": 5,
     "min": 0,
     "max": 30,
     "step": 1,
-    "group": "Main"
+    "group": "Frame"
   },
   "colorsAmount": {
     "type": "dropdown",
@@ -101,7 +101,7 @@
   },
   "glowRadius": {
     "type": "number",
-    "label": "Glow Radius (px)",
+    "label": "Glow Size (px)",
     "value": 0,
     "min": 0,
     "max": 100,
@@ -110,11 +110,11 @@
   },
   "glowOpacity": {
     "type": "slider",
-    "label": "Glow Opacity",
-    "value": 1,
+    "label": "Glow Intensity (%)",
+    "value": 50,
     "min": 0,
-    "max": 1,
-    "step": 0.01,
+    "max": 100,
+    "step": 1,
     "group": "Glow"
   },
   "widgetName": {
