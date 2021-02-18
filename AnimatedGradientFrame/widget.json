@@ -9,8 +9,7 @@
       "horizontal": "Horizontal",
       "diagonal": "Diagonal",
       "diagonal-alt": "Diagonal (Alternate)"
-    },
-    "group": "Frame"
+    }
   },
   "borderWidth": {
     "type": "number",
@@ -18,8 +17,7 @@
     "value": 10,
     "min": 0,
     "max": 500,
-    "step": 1,
-    "group": "Frame"
+    "step": 1
   },
   "borderRadius": {
     "type": "number",
@@ -27,8 +25,7 @@
     "value": 0,
     "min": 0,
     "max": 500,
-    "step": 1,
-    "group": "Frame"
+    "step": 1
   },
   "animationDuration": {
     "type": "number",
@@ -36,8 +33,7 @@
     "value": 5,
     "min": 0,
     "max": 30,
-    "step": 1,
-    "group": "Frame"
+    "step": 1
   },
   "colorsAmount": {
     "type": "dropdown",
