@@ -17,7 +17,7 @@
 }
 
 .gradient-rotation {
-  animation: gradientRotation {animationDuration}s linear infinite;
+  animation: gradientRotation {animationDuration}s {animationDirection} linear infinite;
 }
 
 .gradient-diagonal, .gradient-diagonal-alt, .gradient-vertical, .gradient-horizontal {
@@ -46,22 +46,22 @@
 
 .gradient-diagonal {
   --angle: -45deg;
-  animation: gradientShiftDiagonal {animationDuration}s linear infinite;
+  animation: gradientShiftDiagonal {animationDuration}s {animationDirection} linear infinite;
 }
 
 .gradient-diagonal-alt {
   --angle: 45deg;
-  animation: gradientShiftDiagonalAlt {animationDuration}s linear infinite;
+  animation: gradientShiftDiagonalAlt {animationDuration}s {animationDirection} linear infinite;
 }
 
 .gradient-vertical {
   --angle: 0deg;
-  animation: gradientShiftVertical {animationDuration}s linear infinite;
+  animation: gradientShiftVertical {animationDuration}s {animationDirection} linear infinite;
 }
 
 .gradient-horizontal {
   --angle: 90deg;
-  animation: gradientShiftHorizontal {animationDuration}s linear infinite;
+  animation: gradientShiftHorizontal {animationDuration}s {animationDirection} linear infinite;
 }
 
 .gradient-rotation-2 {
@@ -96,6 +96,8 @@
 
 .glow-inner {
   padding: 0;
+  overflow: hidden;
+  border-radius: {borderRadius}px;
 }
 
 .glow-outer {
@@ -128,18 +130,18 @@
 }
 
 @keyframes gradientShiftVertical {
-  from { background-position: 0 0; }
-  to { background-position: 0 100%; }
+  from { background-position: 0 100%; }
+  to { background-position: 0 0; }
 }
 
 @keyframes gradientShiftHorizontal {
-  from { background-position: 0 0; }
-  to { background-position: 100% 0; }
+  from { background-position: 100% 0; }
+  to { background-position: 0 0; }
 }
 
 @keyframes gradientShiftDiagonal {
-  from { background-position: 0 0; }
-  to { background-position: 100% 100%; }
+  from { background-position: 100% 100%; }
+  to { background-position: 0 0; }
 }
 
 @keyframes gradientShiftDiagonalAlt {

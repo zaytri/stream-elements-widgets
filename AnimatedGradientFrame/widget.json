@@ -11,6 +11,15 @@
       "diagonal-alt": "Diagonal (Alternate)"
     }
   },
+  "animationDirection": {
+    "type": "dropdown",
+    "label": "Animation Direction",
+    "value": "normal",
+    "options": {
+      "normal": "Normal",
+      "reverse": "Reverse"
+    }
+  },
   "borderWidth": {
     "type": "number",
     "label": "Thickness (px)",
