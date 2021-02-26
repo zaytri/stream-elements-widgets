@@ -42,6 +42,8 @@ const FIELD_DATA = {
   LIFETIME: 10,
   DELAY: 1,
   SPACING: 30,
+  SOUND_URL: '',
+  VOLUME: 50,
 }
 
 window.addEventListener('onWidgetLoad', obj => {
@@ -53,12 +55,16 @@ window.addEventListener('onWidgetLoad', obj => {
   const {
     lifetime = FIELD_DATA.LIFETIME,
     delay = FIELD_DATA.DELAY,
-    spacing = FIELD_DATA.SPACING
+    spacing = FIELD_DATA.SPACING,
+    soundUrl = FIELD_DATA.SOUND_URL,
+    volume = FIELD_DATA.VOLUME
   } = obj.detail.fieldData
 
   FIELD_DATA.LIFETIME = lifetime
   FIELD_DATA.DELAY = delay
   FIELD_DATA.SPACING = spacing
+  FIELD_DATA.SOUND_URL = soundUrl
+  FIELD_DATA.VOLUME = volume
 })
 
 window.addEventListener('onEventReceived', obj => {
@@ -103,6 +109,10 @@ function onMessage(event) {
   $('main').append(MessageComponent({ ...elementData }))
   const currentMessage = `.${CLASS.CONTAINER}[${DATA.MESSAGE_ID}=${msgId}]`
 
+  const sound = new Audio(FIELD_DATA.SOUND_URL)
+  sound.volume = parseInt(FIELD_DATA.VOLUME) / 100
+  sound.muted = true
+
   window.setTimeout(_ => {
     const width = $(currentMessage).outerWidth()
     const height = $(currentMessage).outerHeight()
@@ -116,6 +126,8 @@ function onMessage(event) {
     })
 
     window.setTimeout(_ => {
+      sound.muted = false
+      sound.play()
       $(currentMessage).css({ left, top, visibility: 'visible' })
     }, FIELD_DATA.DELAY * 1000 / 2)
   }, FIELD_DATA.DELAY * 1000 / 2)

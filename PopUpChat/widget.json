@@ -1,4 +1,17 @@
 {
+  "soundUrl": {
+    "type": "sound-input",
+    "label": "Sound",
+    "value": ""
+  },
+  "volume": {
+    "type": "slider",
+    "label": "Volume",
+    "value": 50,
+    "min": 0,
+    "max": 100,
+    "step": 1
+  },
   "lifetime": {
     "type": "number",
     "label": "Visible Message Lifetime (seconds)",
@@ -30,7 +43,7 @@
   },
   "widgetVersion": {
     "type": "hidden",
-    "value": "1.0"
+    "value": "1.1"
   },
   "widgetUpdateUrl": {
     "type": "hidden",
