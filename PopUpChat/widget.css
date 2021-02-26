@@ -93,13 +93,13 @@ main {
 
 .text {
   text-shadow: 0 1px 0 #0004;
-  animation: fade 2s calc({delay}s - .01s);
+  animation: fade 1.5s calc({delay}s - .01s);
 }
 
 .emote {
   position: relative;
   vertical-align: middle;
-  animation: fade 2s calc({delay}s - .01s);
+  animation: fade 1.5s calc({delay}s - .01s);
 }
 
 .emote-1 { height: 32px; margin: -.25rem 0; }
