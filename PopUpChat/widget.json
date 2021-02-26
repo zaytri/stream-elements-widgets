@@ -1,0 +1,23 @@
+{
+  "lifetime": {
+    "type": "number",
+    "label": "Visible Message Lifetime (seconds)",
+    "value": 10,
+    "min": 1,
+    "step": 1
+  },
+  "delay": {
+    "type": "number",
+    "label": "Delay Before Visible (seconds)",
+    "value": 1,
+    "min": 1,
+    "step": 1
+  },
+  "spacing": {
+    "type": "number",
+    "label": "Padding Bounds (px)",
+    "value": 60,
+    "min": 0,
+    "step": 1
+  }
+}

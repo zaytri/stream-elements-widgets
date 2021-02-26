@@ -1,0 +1,155 @@
+/* --- [Globals] --- */
+
+* {
+  font-family: Nunito, sans-serif;
+  color: black;
+  font-size: 16px;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  margin: 0;
+  padding: 0;
+}
+
+/* --- [Widget Container] --- */
+
+main {
+  box-sizing: border-box;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+/* --- [Message Container] --- */
+
+.container {
+  --cornerSize: 20px;
+  --userColor: #ff4a80;
+  --borderSize: 5px;
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  animation: pop .5s calc({delay}s + {lifetime}s - .5s);
+
+  --topRightCorner: calc(var(--cornerSize) - var(--borderSize));
+  --bottomLeftCorner: calc(var(--cornerSize) / 2);
+  --bottomRightCorner: calc(var(--cornerSize) / 2);
+  border: var(--borderSize) solid var(--userColor);
+  background:
+    linear-gradient( 135deg, var(--userColor) 0 calc(var(--topLeftCorner, 0px) + var(--borderSize)),     transparent 0) top left     / 50% 50%,
+    linear-gradient(-135deg, var(--userColor) 0 calc(var(--topRightCorner, 0px) + var(--borderSize)),    transparent 0) top right    / 50% 50%,
+    linear-gradient(  45deg, var(--userColor) 0 calc(var(--bottomLeftCorner, 0px) + var(--borderSize)),  transparent 0) bottom left  / 50% 50%,
+    linear-gradient( -45deg, var(--userColor) 0 calc(var(--bottomRightCorner, 0px) + var(--borderSize)), transparent 0) bottom right / 50% 50%,
+    #FFFA
+  ;
+  background-origin: border-box;
+  background-repeat: no-repeat;
+  -webkit-mask:
+    linear-gradient( 135deg, transparent 0 var(--topLeftCorner, 0),     #fff 0) top left,
+    linear-gradient(-135deg, transparent 0 var(--topRightCorner, 0),    #fff 0) top right,
+    linear-gradient(  45deg, transparent 0 var(--bottomLeftCorner, 0),  #fff 0) bottom left,
+    linear-gradient( -45deg, transparent 0 var(--bottomRightCorner, 0), #fff 0) bottom right
+  ;
+  -webkit-mask-size: 50% 50%;
+  -webkit-mask-repeat: no-repeat;
+}
+
+/* --- [Container Blocks] --- */
+
+.header {
+  background-color: var(--userColor);
+}
+
+.title {
+  text-shadow: 0 2px 0 #0002;
+  padding-left: 3px;
+  margin-bottom: -3px;
+  display: inline-block;
+}
+
+.title .dark {
+  color: white;
+  text-shadow: 0 2px 0 #0006;
+}
+
+.message {
+  --dynamicWidth: 400px;
+  padding-top: 5px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  width: var(--dynamicWidth);
+  animation: expand 2s calc({delay}s - .01s);
+}
+
+/* --- [Message Parts] --- */
+
+.text {
+  text-shadow: 0 1px 0 #0004;
+  animation: fade 2s calc({delay}s - .01s);
+}
+
+.emote {
+  position: relative;
+  vertical-align: middle;
+  animation: fade 2s calc({delay}s - .01s);
+}
+
+.emote-1 { height: 32px; margin: -.25rem 0; }
+.emote-2 { height: 56px; margin: -.25rem 0; }
+.emote-4 { height: 112px; }
+
+/* --- [Message Types] --- */
+
+.highlight {
+  background:
+    linear-gradient( 135deg, var(--userColor) 0 calc(var(--topLeftCorner, 0px) - var(--borderSize) / 2),     transparent 0) top left     / 100% 100%,
+    linear-gradient(-135deg, var(--userColor) 0 calc(var(--topRightCorner, 0px) - var(--borderSize) / 2),    transparent 0) top right    / 100% 100%,
+    linear-gradient(  45deg, var(--userColor) 0 calc(var(--bottomLeftCorner, 0px) - var(--borderSize) / 2),  transparent 0) bottom left  / 100% 100%,
+    linear-gradient( -45deg, var(--userColor) 0 calc(var(--bottomRightCorner, 0px) - var(--borderSize) / 2), transparent 0) bottom right / 100% 100%,
+    linear-gradient(-45deg, #ffadadaa, #ffd6a5aa, #fdffb6aa, #caffbfaa, #9bf6ffaa, #a0c4ffaa, #bdb2ffaa, #ffc6ffaa, #ffadadaa, #ffd6a5aa) 100% 100% / 900% 900%
+  ;
+  animation: gradientShift 5s infinite linear;
+}
+
+.action .text {
+  font-style: italic;
+  color: var(--userColor);
+  text-shadow: 0 1px 0 #0008;
+}
+
+.action .emote {
+  transform: skew(-5deg);
+}
+
+/* --- [Animations] --- */
+
+@keyframes gradientShift {
+  from { background-position: top left, top right, bottom left, bottom right, 100% 100%; }
+  to { background-position: top left, top right, bottom left, bottom right, 0 0; }
+}
+
+@keyframes pop {
+  20% { transform: scale(1.3); }
+  to { opacity: 0; transform: scale(0); }
+}
+
+@keyframes fade {
+  0%, 30% { opacity: 0; }
+}
+
+@keyframes expand {
+  0% {
+    width: 0;
+    max-height: 0;
+  }
+
+  10% { width: calc(var(--dynamicWidth) * 1.75); }
+
+  30% {
+    width: var(--dynamicWidth);
+    max-height: 0;
+  }
+  70% { max-height: 300px; }
+}
