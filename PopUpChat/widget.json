@@ -19,5 +19,21 @@
     "value": 60,
     "min": 0,
     "step": 1
+  },
+  "widgetName": {
+    "type": "hidden",
+    "value": "Pop-Up Chat"
+  },
+  "widgetAuthor": {
+    "type": "hidden",
+    "value": "Zaytri"
+  },
+  "widgetVersion": {
+    "type": "hidden",
+    "value": "1.0"
+  },
+  "widgetUpdateUrl": {
+    "type": "hidden",
+    "value": "https://github.com/zaytri/stream-elements-widgets/blob/main/PopUpChat"
   }
 }
