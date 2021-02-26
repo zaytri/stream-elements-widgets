@@ -24,7 +24,7 @@ main {
 /* --- [Message Container] --- */
 
 .container {
-  --cornerSize: 20px;
+  --cornerSize: 23px;
   --userColor: #ff4a80;
   --borderSize: 5px;
   position: absolute;
@@ -35,13 +35,17 @@ main {
   --topRightCorner: calc(var(--cornerSize) - var(--borderSize));
   --bottomLeftCorner: calc(var(--cornerSize) / 2);
   --bottomRightCorner: calc(var(--cornerSize) / 2);
-  border: var(--borderSize) solid var(--userColor);
+  border: var(--borderSize) solid transparent;
   background:
+    linear-gradient( 0deg,   var(--userColor) calc(var(--borderSize) + .1px), transparent 0),
+    linear-gradient( 90deg,  var(--userColor) calc(var(--borderSize) + .1px), transparent 0),
+    linear-gradient( 180deg, var(--userColor) calc(var(--borderSize) + .1px), transparent 0),
+    linear-gradient( 270deg, var(--userColor) calc(var(--borderSize) + .1px), transparent 0),
     linear-gradient( 135deg, var(--userColor) 0 calc(var(--topLeftCorner, 0px) + var(--borderSize)),     transparent 0) top left     / 50% 50%,
     linear-gradient(-135deg, var(--userColor) 0 calc(var(--topRightCorner, 0px) + var(--borderSize)),    transparent 0) top right    / 50% 50%,
     linear-gradient(  45deg, var(--userColor) 0 calc(var(--bottomLeftCorner, 0px) + var(--borderSize)),  transparent 0) bottom left  / 50% 50%,
     linear-gradient( -45deg, var(--userColor) 0 calc(var(--bottomRightCorner, 0px) + var(--borderSize)), transparent 0) bottom right / 50% 50%,
-    #FFFA
+    #FFFD
   ;
   background-origin: border-box;
   background-repeat: no-repeat;
@@ -51,7 +55,7 @@ main {
     linear-gradient(  45deg, transparent 0 var(--bottomLeftCorner, 0),  #fff 0) bottom left,
     linear-gradient( -45deg, transparent 0 var(--bottomRightCorner, 0), #fff 0) bottom right
   ;
-  -webkit-mask-size: 50% 50%;
+  -webkit-mask-size: 50.5% 50.5%;
   -webkit-mask-repeat: no-repeat;
 }
 
@@ -64,6 +68,7 @@ main {
 .title {
   text-shadow: 0 2px 0 #0002;
   padding-left: 3px;
+  padding-right: 3px;
   margin-bottom: -3px;
   display: inline-block;
 }
@@ -108,7 +113,7 @@ main {
     linear-gradient(-135deg, var(--userColor) 0 calc(var(--topRightCorner, 0px) - var(--borderSize) / 2),    transparent 0) top right    / 100% 100%,
     linear-gradient(  45deg, var(--userColor) 0 calc(var(--bottomLeftCorner, 0px) - var(--borderSize) / 2),  transparent 0) bottom left  / 100% 100%,
     linear-gradient( -45deg, var(--userColor) 0 calc(var(--bottomRightCorner, 0px) - var(--borderSize) / 2), transparent 0) bottom right / 100% 100%,
-    linear-gradient(-45deg, #ffadadaa, #ffd6a5aa, #fdffb6aa, #caffbfaa, #9bf6ffaa, #a0c4ffaa, #bdb2ffaa, #ffc6ffaa, #ffadadaa, #ffd6a5aa) 100% 100% / 900% 900%
+    linear-gradient(-45deg, #ffadaddd, #ffd6a5dd, #fdffb6dd, #caffbfdd, #9bf6ffdd, #a0c4ffdd, #bdb2ffdd, #ffc6ffdd, #ffadaddd, #ffd6a5dd) 100% 100% / 900% 900%
   ;
   animation: gradientShift 5s infinite linear;
 }

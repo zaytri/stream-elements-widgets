@@ -109,7 +109,7 @@ function onMessage(event) {
     const [left, top] = calcPosition(width, height)
 
     const maxWidth = $(`${currentMessage} .${CLASS.MESSAGE_WRAPPER}`).width() + 1
-    const minWidth = $(`${currentMessage} .${CLASS.TITLE}`).width()
+    const minWidth = $(`${currentMessage} .${CLASS.TITLE}`).outerWidth()
 
     $(`${currentMessage} .${CLASS.MESSAGE}`).css({
       '--dynamicWidth': Math.max(minWidth, maxWidth),
