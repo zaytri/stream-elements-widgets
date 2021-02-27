@@ -1,0 +1,19 @@
+{
+  "name": {
+    "type": "text",
+    "label": "Name",
+    "value": "MyName"
+  },
+  "pronouns": {
+    "type": "text",
+    "label": "Pronouns (separated by commas)",
+    "value": "pro/noun, pro/noun"
+  },
+  "fadeDuration": {
+    "type": "number",
+    "label": "Time before fade (seconds)",
+    "value": 30,
+    "min": 1,
+    "step": 1
+  }
+}
