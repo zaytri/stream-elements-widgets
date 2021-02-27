@@ -15,5 +15,21 @@
     "value": 30,
     "min": 1,
     "step": 1
+  },
+  "widgetName": {
+    "type": "hidden",
+    "value": "User Card"
+  },
+  "widgetAuthor": {
+    "type": "hidden",
+    "value": "Zaytri"
+  },
+  "widgetVersion": {
+    "type": "hidden",
+    "value": "1.0"
+  },
+  "widgetUpdateUrl": {
+    "type": "hidden",
+    "value": "https://github.com/zaytri/stream-elements-widgets/blob/main/UserCard"
   }
 }
