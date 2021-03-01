@@ -22,15 +22,29 @@ main {
 }
 
 main.show-padding::before {
-  --borderSize: 5px;
   content: '';
+  --borderSize: 10px;
   position: absolute;
   height: calc(100% - {spacing}px * 2);
   width: calc(100% - {spacing}px * 2);
   top: calc({spacing}px - var(--borderSize));
   left: calc({spacing}px - var(--borderSize));
-  border: var(--borderSize) dashed #F008;
-  background-color: #FFF8;
+  border: var(--borderSize) dashed red;
+  filter: drop-shadow(0 0 3px #0008);
+}
+
+main.show-padding::after {
+  content: 'Messages will only appear within these bounds\a(Make sure to toggle this off before streaming)';
+  color: white;
+  font-size: 32px;
+  font-weight: 900;
+  position: absolute;
+  width: 100%;
+  top: 30%;
+  left: 0;
+  text-align: center;
+  text-shadow: 0 0 3px black;
+  white-space: pre;
 }
 
 /* --- [Message Container] --- */
