@@ -72,6 +72,7 @@ main.align-left {
 .username {
   font-size: 18px;
   text-shadow: 0 0 4px currentcolor;
+  animation: spin 3s;
 }
 
 .event:first-child .username { font-size: 24px; }
@@ -96,3 +97,11 @@ main.align-left {
 .event-raid       .image { -webkit-mask-image: url('https://cdn.streamelements.com/static/custom-event-list/raid.svg');}
 .event-subscriber .image { -webkit-mask-image: url('https://cdn.streamelements.com/static/custom-event-list/sub.svg'); }
 .event-tip        .image { -webkit-mask-image: url('https://cdn.streamelements.com/static/custom-event-list/tip.svg'); }
+
+@keyframes spin {
+  10%  { transform: scale(.75); }
+  25%  { transform: rotate(3deg) scale(1.25); }
+  50%  { transform: scale(.8); }
+  75%  { transform: rotate(3deg) scale(1.5); }
+  100% { transform: rotate(360deg); }
+}
