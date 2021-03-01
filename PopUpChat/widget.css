@@ -21,8 +21,15 @@ main {
   left: 0;
 }
 
-main.show-padding {
-  border: {spacing}px solid #0008;
+main.show-padding::before {
+  --borderSize: 5px;
+  content: '';
+  position: absolute;
+  height: calc(100% - {spacing}px * 2);
+  width: calc(100% - {spacing}px * 2);
+  top: calc({spacing}px - var(--borderSize));
+  left: calc({spacing}px - var(--borderSize));
+  border: var(--borderSize) dashed #F008;
   background-color: #FFF8;
 }
 
@@ -36,6 +43,7 @@ main.show-padding {
   top: 30px;
   left: 30px;
   animation: pop .5s calc({delay}s + {lifetime}s - .5s);
+  visibility: hidden;
 
   --topRightCorner: calc(var(--cornerSize) - var(--borderSize));
   --bottomLeftCorner: calc(var(--cornerSize) / 2);
@@ -62,6 +70,11 @@ main.show-padding {
   ;
   -webkit-mask-size: 50.5% 50.5%;
   -webkit-mask-repeat: no-repeat;
+}
+
+.container.animate {
+  visibility: visible;
+  animation: pop .5s calc({delay}s + {lifetime}s - .5s);
 }
 
 /* --- [Container Blocks] --- */
@@ -91,21 +104,22 @@ main.show-padding {
   padding-left: 10px;
   padding-right: 10px;
   width: var(--dynamicWidth);
-  animation: expand 2s calc({delay}s - .01s);
 }
+
+.animate .message { animation: expand 2s; }
 
 /* --- [Message Parts] --- */
 
 .text {
   text-shadow: 0 1px 0 #0004;
-  animation: fade 1.5s calc({delay}s - .01s);
 }
 
 .emote {
   position: relative;
   vertical-align: middle;
-  animation: fade 1.5s calc({delay}s - .01s);
 }
+
+.animate .text, .animate .emote { animation: fade 1.5s; }
 
 .emote-1 { height: 32px; margin: -.25rem 0; }
 .emote-2 { height: 56px; margin: -.25rem 0; }

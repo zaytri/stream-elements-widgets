@@ -24,6 +24,7 @@ const CLASS = {
   DARK: 'dark',
   EMOTE: size => `emote emote-${size}`,
   SHOW_PADDING: 'show-padding',
+  ANIMATE: 'animate',
 }
 
 const DATA = attribute => `data-${attribute}`
@@ -114,7 +115,6 @@ function onMessage(event) {
 
   const sound = new Audio(FIELD_DATA.SOUND_URL)
   sound.volume = parseInt(FIELD_DATA.VOLUME) / 100
-  sound.muted = true
 
   window.setTimeout(_ => {
     const width = $(currentMessage).outerWidth()
@@ -129,15 +129,18 @@ function onMessage(event) {
     })
 
     window.setTimeout(_ => {
-      sound.muted = false
-      sound.play()
-      $(currentMessage).css({ left, top, visibility: 'visible' })
-    }, FIELD_DATA.DELAY * 1000 / 2)
-  }, FIELD_DATA.DELAY * 1000 / 2)
+      $(currentMessage).css({ left, top })
+    }, 300)
+  }, 300)
 
   window.setTimeout(_ => {
-    deleteMessage(msgId)
-  }, (FIELD_DATA.DELAY + FIELD_DATA.LIFETIME) * 1000)
+    sound.play()
+    $(currentMessage).addClass(CLASS.ANIMATE)
+
+    window.setTimeout(_ => {
+      deleteMessage(msgId)
+    }, FIELD_DATA.LIFETIME * 1000 )
+  }, FIELD_DATA.DELAY * 1000)
 }
 
 function deleteMessage(msgId) {
@@ -200,7 +203,7 @@ function MessageComponent(props) {
   return Component('section', {
     class: containerClasses,
     children: [header, message],
-    style: { '--userColor': color, visibility: 'hidden' },
+    style: { '--userColor': color },
     [DATA.MESSAGE_ID]: msgId,
     [DATA.USER_ID]: userId,
   })
