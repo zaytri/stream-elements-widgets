@@ -39,7 +39,6 @@ main p {
 
 .p1, .p2 {
   border-color: #fc6c85;
-  animation: fade {fadeDuration}s infinite;
 }
 
 .name {
@@ -48,9 +47,4 @@ main p {
   padding-bottom: 5px;
   margin-bottom: -5px;
   color: #a9e694;
-}
-
-@keyframes fade {
-  from, to { color: transparent }
-  3%, 97% { color: inherit }
 }
