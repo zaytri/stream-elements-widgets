@@ -23,6 +23,7 @@ const CLASS = {
   TEXT: 'text',
   DARK: 'dark',
   EMOTE: size => `emote emote-${size}`,
+  SHOW_PADDING: 'show-padding',
 }
 
 const DATA = attribute => `data-${attribute}`
@@ -75,6 +76,8 @@ window.addEventListener('onEventReceived', obj => {
     case 'delete-message': deleteMessage(event.msgId)
       break
     case 'delete-messages': deleteMessages(event.userId)
+      break
+    case 'event:test': onTest(event)
       break
     default: return
   }
@@ -143,6 +146,13 @@ function deleteMessage(msgId) {
 
 function deleteMessages(userId) {
   $(`.${CLASS.CONTAINER}[${DATA.USER_ID}=${userId}]`).remove()
+}
+
+function onTest(event) {
+  const { listener, field } = event
+  if (listener === 'widget-button' && field === 'spacingButton') {
+    $('main').toggleClass(CLASS.SHOW_PADDING)
+  }
 }
 
 // -------------------------

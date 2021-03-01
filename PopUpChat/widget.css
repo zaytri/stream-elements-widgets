@@ -21,6 +21,11 @@ main {
   left: 0;
 }
 
+main.show-padding {
+  border: {spacing}px solid #0008;
+  background-color: #FFF8;
+}
+
 /* --- [Message Container] --- */
 
 .container {

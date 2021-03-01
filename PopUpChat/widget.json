@@ -33,6 +33,11 @@
     "min": 0,
     "step": 1
   },
+  "spacingButton": {
+    "type": "button",
+    "label": "Toggle Padding Bounds",
+    "value": "Toggle Padding Bounds"
+  },
   "widgetName": {
     "type": "hidden",
     "value": "Pop-Up Chat"
@@ -43,7 +48,7 @@
   },
   "widgetVersion": {
     "type": "hidden",
-    "value": "1.1"
+    "value": "1.2"
   },
   "widgetUpdateUrl": {
     "type": "hidden",
