@@ -2,7 +2,6 @@
 
 * {
   font-family: Nunito, sans-serif;
-  color: black;
   font-size: 16px;
   overflow: hidden;
   overflow-wrap: break-word;
@@ -13,6 +12,7 @@
 /* --- [Widget Container] --- */
 
 main {
+  color: black;
   box-sizing: border-box;
   position: absolute;
   height: 100%;
@@ -47,49 +47,63 @@ main.show-padding::after {
   white-space: pre;
 }
 
+main.dark { color: white; }
+
 /* --- [Message Container] --- */
 
 .container {
+  --backgroundColor: #FFFD;
   --cornerSize: 23px;
   --userColor: #ff4a80;
   --borderSize: 5px;
   position: absolute;
   top: 30px;
   left: 30px;
-  animation: pop .5s calc({delay}s + {lifetime}s - .5s);
   visibility: hidden;
+  padding: var(--borderSize);
 
   --topRightCorner: calc(var(--cornerSize) - var(--borderSize));
   --bottomLeftCorner: calc(var(--cornerSize) / 2);
   --bottomRightCorner: calc(var(--cornerSize) / 2);
-  border: var(--borderSize) solid transparent;
-  background:
-    linear-gradient( 0deg,   var(--userColor) calc(var(--borderSize) + .1px), transparent 0),
-    linear-gradient( 90deg,  var(--userColor) calc(var(--borderSize) + .1px), transparent 0),
-    linear-gradient( 180deg, var(--userColor) calc(var(--borderSize) + .1px), transparent 0),
-    linear-gradient( 270deg, var(--userColor) calc(var(--borderSize) + .1px), transparent 0),
-    linear-gradient( 135deg, var(--userColor) 0 calc(var(--topLeftCorner, 0px) + var(--borderSize)),     transparent 0) top left     / 50% 50%,
-    linear-gradient(-135deg, var(--userColor) 0 calc(var(--topRightCorner, 0px) + var(--borderSize)),    transparent 0) top right    / 50% 50%,
-    linear-gradient(  45deg, var(--userColor) 0 calc(var(--bottomLeftCorner, 0px) + var(--borderSize)),  transparent 0) bottom left  / 50% 50%,
-    linear-gradient( -45deg, var(--userColor) 0 calc(var(--bottomRightCorner, 0px) + var(--borderSize)), transparent 0) bottom right / 50% 50%,
-    #FFFD
-  ;
-  background-origin: border-box;
-  background-repeat: no-repeat;
+
   -webkit-mask:
-    linear-gradient( 135deg, transparent 0 var(--topLeftCorner, 0),     #fff 0) top left,
-    linear-gradient(-135deg, transparent 0 var(--topRightCorner, 0),    #fff 0) top right,
-    linear-gradient(  45deg, transparent 0 var(--bottomLeftCorner, 0),  #fff 0) bottom left,
-    linear-gradient( -45deg, transparent 0 var(--bottomRightCorner, 0), #fff 0) bottom right
+    linear-gradient( 135deg, transparent 0 var(--topLeftCorner, 0),     white 0) top left,
+    linear-gradient(-135deg, transparent 0 var(--topRightCorner, 0),    white 0) top right,
+    linear-gradient(  45deg, transparent 0 var(--bottomLeftCorner, 0),  white 0) bottom left,
+    linear-gradient( -45deg, transparent 0 var(--bottomRightCorner, 0), white 0) bottom right
   ;
-  -webkit-mask-size: 50.5% 50.5%;
+  -webkit-mask-size: 51% 51%;
   -webkit-mask-repeat: no-repeat;
 }
 
 .container.animate {
   visibility: visible;
-  animation: pop .5s calc({delay}s + {lifetime}s - .5s);
+  animation: pop .5s calc({lifetime}s - .5s);
 }
+
+.container-background {
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background:
+    linear-gradient( 0deg,   var(--userColor) calc(var(--borderSize) + 1px), transparent 0),
+    linear-gradient( 90deg,  var(--userColor) calc(var(--borderSize) + 1px), transparent 0),
+    linear-gradient( 180deg, var(--userColor) calc(var(--borderSize) + 1px), transparent 0),
+    linear-gradient( 270deg, var(--userColor) calc(var(--borderSize) + 1px), transparent 0),
+    linear-gradient( 135deg, var(--userColor) 0 calc(var(--topLeftCorner, 0px) + var(--borderSize)),     transparent 0) top left     / 50% 50%,
+    linear-gradient(-135deg, var(--userColor) 0 calc(var(--topRightCorner, 0px) + var(--borderSize)),    transparent 0) top right    / 50% 50%,
+    linear-gradient(  45deg, var(--userColor) 0 calc(var(--bottomLeftCorner, 0px) + var(--borderSize)),  transparent 0) bottom left  / 50% 50%,
+    linear-gradient( -45deg, var(--userColor) 0 calc(var(--bottomRightCorner, 0px) + var(--borderSize)), transparent 0) bottom right / 50% 50%,
+    var(--backgroundColor)
+  ;
+  background-origin: border-box;
+  background-repeat: no-repeat;
+}
+
+.dark .container { --backgroundColor: #000B }
 
 /* --- [Container Blocks] --- */
 
@@ -104,9 +118,10 @@ main.show-padding::after {
   padding-right: 3px;
   margin-bottom: -3px;
   display: inline-block;
+  color: black;
 }
 
-.title .dark {
+.title .user-color-dark {
   color: white;
   text-shadow: 0 2px 0 #0006;
 }
@@ -118,6 +133,7 @@ main.show-padding::after {
   padding-left: 10px;
   padding-right: 10px;
   width: var(--dynamicWidth);
+  max-height: 300px;
 }
 
 .animate .message { animation: expand 2s; }
@@ -141,20 +157,29 @@ main.show-padding::after {
 
 /* --- [Message Types] --- */
 
-.highlight {
+.highlight .container-background {
   background:
-    linear-gradient( 135deg, var(--userColor) 0 calc(var(--topLeftCorner, 0px) - var(--borderSize) / 2),     transparent 0) top left     / 100% 100%,
-    linear-gradient(-135deg, var(--userColor) 0 calc(var(--topRightCorner, 0px) - var(--borderSize) / 2),    transparent 0) top right    / 100% 100%,
-    linear-gradient(  45deg, var(--userColor) 0 calc(var(--bottomLeftCorner, 0px) - var(--borderSize) / 2),  transparent 0) bottom left  / 100% 100%,
-    linear-gradient( -45deg, var(--userColor) 0 calc(var(--bottomRightCorner, 0px) - var(--borderSize) / 2), transparent 0) bottom right / 100% 100%,
+    linear-gradient( 0deg,   var(--userColor) calc(var(--borderSize) + .1px), transparent 0),
+    linear-gradient( 90deg,  var(--userColor) calc(var(--borderSize) + .1px), transparent 0),
+    linear-gradient( 180deg, var(--userColor) calc(var(--borderSize) + .1px), transparent 0),
+    linear-gradient( 270deg, var(--userColor) calc(var(--borderSize) + .1px), transparent 0),
+    linear-gradient( 135deg, var(--userColor) 0 calc(var(--topLeftCorner, 0px) + var(--borderSize)),     transparent 0) top left     / 50% 50%,
+    linear-gradient(-135deg, var(--userColor) 0 calc(var(--topRightCorner, 0px) + var(--borderSize)),    transparent 0) top right    / 50% 50%,
+    linear-gradient(  45deg, var(--userColor) 0 calc(var(--bottomLeftCorner, 0px) + var(--borderSize)),  transparent 0) bottom left  / 50% 50%,
+    linear-gradient( -45deg, var(--userColor) 0 calc(var(--bottomRightCorner, 0px) + var(--borderSize)), transparent 0) bottom right / 50% 50%,
     linear-gradient(-45deg, #ffadaddd, #ffd6a5dd, #fdffb6dd, #caffbfdd, #9bf6ffdd, #a0c4ffdd, #bdb2ffdd, #ffc6ffdd, #ffadaddd, #ffd6a5dd) 100% 100% / 900% 900%
   ;
+  background-origin: border-box;
+  background-repeat: no-repeat;
   animation: gradientShift 5s infinite linear;
+}
+
+.highlight .text {
+  color: black;
 }
 
 .action .text {
   font-style: italic;
-  color: var(--userColor);
   text-shadow: 0 1px 0 #0008;
 }
 
@@ -165,8 +190,8 @@ main.show-padding::after {
 /* --- [Animations] --- */
 
 @keyframes gradientShift {
-  from { background-position: top left, top right, bottom left, bottom right, 100% 100%; }
-  to { background-position: top left, top right, bottom left, bottom right, 0 0; }
+  from { background-position: 0 0, 0 0, 0 0, 0 0, top left, top right, bottom left, bottom right, 100% 100%; }
+  to { background-position: 0 0, 0 0, 0 0, 0 0, top left, top right, bottom left, bottom right, 0 0; }
 }
 
 @keyframes pop {

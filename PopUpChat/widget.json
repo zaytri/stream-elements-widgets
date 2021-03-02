@@ -1,4 +1,13 @@
 {
+  "dark": {
+    "type": "dropdown",
+    "label": "Enable Dark Mode",
+    "value": "true",
+    "options": {
+      "true": "Yes",
+      "false": "No"
+    }
+  },
   "soundUrl": {
     "type": "sound-input",
     "label": "Chat Message Sound Effect",
@@ -48,7 +57,7 @@
   },
   "widgetVersion": {
     "type": "hidden",
-    "value": "1.3.1"
+    "value": "1.4"
   },
   "widgetUpdateUrl": {
     "type": "hidden",

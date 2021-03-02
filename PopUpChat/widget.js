@@ -14,6 +14,7 @@ const MESSAGE_TYPE = {
 
 const CLASS = {
   CONTAINER: 'container',
+  CONTAINER_BACKGROUND: 'container-background',
   HEADER: 'header',
   TITLE: 'title',
   MESSAGE: 'message',
@@ -21,10 +22,11 @@ const CLASS = {
   HIGHLIGHT: 'highlight',
   ACTION: 'action',
   TEXT: 'text',
-  DARK: 'dark',
+  USER_COLOR_DARK: 'user-color-dark',
   EMOTE: size => `emote emote-${size}`,
   SHOW_PADDING: 'show-padding',
   ANIMATE: 'animate',
+  DARK: 'dark',
 }
 
 const DATA = attribute => `data-${attribute}`
@@ -46,20 +48,19 @@ const FIELD_DATA = {
   SPACING: 30,
   SOUND_URL: '',
   VOLUME: 50,
+  DARK: true,
 }
 
 window.addEventListener('onWidgetLoad', obj => {
+  const main = $('main')
   window.setTimeout(_ => {
-    WINDOW_WIDTH = $('main').innerWidth()
-  	WINDOW_HEIGHT = $('main').innerHeight()
+    WINDOW_WIDTH = main.innerWidth()
+  	WINDOW_HEIGHT = main.innerHeight()
   }, 1000)
 
   const {
-    lifetime = FIELD_DATA.LIFETIME,
-    delay = FIELD_DATA.DELAY,
-    spacing = FIELD_DATA.SPACING,
-    soundUrl = FIELD_DATA.SOUND_URL,
-    volume = FIELD_DATA.VOLUME
+    lifetime, delay, spacing, soundUrl,
+    volume, dark,
   } = obj.detail.fieldData
 
   FIELD_DATA.LIFETIME = lifetime
@@ -67,6 +68,10 @@ window.addEventListener('onWidgetLoad', obj => {
   FIELD_DATA.SPACING = spacing
   FIELD_DATA.SOUND_URL = soundUrl
   FIELD_DATA.VOLUME = volume
+  FIELD_DATA.DARK = dark === 'true'
+
+  if (FIELD_DATA.DARK) main.addClass(CLASS.DARK)
+  else main.removeClass(CLASS.DARK)
 })
 
 window.addEventListener('onEventReceived', obj => {
@@ -181,12 +186,6 @@ function MessageComponent(props) {
     }
   })
 
-  const title = Component('h2', { class: CLASS.TITLE, children: name })
-  const header = Component('div', {class: CLASS.HEADER, children: title })
-
-  const messageWrapper = Component('span', { class: CLASS.MESSAGE_WRAPPER, children: parsedElements })
-  const message = Component('div', { class: CLASS.MESSAGE, children: messageWrapper })
-
   let containerClasses = [CLASS.CONTAINER]
   switch (messageType) {
     case MESSAGE_TYPE.HIGHLIGHT: containerClasses.push(CLASS.HIGHLIGHT)
@@ -196,16 +195,22 @@ function MessageComponent(props) {
     default: // nothing
   }
 
-  if (tColor.isDark()) {
-    containerClasses.push(CLASS.DARK)
-  }
+  if (tColor.isDark()) containerClasses.push(CLASS.USER_COLOR_DARK)
 
   return Component('section', {
     class: containerClasses,
-    children: [header, message],
     style: { '--userColor': color },
     [DATA.MESSAGE_ID]: msgId,
     [DATA.USER_ID]: userId,
+    children: [
+      Component('div', { class: CLASS.CONTAINER_BACKGROUND }),
+      Component('div', { class: CLASS.HEADER, children:
+        Component('h2', { class: CLASS.TITLE, children: name })
+      }),
+      Component('div', { class: CLASS.MESSAGE, children:
+        Component('span', { class: CLASS.MESSAGE_WRAPPER, children: parsedElements })
+      }),
+    ],
   })
 }
 
