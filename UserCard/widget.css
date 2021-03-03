@@ -6,14 +6,22 @@
   margin: 0;
 }
 
-main {
+.state {
   display: flex;
   flex-direction: row;
   align-items: flex-end;
   padding: 5px;
+  opacity: 1;
 }
 
-main p {
+.state2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.p1, .p2, .name {
   flex: 1;
   background-color: #0008;
   border-top-left-radius: 10px;
@@ -39,6 +47,14 @@ main p {
 
 .p1, .p2 {
   border-color: #fc6c85;
+  box-shadow: inset 0 0 5px #fc6c85;
+}
+
+.state2 .p1, .state2 .p2, .state2 .name {
+  border-color: transparent;
+  color: transparent;
+  background-color: transparent;
+  box-shadow: unset;
 }
 
 .name {
