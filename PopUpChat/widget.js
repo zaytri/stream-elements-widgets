@@ -49,6 +49,10 @@ const FIELD_DATA = {
   SOUND_URL: '',
   VOLUME: 50,
   DARK: true,
+  SUB_ONLY: false,
+  HIGHLIGHT_ONLY: false,
+  HIGHLIGHT_MODE: 'rainbow',
+  ACTION_MODE: 'italics',
 }
 
 window.addEventListener('onWidgetLoad', obj => {
@@ -60,7 +64,8 @@ window.addEventListener('onWidgetLoad', obj => {
 
   const {
     lifetime, delay, spacing, soundUrl,
-    volume, dark,
+    volume, dark, subOnly, highlightOnly,
+    highlightMode, actionMode
   } = obj.detail.fieldData
 
   FIELD_DATA.LIFETIME = lifetime
@@ -69,6 +74,10 @@ window.addEventListener('onWidgetLoad', obj => {
   FIELD_DATA.SOUND_URL = soundUrl
   FIELD_DATA.VOLUME = volume
   FIELD_DATA.DARK = dark === 'true'
+  FIELD_DATA.SUB_ONLY = subOnly === 'true'
+  FIELD_DATA.HIGHLIGHT_ONLY = highlightOnly === 'true'
+  FIELD_DATA.HIGHLIGHT_MODE = highlightMode
+  FIELD_DATA.ACTION_MODE = actionMode
 
   if (FIELD_DATA.DARK) main.addClass(CLASS.DARK)
   else main.removeClass(CLASS.DARK)
@@ -95,19 +104,21 @@ window.addEventListener('onEventReceived', obj => {
 
 function onMessage(event) {
   const {
-    badges, emotes, tags,
-    msgId, userId, isAction,
+    badges, emotes, tags, msgId,
+    userId, isAction, text,
     displayColor: color,
     displayName: name,
-    text: rawText,
   } = event.data
-  const text = htmlEncode(rawText)
+
+  if (FIELD_DATA.SUB_ONLY && !isSubscriber(badges)) return
 
   let messageType = MESSAGE_TYPE.MESSAGE
   if (isAction) messageType = MESSAGE_TYPE.ACTION
   if (tags['msg-id'] === 'highlighted-message') messageType = MESSAGE_TYPE.HIGHLIGHT
 
-  const parsed = parse(text, emotes)
+  if (FIELD_DATA.HIGHLIGHT_ONLY && messageType !== MESSAGE_TYPE.HIGHLIGHT) return
+
+  const parsed = parse(htmlEncode(text), emotes)
   const size = emoteSize(parsed)
 
   const elementData = {
@@ -158,8 +169,11 @@ function deleteMessages(userId) {
 
 function onTest(event) {
   const { listener, field } = event
-  if (listener === 'widget-button' && field === 'spacingButton') {
-    $('main').toggleClass(CLASS.SHOW_PADDING)
+  if (listener !== 'widget-button') return
+  switch (field) {
+    case 'spacingButton': $('main').toggleClass(CLASS.SHOW_PADDING)
+      break
+    default: // none
   }
 }
 
@@ -188,10 +202,14 @@ function MessageComponent(props) {
 
   let containerClasses = [CLASS.CONTAINER]
   switch (messageType) {
-    case MESSAGE_TYPE.HIGHLIGHT: containerClasses.push(CLASS.HIGHLIGHT)
+    case MESSAGE_TYPE.HIGHLIGHT: {
+      if (FIELD_DATA.HIGHLIGHT_MODE === 'rainbow') containerClasses.push(CLASS.HIGHLIGHT)
       break
-    case MESSAGE_TYPE.ACTION: containerClasses.push(CLASS.ACTION)
+    }
+    case MESSAGE_TYPE.ACTION: {
+      if (FIELD_DATA.ACTION_MODE === 'italics') containerClasses.push(CLASS.ACTION)
       break
+    }
     default: // nothing
   }
 
@@ -270,6 +288,13 @@ function EmotePart(emote) {
 // ----------------------
 //    Helper Functions
 // ----------------------
+
+function isSubscriber(badges = []) {
+  for (const badge of badges) {
+    if (badge.type === 'subscriber') return true
+  }
+  return false
+}
 
 function emoteSize(parsed) {
   let emotesFound = 0

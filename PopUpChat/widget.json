@@ -8,19 +8,6 @@
       "false": "No"
     }
   },
-  "soundUrl": {
-    "type": "sound-input",
-    "label": "Chat Message Sound Effect",
-    "value": ""
-  },
-  "volume": {
-    "type": "slider",
-    "label": "Sound Effect Volume",
-    "value": 50,
-    "min": 0,
-    "max": 100,
-    "step": 1
-  },
   "lifetime": {
     "type": "number",
     "label": "Visible Message Lifetime (seconds)",
@@ -35,17 +22,70 @@
     "min": 1,
     "step": 1
   },
+  "soundUrl": {
+    "type": "sound-input",
+    "label": "Chat Message Sound Effect",
+    "value": "",
+    "group": "Sound"
+  },
+  "subOnly": {
+    "type": "dropdown",
+    "label": "Show Only Subscriber Messages",
+    "value": "false",
+    "options": {
+      "true": "Yes",
+      "false": "No"
+    }
+  },
+  "highlightOnly": {
+    "type": "dropdown",
+    "label": "Show Only Highlighted Messages",
+    "value": "false",
+    "options": {
+      "true": "Yes",
+      "false": "No"
+    }
+  },
+  "highlightMode": {
+    "type": "dropdown",
+    "label": "Highlight Mode",
+    "value": "rainbow",
+    "options": {
+      "rainbow": "Rainbow",
+      "normal": "Normal"
+    }
+  },
+  "actionMode": {
+    "type": "dropdown",
+    "label": "/me Mode",
+    "value": "italics",
+    "options": {
+      "italics": "Italics",
+      "normal": "Normal"
+    }
+  },
+  "volume": {
+    "type": "slider",
+    "label": "Sound Effect Volume",
+    "value": 50,
+    "min": 0,
+    "max": 100,
+    "step": 1,
+    "group": "Sound"
+  },
   "spacing": {
     "type": "number",
     "label": "Padding Bounds (px)",
     "value": 60,
     "min": 0,
-    "step": 1
+    "step": 1,
+    "group": "Padding"
   },
   "spacingButton": {
     "type": "button",
     "label": "Toggle Padding Bounds",
-    "value": "Toggle Padding Bounds"
+    "value": "Toggle Padding Bounds",
+    "group": "Padding"
   },
   "widgetName": {
     "type": "hidden",
@@ -57,7 +97,7 @@
   },
   "widgetVersion": {
     "type": "hidden",
-    "value": "1.4"
+    "value": "1.5"
   },
   "widgetUpdateUrl": {
     "type": "hidden",
