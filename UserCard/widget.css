@@ -29,7 +29,7 @@
   border: 3px solid currentcolor;
   box-sizing: border-box;
   padding: 0 10px;
-  text-shadow: 0 0 4px currentcolor;
+  text-shadow: 0 0 5px black, 0 0 6px currentcolor;
   box-shadow: inset 0 0 5px currentcolor;
 }
 
@@ -55,6 +55,7 @@
   color: transparent;
   background-color: transparent;
   box-shadow: unset;
+  text-shadow: 0 0 0 transparent;
 }
 
 .name {

@@ -71,8 +71,11 @@ main.align-left {
 
 .username {
   font-size: 18px;
-  text-shadow: 0 0 4px currentcolor;
   animation: spin 3s;
+}
+
+.username, .details {
+  text-shadow: 0 0 4px black, 0 0 4px currentcolor;
 }
 
 .event:first-child .username { font-size: 24px; }
