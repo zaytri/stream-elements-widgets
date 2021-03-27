@@ -73,7 +73,11 @@ function eventText(type, amount) {
       return 'Follow'
     }
     case EVENT.SUBSCRIBER: if (includeSubs) {
-      return `Sub ${amount === 'gift' ? 'Gift' : `x${amount}`}`
+      switch(amount) {
+        case 'gift':    return 'Sub Gift'
+        case undefined: return 'Sub'
+        default:        return `Sub x${amount}`
+      }
     }
     case EVENT.HOST: if (includeHosts && minHost <= amount) {
       return `Host x${amount}`
