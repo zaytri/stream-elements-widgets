@@ -29,6 +29,20 @@ const CLASS = {
   DARK: 'dark',
 }
 
+const LEVEL = {
+  EVERYONE: 0,
+  ONLY_SUB_VIP_MOD: 1,
+  ONLY_SUB_MOD: 2,
+  ONLY_VIP_MOD: 3,
+  ONLY_MOD: 4
+}
+
+const ROLE = {
+  SUB: 'subscriber',
+  VIP: 'vip',
+  MODS: ['mod', 'global_mod', 'staff', 'admin', 'broadcaster']
+}
+
 const DATA = attribute => `data-${attribute}`
 DATA.MESSAGE_ID = DATA('message-id')
 DATA.USER_ID = DATA('user-id')
@@ -53,6 +67,9 @@ const FIELD_DATA = {
   HIGHLIGHT_ONLY: false,
   HIGHLIGHT_MODE: 'rainbow',
   ACTION_MODE: 'italics',
+  USER_LEVEL: LEVEL.EVERYONE,
+  ALLOW: [],
+  BLOCK: [],
 }
 
 window.addEventListener('onWidgetLoad', obj => {
@@ -65,7 +82,8 @@ window.addEventListener('onWidgetLoad', obj => {
   const {
     lifetime, delay, spacing, soundUrl,
     volume, dark, subOnly, highlightOnly,
-    highlightMode, actionMode
+    highlightMode, actionMode, userLevel, allow,
+    block,
   } = obj.detail.fieldData
 
   FIELD_DATA.LIFETIME = lifetime
@@ -78,6 +96,9 @@ window.addEventListener('onWidgetLoad', obj => {
   FIELD_DATA.HIGHLIGHT_ONLY = highlightOnly === 'true'
   FIELD_DATA.HIGHLIGHT_MODE = highlightMode
   FIELD_DATA.ACTION_MODE = actionMode
+  FIELD_DATA.USER_LEVEL = parseInt(userLevel, 10)
+  FIELD_DATA.ALLOW = stringToArray(allow)
+  FIELD_DATA.BLOCK = stringToArray(block)
 
   if (FIELD_DATA.DARK) main.addClass(CLASS.DARK)
   else main.removeClass(CLASS.DARK)
@@ -105,12 +126,21 @@ window.addEventListener('onEventReceived', obj => {
 function onMessage(event) {
   const {
     badges, emotes, tags, msgId,
-    userId, isAction, text,
+    userId, isAction, text, nick,
     displayColor: color,
     displayName: name,
   } = event.data
 
-  if (FIELD_DATA.SUB_ONLY && !isSubscriber(badges)) return
+  if (FIELD_DATA.ALLOW.length && !isAllowed(name, nick)) return
+  if (isBlocked(name, nick)) return
+
+  switch(FIELD_DATA.USER_LEVEL) {
+    case LEVEL.ONLY_SUB_VIP_MOD: if (!isRole([...ROLE.MODS, ROLE.SUB, ROLE.VIP])(badges)) return
+    case LEVEL.ONLY_SUB_MOD: if (!isRole([...ROLE.MODS, ROLE.SUB])(badges)) return
+    case LEVEL.ONLY_VIP_MOD: if (!isRole([...ROLE.MODS, ROLE.VIP])(badges)) return
+    case LEVEL.ONLY_MOD: if (!isRole(ROLE.MODS)(badges)) return
+    default: // none
+  }
 
   let messageType = MESSAGE_TYPE.MESSAGE
   if (isAction) messageType = MESSAGE_TYPE.ACTION
@@ -213,7 +243,7 @@ function MessageComponent(props) {
     default: // nothing
   }
 
-  if (tColor.isDark()) containerClasses.push(CLASS.USER_COLOR_DARK)
+  if (isDark) containerClasses.push(CLASS.USER_COLOR_DARK)
 
   return Component('section', {
     class: containerClasses,
@@ -289,12 +319,37 @@ function EmotePart(emote) {
 //    Helper Functions
 // ----------------------
 
-function isSubscriber(badges = []) {
-  for (const badge of badges) {
-    if (badge.type === 'subscriber') return true
+const namesInList = list => (...names) => {
+  const lowercaseNames = names.map(name => name.toLowerCase())
+  for (const user of list) {
+    if (lowercaseNames.includes(user)) return true
   }
   return false
 }
+
+const isAllowed = namesInList(FIELD_DATA.ALLOW)
+const isBlocked = namesInList(FIELD_DATA.BLOCK)
+
+function stringToArray(string = '', separator = ',') {
+  return string.split(separator).reduce((acc, value) => {
+    const trimmed = value.trim().toLowerCase()
+    if (trimmed !== '') acc.push(trimmed)
+    return acc
+  }, [])
+}
+
+function hasBadge(badges = [], type) {
+  for (const badge of badges) {
+    if (Array.isArray(type)) {
+      if (type.includes(badge.type)) return true
+    } else {
+      if (badge.type === type) return true
+    }
+  }
+  return false
+}
+
+const isRole = role => badges => hasBadge(badges, role)
 
 function emoteSize(parsed) {
   let emotesFound = 0

@@ -1,41 +1,44 @@
 {
-  "dark": {
-    "type": "dropdown",
-    "label": "Enable Dark Mode",
-    "value": "true",
-    "options": {
-      "true": "Yes",
-      "false": "No"
-    }
-  },
   "lifetime": {
     "type": "number",
     "label": "Visible Message Lifetime (seconds)",
     "value": 10,
     "min": 1,
-    "step": 1
+    "step": 1,
+    "group": "Timing"
   },
   "delay": {
     "type": "number",
     "label": "Delay Before Visible (seconds)",
     "value": 1,
     "min": 1,
-    "step": 1
+    "step": 1,
+    "group": "Timing"
   },
-  "soundUrl": {
-    "type": "sound-input",
-    "label": "Chat Message Sound Effect",
-    "value": "",
-    "group": "Sound"
-  },
-  "subOnly": {
+  "userLevel": {
     "type": "dropdown",
-    "label": "Show Only Subscriber Messages",
-    "value": "false",
+    "label": "Show messages from:",
+    "value": "0",
     "options": {
-      "true": "Yes",
-      "false": "No"
-    }
+      "0": "Everyone",
+      "1": "Only Subs, VIPs, and Mods",
+      "2": "Only Subs and Mods",
+      "3": "Only VIPs and Mods",
+      "4": "Only Mods"
+    },
+    "group": "Filters"
+  },
+  "allow": {
+    "type": "text",
+    "label": "Allow Only (Comma Separated Names)",
+    "value": "",
+    "group": "Filters"
+  },
+  "block": {
+    "type": "text",
+    "label": "Block (Comma Separated Names)",
+    "value": "",
+    "group": "Filters"
   },
   "highlightOnly": {
     "type": "dropdown",
@@ -44,7 +47,18 @@
     "options": {
       "true": "Yes",
       "false": "No"
-    }
+    },
+    "group": "Filters"
+  },
+  "dark": {
+    "type": "dropdown",
+    "label": "Enable Dark Mode",
+    "value": "true",
+    "options": {
+      "true": "Yes",
+      "false": "No"
+    },
+    "group": "Styles"
   },
   "highlightMode": {
     "type": "dropdown",
@@ -53,7 +67,8 @@
     "options": {
       "rainbow": "Rainbow",
       "normal": "Normal"
-    }
+    },
+    "group": "Styles"
   },
   "actionMode": {
     "type": "dropdown",
@@ -62,7 +77,28 @@
     "options": {
       "italics": "Italics",
       "normal": "Normal"
-    }
+    },
+    "group": "Styles"
+  },
+  "spacing": {
+    "type": "number",
+    "label": "Padding Bounds (px)",
+    "value": 60,
+    "min": 0,
+    "step": 1,
+    "group": "Styles"
+  },
+  "spacingButton": {
+    "type": "button",
+    "label": "Toggle Padding Bounds",
+    "value": "Toggle Padding Bounds",
+    "group": "Styles"
+  },
+  "soundUrl": {
+    "type": "sound-input",
+    "label": "Chat Message Sound Effect",
+    "value": "",
+    "group": "Sound"
   },
   "volume": {
     "type": "slider",
@@ -73,34 +109,28 @@
     "step": 1,
     "group": "Sound"
   },
-  "spacing": {
-    "type": "number",
-    "label": "Padding Bounds (px)",
-    "value": 60,
-    "min": 0,
-    "step": 1,
-    "group": "Padding"
-  },
-  "spacingButton": {
-    "type": "button",
-    "label": "Toggle Padding Bounds",
-    "value": "Toggle Padding Bounds",
-    "group": "Padding"
-  },
   "widgetName": {
+    "label": "Pop-Up Chat v1.5",
     "type": "hidden",
-    "value": "Pop-Up Chat"
+    "value": "Pop-Up Chat",
+    "group": "About"
   },
   "widgetAuthor": {
+    "label": "Author: Zaytri",
     "type": "hidden",
-    "value": "Zaytri"
+    "value": "Zaytri",
+    "group": "About"
   },
   "widgetVersion": {
+    "label": "Twitch: twitch.tv/zaytri",
     "type": "hidden",
-    "value": "1.5"
+    "value": "1.5",
+    "group": "About"
   },
   "widgetUpdateUrl": {
+    "label": "Twitter / TikTok / Instagram: @imzaytri",
     "type": "hidden",
-    "value": "https://github.com/zaytri/stream-elements-widgets/blob/main/PopUpChat"
+    "value": "https://github.com/zaytri/stream-elements-widgets/blob/main/PopUpChat",
+    "group": "About"
   }
 }

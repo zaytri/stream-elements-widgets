@@ -43,7 +43,7 @@ main.show-padding::after {
   top: 30%;
   left: 0;
   text-align: center;
-  text-shadow: 0 0 3px black;
+  text-shadow: 0 0 3px black, 0 0 5px black;
   white-space: pre;
 }
 
@@ -121,7 +121,7 @@ main.dark { color: white; }
   color: black;
 }
 
-.title .user-color-dark {
+.user-color-dark .title {
   color: white;
   text-shadow: 0 2px 0 #0006;
 }
