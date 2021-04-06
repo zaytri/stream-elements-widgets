@@ -294,7 +294,7 @@ function Component(tag, props) {
 function parse(text, emotes) {
   if (!emotes || emotes.length === 0) return [TextPart(text)]
 
-  const regex = createRegex(emotes.map(e => e.name))
+  const regex = createRegex(emotes.map(e => htmlEncode(e.name)))
 
   const textParts = text.split(regex).map(text => TextPart(text))
   const last = textParts.pop()
