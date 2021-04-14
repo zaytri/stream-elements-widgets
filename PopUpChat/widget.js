@@ -319,16 +319,24 @@ function EmotePart(emote) {
 //    Helper Functions
 // ----------------------
 
-const namesInList = list => (...names) => {
+const namesInList = type => (...names) => {
   const lowercaseNames = names.map(name => name.toLowerCase())
+  let list
+  switch (type) {
+    case 'allow': list = FIELD_DATA.ALLOW
+      break
+    case 'block': list = FIELD_DATA.BLOCK
+      break
+    default: return false
+  }
   for (const user of list) {
     if (lowercaseNames.includes(user)) return true
   }
   return false
 }
 
-const isAllowed = namesInList(FIELD_DATA.ALLOW)
-const isBlocked = namesInList(FIELD_DATA.BLOCK)
+const isAllowed = namesInList('allow')
+const isBlocked = namesInList('block')
 
 function stringToArray(string = '', separator = ',') {
   return string.split(separator).reduce((acc, value) => {
