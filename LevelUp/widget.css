@@ -1,6 +1,6 @@
 * {
   font-family: 'Yusei Magic', sans-serif;
-  font-size: 18px;
+  font-size: 20px;
   margin: 0;
   padding: 0;
 }
@@ -11,75 +11,104 @@ main {
   height: 100%;
   width: 100%;
   display: flex;
-  align-items: flex-end;
   justify-content: flex-end;
-  flex-direction: row;
+  flex-direction: column;
 }
 
-#rank-container {
-  margin: 40px;
+.title-container {
+  flex: 1;
+  display: flex;
+  align-items: start;
+  padding: 30px;
+}
+
+.title {
+  font-size: 30px;
+  color: #a9e694;
+  background-color: #000B;
+  border: 3px solid currentcolor;
+  text-shadow: 0 0 5px #0008;
+  padding: 10px 0;
+  position: relative;
+  text-align: center;
+  flex: 1;
+  box-shadow: 0 0 8px currentcolor, 0 0 4px currentcolor;
 }
 
 .rank {
   color: #fc6c85;
   display: flex;
-  margin-top: 10px;
   align-items: center;
+  margin-bottom: 30px;
+  padding: 0 30px;
 }
 
-#rank-1 {
+#rank-0 {
   color: #a9e694;
 }
 
-.rank p {
-  text-shadow: 0 0 4px black, 0 0 4px currentcolor;
-}
-
-.name {
-  margin-right: 10px;
-}
-
-.level-container {
-  border: 3px solid currentcolor;
-  box-shadow: inset 0 0 5px currentcolor;
-  border-radius: 5px;
-  background-color: #0008;
-  height: 60px;
-  width: 90px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.player-container {
-  display: flex;
-  flex-direction: column;
-  border: 3px solid currentcolor;
-  box-shadow: inset 0 0 5px currentcolor;
-  border-radius: 5px;
-  border-left: 0;
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-  background-color: #0008;
-  width: 100%;
-  padding: 7px;
-
+.level, .emote-container {
+  height: 50px;
+  background-color: #000B;
+  border: 2px solid currentcolor;
+  box-shadow: 0 0 8px currentcolor, 0 0 4px currentcolor;
+  z-index: 1;
+  position: relative;
 }
 
 .level {
-  font-size: 30px;
+  font-size: 24px;
+  padding: 0 8px;
+  text-align: center;
+  line-height: 50px;
+  text-shadow: 0 0 5px black, 0 0 5px black;
+}
+
+.emote-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+}
+
+.emote {
+  height: 28px;
+  filter: drop-shadow(0 0 5px black);
 }
 
 .xp-container {
-  margin-top: 3px;
-  background-color: #0008;
-  height: 10px;
-  width: 100%;
-  border-radius: 10px;
-  overflow: hidden;
+  display: flex;
+  background-color: #FFF8;
+  border: 2px solid #000B;
+  border-left-width: 0;
+  border-right-width: 0;
+  box-shadow: 0 0 8px #0004, 0 0 4px #0004;
+  box-sizing: border-box;
+  flex-direction: row;
+  position: relative;
+  flex: 1;
 }
 
 .xp {
+  width: 0%;
   background-color: currentcolor;
-  height: 100%;
+  overflow: visible !important;
+  filter: drop-shadow(0 0 4px currentcolor) drop-shadow(0 0 0 currentcolor);
+}
+
+.xp-container:after, .level:after, .emote-container:after, .title:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-image: linear-gradient(#FFF4, transparent);
+}
+
+.username {
+  color: #000B;
+  padding-left: 10px;
+  padding-bottom: 3px;
+  box-sizing: border-box;
 }
