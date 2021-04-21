@@ -1,6 +1,75 @@
 {
+  "title": {
+    "type": "text",
+    "label": "Title",
+    "value": "Today's Top Chatters"
+  },
+  "topCount": {
+    "type": "number",
+    "label": "Show Top __ Chatters",
+    "value": 5,
+    "min": 1,
+    "step": 1
+  },
+  "titleColor": {
+    "type": "colorpicker",
+    "label": "Title Color",
+    "value": "#a9e694"
+  },
+  "topColor": {
+    "type": "colorpicker",
+    "label": "Highest Rank Color",
+    "value": "#a9e694"
+  },
+  "rankColor": {
+    "type": "colorpicker",
+    "label": "Default Rank Color",
+    "value": "#fc6c85"
+  },
+  "messageLimit": {
+    "type": "number",
+    "label": "Limit XP to __ messages per minute",
+    "value": 10,
+    "min": 1,
+    "step": 1
+  },
+  "charMin": {
+    "type": "number",
+    "label": "Character minimum to gain XP",
+    "value": 10,
+    "min": 0,
+    "step": 1
+  },
+  "alignment": {
+    "type": "dropdown",
+    "label": "Alignment",
+    "value": "vertical",
+    "options": {
+      "vertical": "Vertical",
+      "horizontal": "Horizontal"
+    }
+  },
+  "direction": {
+    "type": "dropdown",
+    "label": "Direction",
+    "value": "forwards",
+    "options": {
+      "forwards": "Forwards",
+      "reverse": "Reverse"
+    }
+  },
+  "allow": {
+    "type": "text",
+    "label": "Allow Only (Comma Separated Names)",
+    "value": ""
+  },
+  "block": {
+    "type": "text",
+    "label": "Block (Comma Separated Names)",
+    "value": ""
+  },
   "widgetName": {
-    "label": "Level Up v1.0",
+    "label": "Level Up v1.1",
     "type": "hidden",
     "value": "Level Up",
     "group": "About"

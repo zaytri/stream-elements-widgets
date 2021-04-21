@@ -1,9 +1,35 @@
 const db = {}
 
+const FIELD_DATA = {
+  ALLOW: [],
+  BLOCK: [],
+  MESSAGE_LIMIT: 10,
+  CHAR_MIN: 10,
+  ALIGNMENT: 'vertical',
+  DIRECTION: 'direction',
+  TOP_COUNT: 5,
+}
+
 const DEFAULT_EMOTE = 'https://static-cdn.jtvnw.net/emoticons/v1/112290/3.0'
 
 window.addEventListener('onWidgetLoad', obj => {
-  for (let i = 0; i < 5; i++) {
+  const {
+    allow, block, messageLimit,
+    charMin, alignment, direction,
+    topCount
+  } = obj.detail.fieldData
+
+  FIELD_DATA.ALLOW = stringToArray(allow)
+  FIELD_DATA.BLOCK = stringToArray(block)
+  FIELD_DATA.MESSAGE_LIMIT = messageLimit
+  FIELD_DATA.CHAR_MIN = charMin
+  FIELD_DATA.ALIGNMENT = alignment
+  FIELD_DATA.DIRECTION = direction
+  FIELD_DATA.TOP_COUNT = topCount
+
+  $('main').addClass([alignment, direction])
+
+  for (let i = 0; i < FIELD_DATA.TOP_COUNT; i++) {
     $('main').append(RankComponent(i))
   }
   render()
@@ -19,10 +45,25 @@ window.addEventListener('onEventReceived', obj => {
 })
 
 function onMessage(event) {
-  const { displayName: name, userId, emotes } = event.data
+  const {
+    displayName: name,
+    nick, userId, emotes,
+    text,
+  } = event.data
+
+  if (text.length < FIELD_DATA.CHAR_MIN) return
+
+  if (FIELD_DATA.ALLOW.length && !isAllowed(name, nick)) return
+  if (isBlocked(name, nick)) return
+
   if (!db[userId]) {
-    db[userId] = { name, xp: 0 }
+    db[userId] = { name, xp: 0, messagesLastMinute: 0 }
   }
+
+  db[userId].messagesLastMinute++
+  window.setTimeout(() => { db[userId].messagesLastMinute-- }, 60000)
+
+  if (db[userId].messagesLastMinute > FIELD_DATA.MESSAGE_LIMIT) return
 
   if (emotes && emotes.length > 0) {
     db[userId].emote = emotes[emotes.length - 1].urls['4']
@@ -34,9 +75,9 @@ function onMessage(event) {
 }
 
 function render() {
-  const topRanks = Object.entries(db).sort((a,b) => b[1].xp - a[1].xp).slice(0, 5)
+  const topRanks = Object.entries(db).sort((a,b) => b[1].xp - a[1].xp).slice(0, FIELD_DATA.TOP_COUNT)
 
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < FIELD_DATA.TOP_COUNT; i++) {
     const rank = topRanks[i]
     const rankSelector = `#rank-${i}`
     if (rank) {
@@ -90,6 +131,33 @@ function calcLevel(xp) {
 }
 
 const calcLevelXP = level => ((level - 1) * level) * 5
+
+function stringToArray(string = '', separator = ',') {
+  return string.split(separator).reduce((acc, value) => {
+    const trimmed = value.trim().toLowerCase()
+    if (trimmed !== '') acc.push(trimmed)
+    return acc
+  }, [])
+}
+
+const namesInList = type => (...names) => {
+  const lowercaseNames = names.map(name => name.toLowerCase())
+  let list
+  switch (type) {
+    case 'allow': list = FIELD_DATA.ALLOW
+      break
+    case 'block': list = FIELD_DATA.BLOCK
+      break
+    default: return false
+  }
+  for (const user of list) {
+    if (lowercaseNames.includes(user)) return true
+  }
+  return false
+}
+
+const isAllowed = namesInList('allow')
+const isBlocked = namesInList('block')
 
 /* Component Functions */
 
