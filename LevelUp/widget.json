@@ -69,7 +69,7 @@
     "value": ""
   },
   "widgetName": {
-    "label": "Level Up v1.1",
+    "label": "Level Up v1.1.1",
     "type": "hidden",
     "value": "Level Up",
     "group": "About"
@@ -83,7 +83,7 @@
   "widgetVersion": {
     "label": "Twitch: twitch.tv/zaytri",
     "type": "hidden",
-    "value": "1.0",
+    "value": "1.1.1",
     "group": "About"
   },
   "widgetUpdateUrl": {

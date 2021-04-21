@@ -66,7 +66,8 @@ function onMessage(event) {
   if (db[userId].messagesLastMinute > FIELD_DATA.MESSAGE_LIMIT) return
 
   if (emotes && emotes.length > 0) {
-    db[userId].emote = emotes[emotes.length - 1].urls['4']
+    const lastEmote = emotes[emotes.length - 1]
+    db[userId].emote =  lastEmote.urls['4'] || lastEmote.urls['1'] || db[userId].emote
   }
 
   db[userId].xp++
