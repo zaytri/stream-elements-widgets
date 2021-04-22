@@ -40,9 +40,16 @@ window.addEventListener('onEventReceived', obj => {
   switch(listener) {
     case 'message': onMessage(event)
       break
+    case 'delete-messages': deleteMessages(event)
     default: return
   }
 })
+
+// if someone is banned, remove them from leaderboard
+function deleteMessages(event) {
+  delete db[event.userId]
+  render()
+}
 
 function onMessage(event) {
   const {
