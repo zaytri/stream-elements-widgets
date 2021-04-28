@@ -15,27 +15,6 @@ main {
   flex-direction: column;
 }
 
-main.vertical.forwards {
-  flex-direction: column;
-}
-
-main.vertical.reverse {
-  flex-direction: column-reverse;
-}
-
-main.horizontal.forwards {
-  flex-direction: row;
-}
-
-main.horizontal.reverse {
-  flex-direction: row-reverse;
-}
-
-
-main.horizontal {
-  align-items: center;
-}
-
 .title-container {
   display: flex;
   align-items: start;
@@ -62,13 +41,6 @@ main.horizontal {
   margin-bottom: 30px;
   padding: 0 30px;
 }
-
-.horizontal .rank {
-  margin-bottom: 0;
-  padding: 0;
-  padding-right: 20px;
-}
-
 
 #rank-0 {
   color: {topColor};
@@ -138,8 +110,4 @@ main.horizontal {
   padding-left: 10px;
   padding-bottom: 3px;
   box-sizing: border-box;
-}
-
-.horizontal .username {
-  padding-right: 30px;
 }

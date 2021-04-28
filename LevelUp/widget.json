@@ -1,95 +1,122 @@
 {
   "title": {
-    "type": "text",
     "label": "Title",
-    "value": "Today's Top Chatters"
+    "group": "General",
+    "type": "text",
+    "value": "Chat Leaderboard"
   },
-  "topCount": {
+  "rankCount": {
+    "label": "Number of users on leaderboard",
+    "group": "General",
     "type": "number",
-    "label": "Show Top __ Chatters",
     "value": 5,
     "min": 1,
     "step": 1
   },
   "titleColor": {
-    "type": "colorpicker",
     "label": "Title Color",
+    "group": "General",
+    "type": "colorpicker",
     "value": "#a9e694"
   },
   "topColor": {
-    "type": "colorpicker",
     "label": "Highest Rank Color",
+    "group": "General",
+    "type": "colorpicker",
     "value": "#a9e694"
   },
   "rankColor": {
-    "type": "colorpicker",
     "label": "Default Rank Color",
+    "group": "General",
+    "type": "colorpicker",
     "value": "#fc6c85"
   },
-  "messageLimit": {
+  "minXP": {
+    "label": "Minimum XP per valid message",
+    "group": "Leveling",
     "type": "number",
-    "label": "Limit XP to __ messages per minute",
-    "value": 10,
+    "value": 1,
+    "min": 0,
+    "step": 1
+  },
+  "maxXP": {
+    "label": "Maximum XP per valid message",
+    "group": "Leveling",
+    "type": "number",
+    "value": 1,
+    "min": 1,
+    "step": 1
+  },
+  "messagesPerMin": {
+    "label": "Max messages per minute for XP",
+    "group": "Leveling",
+    "type": "number",
+    "value": 100,
     "min": 1,
     "step": 1
   },
   "charMin": {
+    "label": "Message character minimum for XP",
+    "group": "Leveling",
     "type": "number",
-    "label": "Character minimum to gain XP",
+    "value": 0,
+    "min": 0,
+    "step": 1
+  },
+  "initialLevelXP": {
+    "label": "Amount of XP to go from level 1 to 2",
+    "group": "Leveling",
+    "type": "number",
+    "value": 10,
+    "min": 1,
+    "step": 1
+  },
+  "xpIncrease": {
+    "label": "Total XP increase per level",
+    "group": "Leveling",
+    "type": "number",
     "value": 10,
     "min": 0,
     "step": 1
   },
-  "alignment": {
+  "ignoreCommands": {
+    "label": "Ignore bot commands (starts with !)",
+    "group": "Leveling",
     "type": "dropdown",
-    "label": "Alignment",
-    "value": "vertical",
+    "value": "true",
     "options": {
-      "vertical": "Vertical",
-      "horizontal": "Horizontal"
+      "true": "Yes",
+      "false": "No"
     }
   },
-  "direction": {
-    "type": "dropdown",
-    "label": "Direction",
-    "value": "forwards",
-    "options": {
-      "forwards": "Forwards",
-      "reverse": "Reverse"
-    }
-  },
-  "allow": {
+  "ignoreList": {
+    "label": "Ignore these users (comma separated)",
+    "group": "Leveling",
     "type": "text",
-    "label": "Allow Only (Comma Separated Names)",
-    "value": ""
-  },
-  "block": {
-    "type": "text",
-    "label": "Block (Comma Separated Names)",
-    "value": ""
+    "value": "StreamElements, TwitchBot, TwitchUser"
   },
   "widgetName": {
-    "label": "Level Up v1.1.2",
-    "type": "hidden",
-    "value": "Level Up",
-    "group": "About"
+    "value": "Chat Leaderboard",
+    "label": "Chat Leaderboard v1.2.0",
+    "group": "About",
+    "type": "hidden"
   },
   "widgetAuthor": {
-    "label": "Author: Zaytri",
-    "type": "hidden",
     "value": "Zaytri",
-    "group": "About"
+    "label": "Author: Zaytri",
+    "group": "About",
+    "type": "hidden"
   },
   "widgetVersion": {
+    "value": "1.2.0",
     "label": "Twitch: twitch.tv/zaytri",
-    "type": "hidden",
-    "value": "1.1.2",
-    "group": "About"
+    "group": "About",
+    "type": "hidden"
   },
   "widgetUpdateUrl": {
-    "label": "Twitter / TikTok / Instagram: @imzaytri",
-    "type": "hidden",
     "value": "https://github.com/zaytri/stream-elements-widgets/blob/main/LevelUp",
-    "group": "About"
+    "label": "Twitter / TikTok / Instagram: @imzaytri",
+    "group": "About",
+    "type": "hidden"
   }
 }
