@@ -928,7 +928,7 @@
   },
   "widgetName": {
     "value": "Chat Leaderboard",
-    "label": "Chat Leaderboard v2.1.2",
+    "label": "Chat Leaderboard v2.1.3",
     "group": "About",
     "type": "hidden"
   },
@@ -939,7 +939,7 @@
     "type": "hidden"
   },
   "widgetVersion": {
-    "value": "2.1.2",
+    "value": "2.1.3",
     "label": "Twitch: twitch.tv/zaytri",
     "group": "About",
     "type": "hidden"

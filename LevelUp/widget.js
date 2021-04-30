@@ -22,6 +22,7 @@ const FieldData = {
   levelPrefix: 'Lv',
   layout: '1',
   defaultEmote: DEFAULT_EMOTE,
+  removeCommand: '!deletelevel',
 }
 
 const EVENT = {
@@ -62,6 +63,7 @@ function loadFieldData(data) {
   FieldData.levelPrefix = data.levelPrefix
   FieldData.layout = data.layout
   FieldData.defaultEmote = data.defaultEmote || DEFAULT_EMOTE
+  FieldData.removeCommand = data.removeCommand
 }
 
 window.addEventListener('onEventReceived', obj => {
@@ -89,7 +91,7 @@ function onMessage(event) {
     text, badges,
   } = event.data
 
-  if (text.startsWith('!removelevel') && isMod(badges)) {
+  if (text.startsWith(FieldData.removeCommand) && isMod(badges)) {
     const userToRemove = text.split(' ')[1]
     const idToRemove = Object.values(db).find(user => user.name.toLowerCase() === userToRemove.toLowerCase()).id
 
