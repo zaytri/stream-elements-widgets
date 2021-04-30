@@ -566,7 +566,7 @@
     "label": "Minimum Height (px)",
     "group": "XP Box Style",
     "type": "number",
-    "value": 15,
+    "value": 25,
     "min": 0,
     "step": 1
   },
