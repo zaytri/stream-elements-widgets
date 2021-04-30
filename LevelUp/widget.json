@@ -838,14 +838,6 @@
     "min": 0,
     "step": 1
   },
-  "emoteSize": {
-    "label": "Emote Size (px)",
-    "group": "Emote Style",
-    "type": "number",
-    "value": 30,
-    "min": 0,
-    "step": 1
-  },
   "emoteShadowColor": {
     "label": "Shadow Color",
     "group": "Emote Style",
