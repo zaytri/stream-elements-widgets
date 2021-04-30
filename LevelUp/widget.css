@@ -7,16 +7,6 @@
   box-sizing: border-box;
 }
 
-main {
-  box-sizing: border-box;
-  position: absolute;
-  height: 500%;
-  width: 100%;
-  display: flex;
-  justify-content: flex-start;
-  flex-direction: column;
-}
-
 .absolute {
   position: absolute;
   top: 0;
@@ -37,6 +27,18 @@ main {
 
 .column {
   flex-direction: column;
+}
+
+main {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: {mainBackgroundColor};
+  border: {mainBorderWidth}px solid {mainBorderColor};
+  border-radius: {mainBorderRadius}px;
+  box-shadow: inset {mainInnerShadowOffset} {mainInnerShadowBlur}px {mainInnerShadowSpread}px {mainInnerShadowColor};
+  padding: {mainPadding};
+  overflow: hidden;
 }
 
 .rank {

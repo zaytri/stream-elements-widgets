@@ -128,6 +128,74 @@
     "type": "text",
     "value": "StreamElements, TwitchBot, TwitchUser"
   },
+  "mainBackgroundColor": {
+    "label": "Background Color",
+    "group": "Widget Box Style",
+    "type": "colorpicker",
+    "value": "transparent"
+  },
+  "mainBorderColor": {
+    "label": "Border Color",
+    "group": "Widget Box Style",
+    "type": "colorpicker",
+    "value": "black"
+  },
+  "mainBorderWidth": {
+    "label": "Border Thickness (px)",
+    "group": "Widget Box Style",
+    "type": "number",
+    "value": 0,
+    "min": 0,
+    "step": 1
+  },
+  "mainBorderRadius": {
+    "label": "Rounded Corner Size (px)",
+    "group": "Widget Box Style",
+    "type": "number",
+    "value": 0,
+    "min": 0,
+    "step": 1
+  },
+  "mainPadding": {
+    "label": "Inner Spacing (top right bottom left)",
+    "group": "Widget Box Style",
+    "type": "string",
+    "value": "0px 0px 0px 0px"
+  },
+  "mainOuterShadowColor": {
+    "label": "Outer Shadow Color",
+    "group": "Widget Box Style",
+    "type": "colorpicker",
+    "value": "black"
+  },
+  "mainInnerShadowColor": {
+    "label": "Inner Shadow Color",
+    "group": "Widget Box Style",
+    "type": "colorpicker",
+    "value": "black"
+  },
+  "mainInnerShadowOffset": {
+    "label": "Inner Shadow Position (x y)",
+    "group": "Widget Box Style",
+    "type": "string",
+    "value": "0px 0px"
+  },
+  "mainInnerShadowBlur": {
+    "label": "Inner Shadow Blur (px)",
+    "group": "Widget Box Style",
+    "type": "number",
+    "value": 0,
+    "min": 0,
+    "step": 1
+  },
+  "mainInnerShadowSpread": {
+    "label": "Inner Shadow Size (px)",
+    "group": "Widget Box Style",
+    "type": "number",
+    "value": 0,
+    "min": 0,
+    "step": 1
+  },
   "rankBackgroundColor": {
     "label": "Background Color",
     "group": "Rank Box Style",
