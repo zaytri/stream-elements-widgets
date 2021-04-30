@@ -1,7 +1,7 @@
 {
   "testButton": {
     "label": "Toggle Preview",
-    "group": "General",
+    "group": "Preview",
     "type": "button",
     "value": "Toggle Preview"
   },
@@ -928,7 +928,7 @@
   },
   "widgetName": {
     "value": "Chat Leaderboard",
-    "label": "Chat Leaderboard v2.1.1",
+    "label": "Chat Leaderboard v2.1.2",
     "group": "About",
     "type": "hidden"
   },
@@ -939,7 +939,7 @@
     "type": "hidden"
   },
   "widgetVersion": {
-    "value": "2.1.1",
+    "value": "2.1.2",
     "label": "Twitch: twitch.tv/zaytri",
     "group": "About",
     "type": "hidden"
