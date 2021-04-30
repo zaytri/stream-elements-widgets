@@ -1,11 +1,13 @@
 /*
   If someone wants to make this work with other events, such as follows/subs/bits,
   feel free to do so. Just note that StreamElements doesn't send userIds for those
-  events, so you'll have to change the db to also use names as keys. You will still
-  want to save the userId in there due to the delete-messages even to handle bans.
+  events, so you'll have to change the db to use names as keys.
 */
 
-const db = {}
+let db = {}
+
+const DEFAULT_EMOTE = 'https://static-cdn.jtvnw.net/emoticons/v1/112290/3.0'
+
 const FieldData = {
   ignoreList: [],
   messagesPerMin: 100,
@@ -16,14 +18,18 @@ const FieldData = {
   minXP: 1,
   maxXP: 1,
   ignoreCommands: true,
+  test: false,
+  levelPrefix: 'Lv',
+  layout: '1',
+  defaultEmote: DEFAULT_EMOTE,
 }
 
 const EVENT = {
   MESSAGE: 'message',
   DELETE_MESSAGES: 'delete-messages',
+  TEST: 'event:test',
 }
 
-const DEFAULT_EMOTE = 'https://static-cdn.jtvnw.net/emoticons/v1/112290/3.0'
 
 // ----------------
 //    Initialize
@@ -35,7 +41,7 @@ window.addEventListener('onWidgetLoad', obj => {
   loadFieldData(fieldData)
 
   for (let i = 0; i < FieldData.rankCount; i++) {
-    $('main').append(RankComponent(i))
+    $('main').append(RankComponent(i + 1))
   }
 
   render()
@@ -53,18 +59,21 @@ function loadFieldData(data) {
   FieldData.minXP = Math.min(data.minXP, data.maxXP)
   FieldData.maxXP = Math.max(data.minXP, data.maxXP)
   FieldData.ignoreCommands = data.ignoreCommands === 'true'
+  FieldData.levelPrefix = data.levelPrefix
+  FieldData.layout = data.layout
+  FieldData.defaultEmote = data.defaultEmote || DEFAULT_EMOTE
 }
 
 window.addEventListener('onEventReceived', obj => {
   const { listener, event } = obj.detail
 
-  const { userId, displayName: name } = event.data
-  if (!db[userId]) db[userId] = new User(userId, name)
-
   switch(listener) {
     case EVENT.MESSAGE: onMessage(event)
       break
     case EVENT.DELETE_MESSAGES: deleteMessages(event)
+      break
+    case EVENT.TEST: onTest(event)
+      break
     default: return
   }
 })
@@ -73,19 +82,21 @@ window.addEventListener('onEventReceived', obj => {
 //    Event Handlers
 // --------------------
 
-// if someone is banned, remove them from leaderboard
-function deleteMessages(event) {
-  delete db[event.userId]
-
-  render()
-}
-
 function onMessage(event) {
   const {
     displayName: name,
     nick, userId, emotes = [],
-    text,
+    text, badges,
   } = event.data
+
+  if (text.startsWith('!removelevel') && isMod(badges)) {
+    const userToRemove = text.split(' ')[1]
+    const idToRemove = Object.values(db).find(user => user.name.toLowerCase() === userToRemove.toLowerCase()).id
+
+    delete db[idToRemove]
+    render()
+    return
+  }
 
   if (text.startsWith('!')) return
 
@@ -98,12 +109,41 @@ function onMessage(event) {
   if (charCount < FieldData.charMin) return
   if (isIgnored(name, nick)) return
 
+  if (!db[userId]) db[userId] = new User(userId, name)
+
   if (emotes.length > 0) {
     const lastEmote = emotes[emotes.length - 1]
     db[userId].emote = lastEmote.urls['4'] || lastEmote.urls['1'] || db[userId].emote
   }
 
   if (db[userId].addXP(EVENT.MESSAGE)) render()
+}
+
+function deleteMessages(userId) {
+  delete db[userId]
+  render()
+}
+
+function onTest(event) {
+  const { listener, field } = event
+  if (listener !== 'widget-button') return
+
+  if (field === 'testButton') {
+    db = {}
+    render()
+    FieldData.test = !FieldData.test
+
+    if (FieldData.test) {
+      for (let i = 1; i <= FieldData.rankCount; i++) {
+        db[i] = new User(i, `user ${numbered.stringify(i)}`.replace(' ', '_'))
+        for (let j = 0; j < ((FieldData.initialLevelXP * 2 / FieldData.minXP) / i) + 2; j++) {
+          db[i].addXP(EVENT.MESSAGE)
+        }
+      }
+    }
+
+    render()
+  }
 }
 
 // ------------------------------------------
@@ -118,7 +158,7 @@ class User {
     this.level = 1
     this.nextLevelXP = FieldData.initialLevelXP
     this.messagesLastMinute = 0
-    this.emote = DEFAULT_EMOTE
+    this.emote = FieldData.defaultEmote
   }
 
   addMessage() {
@@ -159,9 +199,12 @@ class User {
     this.xp += amount
 
     while (this.xp >= this.nextLevelXP) {
-      render() // Allows XP bar to fill before resetting
+      render() // Completely fill XP bar
       this.level++
-      this.xp -= this.nextLevelXP
+      const leftoverXP = this.xp - this.nextLevelXP
+      this.xp = 0
+      render() // Empty XP bar
+      this.xp = leftoverXP
       this.nextLevelXP += FieldData.xpIncrease
     }
 
@@ -185,15 +228,16 @@ function render() {
 
   for (let i = 0; i < FieldData.rankCount; i++) {
     const rank = topRanks[i]
-    const rankSelector = `#rank-${i}`
+    const rankSelector = `#rank-${i + 1}`
     if (rank) {
       const { name, level, xpPercentage, emote } = rank
       $(rankSelector).show()
-      $(`${rankSelector} .level`).text(`Lv ${level}`)
+      $(`${rankSelector} .level`).text(`${FieldData.levelPrefix} ${level}`.trim())
       $(`${rankSelector} .username`).text(name)
       $(`${rankSelector} .xp`).animate({ width: `${xpPercentage}%` })
       $(`${rankSelector} .emote`).attr({ src: emote || DEFAULT_EMOTE })
     } else {
+      $(`${rankSelector} .xp`).css({ width: '0%' })
       $(rankSelector).hide()
     }
   }
@@ -204,25 +248,150 @@ function render() {
 // -------------------------
 
 function RankComponent(id) {
-  return Component('div', {
-    id: `rank-${id}`,
-    class: 'rank',
-    children: [
-      Component('p', { class: 'level', children: 'Lv1' }),
-      Component('div', {
-        class: 'xp-container',
-        children: Component('div', {
-          class: 'xp',
-          children: Component('p', { class: 'username', children: 'Chat' }),
-        }),
-      }),
-      Component('div', {
-        class: 'emote-container',
-        children: Component('img', { class: 'emote', src: DEFAULT_EMOTE }),
-      }),
-    ],
-  })
+  return Component('div', { id: `rank-${id}`, class: 'rank', children: LayoutComponent() })
 }
+
+function LayoutComponent() {
+  switch(FieldData.layout) {
+    case '1': return Layout1()
+    case '2': return Layout2()
+    case '3': return Layout3()
+    case '4': return Layout4()
+    case '5': return Layout5()
+    case '6': return Layout6()
+    case '7': return Layout7()
+    case '8': return Layout8()
+    case '9': return Layout9()
+    case '10': return Layout10()
+    default: []
+  }
+}
+
+function Layout1() {
+  return [
+    EmoteBoxComponent(EmoteComponent()),
+    ColumnComponent([
+      RowComponent([
+        UsernameBoxComponent(UsernameComponent()),
+        LevelBoxComponent(LevelComponent()),
+      ]),
+      RowComponent(XPBoxComponent(XPComponent()))
+    ]),
+  ]
+}
+
+function Layout2() {
+  return [
+    LevelBoxComponent(LevelComponent()),
+    ColumnComponent([
+      RowComponent([
+        UsernameBoxComponent(UsernameComponent()),
+        EmoteBoxComponent(EmoteComponent()),
+      ]),
+      RowComponent(XPBoxComponent(XPComponent()))
+    ]),
+  ]
+}
+
+function Layout3() {
+  return [
+    ColumnComponent([
+      RowComponent([
+        EmoteBoxComponent(EmoteComponent()),
+        RowComponent([
+          UsernameBoxComponent(UsernameComponent()),
+          LevelBoxComponent(LevelComponent()),
+        ]),
+      ]),
+      RowComponent(XPBoxComponent(XPComponent()))
+    ]),
+  ]
+}
+
+function Layout4() {
+  return [
+    ColumnComponent([
+      RowComponent([
+        LevelBoxComponent(LevelComponent()),
+        RowComponent([
+          UsernameBoxComponent(UsernameComponent()),
+          EmoteBoxComponent(EmoteComponent()),
+        ]),
+      ]),
+      RowComponent(XPBoxComponent(XPComponent()))
+    ]),
+  ]
+}
+
+function Layout5() {
+  return XPBoxComponent([
+    Component('div', { class: ['xp', 'absolute'] }),
+    EmoteBoxComponent(EmoteComponent()),
+    RowComponent([
+      UsernameBoxComponent(UsernameComponent()),
+      LevelBoxComponent(LevelComponent()),
+    ]),
+  ])
+}
+
+function Layout6() {
+  return XPBoxComponent([
+    Component('div', { class: ['xp', 'absolute'] }),
+    LevelBoxComponent(LevelComponent()),
+    RowComponent([
+      UsernameBoxComponent(UsernameComponent()),
+      EmoteBoxComponent(EmoteComponent()),
+    ]),
+  ])
+}
+
+function Layout7() {
+  return [
+    LevelBoxComponent(LevelComponent()),
+    EmoteBoxComponent(EmoteComponent()),
+    UsernameBoxComponent(UsernameComponent()),
+    XPBoxComponent(XPComponent()),
+  ]
+}
+
+function Layout8() {
+  return [
+    EmoteBoxComponent(EmoteComponent()),
+    LevelBoxComponent(LevelComponent()),
+    UsernameBoxComponent(UsernameComponent()),
+    XPBoxComponent(XPComponent()),
+  ]
+}
+
+function Layout9() {
+  return [
+    EmoteBoxComponent(EmoteComponent()),
+    UsernameBoxComponent(UsernameComponent()),
+    XPBoxComponent(XPComponent()),
+    LevelBoxComponent(LevelComponent()),
+  ]
+}
+
+function Layout10() {
+  return [
+    LevelBoxComponent(LevelComponent()),
+    UsernameBoxComponent(UsernameComponent()),
+    XPBoxComponent(XPComponent()),
+    EmoteBoxComponent(EmoteComponent()),
+  ]
+}
+
+const ClassComponent = (tag, className) => (children, props = {}) => Component(tag, { children, class: className, ...props })
+const LevelBoxComponent = ClassComponent('div', 'level-box')
+const LevelComponent = ClassComponent('p', 'level')
+const EmoteBoxComponent = ClassComponent('div', 'emote-box')
+const EmoteComponent = ClassComponent('img', 'emote')
+const UsernameBoxComponent = ClassComponent('div', 'username-box')
+const UsernameComponent = ClassComponent('p', 'username')
+const XPBoxComponent = ClassComponent('div', 'xp-box')
+const XPComponent = ClassComponent('div', 'xp')
+const RowComponent = ClassComponent('div', 'row')
+const ColumnComponent = ClassComponent('div', 'column')
 
 function Component(tag, props) {
   const { children, 'class': classes, style, ...rest } = props
@@ -249,6 +418,15 @@ function joinIfArray(possibleArray, delimiter = '') {
 // ----------------------
 //    Helper Functions
 // ----------------------
+
+function isMod(badges) {
+  for (const badge of badges) {
+    const { type } = badge
+    if (type === 'moderator' || type === 'broadcaster') return true
+  }
+
+  return false
+}
 
 function stringToArray(string = '', separator = ',') {
   return string.split(separator).reduce((acc, value) => {

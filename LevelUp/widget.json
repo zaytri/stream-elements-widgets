@@ -1,35 +1,68 @@
 {
-  "title": {
-    "label": "Title",
+  "testButton": {
+    "label": "Toggle Preview",
     "group": "General",
-    "type": "text",
-    "value": "Chat Leaderboard"
+    "type": "button",
+    "value": "Toggle Preview"
+  },
+  "layout": {
+    "label": "Choose Layout",
+    "group": "General",
+    "type": "dropdown",
+    "value": "1",
+    "options": {
+      "1": "Layout 1",
+      "2": "Layout 2",
+      "3": "Layout 3",
+      "4": "Layout 4",
+      "5": "Layout 5",
+      "6": "Layout 6",
+      "7": "Layout 7",
+      "8": "Layout 8",
+      "9": "Layout 9",
+      "10": "Layout 10"
+    }
   },
   "rankCount": {
-    "label": "Number of users on leaderboard",
+    "label": "Number of ranks on leaderboard",
     "group": "General",
     "type": "number",
     "value": 5,
     "min": 1,
     "step": 1
   },
-  "titleColor": {
-    "label": "Title Color",
+  "levelPrefix": {
+    "label": "Level Prefix",
     "group": "General",
-    "type": "colorpicker",
-    "value": "#a9e694"
+    "type": "text",
+    "value": "Lv"
   },
-  "topColor": {
-    "label": "Highest Rank Color",
+  "removeCommandLabel": {
+    "label": "Command to remove from leaderboard",
     "group": "General",
-    "type": "colorpicker",
-    "value": "#a9e694"
+    "type": "hidden"
   },
-  "rankColor": {
-    "label": "Default Rank Color",
+  "removeCommand": {
+    "label": "( Usage: !deletelevel TwitchUser )",
     "group": "General",
-    "type": "colorpicker",
-    "value": "#fc6c85"
+    "type": "string",
+    "value": "!deletelevel"
+  },
+  "displayEmote": {
+    "label": "Display last used emote?",
+    "group": "General",
+    "type": "dropdown",
+    "value": "flex",
+    "options": {
+      "flex": "Yes",
+      "none": "No"
+    }
+  },
+  "defaultEmote": {
+    "label": "Default emote shown",
+    "group": "General",
+    "type": "image-input",
+    "value": "https://static-cdn.jtvnw.net/emoticons/v1/112290/3.0"
   },
   "minXP": {
     "label": "Minimum XP per valid message",
@@ -95,9 +128,747 @@
     "type": "text",
     "value": "StreamElements, TwitchBot, TwitchUser"
   },
+  "rankBackgroundColor": {
+    "label": "Background Color",
+    "group": "Rank Box Style",
+    "type": "colorpicker",
+    "value": "#18181B"
+  },
+  "rankBorderColor": {
+    "label": "Border Color",
+    "group": "Rank Box Style",
+    "type": "colorpicker",
+    "value": "black"
+  },
+  "rankBorderWidth": {
+    "label": "Border Thickness (px)",
+    "group": "Rank Box Style",
+    "type": "number",
+    "value": 0,
+    "min": 0,
+    "step": 1
+  },
+  "rankBorderRadius": {
+    "label": "Rounded Corner Size (px)",
+    "group": "Rank Box Style",
+    "type": "number",
+    "value": 0,
+    "min": 0,
+    "step": 1
+  },
+  "rankPadding": {
+    "label": "Inner Spacing (top right bottom left)",
+    "group": "Rank Box Style",
+    "type": "string",
+    "value": "10px 10px 10px 10px"
+  },
+  "rankMargin": {
+    "label": "Outer Spacing (top right bottom left)",
+    "group": "Rank Box Style",
+    "type": "string",
+    "value": "0px 0px 10px 0px"
+  },
+  "rankOuterShadowColor": {
+    "label": "Outer Shadow Color",
+    "group": "Rank Box Style",
+    "type": "colorpicker",
+    "value": "black"
+  },
+  "rankOuterShadowOffset": {
+    "label": "Outer Shadow Position (x y)",
+    "group": "Rank Box Style",
+    "type": "string",
+    "value": "0px 0px"
+  },
+  "rankOuterShadowBlur": {
+    "label": "Outer Shadow Blur (px)",
+    "group": "Rank Box Style",
+    "type": "number",
+    "value": 0,
+    "min": 0,
+    "step": 1
+  },
+  "rankOuterShadowSpread": {
+    "label": "Outer Shadow Size (px)",
+    "group": "Rank Box Style",
+    "type": "number",
+    "value": 0,
+    "min": 0,
+    "step": 1
+  },
+  "rankInnerShadowColor": {
+    "label": "Inner Shadow Color",
+    "group": "Rank Box Style",
+    "type": "colorpicker",
+    "value": "black"
+  },
+  "rankInnerShadowOffset": {
+    "label": "Inner Shadow Position (x y)",
+    "group": "Rank Box Style",
+    "type": "string",
+    "value": "0px 0px"
+  },
+  "rankInnerShadowBlur": {
+    "label": "Inner Shadow Blur (px)",
+    "group": "Rank Box Style",
+    "type": "number",
+    "value": 0,
+    "min": 0,
+    "step": 1
+  },
+  "rankInnerShadowSpread": {
+    "label": "Inner Shadow Size (px)",
+    "group": "Rank Box Style",
+    "type": "number",
+    "value": 0,
+    "min": 0,
+    "step": 1
+  },
+  "levelBoxBackgroundColor": {
+    "label": "Background Color",
+    "group": "Level Box Style",
+    "type": "colorpicker",
+    "value": "#a9e694"
+  },
+  "levelBoxBorderColor": {
+    "label": "Border Color",
+    "group": "Level Box Style",
+    "type": "colorpicker",
+    "value": "black"
+  },
+  "levelBoxBorderWidth": {
+    "label": "Border Thickness (px)",
+    "group": "Level Box Style",
+    "type": "number",
+    "value": 0,
+    "min": 0,
+    "step": 1
+  },
+  "levelBoxBorderRadius": {
+    "label": "Rounded Corner Size (px)",
+    "group": "Level Box Style",
+    "type": "number",
+    "value": 5,
+    "min": 0,
+    "step": 1
+  },
+  "levelBoxPadding": {
+    "label": "Inner Spacing (top right bottom left)",
+    "group": "Level Box Style",
+    "type": "string",
+    "value": "3px 5px 3px 5px"
+  },
+  "levelBoxMargin": {
+    "label": "Outer Spacing (top right bottom left)",
+    "group": "Level Box Style",
+    "type": "string",
+    "value": "0px 10px 0px 0px"
+  },
+  "levelBoxOuterShadowColor": {
+    "label": "Outer Shadow Color",
+    "group": "Level Box Style",
+    "type": "colorpicker",
+    "value": "black"
+  },
+  "levelBoxOuterShadowOffset": {
+    "label": "Outer Shadow Position (x y)",
+    "group": "Level Box Style",
+    "type": "string",
+    "value": "0px 0px"
+  },
+  "levelBoxOuterShadowBlur": {
+    "label": "Outer Shadow Blur (px)",
+    "group": "Level Box Style",
+    "type": "number",
+    "value": 0,
+    "min": 0,
+    "step": 1
+  },
+  "levelBoxOuterShadowSpread": {
+    "label": "Outer Shadow Size (px)",
+    "group": "Level Box Style",
+    "type": "number",
+    "value": 0,
+    "min": 0,
+    "step": 1
+  },
+  "levelBoxInnerShadowColor": {
+    "label": "Inner Shadow Color",
+    "group": "Level Box Style",
+    "type": "colorpicker",
+    "value": "black"
+  },
+  "levelBoxInnerShadowOffset": {
+    "label": "Inner Shadow Position (x y)",
+    "group": "Level Box Style",
+    "type": "string",
+    "value": "0px 0px"
+  },
+  "levelBoxInnerShadowBlur": {
+    "label": "Inner Shadow Blur (px)",
+    "group": "Level Box Style",
+    "type": "number",
+    "value": 0,
+    "min": 0,
+    "step": 1
+  },
+  "levelBoxInnerShadowSpread": {
+    "label": "Inner Shadow Size (px)",
+    "group": "Level Box Style",
+    "type": "number",
+    "value": 0,
+    "min": 0,
+    "step": 1
+  },
+  "levelColor": {
+    "label": "Color",
+    "group": "Level Text Style",
+    "type": "colorpicker",
+    "value": "black"
+  },
+  "levelFont": {
+    "label": "Font",
+    "group": "Level Text Style",
+    "type": "text",
+    "value": "Nunito"
+  },
+  "levelSize": {
+    "label": "Font Size (px)",
+    "group": "Level Text Style",
+    "type": "number",
+    "value": 16,
+    "min": 1,
+    "step": 1
+  },
+  "levelWeight": {
+    "label": "Thickness",
+    "group": "Level Text Style",
+    "type": "dropdown",
+    "value": "bold",
+    "options": {
+      "normal": "Normal",
+      "bold": "Bold",
+      "100": "100",
+      "200": "200",
+      "300": "300",
+      "400": "400",
+      "500": "500",
+      "600": "600",
+      "700": "700",
+      "800": "800",
+      "900": "900"
+    }
+  },
+  "levelShadowColor": {
+    "label": "Text Shadow Color",
+    "group": "Level Text Style",
+    "type": "colorpicker",
+    "value": "transparent"
+  },
+  "levelShadowOffset": {
+    "label": "Text Shadow Position (x y)",
+    "group": "Level Text Style",
+    "type": "string",
+    "value": "0px 0px"
+  },
+  "levelShadowBlur": {
+    "label": "Text Shadow Blur (px)",
+    "group": "Level Text Style",
+    "type": "number",
+    "value": 0,
+    "min": 0,
+    "step": 1
+  },
+  "usernameBoxBackgroundColor": {
+    "label": "Background Color",
+    "group": "Username Box Style",
+    "type": "colorpicker",
+    "value": "transparent"
+  },
+  "usernameBoxBorderColor": {
+    "label": "Border Color",
+    "group": "Username Box Style",
+    "type": "colorpicker",
+    "value": "black"
+  },
+  "usernameBoxBorderWidth": {
+    "label": "Border Thickness (px)",
+    "group": "Username Box Style",
+    "type": "number",
+    "value": 0,
+    "min": 0,
+    "step": 1
+  },
+  "usernameBoxBorderRadius": {
+    "label": "Rounded Corner Size (px)",
+    "group": "Username Box Style",
+    "type": "number",
+    "value": 0,
+    "min": 0,
+    "step": 1
+  },
+  "usernameBoxPadding": {
+    "label": "Inner Spacing (top right bottom left)",
+    "group": "Username Box Style",
+    "type": "string",
+    "value": "0px 0px 0px 0px"
+  },
+  "usernameBoxMargin": {
+    "label": "Outer Spacing (top right bottom left)",
+    "group": "Username Box Style",
+    "type": "string",
+    "value": "0px 10px 0px 0px"
+  },
+  "usernameBoxOuterShadowColor": {
+    "label": "Outer Shadow Color",
+    "group": "Username Box Style",
+    "type": "colorpicker",
+    "value": "black"
+  },
+  "usernameBoxOuterShadowOffset": {
+    "label": "Outer Shadow Position (x y)",
+    "group": "Username Box Style",
+    "type": "string",
+    "value": "0px 0px"
+  },
+  "usernameBoxOuterShadowBlur": {
+    "label": "Outer Shadow Blur (px)",
+    "group": "Username Box Style",
+    "type": "number",
+    "value": 0,
+    "min": 0,
+    "step": 1
+  },
+  "usernameBoxOuterShadowSpread": {
+    "label": "Outer Shadow Size (px)",
+    "group": "Username Box Style",
+    "type": "number",
+    "value": 0,
+    "min": 0,
+    "step": 1
+  },
+  "usernameBoxInnerShadowColor": {
+    "label": "Inner Shadow Color",
+    "group": "Username Box Style",
+    "type": "colorpicker",
+    "value": "black"
+  },
+  "usernameBoxInnerShadowOffset": {
+    "label": "Inner Shadow Position (x y)",
+    "group": "Username Box Style",
+    "type": "string",
+    "value": "0px 0px"
+  },
+  "usernameBoxInnerShadowBlur": {
+    "label": "Inner Shadow Blur (px)",
+    "group": "Username Box Style",
+    "type": "number",
+    "value": 0,
+    "min": 0,
+    "step": 1
+  },
+  "usernameBoxInnerShadowSpread": {
+    "label": "Inner Shadow Size (px)",
+    "group": "Username Box Style",
+    "type": "number",
+    "value": 0,
+    "min": 0,
+    "step": 1
+  },
+  "usernameColor": {
+    "label": "Color",
+    "group": "Username Text Style",
+    "type": "colorpicker",
+    "value": "white"
+  },
+  "usernameFont": {
+    "label": "Font",
+    "group": "Username Text Style",
+    "type": "text",
+    "value": "Nunito"
+  },
+  "usernameSize": {
+    "label": "Font Size (px)",
+    "group": "Username Text Style",
+    "type": "number",
+    "value": 16,
+    "min": 1,
+    "step": 1
+  },
+  "usernameWeight": {
+    "label": "Thickness",
+    "group": "Username Text Style",
+    "type": "dropdown",
+    "value": "normal",
+    "options": {
+      "normal": "Normal",
+      "bold": "Bold",
+      "100": "100",
+      "200": "200",
+      "300": "300",
+      "400": "400",
+      "500": "500",
+      "600": "600",
+      "700": "700",
+      "800": "800",
+      "900": "900"
+    }
+  },
+  "usernameShadowColor": {
+    "label": "Text Shadow Color",
+    "group": "Username Text Style",
+    "type": "colorpicker",
+    "value": "transparent"
+  },
+  "usernameShadowOffset": {
+    "label": "Text Shadow Position (x y)",
+    "group": "Username Text Style",
+    "type": "string",
+    "value": "0px 0px"
+  },
+  "usernameShadowBlur": {
+    "label": "Text Shadow Blur (px)",
+    "group": "Username Text Style",
+    "type": "number",
+    "value": 0,
+    "min": 0,
+    "step": 1
+  },
+  "xpBoxBackgroundColor": {
+    "label": "Background Color",
+    "group": "XP Box Style",
+    "type": "colorpicker",
+    "value": "black"
+  },
+  "xpBoxBorderColor": {
+    "label": "Border Color",
+    "group": "XP Box Style",
+    "type": "colorpicker",
+    "value": "black"
+  },
+  "xpBoxBorderWidth": {
+    "label": "Border Thickness (px)",
+    "group": "XP Box Style",
+    "type": "number",
+    "value": 0,
+    "min": 0,
+    "step": 1
+  },
+  "xpBoxBorderRadius": {
+    "label": "Rounded Corner Size (px)",
+    "group": "XP Box Style",
+    "type": "number",
+    "value": 10,
+    "min": 0,
+    "step": 1
+  },
+  "xpBoxMinHeight": {
+    "label": "Minimum Height (px)",
+    "group": "XP Box Style",
+    "type": "number",
+    "value": 15,
+    "min": 0,
+    "step": 1
+  },
+  "xpBoxPadding": {
+    "label": "Inner Spacing (top right bottom left)",
+    "group": "XP Box Style",
+    "type": "string",
+    "value": "5px 5px 5px 5px"
+  },
+  "xpBoxMargin": {
+    "label": "Outer Spacing (top right bottom left)",
+    "group": "XP Box Style",
+    "type": "string",
+    "value": "5px 0px 5px 0px"
+  },
+  "xpBoxOuterShadowColor": {
+    "label": "Outer Shadow Color",
+    "group": "XP Box Style",
+    "type": "colorpicker",
+    "value": "black"
+  },
+  "xpBoxOuterShadowOffset": {
+    "label": "Outer Shadow Position (x y)",
+    "group": "XP Box Style",
+    "type": "string",
+    "value": "0px 0px"
+  },
+  "xpBoxOuterShadowBlur": {
+    "label": "Outer Shadow Blur (px)",
+    "group": "XP Box Style",
+    "type": "number",
+    "value": 0,
+    "min": 0,
+    "step": 1
+  },
+  "xpBoxOuterShadowSpread": {
+    "label": "Outer Shadow Size (px)",
+    "group": "XP Box Style",
+    "type": "number",
+    "value": 0,
+    "min": 0,
+    "step": 1
+  },
+  "xpBoxInnerShadowColor": {
+    "label": "Inner Shadow Color",
+    "group": "XP Box Style",
+    "type": "colorpicker",
+    "value": "black"
+  },
+  "xpBoxInnerShadowOffset": {
+    "label": "Inner Shadow Position (x y)",
+    "group": "XP Box Style",
+    "type": "string",
+    "value": "0px 0px"
+  },
+  "xpBoxInnerShadowBlur": {
+    "label": "Inner Shadow Blur (px)",
+    "group": "XP Box Style",
+    "type": "number",
+    "value": 0,
+    "min": 0,
+    "step": 1
+  },
+  "xpBoxInnerShadowSpread": {
+    "label": "Inner Shadow Size (px)",
+    "group": "XP Box Style",
+    "type": "number",
+    "value": 0,
+    "min": 0,
+    "step": 1
+  },
+  "xpBackgroundColor": {
+    "label": "Background Color",
+    "group": "XP Bar Style",
+    "type": "colorpicker",
+    "value": "#fc6c85"
+  },
+  "xpBorderColor": {
+    "label": "Border Color",
+    "group": "XP Bar Style",
+    "type": "colorpicker",
+    "value": "black"
+  },
+  "xpBorderWidth": {
+    "label": "Border Thickness (px)",
+    "group": "XP Bar Style",
+    "type": "number",
+    "value": 0,
+    "min": 0,
+    "step": 1
+  },
+  "xpBorderRadius": {
+    "label": "Rounded Corner Size (px)",
+    "group": "XP Bar Style",
+    "type": "number",
+    "value": 5,
+    "min": 0,
+    "step": 1
+  },
+  "xpPadding": {
+    "label": "Inner Spacing (top right bottom left)",
+    "group": "XP Bar Style",
+    "type": "string",
+    "value": "0px 0px 0px 0px"
+  },
+  "xpMargin": {
+    "label": "Outer Spacing (top right bottom left)",
+    "group": "XP Bar Style",
+    "type": "string",
+    "value": "0px 0px 0px 0px"
+  },
+  "xpOuterShadowColor": {
+    "label": "Outer Shadow Color",
+    "group": "XP Bar Style",
+    "type": "colorpicker",
+    "value": "black"
+  },
+  "xpOuterShadowOffset": {
+    "label": "Outer Shadow Position (x y)",
+    "group": "XP Bar Style",
+    "type": "string",
+    "value": "0px 0px"
+  },
+  "xpOuterShadowBlur": {
+    "label": "Outer Shadow Blur (px)",
+    "group": "XP Bar Style",
+    "type": "number",
+    "value": 0,
+    "min": 0,
+    "step": 1
+  },
+  "xpOuterShadowSpread": {
+    "label": "Outer Shadow Size (px)",
+    "group": "XP Bar Style",
+    "type": "number",
+    "value": 0,
+    "min": 0,
+    "step": 1
+  },
+  "xpInnerShadowColor": {
+    "label": "Inner Shadow Color",
+    "group": "XP Bar Style",
+    "type": "colorpicker",
+    "value": "black"
+  },
+  "xpInnerShadowOffset": {
+    "label": "Inner Shadow Position (x y)",
+    "group": "XP Bar Style",
+    "type": "string",
+    "value": "0px 0px"
+  },
+  "xpInnerShadowBlur": {
+    "label": "Inner Shadow Blur (px)",
+    "group": "XP Bar Style",
+    "type": "number",
+    "value": 0,
+    "min": 0,
+    "step": 1
+  },
+  "xpInnerShadowSpread": {
+    "label": "Inner Shadow Size (px)",
+    "group": "XP Bar Style",
+    "type": "number",
+    "value": 0,
+    "min": 0,
+    "step": 1
+  },
+  "emoteBoxBackgroundColor": {
+    "label": "Background Color",
+    "group": "Emote Box Style",
+    "type": "colorpicker",
+    "value": "transparent"
+  },
+  "emoteBoxBorderColor": {
+    "label": "Border Color",
+    "group": "Emote Box Style",
+    "type": "colorpicker",
+    "value": "black"
+  },
+  "emoteBoxBorderWidth": {
+    "label": "Border Thickness (px)",
+    "group": "Emote Box Style",
+    "type": "number",
+    "value": 0,
+    "min": 0,
+    "step": 1
+  },
+  "emoteBoxBorderRadius": {
+    "label": "Rounded Corner Size (px)",
+    "group": "Emote Box Style",
+    "type": "number",
+    "value": 0,
+    "min": 0,
+    "step": 1
+  },
+  "emoteBoxPadding": {
+    "label": "Inner Spacing (top right bottom left)",
+    "group": "Emote Box Style",
+    "type": "string",
+    "value": "0px 0px 0px 0px"
+  },
+  "emoteBoxMargin": {
+    "label": "Outer Spacing (top right bottom left)",
+    "group": "Emote Box Style",
+    "type": "string",
+    "value": "0px 10px 0px 0px"
+  },
+  "emoteBoxOuterShadowColor": {
+    "label": "Outer Shadow Color",
+    "group": "Emote Box Style",
+    "type": "colorpicker",
+    "value": "black"
+  },
+  "emoteBoxOuterShadowOffset": {
+    "label": "Outer Shadow Position (x y)",
+    "group": "Emote Box Style",
+    "type": "string",
+    "value": "0px 0px"
+  },
+  "emoteBoxOuterShadowBlur": {
+    "label": "Outer Shadow Blur (px)",
+    "group": "Emote Box Style",
+    "type": "number",
+    "value": 0,
+    "min": 0,
+    "step": 1
+  },
+  "emoteBoxOuterShadowSpread": {
+    "label": "Outer Shadow Size (px)",
+    "group": "Emote Box Style",
+    "type": "number",
+    "value": 0,
+    "min": 0,
+    "step": 1
+  },
+  "emoteBoxInnerShadowColor": {
+    "label": "Inner Shadow Color",
+    "group": "Emote Box Style",
+    "type": "colorpicker",
+    "value": "black"
+  },
+  "emoteBoxInnerShadowOffset": {
+    "label": "Inner Shadow Position (x y)",
+    "group": "Emote Box Style",
+    "type": "string",
+    "value": "0px 0px"
+  },
+  "emoteBoxInnerShadowBlur": {
+    "label": "Inner Shadow Blur (px)",
+    "group": "Emote Box Style",
+    "type": "number",
+    "value": 0,
+    "min": 0,
+    "step": 1
+  },
+  "emoteBoxInnerShadowSpread": {
+    "label": "Inner Shadow Size (px)",
+    "group": "Emote Box Style",
+    "type": "number",
+    "value": 0,
+    "min": 0,
+    "step": 1
+  },
+  "emoteSize": {
+    "label": "Emote Size (px)",
+    "group": "Emote Style",
+    "type": "number",
+    "value": 28,
+    "min": 0,
+    "step": 1
+  },
+  "emoteSize": {
+    "label": "Emote Size (px)",
+    "group": "Emote Style",
+    "type": "number",
+    "value": 30,
+    "min": 0,
+    "step": 1
+  },
+  "emoteShadowColor": {
+    "label": "Shadow Color",
+    "group": "Emote Style",
+    "type": "colorpicker",
+    "value": "transparent"
+  },
+  "emoteShadowOffset": {
+    "label": "Shadow Position (x y)",
+    "group": "Emote Style",
+    "type": "string",
+    "value": "0px 0px"
+  },
+  "emoteShadowBlur": {
+    "label": "Shadow Blur (px)",
+    "group": "Emote Style",
+    "type": "number",
+    "value": 0,
+    "min": 0,
+    "step": 1
+  },
   "widgetName": {
     "value": "Chat Leaderboard",
-    "label": "Chat Leaderboard v1.2.0",
+    "label": "Chat Leaderboard v2.0.0",
     "group": "About",
     "type": "hidden"
   },
@@ -108,7 +879,7 @@
     "type": "hidden"
   },
   "widgetVersion": {
-    "value": "1.2.0",
+    "value": "2.0.0",
     "label": "Twitch: twitch.tv/zaytri",
     "group": "About",
     "type": "hidden"

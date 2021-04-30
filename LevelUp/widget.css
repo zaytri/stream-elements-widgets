@@ -1,113 +1,185 @@
 * {
-  font-family: 'Yusei Magic', sans-serif;
-  font-size: 20px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 12px;
   margin: 0;
   padding: 0;
+  position: relative;
 }
 
 main {
   box-sizing: border-box;
   position: absolute;
-  height: 100%;
+  height: 500%;
   width: 100%;
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
 }
 
-.title-container {
-  display: flex;
-  align-items: start;
-  padding: 30px;
-}
-
-.title {
-  font-size: 30px;
-  color: {titleColor};
-  background-color: #000B;
-  border: 3px solid currentcolor;
-  text-shadow: 0 0 5px #0008;
-  padding: 10px 10px;
-  position: relative;
-  text-align: center;
-  flex: 1;
-  box-shadow: 0 0 8px currentcolor, 0 0 4px currentcolor;
-}
-
-.rank {
-  color: {rankColor};
-  display: flex;
-  align-items: center;
-  margin-bottom: 30px;
-  padding: 0 30px;
-}
-
-#rank-0 {
-  color: {topColor};
-}
-
-.level, .emote-container {
-  height: 50px;
-  background-color: #000B;
-  border: 2px solid currentcolor;
-  box-shadow: 0 0 8px currentcolor, 0 0 4px currentcolor;
-  z-index: 1;
-  position: relative;
-}
-
-.level {
-  font-size: 24px;
-  padding: 0 8px;
-  text-align: center;
-  line-height: 50px;
-  text-shadow: 0 0 5px black, 0 0 5px black;
-}
-
-.emote-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 50px;
-}
-
-.emote {
-  height: 28px;
-  filter: drop-shadow(0 0 5px black);
-}
-
-.xp-container {
-  display: flex;
-  background-color: #FFF8;
-  border: 2px solid #000B;
-  border-left-width: 0;
-  border-right-width: 0;
-  box-shadow: 0 0 8px #0004, 0 0 4px #0004;
-  box-sizing: border-box;
-  flex-direction: row;
-  position: relative;
-  flex: 1;
-}
-
-.xp {
-  width: 0%;
-  background-color: currentcolor;
-  overflow: visible !important;
-  filter: drop-shadow(0 0 4px currentcolor) drop-shadow(0 0 0 currentcolor);
-}
-
-.xp-container:after, .level:after, .emote-container:after, .title:after {
-  content: '';
+.absolute {
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  background-image: linear-gradient(#FFF4, transparent);
+}
+
+.row, .column {
+  display: flex;
+  justify-content: space-between;
+  flex: 1;
+}
+
+.row {
+  flex-direction: row;
+}
+
+.column {
+  flex-direction: column;
+}
+
+.rank {
+  background-color: {rankBackgroundColor};
+  border: {rankBorderWidth}px solid {rankBorderColor};
+  border-radius: {rankBorderRadius}px;
+  box-shadow: {rankOuterShadowOffset} {rankOuterShadowBlur}px {rankOuterShadowSpread}px {rankOuterShadowColor},
+  	inset {rankInnerShadowOffset} {rankInnerShadowBlur}px {rankInnerShadowSpread}px {rankInnerShadowColor};
+  padding: {rankPadding};
+  margin: {rankMargin};
+  display: flex;
+  overflow: hidden;
+}
+
+.level-box {
+  background-color: {levelBoxBackgroundColor};
+  border: {levelBoxBorderWidth}px solid {levelBoxBorderColor};
+  border-radius: {levelBoxBorderRadius}px;
+  box-shadow: {levelBoxOuterShadowOffset} {levelBoxOuterShadowBlur}px {levelBoxOuterShadowSpread}px {levelBoxOuterShadowColor},
+  	inset {levelBoxInnerShadowOffset} {levelBoxInnerShadowBlur}px {levelBoxInnerShadowSpread}px {levelBoxInnerShadowColor};
+  padding: {levelBoxPadding};
+  margin: {levelBoxMargin};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.level {
+  color: {levelColor};
+  font-size: {levelSize}px;
+  font-weight: {levelWeight};
+  font-family: '{levelFont}', 'Nunito', sans-serif;
+  text-shadow: {levelShadowOffset} {levelShadowBlur}px {levelShadowColor};
+}
+
+.username-box {
+  background-color: {usernameBoxBackgroundColor};
+  border: {usernameBoxBorderWidth}px solid {usernameBoxBorderColor};
+  border-radius: {usernameBoxBorderRadius}px;
+  box-shadow: {usernameBoxOuterShadowOffset} {usernameBoxOuterShadowBlur}px {usernameBoxOuterShadowSpread}px {usernameBoxOuterShadowColor},
+  	inset {usernameBoxInnerShadowOffset} {usernameBoxInnerShadowBlur}px {usernameBoxInnerShadowSpread}px {usernameBoxInnerShadowColor};
+  padding: {usernameBoxPadding};
+  margin: {usernameBoxMargin};
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .username {
-  color: #000B;
-  padding-left: 10px;
-  padding-bottom: 3px;
-  box-sizing: border-box;
+  color: {usernameColor};
+  font-size: {usernameSize}px;
+  font-weight: {usernameWeight};
+  font-family: '{usernameFont}', 'Nunito', sans-serif;
+  text-shadow: {usernameShadowOffset} {usernameShadowBlur}px {usernameShadowColor};
 }
+
+.xp-box {
+  background-color: {xpBoxBackgroundColor};
+  border: {xpBoxBorderWidth}px solid {xpBoxBorderColor};
+  border-radius: {xpBoxBorderRadius}px;
+  box-shadow: {xpBoxOuterShadowOffset} {xpBoxOuterShadowBlur}px {xpBoxOuterShadowSpread}px {xpBoxOuterShadowColor},
+  	inset {xpBoxInnerShadowOffset} {xpBoxInnerShadowBlur}px {xpBoxInnerShadowSpread}px {xpBoxInnerShadowColor};
+  padding: {xpBoxPadding};
+  margin: {xpBoxMargin};
+  min-height: {xpBoxMinHeight}px;
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+.xp {
+  background-color: {xpBackgroundColor};
+  border: {xpBorderWidth}px solid {xpBorderColor};
+  border-radius: {xpBorderRadius}px;
+  box-shadow: {xpOuterShadowOffset} {xpOuterShadowBlur}px {xpOuterShadowSpread}px {xpOuterShadowColor},
+  	inset {xpInnerShadowOffset} {xpInnerShadowBlur}px {xpInnerShadowSpread}px {xpInnerShadowColor};
+  padding: {xpPadding};
+  margin: {xpMargin};
+  width: 0%;
+  overflow: visible !important; /* Counters jQuery animate applying overflow: hidden */
+}
+
+.emote-box {
+  background-color: {emoteBoxBackgroundColor};
+  border: {emoteBoxBorderWidth}px solid {emoteBoxBorderColor};
+  border-radius: {emoteBoxBorderRadius}px;
+  box-shadow: {emoteBoxOuterShadowOffset} {emoteBoxOuterShadowBlur}px {emoteBoxOuterShadowSpread}px {emoteBoxOuterShadowColor},
+  	inset {emoteBoxInnerShadowOffset} {emoteBoxInnerShadowBlur}px {emoteBoxInnerShadowSpread}px {emoteBoxInnerShadowColor};
+  padding: {emoteBoxPadding};
+  margin: {emoteBoxMargin};
+  display: {displayEmote};
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.emote {
+  height: {emoteSize}px;
+  width: {emoteSize}px;
+  filter: drop-shadow({emoteShadowOffset} {emoteShadowBlur}px {emoteShadowColor});
+  object-fit: scale-down;
+}
+
+/*
+-------------------------------------------------------------
+   You can custom style the top rank using these selectors
+   (rank-2, rank-3, ... for 2nd rank, 3rd rank, ...)
+-------------------------------------------------------------
+*/
+
+/*
+#rank-1 {
+
+}
+
+#rank-1 .level-box {
+
+}
+
+#rank-1 .level {
+
+}
+
+#rank-1 .username-box {
+
+}
+
+#rank-1 .username {
+
+}
+
+#rank-1 .xp-box {
+
+}
+
+#rank-1 .xp {
+
+}
+
+#rank-1 .emote-box {
+
+}
+
+#rank-1 .emote {
+
+}
+*/
