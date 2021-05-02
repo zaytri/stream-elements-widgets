@@ -51,7 +51,7 @@ main {
   margin-bottom: 10px;
 }
 
-.error:before {
+.error::before {
   content: '[API Error] ';
   white-space: pre;
 }
