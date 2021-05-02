@@ -81,12 +81,11 @@ function loadFieldData(data) {
 function loadAPI() {
   jebaitedAPI = new Jebaited(FieldData.apiToken)
   jebaitedAPI.getAvailableScopes().then(scopes => {
-    const missing = []
-    if (!scopes.includes('botMsg')) missing.push('botMsg')
-    if (!scopes.includes('addPoints')) missing.push('addPoints')
-
-    if (missing.length === 0) validToken = true
-    else $('main').prepend(ErrorComponent(`Missing scope${missing.length > 1 ? 's' : ''}: ${missing.join(', ')}`))
+    if (scopes.includes('botMsg')) {
+      validToken = true
+    } else {
+      $('main').prepend(ErrorComponent('Missing botMsg scope'))
+    }
   }).catch(errorEvent => $('main').prepend(ErrorComponent(errorEvent.error)))
 }
 
