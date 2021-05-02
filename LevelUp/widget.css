@@ -41,6 +41,21 @@ main {
   overflow: hidden;
 }
 
+.error {
+  background-color: #DC3544;
+  display: flex;
+  padding: 10px;
+  font-weight: bold;
+  color: white;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.error:before {
+  content: '[API Error] ';
+  white-space: pre;
+}
+
 .rank {
   background-color: {rankBackgroundColor};
   border: {rankBorderWidth}px solid {rankBorderColor};

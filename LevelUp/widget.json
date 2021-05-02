@@ -43,10 +43,10 @@
     "type": "hidden"
   },
   "removeCommand": {
-    "label": "( Usage: !deletelevel TwitchUser )",
+    "label": "( Usage: !deleterank TwitchUser )",
     "group": "General",
     "type": "string",
-    "value": "!deletelevel"
+    "value": "!deleterank"
   },
   "displayEmote": {
     "label": "Display last used emote?",
@@ -926,28 +926,68 @@
     "min": 0,
     "step": 1
   },
-  "widgetName": {
-    "value": "Chat Leaderboard",
-    "label": "Chat Leaderboard v2.1.3",
-    "group": "About",
+  "enableAdvancedTitle": {
+    "label": "Enable Advanced Settings?",
+    "group": "Advanced",
     "type": "hidden"
+  },
+  "enableAdvanced": {
+    "label": "( Advanced requires valid API token )",
+    "group": "Advanced",
+    "type": "dropdown",
+    "value": "false",
+    "options": {
+      "true": "Yes",
+      "false": "No"
+    }
+  },
+  "apiTokenTitle": {
+    "label": "Jebaited.net API Token",
+    "group": "Advanced",
+    "type": "hidden"
+  },
+  "apiToken": {
+    "label": "( Scopes: botMsg and addPoints )",
+    "group": "Advanced",
+    "type": "text",
+    "value": "Copy/paste API token here"
+  },
+  "rankCommand": {
+    "label": "Command to check rank",
+    "group": "Advanced",
+    "type": "string",
+    "value": "!rank"
+  },
+  "rankCommandCooldown": {
+    "label": "Rank command cooldown (seconds)",
+    "group": "Advanced",
+    "type": "number",
+    "value": 60,
+    "min": 0,
+    "step": 0
+  },
+  "widgetName": {
+    "label": "Chat Leaderboard v2.2.0",
+    "group": "About",
+    "type": "hidden",
+    "value": "Chat Leaderboard"
   },
   "widgetAuthor": {
-    "value": "Zaytri",
     "label": "Author: Zaytri",
     "group": "About",
-    "type": "hidden"
+    "type": "hidden",
+    "value": "Zaytri"
   },
   "widgetVersion": {
-    "value": "2.1.3",
     "label": "Twitch: twitch.tv/zaytri",
     "group": "About",
-    "type": "hidden"
+    "type": "hidden",
+    "value": "2.2.0"
   },
   "widgetUpdateUrl": {
-    "value": "https://github.com/zaytri/stream-elements-widgets/blob/main/LevelUp",
     "label": "Twitter / TikTok / Instagram: @imzaytri",
     "group": "About",
-    "type": "hidden"
+    "type": "hidden",
+    "value": "https://github.com/zaytri/stream-elements-widgets/blob/main/LevelUp"
   }
 }

@@ -5,6 +5,8 @@
 */
 
 let db = {}
+let jebaitedAPI
+let validToken = false
 
 const DEFAULT_EMOTE = 'https://static-cdn.jtvnw.net/emoticons/v1/112290/3.0'
 
@@ -22,7 +24,11 @@ const FieldData = {
   levelPrefix: 'Lv',
   layout: '1',
   defaultEmote: DEFAULT_EMOTE,
-  removeCommand: '!deletelevel',
+  apiToken: 'Copy/paste API token here',
+  enabledAdvanced: false,
+  removeCommand: '!deleterank',
+  rankCommand: '!rank',
+  rankCommandCooldown: 60,
 }
 
 const EVENT = {
@@ -40,6 +46,8 @@ window.addEventListener('onWidgetLoad', obj => {
   const { fieldData } = obj.detail
 
   loadFieldData(fieldData)
+
+  if (FieldData.enableAdvanced) loadAPI()
 
   for (let i = 0; i < FieldData.rankCount; i++) {
     $('main').append(RankComponent(i + 1))
@@ -63,7 +71,23 @@ function loadFieldData(data) {
   FieldData.levelPrefix = data.levelPrefix
   FieldData.layout = data.layout
   FieldData.defaultEmote = data.defaultEmote || DEFAULT_EMOTE
+  FieldData.apiToken = data.apiToken
+  FieldData.enableAdvanced = data.enableAdvanced === 'true'
   FieldData.removeCommand = data.removeCommand
+  FieldData.rankCommand = data.rankCommand
+  FieldData.rankCommandCooldown = data.rankCommandCooldown
+}
+
+function loadAPI() {
+  jebaitedAPI = new Jebaited(FieldData.apiToken)
+  jebaitedAPI.getAvailableScopes().then(scopes => {
+    const missing = []
+    if (!scopes.includes('botMsg')) missing.push('botMsg')
+    if (!scopes.includes('addPoints')) missing.push('addPoints')
+
+    if (missing.length === 0) validToken = true
+    else $('main').prepend(ErrorComponent(`Missing scope${missing.length > 1 ? 's' : ''}: ${missing.join(', ')}`))
+  }).catch(errorEvent => $('main').prepend(ErrorComponent(errorEvent.error)))
 }
 
 window.addEventListener('onEventReceived', obj => {
@@ -91,16 +115,24 @@ function onMessage(event) {
     text, badges,
   } = event.data
 
-  if (text.startsWith(FieldData.removeCommand) && isMod(badges)) {
-    const userToRemove = text.split(' ')[1]
-    const idToRemove = Object.values(db).find(user => user.name.toLowerCase() === userToRemove.toLowerCase()).id
-
-    delete db[idToRemove]
-    render()
+  if (db[userId] && FieldData.enableAdvanced && validToken && text.startsWith(FieldData.rankCommand)) {
+    db[userId].rankCommand()
     return
   }
 
-  if (text.startsWith('!')) return
+  if (isMod(badges) && text.startsWith(FieldData.removeCommand)) {
+    const userToRemove = text.split(' ')[1]
+    const idToRemove = Object.values(db).find(user => user.name.toLowerCase() === userToRemove.toLowerCase()).id
+
+    if (idToRemove) {
+      delete db[idToRemove]
+      render()
+    }
+
+    return
+  }
+
+  if (FieldData.ignoreCommands && text.startsWith('!')) return
 
   let charCount = text.length
   for (const emote of emotes) {
@@ -161,6 +193,7 @@ class User {
     this.nextLevelXP = FieldData.initialLevelXP
     this.messagesLastMinute = 0
     this.emote = FieldData.defaultEmote
+    this.rankCommandInCooldown = false
   }
 
   addMessage() {
@@ -215,6 +248,20 @@ class User {
 
   get xpPercentage() {
     return this.xp / this.nextLevelXP * 100
+  }
+
+  rankCommand() {
+    if (FieldData.rankCommandCooldown > 0) {
+      if (this.rankCommandInCooldown) return
+      this.rankCommandInCooldown = true
+      window.setTimeout(() => { this.rankCommandInCooldown = false }, 1000 * FieldData.rankCommandCooldown)
+    }
+
+    const rank = Object.values(db)
+      .sort((a, b) => b.level - a.level || b.xp - a.xp)
+      .findIndex(rank => rank.id === this.id) + 1
+
+    jebaitedAPI.sayMessage(`${this.name} is Rank ${rank}! [Level: ${this.level} XP: ${Math.floor(this.xpPercentage)}%]`)
   }
 }
 
@@ -394,6 +441,7 @@ const XPBoxComponent = ClassComponent('div', 'xp-box')
 const XPComponent = ClassComponent('div', 'xp')
 const RowComponent = ClassComponent('div', 'row')
 const ColumnComponent = ClassComponent('div', 'column')
+const ErrorComponent = ClassComponent('p', 'error')
 
 function Component(tag, props) {
   const { children, 'class': classes, style, ...rest } = props
