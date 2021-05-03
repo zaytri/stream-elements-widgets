@@ -10,5 +10,3 @@ A completely free customizable animated gradient frame made with code!
 
 ## Demo
 Video: https://streamable.com/igsnvg
-
-You can also watch it in action on my Twitch! https://www.twitch.tv/zaytri

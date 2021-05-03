@@ -123,18 +123,26 @@
     "group": "Glow"
   },
   "widgetName": {
+    "label": "Animated Gradient Frame v1.1.0",
+    "group": "About",
     "type": "hidden",
     "value": "Animated Gradient Frame"
   },
   "widgetAuthor": {
+    "label": "Author: Zaytri",
+    "group": "About",
     "type": "hidden",
     "value": "Zaytri"
   },
   "widgetVersion": {
+    "label": "Twitch: twitch.tv/zaytri",
+    "group": "About",
     "type": "hidden",
-    "value": "1.0"
+    "value": "1.1.0"
   },
   "widgetUpdateUrl": {
+    "label": "Twitter / TikTok / Instagram: @imzaytri",
+    "group": "About",
     "type": "hidden",
     "value": "https://github.com/zaytri/stream-elements-widgets/blob/main/AnimatedGradientFrame"
   }
