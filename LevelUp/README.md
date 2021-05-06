@@ -36,6 +36,11 @@ Pre-built themes that you can import using the tutorial [below](#theme-import-tu
 
 ![Frog Theme Preview](themes/frog_preview.png)
 
+### Melon
+[Melon Theme Data](themes/melon.json)
+
+![Melon Theme Preview](themes/melon_preview.png)
+
 
 
 ## Theme Import Tutorial
