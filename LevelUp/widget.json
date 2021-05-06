@@ -162,12 +162,6 @@
     "type": "string",
     "value": "0px 0px 0px 0px"
   },
-  "mainOuterShadowColor": {
-    "label": "Outer Shadow Color",
-    "group": "Widget Box Style",
-    "type": "colorpicker",
-    "value": "black"
-  },
   "mainInnerShadowColor": {
     "label": "Inner Shadow Color",
     "group": "Widget Box Style",
@@ -967,7 +961,7 @@
     "step": 0
   },
   "widgetName": {
-    "label": "Chat Leaderboard v2.2.3",
+    "label": "Chat Leaderboard v2.2.4",
     "group": "About",
     "type": "hidden",
     "value": "Chat Leaderboard"
@@ -982,7 +976,7 @@
     "label": "Twitch: twitch.tv/zaytri",
     "group": "About",
     "type": "hidden",
-    "value": "2.2.3"
+    "value": "2.2.4"
   },
   "widgetUpdateUrl": {
     "label": "Twitter / TikTok / Instagram: @imzaytri",
