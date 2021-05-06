@@ -3,6 +3,7 @@ Hi! Feel free to check out the code of my various custom stream widgets.
 
 ## Widget List
 - [Animated Gradient Frame](AnimatedGradientFrame)
+- [Chat Leaderboard](LevelUp)
 - [Pop-Up Chat](PopUpChat)
 - [Recent Events](RecentEvents)
 - [User Card](UserCard)
