@@ -62,7 +62,7 @@
     "label": "Default emote shown",
     "group": "General",
     "type": "image-input",
-    "value": "https://static-cdn.jtvnw.net/emoticons/v1/112290/3.0"
+    "value": "https://cdn.streamelements.com/uploads/42e2c327-5bc1-4b20-b954-3063b55908d5.png"
   },
   "minXP": {
     "label": "Minimum XP per valid message",
@@ -160,7 +160,7 @@
     "label": "Inner Spacing (top right bottom left)",
     "group": "Widget Box Style",
     "type": "string",
-    "value": "0px 0px 0px 0px"
+    "value": "30px 30px 30px 30px"
   },
   "mainInnerShadowColor": {
     "label": "Inner Shadow Color",
@@ -194,19 +194,19 @@
     "label": "Background Color",
     "group": "Rank Box Style",
     "type": "colorpicker",
-    "value": "#18181B"
+    "value": "#a9e694"
   },
   "rankBorderColor": {
     "label": "Border Color",
     "group": "Rank Box Style",
     "type": "colorpicker",
-    "value": "black"
+    "value": "#6ec451"
   },
   "rankBorderWidth": {
     "label": "Border Thickness (px)",
     "group": "Rank Box Style",
     "type": "number",
-    "value": 0,
+    "value": 2,
     "min": 0,
     "step": 1
   },
@@ -214,7 +214,7 @@
     "label": "Rounded Corner Size (px)",
     "group": "Rank Box Style",
     "type": "number",
-    "value": 0,
+    "value": 20,
     "min": 0,
     "step": 1
   },
@@ -228,19 +228,19 @@
     "label": "Outer Spacing (top right bottom left)",
     "group": "Rank Box Style",
     "type": "string",
-    "value": "0px 0px 10px 0px"
+    "value": "0px 0px 20px 0px"
   },
   "rankOuterShadowColor": {
     "label": "Outer Shadow Color",
     "group": "Rank Box Style",
     "type": "colorpicker",
-    "value": "black"
+    "value": "#6ec451"
   },
   "rankOuterShadowOffset": {
     "label": "Outer Shadow Position (x y)",
     "group": "Rank Box Style",
     "type": "string",
-    "value": "0px 0px"
+    "value": "2px 2px"
   },
   "rankOuterShadowBlur": {
     "label": "Outer Shadow Blur (px)",
@@ -254,7 +254,7 @@
     "label": "Outer Shadow Size (px)",
     "group": "Rank Box Style",
     "type": "number",
-    "value": 0,
+    "value": 1,
     "min": 0,
     "step": 1
   },
@@ -262,19 +262,19 @@
     "label": "Inner Shadow Color",
     "group": "Rank Box Style",
     "type": "colorpicker",
-    "value": "black"
+    "value": "#cefcbe"
   },
   "rankInnerShadowOffset": {
     "label": "Inner Shadow Position (x y)",
     "group": "Rank Box Style",
     "type": "string",
-    "value": "0px 0px"
+    "value": "2px 10px"
   },
   "rankInnerShadowBlur": {
     "label": "Inner Shadow Blur (px)",
     "group": "Rank Box Style",
     "type": "number",
-    "value": 0,
+    "value": 30,
     "min": 0,
     "step": 1
   },
@@ -282,7 +282,7 @@
     "label": "Inner Shadow Size (px)",
     "group": "Rank Box Style",
     "type": "number",
-    "value": 0,
+    "value": 1,
     "min": 0,
     "step": 1
   },
@@ -290,7 +290,7 @@
     "label": "Background Color",
     "group": "Level Box Style",
     "type": "colorpicker",
-    "value": "#a9e694"
+    "value": "transparent"
   },
   "levelBoxBorderColor": {
     "label": "Border Color",
@@ -310,7 +310,7 @@
     "label": "Rounded Corner Size (px)",
     "group": "Level Box Style",
     "type": "number",
-    "value": 5,
+    "value": 0,
     "min": 0,
     "step": 1
   },
@@ -318,13 +318,13 @@
     "label": "Inner Spacing (top right bottom left)",
     "group": "Level Box Style",
     "type": "string",
-    "value": "3px 5px 3px 5px"
+    "value": "0px 0px 0px 0px"
   },
   "levelBoxMargin": {
     "label": "Outer Spacing (top right bottom left)",
     "group": "Level Box Style",
     "type": "string",
-    "value": "0px 10px 0px 0px"
+    "value": "0px 5px 0px 0px"
   },
   "levelBoxOuterShadowColor": {
     "label": "Outer Shadow Color",
@@ -386,7 +386,7 @@
     "label": "Color",
     "group": "Level Text Style",
     "type": "colorpicker",
-    "value": "black"
+    "value": "#2d7c13"
   },
   "levelFont": {
     "label": "Font",
@@ -406,7 +406,7 @@
     "label": "Thickness",
     "group": "Level Text Style",
     "type": "dropdown",
-    "value": "bold",
+    "value": "normal",
     "options": {
       "normal": "Normal",
       "bold": "Bold",
@@ -473,13 +473,13 @@
     "label": "Inner Spacing (top right bottom left)",
     "group": "Username Box Style",
     "type": "string",
-    "value": "0px 0px 0px 0px"
+    "value": "0px 0px 2px 0px"
   },
   "usernameBoxMargin": {
     "label": "Outer Spacing (top right bottom left)",
     "group": "Username Box Style",
     "type": "string",
-    "value": "0px 10px 0px 0px"
+    "value": "0px 0px 0px 2px"
   },
   "usernameBoxOuterShadowColor": {
     "label": "Outer Shadow Color",
@@ -541,7 +541,7 @@
     "label": "Color",
     "group": "Username Text Style",
     "type": "colorpicker",
-    "value": "white"
+    "value": "#2d7c13"
   },
   "usernameFont": {
     "label": "Font",
@@ -553,7 +553,7 @@
     "label": "Font Size (px)",
     "group": "Username Text Style",
     "type": "number",
-    "value": 16,
+    "value": 20,
     "min": 1,
     "step": 1
   },
@@ -600,7 +600,7 @@
     "label": "Background Color",
     "group": "XP Box Style",
     "type": "colorpicker",
-    "value": "black"
+    "value": "#6ec451"
   },
   "xpBoxBorderColor": {
     "label": "Border Color",
@@ -642,7 +642,7 @@
     "label": "Outer Spacing (top right bottom left)",
     "group": "XP Box Style",
     "type": "string",
-    "value": "5px 0px 5px 0px"
+    "value": "0px 0px 0px 0px"
   },
   "xpBoxOuterShadowColor": {
     "label": "Outer Shadow Color",
@@ -676,19 +676,19 @@
     "label": "Inner Shadow Color",
     "group": "XP Box Style",
     "type": "colorpicker",
-    "value": "black"
+    "value": "#429627"
   },
   "xpBoxInnerShadowOffset": {
     "label": "Inner Shadow Position (x y)",
     "group": "XP Box Style",
     "type": "string",
-    "value": "0px 0px"
+    "value": "2px 2px"
   },
   "xpBoxInnerShadowBlur": {
     "label": "Inner Shadow Blur (px)",
     "group": "XP Box Style",
     "type": "number",
-    "value": 0,
+    "value": 8,
     "min": 0,
     "step": 1
   },
@@ -704,7 +704,7 @@
     "label": "Background Color",
     "group": "XP Bar Style",
     "type": "colorpicker",
-    "value": "#fc6c85"
+    "value": "#a9e694"
   },
   "xpBorderColor": {
     "label": "Border Color",
@@ -772,19 +772,19 @@
     "label": "Inner Shadow Color",
     "group": "XP Bar Style",
     "type": "colorpicker",
-    "value": "black"
+    "value": "#cefcbe"
   },
   "xpInnerShadowOffset": {
     "label": "Inner Shadow Position (x y)",
     "group": "XP Bar Style",
     "type": "string",
-    "value": "0px 0px"
+    "value": "2px 5px"
   },
   "xpInnerShadowBlur": {
     "label": "Inner Shadow Blur (px)",
     "group": "XP Bar Style",
     "type": "number",
-    "value": 0,
+    "value": 10,
     "min": 0,
     "step": 1
   },
@@ -792,7 +792,7 @@
     "label": "Inner Shadow Size (px)",
     "group": "XP Bar Style",
     "type": "number",
-    "value": 0,
+    "value": 1,
     "min": 0,
     "step": 1
   },
@@ -896,7 +896,7 @@
     "label": "Emote Size (px)",
     "group": "Emote Style",
     "type": "number",
-    "value": 28,
+    "value": 50,
     "min": 0,
     "step": 1
   },
@@ -904,13 +904,13 @@
     "label": "Shadow Color",
     "group": "Emote Style",
     "type": "colorpicker",
-    "value": "transparent"
+    "value": "#429627"
   },
   "emoteShadowOffset": {
     "label": "Shadow Position (x y)",
     "group": "Emote Style",
     "type": "string",
-    "value": "0px 0px"
+    "value": "0px 1px"
   },
   "emoteShadowBlur": {
     "label": "Shadow Blur (px)",
@@ -961,7 +961,7 @@
     "step": 0
   },
   "widgetName": {
-    "label": "Chat Leaderboard v2.2.4",
+    "label": "Chat Leaderboard v2.2.5",
     "group": "About",
     "type": "hidden",
     "value": "Chat Leaderboard"
@@ -976,7 +976,7 @@
     "label": "Twitch: twitch.tv/zaytri",
     "group": "About",
     "type": "hidden",
-    "value": "2.2.4"
+    "value": "2.2.5"
   },
   "widgetUpdateUrl": {
     "label": "Twitter / TikTok / Instagram: @imzaytri",
