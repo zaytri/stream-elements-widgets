@@ -219,7 +219,7 @@ class User {
     let amount = 0
     switch(eventType) {
       case EVENT.MESSAGE:
-        if (this.messagesLastMinute > FieldData.messagesPerMin) {
+        if (this.messagesLastMinute >= FieldData.messagesPerMin) {
           return false
         } else {
           amount = random(FieldData.minXP, FieldData.maxXP)
