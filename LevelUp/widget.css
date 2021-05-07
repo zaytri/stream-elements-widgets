@@ -33,11 +33,14 @@ main {
   position: absolute;
   height: 100%;
   width: 100%;
-  background-color: {mainBackgroundColor};
-  border: {mainBorderWidth}px solid {mainBorderColor};
-  border-radius: {mainBorderRadius}px;
-  box-shadow: inset {mainInnerShadowOffset} {mainInnerShadowBlur}px {mainInnerShadowSpread}px {mainInnerShadowColor};
-  padding: {mainPadding};
+  background-color: {zaytri_chatleaderboard_mainBackgroundColor};
+  border: {zaytri_chatleaderboard_mainBorderWidth}px solid {zaytri_chatleaderboard_mainBorderColor};
+  border-radius: {zaytri_chatleaderboard_mainBorderRadius}px;
+  box-shadow: inset {zaytri_chatleaderboard_mainInnerShadowOffset}
+    {zaytri_chatleaderboard_mainInnerShadowBlur}px
+    {zaytri_chatleaderboard_mainInnerShadowSpread}px
+    {zaytri_chatleaderboard_mainInnerShadowColor};
+  padding: {zaytri_chatleaderboard_mainPadding};
   overflow: hidden;
 }
 
@@ -57,109 +60,156 @@ main {
 }
 
 .rank {
-  background-color: {rankBackgroundColor};
-  border: {rankBorderWidth}px solid {rankBorderColor};
-  border-radius: {rankBorderRadius}px;
-  box-shadow: {rankOuterShadowOffset} {rankOuterShadowBlur}px {rankOuterShadowSpread}px {rankOuterShadowColor},
-  	inset {rankInnerShadowOffset} {rankInnerShadowBlur}px {rankInnerShadowSpread}px {rankInnerShadowColor};
-  padding: {rankPadding};
-  margin: {rankMargin};
+  background-color: {zaytri_chatleaderboard_rankBackgroundColor};
+  border: {zaytri_chatleaderboard_rankBorderWidth}px solid {zaytri_chatleaderboard_rankBorderColor};
+  border-radius: {zaytri_chatleaderboard_rankBorderRadius}px;
+  box-shadow: {zaytri_chatleaderboard_rankOuterShadowOffset}
+    {zaytri_chatleaderboard_rankOuterShadowBlur}px
+    {zaytri_chatleaderboard_rankOuterShadowSpread}px
+    {zaytri_chatleaderboard_rankOuterShadowColor},
+  	inset {zaytri_chatleaderboard_rankInnerShadowOffset}
+    {zaytri_chatleaderboard_rankInnerShadowBlur}px
+    {zaytri_chatleaderboard_rankInnerShadowSpread}px
+    {zaytri_chatleaderboard_rankInnerShadowColor};
+  padding: {zaytri_chatleaderboard_rankPadding};
+  margin: {zaytri_chatleaderboard_rankMargin};
   display: flex;
   overflow: hidden;
 }
 
 .level-box {
-  background-color: {levelBoxBackgroundColor};
-  border: {levelBoxBorderWidth}px solid {levelBoxBorderColor};
-  border-radius: {levelBoxBorderRadius}px;
-  box-shadow: {levelBoxOuterShadowOffset} {levelBoxOuterShadowBlur}px {levelBoxOuterShadowSpread}px {levelBoxOuterShadowColor},
-  	inset {levelBoxInnerShadowOffset} {levelBoxInnerShadowBlur}px {levelBoxInnerShadowSpread}px {levelBoxInnerShadowColor};
-  padding: {levelBoxPadding};
-  margin: {levelBoxMargin};
+  background-color: {zaytri_chatleaderboard_levelBoxBackgroundColor};
+  border: {zaytri_chatleaderboard_levelBoxBorderWidth}px solid {zaytri_chatleaderboard_levelBoxBorderColor};
+  border-radius: {zaytri_chatleaderboard_levelBoxBorderRadius}px;
+  box-shadow: {zaytri_chatleaderboard_levelBoxOuterShadowOffset}
+    {zaytri_chatleaderboard_levelBoxOuterShadowBlur}px
+    {zaytri_chatleaderboard_levelBoxOuterShadowSpread}px
+    {zaytri_chatleaderboard_levelBoxOuterShadowColor},
+  	inset {zaytri_chatleaderboard_levelBoxInnerShadowOffset}
+    {zaytri_chatleaderboard_levelBoxInnerShadowBlur}px
+    {zaytri_chatleaderboard_levelBoxInnerShadowSpread}px
+    {zaytri_chatleaderboard_levelBoxInnerShadowColor};
+  padding: {zaytri_chatleaderboard_levelBoxPadding};
+  margin: {zaytri_chatleaderboard_levelBoxMargin};
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .level {
-  color: {levelColor};
-  font-size: {levelSize}px;
-  font-weight: {levelWeight};
-  font-family: '{levelFont}', 'Nunito', sans-serif;
-  text-shadow: {levelShadowOffset} {levelShadowBlur}px {levelShadowColor};
+  color: {zaytri_chatleaderboard_levelColor};
+  font-size: {zaytri_chatleaderboard_levelSize}px;
+  font-weight: {zaytri_chatleaderboard_levelWeight};
+  font-family: '{zaytri_chatleaderboard_levelFont}', 'Nunito', sans-serif;
+  text-shadow: {zaytri_chatleaderboard_levelShadowOffset}
+    {zaytri_chatleaderboard_levelShadowBlur}px
+    {zaytri_chatleaderboard_levelShadowColor};
 }
 
 .username-box {
-  background-color: {usernameBoxBackgroundColor};
-  border: {usernameBoxBorderWidth}px solid {usernameBoxBorderColor};
-  border-radius: {usernameBoxBorderRadius}px;
-  box-shadow: {usernameBoxOuterShadowOffset} {usernameBoxOuterShadowBlur}px {usernameBoxOuterShadowSpread}px {usernameBoxOuterShadowColor},
-  	inset {usernameBoxInnerShadowOffset} {usernameBoxInnerShadowBlur}px {usernameBoxInnerShadowSpread}px {usernameBoxInnerShadowColor};
-  padding: {usernameBoxPadding};
-  margin: {usernameBoxMargin};
+  background-color: {zaytri_chatleaderboard_usernameBoxBackgroundColor};
+  border: {zaytri_chatleaderboard_usernameBoxBorderWidth}px solid {zaytri_chatleaderboard_usernameBoxBorderColor};
+  border-radius: {zaytri_chatleaderboard_usernameBoxBorderRadius}px;
+  box-shadow: {zaytri_chatleaderboard_usernameBoxOuterShadowOffset}
+    {zaytri_chatleaderboard_usernameBoxOuterShadowBlur}px
+    {zaytri_chatleaderboard_usernameBoxOuterShadowSpread}px
+    {zaytri_chatleaderboard_usernameBoxOuterShadowColor},
+  	inset {zaytri_chatleaderboard_usernameBoxInnerShadowOffset}
+    {zaytri_chatleaderboard_usernameBoxInnerShadowBlur}px
+    {zaytri_chatleaderboard_usernameBoxInnerShadowSpread}px
+    {zaytri_chatleaderboard_usernameBoxInnerShadowColor};
+  padding: {zaytri_chatleaderboard_usernameBoxPadding};
+  margin: {zaytri_chatleaderboard_usernameBoxMargin};
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .username {
-  color: {usernameColor};
-  font-size: {usernameSize}px;
-  font-weight: {usernameWeight};
-  font-family: '{usernameFont}', 'Nunito', sans-serif;
-  text-shadow: {usernameShadowOffset} {usernameShadowBlur}px {usernameShadowColor};
+  color: {zaytri_chatleaderboard_usernameColor};
+  font-size: {zaytri_chatleaderboard_usernameSize}px;
+  font-weight: {zaytri_chatleaderboard_usernameWeight};
+  font-family: '{zaytri_chatleaderboard_usernameFont}', 'Nunito', sans-serif;
+  text-shadow: {zaytri_chatleaderboard_usernameShadowOffset}
+    {zaytri_chatleaderboard_usernameShadowBlur}px
+    {zaytri_chatleaderboard_usernameShadowColor};
 }
 
 .xp-box {
-  background-color: {xpBoxBackgroundColor};
-  border: {xpBoxBorderWidth}px solid {xpBoxBorderColor};
-  border-radius: {xpBoxBorderRadius}px;
-  box-shadow: {xpBoxOuterShadowOffset} {xpBoxOuterShadowBlur}px {xpBoxOuterShadowSpread}px {xpBoxOuterShadowColor},
-  	inset {xpBoxInnerShadowOffset} {xpBoxInnerShadowBlur}px {xpBoxInnerShadowSpread}px {xpBoxInnerShadowColor};
-  padding: {xpBoxPadding};
-  margin: {xpBoxMargin};
-  min-height: {xpBoxMinHeight}px;
+  background-color: {zaytri_chatleaderboard_xpBoxBackgroundColor};
+  border: {zaytri_chatleaderboard_xpBoxBorderWidth}px solid {zaytri_chatleaderboard_xpBoxBorderColor};
+  border-radius: {zaytri_chatleaderboard_xpBoxBorderRadius}px;
+  box-shadow: {zaytri_chatleaderboard_xpBoxOuterShadowOffset}
+    {zaytri_chatleaderboard_xpBoxOuterShadowBlur}px
+    {zaytri_chatleaderboard_xpBoxOuterShadowSpread}px
+    {zaytri_chatleaderboard_xpBoxOuterShadowColor},
+  	inset {zaytri_chatleaderboard_xpBoxInnerShadowOffset}
+    {zaytri_chatleaderboard_xpBoxInnerShadowBlur}px
+    {zaytri_chatleaderboard_xpBoxInnerShadowSpread}px
+    {zaytri_chatleaderboard_xpBoxInnerShadowColor};
+  padding: {zaytri_chatleaderboard_xpBoxPadding};
+  margin: {zaytri_chatleaderboard_xpBoxMargin};
+  min-height: {zaytri_chatleaderboard_xpBoxMinHeight}px;
   flex: 1;
   display: flex;
   overflow: hidden;
 }
 
 .xp {
-  background-color: {xpBackgroundColor};
-  border: {xpBorderWidth}px solid {xpBorderColor};
-  border-radius: {xpBorderRadius}px;
-  box-shadow: {xpOuterShadowOffset} {xpOuterShadowBlur}px {xpOuterShadowSpread}px {xpOuterShadowColor},
-  	inset {xpInnerShadowOffset} {xpInnerShadowBlur}px {xpInnerShadowSpread}px {xpInnerShadowColor};
-  padding: {xpPadding};
-  margin: {xpMargin};
+  background-color: {zaytri_chatleaderboard_xpBackgroundColor};
+  border: {zaytri_chatleaderboard_xpBorderWidth}px solid {zaytri_chatleaderboard_xpBorderColor};
+  border-radius: {zaytri_chatleaderboard_xpBorderRadius}px;
+  box-shadow: {zaytri_chatleaderboard_xpOuterShadowOffset}
+    {zaytri_chatleaderboard_xpOuterShadowBlur}px
+    {zaytri_chatleaderboard_xpOuterShadowSpread}px
+    {zaytri_chatleaderboard_xpOuterShadowColor},
+  	inset {zaytri_chatleaderboard_xpInnerShadowOffset}
+    {zaytri_chatleaderboard_xpInnerShadowBlur}px
+    {zaytri_chatleaderboard_xpInnerShadowSpread}px
+    {zaytri_chatleaderboard_xpInnerShadowColor};
+  padding: {zaytri_chatleaderboard_xpPadding};
+  margin: {zaytri_chatleaderboard_xpMargin};
   width: 0%;
   overflow: visible !important; /* Counters jQuery animate applying overflow: hidden */
 }
 
 .emote-box {
-  background-color: {emoteBoxBackgroundColor};
-  border: {emoteBoxBorderWidth}px solid {emoteBoxBorderColor};
-  border-radius: {emoteBoxBorderRadius}px;
-  box-shadow: {emoteBoxOuterShadowOffset} {emoteBoxOuterShadowBlur}px {emoteBoxOuterShadowSpread}px {emoteBoxOuterShadowColor},
-  	inset {emoteBoxInnerShadowOffset} {emoteBoxInnerShadowBlur}px {emoteBoxInnerShadowSpread}px {emoteBoxInnerShadowColor};
-  padding: {emoteBoxPadding};
-  margin: {emoteBoxMargin};
-  display: {displayEmote};
+  background-color: {zaytri_chatleaderboard_emoteBoxBackgroundColor};
+  border: {zaytri_chatleaderboard_emoteBoxBorderWidth}px solid {zaytri_chatleaderboard_emoteBoxBorderColor};
+  border-radius: {zaytri_chatleaderboard_emoteBoxBorderRadius}px;
+  box-shadow: {zaytri_chatleaderboard_emoteBoxOuterShadowOffset}
+    {zaytri_chatleaderboard_emoteBoxOuterShadowBlur}px
+    {zaytri_chatleaderboard_emoteBoxOuterShadowSpread}px
+    {zaytri_chatleaderboard_emoteBoxOuterShadowColor},
+  	inset {zaytri_chatleaderboard_emoteBoxInnerShadowOffset}
+    {zaytri_chatleaderboard_emoteBoxInnerShadowBlur}px
+    {zaytri_chatleaderboard_emoteBoxInnerShadowSpread}px
+    {zaytri_chatleaderboard_emoteBoxInnerShadowColor};
+  padding: {zaytri_chatleaderboard_emoteBoxPadding};
+  margin: {zaytri_chatleaderboard_emoteBoxMargin};
+  display: {zaytri_chatleaderboard_displayEmote};
   justify-content: center;
   align-items: center;
 }
 
 .emote {
-  height: {emoteSize}px;
-  width: {emoteSize}px;
-  filter: drop-shadow({emoteShadowOffset} {emoteShadowBlur}px {emoteShadowColor});
+  height: {zaytri_chatleaderboard_emoteSize}px;
+  width: {zaytri_chatleaderboard_emoteSize}px;
+  filter: drop-shadow(
+    {zaytri_chatleaderboard_emoteShadowOffset}
+    {zaytri_chatleaderboard_emoteShadowBlur}px
+    {zaytri_chatleaderboard_emoteShadowColor}
+  );
   object-fit: scale-down;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 /*
 -------------------------------------------------------------
    You can custom style the top rank using these selectors
-   (rank-2, rank-3, ... for 2nd rank, 3rd rank, ...)
+   (#rank-2, #rank-3, ... for 2nd rank, 3rd rank, ...)
 -------------------------------------------------------------
 */
 
@@ -198,5 +248,33 @@ main {
 
 #rank-1 .emote {
 
+}
+*/
+
+/*
+-------------------------------------------------------------
+   Example CSS to set custom rank images instead of emotes
+-------------------------------------------------------------
+*/
+
+/*
+#rank-1 .emote {
+  background-image: url('https://i.imgur.com/EyfA5fO.png');
+}
+
+#rank-2 .emote {
+  background-image: url('https://i.imgur.com/EyfA5fO.png');
+}
+
+#rank-3 .emote {
+  background-image: url('https://i.imgur.com/EyfA5fO.png');
+}
+
+#rank-4 .emote {
+  background-image: url('https://i.imgur.com/EyfA5fO.png');
+}
+
+#rank-5 .emote {
+  background-image: url('https://i.imgur.com/EyfA5fO.png');
 }
 */

@@ -8,7 +8,7 @@ let db = {}
 let jebaitedAPI
 let validToken = false
 
-const DEFAULT_EMOTE = 'https://static-cdn.jtvnw.net/emoticons/v1/112290/3.0'
+const DEFAULT_EMOTE = 'https://cdn.streamelements.com/uploads/42e2c327-5bc1-4b20-b954-3063b55908d5.png'
 
 const FieldData = {
   ignoreList: [],
@@ -29,7 +29,129 @@ const FieldData = {
   removeCommand: '!deleterank',
   rankCommand: '!rank',
   rankCommandCooldown: 60,
+  useCustomImages: false,
+  importData: null,
 }
+
+const themeData = {}
+
+const themeKeys = [
+  'layout',
+  'defaultEmote',
+  'mainBackgroundColor',
+  'mainBorderColor',
+  'mainBorderWidth',
+  'mainBorderRadius',
+  'mainPadding',
+  'mainInnerShadowColor',
+  'mainInnerShadowOffset',
+  'mainInnerShadowBlur',
+  'mainInnerShadowSpread',
+  'rankBackgroundColor',
+  'rankBorderColor',
+  'rankBorderWidth',
+  'rankBorderRadius',
+  'rankPadding',
+  'rankMargin',
+  'rankInnerShadowColor',
+  'rankInnerShadowOffset',
+  'rankInnerShadowBlur',
+  'rankInnerShadowSpread',
+  'rankOuterShadowColor',
+  'rankOuterShadowOffset',
+  'rankOuterShadowBlur',
+  'rankOuterShadowSpread',
+  'levelBoxBackgroundColor',
+  'levelBoxBorderColor',
+  'levelBoxBorderWidth',
+  'levelBoxBorderRadius',
+  'levelBoxPadding',
+  'levelBoxMargin',
+  'levelBoxInnerShadowColor',
+  'levelBoxInnerShadowOffset',
+  'levelBoxInnerShadowBlur',
+  'levelBoxInnerShadowSpread',
+  'levelBoxOuterShadowColor',
+  'levelBoxOuterShadowOffset',
+  'levelBoxOuterShadowBlur',
+  'levelBoxOuterShadowSpread',
+  'levelColor',
+  'levelFont',
+  'levelSize',
+  'levelWeight',
+  'levelShadowColor',
+  'levelShadowOffset',
+  'levelShadowBlur',
+  'usernameBoxBackgroundColor',
+  'usernameBoxBorderColor',
+  'usernameBoxBorderWidth',
+  'usernameBoxBorderRadius',
+  'usernameBoxPadding',
+  'usernameBoxMargin',
+  'usernameBoxInnerShadowColor',
+  'usernameBoxInnerShadowOffset',
+  'usernameBoxInnerShadowBlur',
+  'usernameBoxInnerShadowSpread',
+  'usernameBoxOuterShadowColor',
+  'usernameBoxOuterShadowOffset',
+  'usernameBoxOuterShadowBlur',
+  'usernameBoxOuterShadowSpread',
+  'usernameColor',
+  'usernameFont',
+  'usernameSize',
+  'usernameWeight',
+  'usernameShadowColor',
+  'usernameShadowOffset',
+  'usernameShadowBlur',
+  'xpBoxBackgroundColor',
+  'xpBoxBorderColor',
+  'xpBoxBorderWidth',
+  'xpBoxBorderRadius',
+  'xpBoxPadding',
+  'xpBoxMargin',
+  'xpBoxMinHeight',
+  'xpBoxInnerShadowColor',
+  'xpBoxInnerShadowOffset',
+  'xpBoxInnerShadowBlur',
+  'xpBoxInnerShadowSpread',
+  'xpBoxOuterShadowColor',
+  'xpBoxOuterShadowOffset',
+  'xpBoxOuterShadowBlur',
+  'xpBoxOuterShadowSpread',
+  'xpBackgroundColor',
+  'xpBorderColor',
+  'xpBorderWidth',
+  'xpBorderRadius',
+  'xpPadding',
+  'xpMargin',
+  'xpInnerShadowColor',
+  'xpInnerShadowOffset',
+  'xpInnerShadowBlur',
+  'xpInnerShadowSpread',
+  'xpOuterShadowColor',
+  'xpOuterShadowOffset',
+  'xpOuterShadowBlur',
+  'xpOuterShadowSpread',
+  'emoteBoxBackgroundColor',
+  'emoteBoxBorderColor',
+  'emoteBoxBorderWidth',
+  'emoteBoxBorderRadius',
+  'emoteBoxPadding',
+  'emoteBoxMargin',
+  'emoteBoxMinHeight',
+  'emoteBoxInnerShadowColor',
+  'emoteBoxInnerShadowOffset',
+  'emoteBoxInnerShadowBlur',
+  'emoteBoxInnerShadowSpread',
+  'emoteBoxOuterShadowColor',
+  'emoteBoxOuterShadowOffset',
+  'emoteBoxOuterShadowBlur',
+  'emoteBoxOuterShadowSpread',
+  'emoteSize',
+  'emoteShadowColor',
+  'emoteShadowOffset',
+  'emoteShadowBlur',
+].map(key => `zaytri_chatleaderboard_${key}`)
 
 const EVENT = {
   MESSAGE: 'message',
@@ -57,25 +179,38 @@ window.addEventListener('onWidgetLoad', obj => {
 })
 
 function loadFieldData(data) {
-  FieldData.allow = stringToArray(data.allow)
-  FieldData.ignoreList = stringToArray(data.ignoreList)
-  FieldData.messagesPerMin = data.messagesPerMin
-  FieldData.charMin = data.charMin
-  FieldData.rankCount = data.rankCount
-  FieldData.initialLevelXP = data.initialLevelXP
-  FieldData.xpIncrease = data.xpIncrease
+  FieldData.allow = stringToArray(data[prefix('allow')])
+  FieldData.ignoreList = stringToArray(data[prefix('ignoreList')])
+  FieldData.messagesPerMin = data[prefix('messagesPerMin')]
+  FieldData.charMin = data[prefix('charMin')]
+  FieldData.rankCount = data[prefix('rankCount')]
+  FieldData.initialLevelXP = data[prefix('initialLevelXP')]
+  FieldData.xpIncrease = data[prefix('xpIncrease')]
   // using Math.min and Math.max in case the user switches them for some reason
-  FieldData.minXP = Math.min(data.minXP, data.maxXP)
-  FieldData.maxXP = Math.max(data.minXP, data.maxXP)
-  FieldData.ignoreCommands = data.ignoreCommands === 'true'
-  FieldData.levelPrefix = data.levelPrefix
-  FieldData.layout = data.layout
-  FieldData.defaultEmote = data.defaultEmote || DEFAULT_EMOTE
-  FieldData.apiToken = data.apiToken
-  FieldData.enableAdvanced = data.enableAdvanced === 'true'
-  FieldData.removeCommand = data.removeCommand
-  FieldData.rankCommand = data.rankCommand
-  FieldData.rankCommandCooldown = data.rankCommandCooldown
+  FieldData.minXP = Math.min(data[prefix('minXP')], data[prefix('maxXP')])
+  FieldData.maxXP = Math.max(data[prefix('minXP')], data[prefix('maxXP')])
+  FieldData.ignoreCommands = data[prefix('ignoreCommands')] === 'true'
+  FieldData.levelPrefix = data[prefix('levelPrefix')]
+  FieldData.layout = data[prefix('layout')]
+  FieldData.defaultEmote = data[prefix('defaultEmote')] || DEFAULT_EMOTE
+  FieldData.apiToken = data[prefix('apiToken')]
+  FieldData.enableAdvanced = data[prefix('enableAdvanced')] === 'true'
+  FieldData.removeCommand = data[prefix('removeCommand')]
+  FieldData.rankCommand = data[prefix('rankCommand')]
+  FieldData.rankCommandCooldown = data[prefix('rankCommandCooldown')]
+  FieldData.useCustomImages = data[prefix('useCustomImages')] === 'true'
+  try {
+    const importData = JSON.parse(data[prefix('importData')])
+    FieldData.importData = importData
+  } catch (e) {
+    FieldData.importData = null
+  }
+
+  for (const key of themeKeys) themeData[key] = data[key]
+}
+
+function prefix(key) {
+  return `zaytri_chatleaderboard.${key}`
 }
 
 function loadAPI() {
@@ -97,7 +232,7 @@ window.addEventListener('onEventReceived', obj => {
       break
     case EVENT.DELETE_MESSAGES: deleteMessages(event)
       break
-    case EVENT.TEST: onTest(event)
+    case EVENT.TEST: onButton(event)
       break
     default: return
   }
@@ -157,26 +292,55 @@ function deleteMessages(userId) {
   render()
 }
 
-function onTest(event) {
-  const { listener, field } = event
-  if (listener !== 'widget-button') return
+function onButton(event) {
+  const { listener, field, value } = event
+  if (listener !== 'widget-button' && value !== 'zaytri_chatleaderboard') return
 
-  if (field === 'testButton') {
-    db = {}
-    render()
-    FieldData.test = !FieldData.test
+  switch(field) {
+    case prefix('testButton'): {
+      db = {}
+      render()
+      FieldData.test = !FieldData.test
 
-    if (FieldData.test) {
-      for (let i = 1; i <= FieldData.rankCount; i++) {
-        db[i] = new User(i, `user ${numbered.stringify(i)}`.replace(' ', '_'))
-        for (let j = 0; j < ((FieldData.initialLevelXP * 2 / FieldData.minXP) / i) + 2; j++) {
-          db[i].addXP(EVENT.MESSAGE)
+      if (FieldData.test) {
+        for (let i = 1; i <= FieldData.rankCount; i++) {
+          db[i] = new User(i, `user ${numbered.stringify(i)}`.replace(' ', '_'))
+          for (let j = 0; j < ((FieldData.initialLevelXP * 2 / FieldData.minXP) / i) + 2; j++) {
+            db[i].addXP(EVENT.MESSAGE)
+          }
         }
       }
+
+      render()
+      break
     }
 
-    render()
+    case prefix('importButton'): {
+      importThemeData()
+      break
+    }
+
+    case prefix('exportButton'): {
+      exportThemeData()
+      break
+    }
+
+    default: return
   }
+}
+
+function importThemeData() {
+  if (!FieldData.importData) {
+    SE_API.setField('importData', 'Error: Invalid Theme Data!')
+  } else {
+    for (const key of themeKeys) SE_API.setField(key, FieldData.importData[key])
+  	SE_API.setField('importData', 'Import Successful!')
+  }
+}
+
+
+function exportThemeData() {
+  SE_API.setField('exportData', JSON.stringify(themeData))
 }
 
 // ------------------------------------------
@@ -204,7 +368,6 @@ class User {
     [Level XP Guide]
     x = FieldData.initialLevelXP
     y = FieldData.xpIncrease
-
     Levels  | 10x, 10y | 10x, 2y | 2x, 10y |
     lv1 - 2 | 10 XP    | 10 XP   | 2 XP    |
     lv2 - 3 | 20 XP    | 12 XP   | 12 XP   |
@@ -283,7 +446,9 @@ function render() {
       $(`${rankSelector} .level`).text(`${FieldData.levelPrefix} ${level}`.trim())
       $(`${rankSelector} .username`).text(name)
       $(`${rankSelector} .xp`).animate({ width: `${xpPercentage}%` })
-      $(`${rankSelector} .emote`).attr({ src: emote || DEFAULT_EMOTE })
+      if (!FieldData.useCustomImages) {
+        $(`${rankSelector} .emote`).css({ 'backgroundImage': `url(${emote || DEFAULT_EMOTE})` })
+      }
     } else {
       $(`${rankSelector} .xp`).css({ width: '0%' })
       $(rankSelector).hide()
@@ -433,7 +598,7 @@ const ClassComponent = (tag, className) => (children, props = {}) => Component(t
 const LevelBoxComponent = ClassComponent('div', 'level-box')
 const LevelComponent = ClassComponent('p', 'level')
 const EmoteBoxComponent = ClassComponent('div', 'emote-box')
-const EmoteComponent = ClassComponent('img', 'emote')
+const EmoteComponent = ClassComponent('div', 'emote')
 const UsernameBoxComponent = ClassComponent('div', 'username-box')
 const UsernameComponent = ClassComponent('p', 'username')
 const XPBoxComponent = ClassComponent('div', 'xp-box')

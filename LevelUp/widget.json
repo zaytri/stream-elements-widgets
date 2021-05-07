@@ -1,13 +1,126 @@
 {
-  "testButton": {
+  "zaytri_chatleaderboard_testButton": {
     "label": "Toggle Preview",
     "group": "Preview",
     "type": "button",
-    "value": "Toggle Preview"
+    "value": "zaytri_chatleaderboard"
   },
-  "layout": {
-    "label": "Choose Layout",
+  "zaytri_chatleaderboard_rankCount": {
+    "label": "Number of ranks on leaderboard",
     "group": "General",
+    "type": "number",
+    "value": 5,
+    "min": 1,
+    "step": 1
+  },
+  "zaytri_chatleaderboard_levelPrefix": {
+    "label": "Level Prefix",
+    "group": "General",
+    "type": "text",
+    "value": "Lv"
+  },
+  "zaytri_chatleaderboard_removeCommandLabel": {
+    "label": "Command to remove from leaderboard",
+    "group": "General",
+    "type": "hidden"
+  },
+  "zaytri_chatleaderboard_removeCommand": {
+    "label": "( Usage: !deleterank TwitchUser )",
+    "group": "General",
+    "type": "string",
+    "value": "!deleterank"
+  },
+  "zaytri_chatleaderboard_minXP": {
+    "label": "Minimum XP per valid message",
+    "group": "Leveling",
+    "type": "number",
+    "value": 1,
+    "min": 0,
+    "step": 1
+  },
+  "zaytri_chatleaderboard_maxXP": {
+    "label": "Maximum XP per valid message",
+    "group": "Leveling",
+    "type": "number",
+    "value": 1,
+    "min": 1,
+    "step": 1
+  },
+  "zaytri_chatleaderboard_messagesPerMin": {
+    "label": "Max messages per minute for XP",
+    "group": "Leveling",
+    "type": "number",
+    "value": 100,
+    "min": 1,
+    "step": 1
+  },
+  "zaytri_chatleaderboard_charMin": {
+    "label": "Message character minimum for XP",
+    "group": "Leveling",
+    "type": "number",
+    "value": 0,
+    "min": 0,
+    "step": 1
+  },
+  "zaytri_chatleaderboard_initialLevelXP": {
+    "label": "Amount of XP to go from level 1 to 2",
+    "group": "Leveling",
+    "type": "number",
+    "value": 10,
+    "min": 1,
+    "step": 1
+  },
+  "zaytri_chatleaderboard_xpIncrease": {
+    "label": "Total XP increase per level",
+    "group": "Leveling",
+    "type": "number",
+    "value": 10,
+    "min": 0,
+    "step": 1
+  },
+  "zaytri_chatleaderboard_ignoreCommands": {
+    "label": "Ignore bot commands (starts with !)",
+    "group": "Leveling",
+    "type": "dropdown",
+    "value": "true",
+    "options": {
+      "true": "Yes",
+      "false": "No"
+    }
+  },
+  "zaytri_chatleaderboard_ignoreList": {
+    "label": "Ignore these users (comma separated)",
+    "group": "Leveling",
+    "type": "text",
+    "value": "StreamElements, TwitchBot, TwitchUser"
+  },
+  "zaytri_chatleaderboard_exportButton": {
+    "label": "Export Theme",
+    "group": "Theme Import/Export",
+    "type": "button",
+    "value": "zaytri_chatleaderboard"
+  },
+  "zaytri_chatleaderboard_exportData": {
+    "label": "Exported Theme Data",
+    "group": "Theme Import/Export",
+    "type": "text",
+    "value": ""
+  },
+  "zaytri_chatleaderboard_importButton": {
+    "label": "Import Theme",
+    "group": "Theme Import/Export",
+    "type": "button",
+    "value": "zaytri_chatleaderboard"
+  },
+  "zaytri_chatleaderboard_importData": {
+    "label": "Theme Data to Import",
+    "group": "Theme Import/Export",
+    "type": "text",
+    "value": "Paste theme data here"
+  },
+  "zaytri_chatleaderboard_layout": {
+    "label": "Choose Layout",
+    "group": "General Styles",
     "type": "dropdown",
     "value": "1",
     "options": {
@@ -23,34 +136,32 @@
       "10": "Layout 10"
     }
   },
-  "rankCount": {
-    "label": "Number of ranks on leaderboard",
-    "group": "General",
+  "zaytri_chatleaderboard_xpBoxMinHeight": {
+    "label": "XP Box Minimum Height (px)",
+    "group": "General Styles",
     "type": "number",
-    "value": 5,
-    "min": 1,
+    "value": 25,
+    "min": 0,
     "step": 1
   },
-  "levelPrefix": {
-    "label": "Level Prefix",
-    "group": "General",
-    "type": "text",
-    "value": "Lv"
-  },
-  "removeCommandLabel": {
-    "label": "Command to remove from leaderboard",
-    "group": "General",
+  "zaytri_chatleaderboard_useCustomImagesTitle": {
+    "label": "Replace emotes with custom images?",
+    "group": "General Styles",
     "type": "hidden"
   },
-  "removeCommand": {
-    "label": "( Usage: !deleterank TwitchUser )",
-    "group": "General",
-    "type": "string",
-    "value": "!deleterank"
+  "zaytri_chatleaderboard_useCustomImages": {
+    "label": "( Requires custom CSS )",
+    "group": "General Styles",
+    "type": "dropdown",
+    "value": "false",
+    "options": {
+      "true": "Yes",
+      "false": "No"
+    }
   },
-  "displayEmote": {
-    "label": "Display last used emote?",
-    "group": "General",
+  "zaytri_chatleaderboard_displayEmote": {
+    "label": "Display emotes?",
+    "group": "General Styles",
     "type": "dropdown",
     "value": "flex",
     "options": {
@@ -58,89 +169,37 @@
       "none": "No"
     }
   },
-  "defaultEmote": {
+  "zaytri_chatleaderboard_defaultEmote": {
     "label": "Default emote shown",
-    "group": "General",
+    "group": "General Styles",
     "type": "image-input",
     "value": "https://cdn.streamelements.com/uploads/42e2c327-5bc1-4b20-b954-3063b55908d5.png"
   },
-  "minXP": {
-    "label": "Minimum XP per valid message",
-    "group": "Leveling",
-    "type": "number",
-    "value": 1,
-    "min": 0,
-    "step": 1
-  },
-  "maxXP": {
-    "label": "Maximum XP per valid message",
-    "group": "Leveling",
-    "type": "number",
-    "value": 1,
-    "min": 1,
-    "step": 1
-  },
-  "messagesPerMin": {
-    "label": "Max messages per minute for XP",
-    "group": "Leveling",
-    "type": "number",
-    "value": 100,
-    "min": 1,
-    "step": 1
-  },
-  "charMin": {
-    "label": "Message character minimum for XP",
-    "group": "Leveling",
-    "type": "number",
-    "value": 0,
-    "min": 0,
-    "step": 1
-  },
-  "initialLevelXP": {
-    "label": "Amount of XP to go from level 1 to 2",
-    "group": "Leveling",
-    "type": "number",
-    "value": 10,
-    "min": 1,
-    "step": 1
-  },
-  "xpIncrease": {
-    "label": "Total XP increase per level",
-    "group": "Leveling",
-    "type": "number",
-    "value": 10,
-    "min": 0,
-    "step": 1
-  },
-  "ignoreCommands": {
-    "label": "Ignore bot commands (starts with !)",
-    "group": "Leveling",
-    "type": "dropdown",
-    "value": "true",
-    "options": {
-      "true": "Yes",
-      "false": "No"
-    }
-  },
-  "ignoreList": {
-    "label": "Ignore these users (comma separated)",
-    "group": "Leveling",
-    "type": "text",
-    "value": "StreamElements, TwitchBot, TwitchUser"
-  },
-  "mainBackgroundColor": {
+  "zaytri_chatleaderboard_mainBackgroundColor": {
     "label": "Background Color",
     "group": "Widget Box Style",
     "type": "colorpicker",
     "value": "transparent"
   },
-  "mainBorderColor": {
+  "zaytri_chatleaderboard_mainBorderColor": {
     "label": "Border Color",
     "group": "Widget Box Style",
     "type": "colorpicker",
     "value": "black"
   },
-  "mainBorderWidth": {
+  "zaytri_chatleaderboard_mainInnerShadowColor": {
+    "label": "Inner Shadow Color",
+    "group": "Widget Box Style",
+    "type": "colorpicker",
+    "value": "black"
+  },
+  "zaytri_chatleaderboard_mainPadding": {
+    "label": "Inner Spacing (top right bottom left)",
+    "group": "Widget Box Style",
+    "type": "string",
+    "value": "30px 30px 30px 30px"
+  },
+  "zaytri_chatleaderboard_mainBorderWidth": {
     "label": "Border Thickness (px)",
     "group": "Widget Box Style",
     "type": "number",
@@ -148,7 +207,7 @@
     "min": 0,
     "step": 1
   },
-  "mainBorderRadius": {
+  "zaytri_chatleaderboard_mainBorderRadius": {
     "label": "Rounded Corner Size (px)",
     "group": "Widget Box Style",
     "type": "number",
@@ -156,25 +215,13 @@
     "min": 0,
     "step": 1
   },
-  "mainPadding": {
-    "label": "Inner Spacing (top right bottom left)",
-    "group": "Widget Box Style",
-    "type": "string",
-    "value": "30px 30px 30px 30px"
-  },
-  "mainInnerShadowColor": {
-    "label": "Inner Shadow Color",
-    "group": "Widget Box Style",
-    "type": "colorpicker",
-    "value": "black"
-  },
-  "mainInnerShadowOffset": {
+  "zaytri_chatleaderboard_mainInnerShadowOffset": {
     "label": "Inner Shadow Position (x y)",
     "group": "Widget Box Style",
     "type": "string",
     "value": "0px 0px"
   },
-  "mainInnerShadowBlur": {
+  "zaytri_chatleaderboard_mainInnerShadowBlur": {
     "label": "Inner Shadow Blur (px)",
     "group": "Widget Box Style",
     "type": "number",
@@ -182,7 +229,7 @@
     "min": 0,
     "step": 1
   },
-  "mainInnerShadowSpread": {
+  "zaytri_chatleaderboard_mainInnerShadowSpread": {
     "label": "Inner Shadow Size (px)",
     "group": "Widget Box Style",
     "type": "number",
@@ -190,19 +237,43 @@
     "min": 0,
     "step": 1
   },
-  "rankBackgroundColor": {
+  "zaytri_chatleaderboard_rankBackgroundColor": {
     "label": "Background Color",
     "group": "Rank Box Style",
     "type": "colorpicker",
     "value": "#a9e694"
   },
-  "rankBorderColor": {
+  "zaytri_chatleaderboard_rankBorderColor": {
     "label": "Border Color",
     "group": "Rank Box Style",
     "type": "colorpicker",
     "value": "#6ec451"
   },
-  "rankBorderWidth": {
+  "zaytri_chatleaderboard_rankOuterShadowColor": {
+    "label": "Outer Shadow Color",
+    "group": "Rank Box Style",
+    "type": "colorpicker",
+    "value": "#6ec451"
+  },
+  "zaytri_chatleaderboard_rankInnerShadowColor": {
+    "label": "Inner Shadow Color",
+    "group": "Rank Box Style",
+    "type": "colorpicker",
+    "value": "rgba(255, 255, 255, 0.4)"
+  },
+  "zaytri_chatleaderboard_rankMargin": {
+    "label": "Outer Spacing (top right bottom left)",
+    "group": "Rank Box Style",
+    "type": "string",
+    "value": "0px 0px 20px 0px"
+  },
+  "zaytri_chatleaderboard_rankPadding": {
+    "label": "Inner Spacing (top right bottom left)",
+    "group": "Rank Box Style",
+    "type": "string",
+    "value": "10px 10px 10px 10px"
+  },
+  "zaytri_chatleaderboard_rankBorderWidth": {
     "label": "Border Thickness (px)",
     "group": "Rank Box Style",
     "type": "number",
@@ -210,7 +281,7 @@
     "min": 0,
     "step": 1
   },
-  "rankBorderRadius": {
+  "zaytri_chatleaderboard_rankBorderRadius": {
     "label": "Rounded Corner Size (px)",
     "group": "Rank Box Style",
     "type": "number",
@@ -218,31 +289,13 @@
     "min": 0,
     "step": 1
   },
-  "rankPadding": {
-    "label": "Inner Spacing (top right bottom left)",
-    "group": "Rank Box Style",
-    "type": "string",
-    "value": "10px 10px 10px 10px"
-  },
-  "rankMargin": {
-    "label": "Outer Spacing (top right bottom left)",
-    "group": "Rank Box Style",
-    "type": "string",
-    "value": "0px 0px 20px 0px"
-  },
-  "rankOuterShadowColor": {
-    "label": "Outer Shadow Color",
-    "group": "Rank Box Style",
-    "type": "colorpicker",
-    "value": "#6ec451"
-  },
-  "rankOuterShadowOffset": {
+  "zaytri_chatleaderboard_rankOuterShadowOffset": {
     "label": "Outer Shadow Position (x y)",
     "group": "Rank Box Style",
     "type": "string",
     "value": "2px 2px"
   },
-  "rankOuterShadowBlur": {
+  "zaytri_chatleaderboard_rankOuterShadowBlur": {
     "label": "Outer Shadow Blur (px)",
     "group": "Rank Box Style",
     "type": "number",
@@ -250,7 +303,7 @@
     "min": 0,
     "step": 1
   },
-  "rankOuterShadowSpread": {
+  "zaytri_chatleaderboard_rankOuterShadowSpread": {
     "label": "Outer Shadow Size (px)",
     "group": "Rank Box Style",
     "type": "number",
@@ -258,19 +311,13 @@
     "min": 0,
     "step": 1
   },
-  "rankInnerShadowColor": {
-    "label": "Inner Shadow Color",
-    "group": "Rank Box Style",
-    "type": "colorpicker",
-    "value": "#cefcbe"
-  },
-  "rankInnerShadowOffset": {
+  "zaytri_chatleaderboard_rankInnerShadowOffset": {
     "label": "Inner Shadow Position (x y)",
     "group": "Rank Box Style",
     "type": "string",
     "value": "2px 10px"
   },
-  "rankInnerShadowBlur": {
+  "zaytri_chatleaderboard_rankInnerShadowBlur": {
     "label": "Inner Shadow Blur (px)",
     "group": "Rank Box Style",
     "type": "number",
@@ -278,7 +325,7 @@
     "min": 0,
     "step": 1
   },
-  "rankInnerShadowSpread": {
+  "zaytri_chatleaderboard_rankInnerShadowSpread": {
     "label": "Inner Shadow Size (px)",
     "group": "Rank Box Style",
     "type": "number",
@@ -286,569 +333,65 @@
     "min": 0,
     "step": 1
   },
-  "levelBoxBackgroundColor": {
+  "zaytri_chatleaderboard_emoteBoxBackgroundColor": {
     "label": "Background Color",
-    "group": "Level Box Style",
+    "group": "Emote Box Style",
     "type": "colorpicker",
     "value": "transparent"
   },
-  "levelBoxBorderColor": {
+  "zaytri_chatleaderboard_emoteBoxBorderColor": {
     "label": "Border Color",
-    "group": "Level Box Style",
+    "group": "Emote Box Style",
     "type": "colorpicker",
     "value": "black"
   },
-  "levelBoxBorderWidth": {
-    "label": "Border Thickness (px)",
-    "group": "Level Box Style",
-    "type": "number",
-    "value": 0,
-    "min": 0,
-    "step": 1
-  },
-  "levelBoxBorderRadius": {
-    "label": "Rounded Corner Size (px)",
-    "group": "Level Box Style",
-    "type": "number",
-    "value": 0,
-    "min": 0,
-    "step": 1
-  },
-  "levelBoxPadding": {
-    "label": "Inner Spacing (top right bottom left)",
-    "group": "Level Box Style",
-    "type": "string",
-    "value": "0px 0px 0px 0px"
-  },
-  "levelBoxMargin": {
-    "label": "Outer Spacing (top right bottom left)",
-    "group": "Level Box Style",
-    "type": "string",
-    "value": "0px 5px 0px 0px"
-  },
-  "levelBoxOuterShadowColor": {
+  "zaytri_chatleaderboard_emoteBoxOuterShadowColor": {
     "label": "Outer Shadow Color",
-    "group": "Level Box Style",
+    "group": "Emote Box Style",
     "type": "colorpicker",
     "value": "black"
   },
-  "levelBoxOuterShadowOffset": {
-    "label": "Outer Shadow Position (x y)",
-    "group": "Level Box Style",
-    "type": "string",
-    "value": "0px 0px"
-  },
-  "levelBoxOuterShadowBlur": {
-    "label": "Outer Shadow Blur (px)",
-    "group": "Level Box Style",
-    "type": "number",
-    "value": 0,
-    "min": 0,
-    "step": 1
-  },
-  "levelBoxOuterShadowSpread": {
-    "label": "Outer Shadow Size (px)",
-    "group": "Level Box Style",
-    "type": "number",
-    "value": 0,
-    "min": 0,
-    "step": 1
-  },
-  "levelBoxInnerShadowColor": {
+  "zaytri_chatleaderboard_emoteBoxInnerShadowColor": {
     "label": "Inner Shadow Color",
-    "group": "Level Box Style",
-    "type": "colorpicker",
-    "value": "black"
-  },
-  "levelBoxInnerShadowOffset": {
-    "label": "Inner Shadow Position (x y)",
-    "group": "Level Box Style",
-    "type": "string",
-    "value": "0px 0px"
-  },
-  "levelBoxInnerShadowBlur": {
-    "label": "Inner Shadow Blur (px)",
-    "group": "Level Box Style",
-    "type": "number",
-    "value": 0,
-    "min": 0,
-    "step": 1
-  },
-  "levelBoxInnerShadowSpread": {
-    "label": "Inner Shadow Size (px)",
-    "group": "Level Box Style",
-    "type": "number",
-    "value": 0,
-    "min": 0,
-    "step": 1
-  },
-  "levelColor": {
-    "label": "Color",
-    "group": "Level Text Style",
-    "type": "colorpicker",
-    "value": "#2d7c13"
-  },
-  "levelFont": {
-    "label": "Font",
-    "group": "Level Text Style",
-    "type": "text",
-    "value": "Nunito"
-  },
-  "levelSize": {
-    "label": "Font Size (px)",
-    "group": "Level Text Style",
-    "type": "number",
-    "value": 16,
-    "min": 1,
-    "step": 1
-  },
-  "levelWeight": {
-    "label": "Thickness",
-    "group": "Level Text Style",
-    "type": "dropdown",
-    "value": "normal",
-    "options": {
-      "normal": "Normal",
-      "bold": "Bold",
-      "100": "100",
-      "200": "200",
-      "300": "300",
-      "400": "400",
-      "500": "500",
-      "600": "600",
-      "700": "700",
-      "800": "800",
-      "900": "900"
-    }
-  },
-  "levelShadowColor": {
-    "label": "Text Shadow Color",
-    "group": "Level Text Style",
-    "type": "colorpicker",
-    "value": "transparent"
-  },
-  "levelShadowOffset": {
-    "label": "Text Shadow Position (x y)",
-    "group": "Level Text Style",
-    "type": "string",
-    "value": "0px 0px"
-  },
-  "levelShadowBlur": {
-    "label": "Text Shadow Blur (px)",
-    "group": "Level Text Style",
-    "type": "number",
-    "value": 0,
-    "min": 0,
-    "step": 1
-  },
-  "usernameBoxBackgroundColor": {
-    "label": "Background Color",
-    "group": "Username Box Style",
-    "type": "colorpicker",
-    "value": "transparent"
-  },
-  "usernameBoxBorderColor": {
-    "label": "Border Color",
-    "group": "Username Box Style",
-    "type": "colorpicker",
-    "value": "black"
-  },
-  "usernameBoxBorderWidth": {
-    "label": "Border Thickness (px)",
-    "group": "Username Box Style",
-    "type": "number",
-    "value": 0,
-    "min": 0,
-    "step": 1
-  },
-  "usernameBoxBorderRadius": {
-    "label": "Rounded Corner Size (px)",
-    "group": "Username Box Style",
-    "type": "number",
-    "value": 0,
-    "min": 0,
-    "step": 1
-  },
-  "usernameBoxPadding": {
-    "label": "Inner Spacing (top right bottom left)",
-    "group": "Username Box Style",
-    "type": "string",
-    "value": "0px 0px 2px 0px"
-  },
-  "usernameBoxMargin": {
-    "label": "Outer Spacing (top right bottom left)",
-    "group": "Username Box Style",
-    "type": "string",
-    "value": "0px 0px 0px 2px"
-  },
-  "usernameBoxOuterShadowColor": {
-    "label": "Outer Shadow Color",
-    "group": "Username Box Style",
-    "type": "colorpicker",
-    "value": "black"
-  },
-  "usernameBoxOuterShadowOffset": {
-    "label": "Outer Shadow Position (x y)",
-    "group": "Username Box Style",
-    "type": "string",
-    "value": "0px 0px"
-  },
-  "usernameBoxOuterShadowBlur": {
-    "label": "Outer Shadow Blur (px)",
-    "group": "Username Box Style",
-    "type": "number",
-    "value": 0,
-    "min": 0,
-    "step": 1
-  },
-  "usernameBoxOuterShadowSpread": {
-    "label": "Outer Shadow Size (px)",
-    "group": "Username Box Style",
-    "type": "number",
-    "value": 0,
-    "min": 0,
-    "step": 1
-  },
-  "usernameBoxInnerShadowColor": {
-    "label": "Inner Shadow Color",
-    "group": "Username Box Style",
-    "type": "colorpicker",
-    "value": "black"
-  },
-  "usernameBoxInnerShadowOffset": {
-    "label": "Inner Shadow Position (x y)",
-    "group": "Username Box Style",
-    "type": "string",
-    "value": "0px 0px"
-  },
-  "usernameBoxInnerShadowBlur": {
-    "label": "Inner Shadow Blur (px)",
-    "group": "Username Box Style",
-    "type": "number",
-    "value": 0,
-    "min": 0,
-    "step": 1
-  },
-  "usernameBoxInnerShadowSpread": {
-    "label": "Inner Shadow Size (px)",
-    "group": "Username Box Style",
-    "type": "number",
-    "value": 0,
-    "min": 0,
-    "step": 1
-  },
-  "usernameColor": {
-    "label": "Color",
-    "group": "Username Text Style",
-    "type": "colorpicker",
-    "value": "#2d7c13"
-  },
-  "usernameFont": {
-    "label": "Font",
-    "group": "Username Text Style",
-    "type": "text",
-    "value": "Nunito"
-  },
-  "usernameSize": {
-    "label": "Font Size (px)",
-    "group": "Username Text Style",
-    "type": "number",
-    "value": 20,
-    "min": 1,
-    "step": 1
-  },
-  "usernameWeight": {
-    "label": "Thickness",
-    "group": "Username Text Style",
-    "type": "dropdown",
-    "value": "normal",
-    "options": {
-      "normal": "Normal",
-      "bold": "Bold",
-      "100": "100",
-      "200": "200",
-      "300": "300",
-      "400": "400",
-      "500": "500",
-      "600": "600",
-      "700": "700",
-      "800": "800",
-      "900": "900"
-    }
-  },
-  "usernameShadowColor": {
-    "label": "Text Shadow Color",
-    "group": "Username Text Style",
-    "type": "colorpicker",
-    "value": "transparent"
-  },
-  "usernameShadowOffset": {
-    "label": "Text Shadow Position (x y)",
-    "group": "Username Text Style",
-    "type": "string",
-    "value": "0px 0px"
-  },
-  "usernameShadowBlur": {
-    "label": "Text Shadow Blur (px)",
-    "group": "Username Text Style",
-    "type": "number",
-    "value": 0,
-    "min": 0,
-    "step": 1
-  },
-  "xpBoxBackgroundColor": {
-    "label": "Background Color",
-    "group": "XP Box Style",
-    "type": "colorpicker",
-    "value": "#6ec451"
-  },
-  "xpBoxBorderColor": {
-    "label": "Border Color",
-    "group": "XP Box Style",
-    "type": "colorpicker",
-    "value": "black"
-  },
-  "xpBoxBorderWidth": {
-    "label": "Border Thickness (px)",
-    "group": "XP Box Style",
-    "type": "number",
-    "value": 0,
-    "min": 0,
-    "step": 1
-  },
-  "xpBoxBorderRadius": {
-    "label": "Rounded Corner Size (px)",
-    "group": "XP Box Style",
-    "type": "number",
-    "value": 10,
-    "min": 0,
-    "step": 1
-  },
-  "xpBoxMinHeight": {
-    "label": "Minimum Height (px)",
-    "group": "XP Box Style",
-    "type": "number",
-    "value": 25,
-    "min": 0,
-    "step": 1
-  },
-  "xpBoxPadding": {
-    "label": "Inner Spacing (top right bottom left)",
-    "group": "XP Box Style",
-    "type": "string",
-    "value": "5px 5px 5px 5px"
-  },
-  "xpBoxMargin": {
-    "label": "Outer Spacing (top right bottom left)",
-    "group": "XP Box Style",
-    "type": "string",
-    "value": "0px 0px 0px 0px"
-  },
-  "xpBoxOuterShadowColor": {
-    "label": "Outer Shadow Color",
-    "group": "XP Box Style",
-    "type": "colorpicker",
-    "value": "black"
-  },
-  "xpBoxOuterShadowOffset": {
-    "label": "Outer Shadow Position (x y)",
-    "group": "XP Box Style",
-    "type": "string",
-    "value": "0px 0px"
-  },
-  "xpBoxOuterShadowBlur": {
-    "label": "Outer Shadow Blur (px)",
-    "group": "XP Box Style",
-    "type": "number",
-    "value": 0,
-    "min": 0,
-    "step": 1
-  },
-  "xpBoxOuterShadowSpread": {
-    "label": "Outer Shadow Size (px)",
-    "group": "XP Box Style",
-    "type": "number",
-    "value": 0,
-    "min": 0,
-    "step": 1
-  },
-  "xpBoxInnerShadowColor": {
-    "label": "Inner Shadow Color",
-    "group": "XP Box Style",
-    "type": "colorpicker",
-    "value": "#429627"
-  },
-  "xpBoxInnerShadowOffset": {
-    "label": "Inner Shadow Position (x y)",
-    "group": "XP Box Style",
-    "type": "string",
-    "value": "2px 2px"
-  },
-  "xpBoxInnerShadowBlur": {
-    "label": "Inner Shadow Blur (px)",
-    "group": "XP Box Style",
-    "type": "number",
-    "value": 8,
-    "min": 0,
-    "step": 1
-  },
-  "xpBoxInnerShadowSpread": {
-    "label": "Inner Shadow Size (px)",
-    "group": "XP Box Style",
-    "type": "number",
-    "value": 0,
-    "min": 0,
-    "step": 1
-  },
-  "xpBackgroundColor": {
-    "label": "Background Color",
-    "group": "XP Bar Style",
-    "type": "colorpicker",
-    "value": "#a9e694"
-  },
-  "xpBorderColor": {
-    "label": "Border Color",
-    "group": "XP Bar Style",
-    "type": "colorpicker",
-    "value": "black"
-  },
-  "xpBorderWidth": {
-    "label": "Border Thickness (px)",
-    "group": "XP Bar Style",
-    "type": "number",
-    "value": 0,
-    "min": 0,
-    "step": 1
-  },
-  "xpBorderRadius": {
-    "label": "Rounded Corner Size (px)",
-    "group": "XP Bar Style",
-    "type": "number",
-    "value": 5,
-    "min": 0,
-    "step": 1
-  },
-  "xpPadding": {
-    "label": "Inner Spacing (top right bottom left)",
-    "group": "XP Bar Style",
-    "type": "string",
-    "value": "0px 0px 0px 0px"
-  },
-  "xpMargin": {
-    "label": "Outer Spacing (top right bottom left)",
-    "group": "XP Bar Style",
-    "type": "string",
-    "value": "0px 0px 0px 0px"
-  },
-  "xpOuterShadowColor": {
-    "label": "Outer Shadow Color",
-    "group": "XP Bar Style",
-    "type": "colorpicker",
-    "value": "black"
-  },
-  "xpOuterShadowOffset": {
-    "label": "Outer Shadow Position (x y)",
-    "group": "XP Bar Style",
-    "type": "string",
-    "value": "0px 0px"
-  },
-  "xpOuterShadowBlur": {
-    "label": "Outer Shadow Blur (px)",
-    "group": "XP Bar Style",
-    "type": "number",
-    "value": 0,
-    "min": 0,
-    "step": 1
-  },
-  "xpOuterShadowSpread": {
-    "label": "Outer Shadow Size (px)",
-    "group": "XP Bar Style",
-    "type": "number",
-    "value": 0,
-    "min": 0,
-    "step": 1
-  },
-  "xpInnerShadowColor": {
-    "label": "Inner Shadow Color",
-    "group": "XP Bar Style",
-    "type": "colorpicker",
-    "value": "#cefcbe"
-  },
-  "xpInnerShadowOffset": {
-    "label": "Inner Shadow Position (x y)",
-    "group": "XP Bar Style",
-    "type": "string",
-    "value": "2px 5px"
-  },
-  "xpInnerShadowBlur": {
-    "label": "Inner Shadow Blur (px)",
-    "group": "XP Bar Style",
-    "type": "number",
-    "value": 10,
-    "min": 0,
-    "step": 1
-  },
-  "xpInnerShadowSpread": {
-    "label": "Inner Shadow Size (px)",
-    "group": "XP Bar Style",
-    "type": "number",
-    "value": 1,
-    "min": 0,
-    "step": 1
-  },
-  "emoteBoxBackgroundColor": {
-    "label": "Background Color",
-    "group": "Emote Box Style",
-    "type": "colorpicker",
-    "value": "transparent"
-  },
-  "emoteBoxBorderColor": {
-    "label": "Border Color",
     "group": "Emote Box Style",
     "type": "colorpicker",
     "value": "black"
   },
-  "emoteBoxBorderWidth": {
-    "label": "Border Thickness (px)",
-    "group": "Emote Box Style",
-    "type": "number",
-    "value": 0,
-    "min": 0,
-    "step": 1
-  },
-  "emoteBoxBorderRadius": {
-    "label": "Rounded Corner Size (px)",
-    "group": "Emote Box Style",
-    "type": "number",
-    "value": 0,
-    "min": 0,
-    "step": 1
-  },
-  "emoteBoxPadding": {
-    "label": "Inner Spacing (top right bottom left)",
-    "group": "Emote Box Style",
-    "type": "string",
-    "value": "0px 0px 0px 0px"
-  },
-  "emoteBoxMargin": {
+  "zaytri_chatleaderboard_emoteBoxMargin": {
     "label": "Outer Spacing (top right bottom left)",
     "group": "Emote Box Style",
     "type": "string",
     "value": "0px 10px 0px 0px"
   },
-  "emoteBoxOuterShadowColor": {
-    "label": "Outer Shadow Color",
+  "zaytri_chatleaderboard_emoteBoxPadding": {
+    "label": "Inner Spacing (top right bottom left)",
     "group": "Emote Box Style",
-    "type": "colorpicker",
-    "value": "black"
+    "type": "string",
+    "value": "0px 0px 0px 0px"
   },
-  "emoteBoxOuterShadowOffset": {
+  "zaytri_chatleaderboard_emoteBoxBorderWidth": {
+    "label": "Border Thickness (px)",
+    "group": "Emote Box Style",
+    "type": "number",
+    "value": 0,
+    "min": 0,
+    "step": 1
+  },
+  "zaytri_chatleaderboard_emoteBoxBorderRadius": {
+    "label": "Rounded Corner Size (px)",
+    "group": "Emote Box Style",
+    "type": "number",
+    "value": 0,
+    "min": 0,
+    "step": 1
+  },
+  "zaytri_chatleaderboard_emoteBoxOuterShadowOffset": {
     "label": "Outer Shadow Position (x y)",
     "group": "Emote Box Style",
     "type": "string",
     "value": "0px 0px"
   },
-  "emoteBoxOuterShadowBlur": {
+  "zaytri_chatleaderboard_emoteBoxOuterShadowBlur": {
     "label": "Outer Shadow Blur (px)",
     "group": "Emote Box Style",
     "type": "number",
@@ -856,7 +399,7 @@
     "min": 0,
     "step": 1
   },
-  "emoteBoxOuterShadowSpread": {
+  "zaytri_chatleaderboard_emoteBoxOuterShadowSpread": {
     "label": "Outer Shadow Size (px)",
     "group": "Emote Box Style",
     "type": "number",
@@ -864,19 +407,13 @@
     "min": 0,
     "step": 1
   },
-  "emoteBoxInnerShadowColor": {
-    "label": "Inner Shadow Color",
-    "group": "Emote Box Style",
-    "type": "colorpicker",
-    "value": "black"
-  },
-  "emoteBoxInnerShadowOffset": {
+  "zaytri_chatleaderboard_emoteBoxInnerShadowOffset": {
     "label": "Inner Shadow Position (x y)",
     "group": "Emote Box Style",
     "type": "string",
     "value": "0px 0px"
   },
-  "emoteBoxInnerShadowBlur": {
+  "zaytri_chatleaderboard_emoteBoxInnerShadowBlur": {
     "label": "Inner Shadow Blur (px)",
     "group": "Emote Box Style",
     "type": "number",
@@ -884,7 +421,7 @@
     "min": 0,
     "step": 1
   },
-  "emoteBoxInnerShadowSpread": {
+  "zaytri_chatleaderboard_emoteBoxInnerShadowSpread": {
     "label": "Inner Shadow Size (px)",
     "group": "Emote Box Style",
     "type": "number",
@@ -892,7 +429,7 @@
     "min": 0,
     "step": 1
   },
-  "emoteSize": {
+  "zaytri_chatleaderboard_emoteSize": {
     "label": "Emote Size (px)",
     "group": "Emote Style",
     "type": "number",
@@ -900,32 +437,534 @@
     "min": 0,
     "step": 1
   },
-  "emoteShadowColor": {
+  "zaytri_chatleaderboard_emoteShadowColor": {
     "label": "Shadow Color",
     "group": "Emote Style",
     "type": "colorpicker",
-    "value": "#429627"
+    "value": "rgba(0, 0, 0, 0.5)"
   },
-  "emoteShadowOffset": {
+  "zaytri_chatleaderboard_emoteShadowOffset": {
     "label": "Shadow Position (x y)",
     "group": "Emote Style",
     "type": "string",
     "value": "0px 1px"
   },
-  "emoteShadowBlur": {
+  "zaytri_chatleaderboard_emoteShadowBlur": {
     "label": "Shadow Blur (px)",
     "group": "Emote Style",
+    "type": "number",
+    "value": 1,
+    "min": 0,
+    "step": 1
+  },
+  "zaytri_chatleaderboard_usernameBoxBackgroundColor": {
+    "label": "Background Color",
+    "group": "Username Box Style",
+    "type": "colorpicker",
+    "value": "transparent"
+  },
+  "zaytri_chatleaderboard_usernameBoxBorderColor": {
+    "label": "Border Color",
+    "group": "Username Box Style",
+    "type": "colorpicker",
+    "value": "black"
+  },
+  "zaytri_chatleaderboard_usernameBoxOuterShadowColor": {
+    "label": "Outer Shadow Color",
+    "group": "Username Box Style",
+    "type": "colorpicker",
+    "value": "black"
+  },
+  "zaytri_chatleaderboard_usernameBoxInnerShadowColor": {
+    "label": "Inner Shadow Color",
+    "group": "Username Box Style",
+    "type": "colorpicker",
+    "value": "black"
+  },
+  "zaytri_chatleaderboard_usernameBoxMargin": {
+    "label": "Outer Spacing (top right bottom left)",
+    "group": "Username Box Style",
+    "type": "string",
+    "value": "0px 0px 0px 2px"
+  },
+  "zaytri_chatleaderboard_usernameBoxPadding": {
+    "label": "Inner Spacing (top right bottom left)",
+    "group": "Username Box Style",
+    "type": "string",
+    "value": "0px 0px 2px 0px"
+  },
+  "zaytri_chatleaderboard_usernameBoxBorderWidth": {
+    "label": "Border Thickness (px)",
+    "group": "Username Box Style",
     "type": "number",
     "value": 0,
     "min": 0,
     "step": 1
   },
-  "enableAdvancedTitle": {
+  "zaytri_chatleaderboard_usernameBoxBorderRadius": {
+    "label": "Rounded Corner Size (px)",
+    "group": "Username Box Style",
+    "type": "number",
+    "value": 0,
+    "min": 0,
+    "step": 1
+  },
+  "zaytri_chatleaderboard_usernameBoxOuterShadowOffset": {
+    "label": "Outer Shadow Position (x y)",
+    "group": "Username Box Style",
+    "type": "string",
+    "value": "0px 0px"
+  },
+  "zaytri_chatleaderboard_usernameBoxOuterShadowBlur": {
+    "label": "Outer Shadow Blur (px)",
+    "group": "Username Box Style",
+    "type": "number",
+    "value": 0,
+    "min": 0,
+    "step": 1
+  },
+  "zaytri_chatleaderboard_usernameBoxOuterShadowSpread": {
+    "label": "Outer Shadow Size (px)",
+    "group": "Username Box Style",
+    "type": "number",
+    "value": 0,
+    "min": 0,
+    "step": 1
+  },
+  "zaytri_chatleaderboard_usernameBoxInnerShadowOffset": {
+    "label": "Inner Shadow Position (x y)",
+    "group": "Username Box Style",
+    "type": "string",
+    "value": "0px 0px"
+  },
+  "zaytri_chatleaderboard_usernameBoxInnerShadowBlur": {
+    "label": "Inner Shadow Blur (px)",
+    "group": "Username Box Style",
+    "type": "number",
+    "value": 0,
+    "min": 0,
+    "step": 1
+  },
+  "zaytri_chatleaderboard_usernameBoxInnerShadowSpread": {
+    "label": "Inner Shadow Size (px)",
+    "group": "Username Box Style",
+    "type": "number",
+    "value": 0,
+    "min": 0,
+    "step": 1
+  },
+  "zaytri_chatleaderboard_usernameColor": {
+    "label": "Color",
+    "group": "Username Text Style",
+    "type": "colorpicker",
+    "value": "#2d7c13"
+  },
+  "zaytri_chatleaderboard_usernameFont": {
+    "label": "Font",
+    "group": "Username Text Style",
+    "type": "text",
+    "value": "Nunito"
+  },
+  "zaytri_chatleaderboard_usernameSize": {
+    "label": "Font Size (px)",
+    "group": "Username Text Style",
+    "type": "number",
+    "value": 20,
+    "min": 1,
+    "step": 1
+  },
+  "zaytri_chatleaderboard_usernameWeight": {
+    "label": "Thickness",
+    "group": "Username Text Style",
+    "type": "dropdown",
+    "value": "normal",
+    "options": {
+      "normal": "Normal",
+      "bold": "Bold",
+      "100": "100",
+      "200": "200",
+      "300": "300",
+      "400": "400",
+      "500": "500",
+      "600": "600",
+      "700": "700",
+      "800": "800",
+      "900": "900"
+    }
+  },
+  "zaytri_chatleaderboard_usernameShadowColor": {
+    "label": "Text Shadow Color",
+    "group": "Username Text Style",
+    "type": "colorpicker",
+    "value": "transparent"
+  },
+  "zaytri_chatleaderboard_usernameShadowOffset": {
+    "label": "Text Shadow Position (x y)",
+    "group": "Username Text Style",
+    "type": "string",
+    "value": "0px 0px"
+  },
+  "zaytri_chatleaderboard_usernameShadowBlur": {
+    "label": "Text Shadow Blur (px)",
+    "group": "Username Text Style",
+    "type": "number",
+    "value": 0,
+    "min": 0,
+    "step": 1
+  },
+  "zaytri_chatleaderboard_levelBoxBackgroundColor": {
+    "label": "Background Color",
+    "group": "Level Box Style",
+    "type": "colorpicker",
+    "value": "transparent"
+  },
+  "zaytri_chatleaderboard_levelBoxBorderColor": {
+    "label": "Border Color",
+    "group": "Level Box Style",
+    "type": "colorpicker",
+    "value": "black"
+  },
+  "zaytri_chatleaderboard_levelBoxOuterShadowColor": {
+    "label": "Outer Shadow Color",
+    "group": "Level Box Style",
+    "type": "colorpicker",
+    "value": "black"
+  },
+  "zaytri_chatleaderboard_levelBoxInnerShadowColor": {
+    "label": "Inner Shadow Color",
+    "group": "Level Box Style",
+    "type": "colorpicker",
+    "value": "black"
+  },
+  "zaytri_chatleaderboard_levelBoxMargin": {
+    "label": "Outer Spacing (top right bottom left)",
+    "group": "Level Box Style",
+    "type": "string",
+    "value": "0px 5px 0px 0px"
+  },
+  "zaytri_chatleaderboard_levelBoxPadding": {
+    "label": "Inner Spacing (top right bottom left)",
+    "group": "Level Box Style",
+    "type": "string",
+    "value": "0px 0px 0px 0px"
+  },
+  "zaytri_chatleaderboard_levelBoxBorderWidth": {
+    "label": "Border Thickness (px)",
+    "group": "Level Box Style",
+    "type": "number",
+    "value": 0,
+    "min": 0,
+    "step": 1
+  },
+  "zaytri_chatleaderboard_levelBoxBorderRadius": {
+    "label": "Rounded Corner Size (px)",
+    "group": "Level Box Style",
+    "type": "number",
+    "value": 0,
+    "min": 0,
+    "step": 1
+  },
+  "zaytri_chatleaderboard_levelBoxOuterShadowOffset": {
+    "label": "Outer Shadow Position (x y)",
+    "group": "Level Box Style",
+    "type": "string",
+    "value": "0px 0px"
+  },
+  "zaytri_chatleaderboard_levelBoxOuterShadowBlur": {
+    "label": "Outer Shadow Blur (px)",
+    "group": "Level Box Style",
+    "type": "number",
+    "value": 0,
+    "min": 0,
+    "step": 1
+  },
+  "zaytri_chatleaderboard_levelBoxOuterShadowSpread": {
+    "label": "Outer Shadow Size (px)",
+    "group": "Level Box Style",
+    "type": "number",
+    "value": 0,
+    "min": 0,
+    "step": 1
+  },
+  "zaytri_chatleaderboard_levelBoxInnerShadowOffset": {
+    "label": "Inner Shadow Position (x y)",
+    "group": "Level Box Style",
+    "type": "string",
+    "value": "0px 0px"
+  },
+  "zaytri_chatleaderboard_levelBoxInnerShadowBlur": {
+    "label": "Inner Shadow Blur (px)",
+    "group": "Level Box Style",
+    "type": "number",
+    "value": 0,
+    "min": 0,
+    "step": 1
+  },
+  "zaytri_chatleaderboard_levelBoxInnerShadowSpread": {
+    "label": "Inner Shadow Size (px)",
+    "group": "Level Box Style",
+    "type": "number",
+    "value": 0,
+    "min": 0,
+    "step": 1
+  },
+  "zaytri_chatleaderboard_levelColor": {
+    "label": "Color",
+    "group": "Level Text Style",
+    "type": "colorpicker",
+    "value": "#2d7c13"
+  },
+  "zaytri_chatleaderboard_levelFont": {
+    "label": "Font",
+    "group": "Level Text Style",
+    "type": "text",
+    "value": "Nunito"
+  },
+  "zaytri_chatleaderboard_levelSize": {
+    "label": "Font Size (px)",
+    "group": "Level Text Style",
+    "type": "number",
+    "value": 16,
+    "min": 1,
+    "step": 1
+  },
+  "zaytri_chatleaderboard_levelWeight": {
+    "label": "Thickness",
+    "group": "Level Text Style",
+    "type": "dropdown",
+    "value": "normal",
+    "options": {
+      "normal": "Normal",
+      "bold": "Bold",
+      "100": "100",
+      "200": "200",
+      "300": "300",
+      "400": "400",
+      "500": "500",
+      "600": "600",
+      "700": "700",
+      "800": "800",
+      "900": "900"
+    }
+  },
+  "zaytri_chatleaderboard_levelShadowColor": {
+    "label": "Text Shadow Color",
+    "group": "Level Text Style",
+    "type": "colorpicker",
+    "value": "transparent"
+  },
+  "zaytri_chatleaderboard_levelShadowOffset": {
+    "label": "Text Shadow Position (x y)",
+    "group": "Level Text Style",
+    "type": "string",
+    "value": "0px 0px"
+  },
+  "zaytri_chatleaderboard_levelShadowBlur": {
+    "label": "Text Shadow Blur (px)",
+    "group": "Level Text Style",
+    "type": "number",
+    "value": 0,
+    "min": 0,
+    "step": 1
+  },
+  "zaytri_chatleaderboard_xpBoxBackgroundColor": {
+    "label": "Background Color",
+    "group": "XP Box Style",
+    "type": "colorpicker",
+    "value": "#6ec451"
+  },
+  "zaytri_chatleaderboard_xpBoxBorderColor": {
+    "label": "Border Color",
+    "group": "XP Box Style",
+    "type": "colorpicker",
+    "value": "black"
+  },
+  "zaytri_chatleaderboard_xpBoxOuterShadowColor": {
+    "label": "Outer Shadow Color",
+    "group": "XP Box Style",
+    "type": "colorpicker",
+    "value": "black"
+  },
+  "zaytri_chatleaderboard_xpBoxInnerShadowColor": {
+    "label": "Inner Shadow Color",
+    "group": "XP Box Style",
+    "type": "colorpicker",
+    "value": "rgba(0, 0, 0, 0.25)"
+  },
+  "zaytri_chatleaderboard_xpBoxMargin": {
+    "label": "Outer Spacing (top right bottom left)",
+    "group": "XP Box Style",
+    "type": "string",
+    "value": "0px 0px 0px 0px"
+  },
+  "zaytri_chatleaderboard_xpBoxPadding": {
+    "label": "Inner Spacing (top right bottom left)",
+    "group": "XP Box Style",
+    "type": "string",
+    "value": "5px 5px 5px 5px"
+  },
+  "zaytri_chatleaderboard_xpBoxBorderWidth": {
+    "label": "Border Thickness (px)",
+    "group": "XP Box Style",
+    "type": "number",
+    "value": 0,
+    "min": 0,
+    "step": 1
+  },
+  "zaytri_chatleaderboard_xpBoxBorderRadius": {
+    "label": "Rounded Corner Size (px)",
+    "group": "XP Box Style",
+    "type": "number",
+    "value": 10,
+    "min": 0,
+    "step": 1
+  },
+  "zaytri_chatleaderboard_xpBoxOuterShadowOffset": {
+    "label": "Outer Shadow Position (x y)",
+    "group": "XP Box Style",
+    "type": "string",
+    "value": "0px 0px"
+  },
+  "zaytri_chatleaderboard_xpBoxOuterShadowBlur": {
+    "label": "Outer Shadow Blur (px)",
+    "group": "XP Box Style",
+    "type": "number",
+    "value": 0,
+    "min": 0,
+    "step": 1
+  },
+  "zaytri_chatleaderboard_xpBoxOuterShadowSpread": {
+    "label": "Outer Shadow Size (px)",
+    "group": "XP Box Style",
+    "type": "number",
+    "value": 0,
+    "min": 0,
+    "step": 1
+  },
+  "zaytri_chatleaderboard_xpBoxInnerShadowOffset": {
+    "label": "Inner Shadow Position (x y)",
+    "group": "XP Box Style",
+    "type": "string",
+    "value": "2px 2px"
+  },
+  "zaytri_chatleaderboard_xpBoxInnerShadowBlur": {
+    "label": "Inner Shadow Blur (px)",
+    "group": "XP Box Style",
+    "type": "number",
+    "value": 8,
+    "min": 0,
+    "step": 1
+  },
+  "zaytri_chatleaderboard_xpBoxInnerShadowSpread": {
+    "label": "Inner Shadow Size (px)",
+    "group": "XP Box Style",
+    "type": "number",
+    "value": 0,
+    "min": 0,
+    "step": 1
+  },
+  "zaytri_chatleaderboard_xpBackgroundColor": {
+    "label": "Background Color",
+    "group": "XP Bar Style",
+    "type": "colorpicker",
+    "value": "#a9e694"
+  },
+  "zaytri_chatleaderboard_xpBorderColor": {
+    "label": "Border Color",
+    "group": "XP Bar Style",
+    "type": "colorpicker",
+    "value": "black"
+  },
+  "zaytri_chatleaderboard_xpOuterShadowColor": {
+    "label": "Outer Shadow Color",
+    "group": "XP Bar Style",
+    "type": "colorpicker",
+    "value": "black"
+  },
+  "zaytri_chatleaderboard_xpInnerShadowColor": {
+    "label": "Inner Shadow Color",
+    "group": "XP Bar Style",
+    "type": "colorpicker",
+    "value": "rgba(255, 255, 255, 0.4)"
+  },
+  "zaytri_chatleaderboard_xpMargin": {
+    "label": "Outer Spacing (top right bottom left)",
+    "group": "XP Bar Style",
+    "type": "string",
+    "value": "0px 0px 0px 0px"
+  },
+  "zaytri_chatleaderboard_xpPadding": {
+    "label": "Inner Spacing (top right bottom left)",
+    "group": "XP Bar Style",
+    "type": "string",
+    "value": "0px 0px 0px 0px"
+  },
+  "zaytri_chatleaderboard_xpBorderWidth": {
+    "label": "Border Thickness (px)",
+    "group": "XP Bar Style",
+    "type": "number",
+    "value": 0,
+    "min": 0,
+    "step": 1
+  },
+  "zaytri_chatleaderboard_xpBorderRadius": {
+    "label": "Rounded Corner Size (px)",
+    "group": "XP Bar Style",
+    "type": "number",
+    "value": 5,
+    "min": 0,
+    "step": 1
+  },
+  "zaytri_chatleaderboard_xpOuterShadowOffset": {
+    "label": "Outer Shadow Position (x y)",
+    "group": "XP Bar Style",
+    "type": "string",
+    "value": "0px 0px"
+  },
+  "zaytri_chatleaderboard_xpOuterShadowBlur": {
+    "label": "Outer Shadow Blur (px)",
+    "group": "XP Bar Style",
+    "type": "number",
+    "value": 0,
+    "min": 0,
+    "step": 1
+  },
+  "zaytri_chatleaderboard_xpOuterShadowSpread": {
+    "label": "Outer Shadow Size (px)",
+    "group": "XP Bar Style",
+    "type": "number",
+    "value": 0,
+    "min": 0,
+    "step": 1
+  },
+  "zaytri_chatleaderboard_xpInnerShadowOffset": {
+    "label": "Inner Shadow Position (x y)",
+    "group": "XP Bar Style",
+    "type": "string",
+    "value": "2px 5px"
+  },
+  "zaytri_chatleaderboard_xpInnerShadowBlur": {
+    "label": "Inner Shadow Blur (px)",
+    "group": "XP Bar Style",
+    "type": "number",
+    "value": 10,
+    "min": 0,
+    "step": 1
+  },
+  "zaytri_chatleaderboard_xpInnerShadowSpread": {
+    "label": "Inner Shadow Size (px)",
+    "group": "XP Bar Style",
+    "type": "number",
+    "value": 1,
+    "min": 0,
+    "step": 1
+  },
+  "zaytri_chatleaderboard_enableAdvancedTitle": {
     "label": "Enable Advanced Settings?",
     "group": "Advanced",
     "type": "hidden"
   },
-  "enableAdvanced": {
+  "zaytri_chatleaderboard_enableAdvanced": {
     "label": "( Advanced requires valid API token )",
     "group": "Advanced",
     "type": "dropdown",
@@ -935,24 +974,24 @@
       "false": "No"
     }
   },
-  "apiTokenTitle": {
+  "zaytri_chatleaderboard_apiTokenTitle": {
     "label": "Jebaited.net API Token",
     "group": "Advanced",
     "type": "hidden"
   },
-  "apiToken": {
+  "zaytri_chatleaderboard_apiToken": {
     "label": "( Select botMsg scope )",
     "group": "Advanced",
     "type": "text",
-    "value": "Copy/paste API token here"
+    "value": "Paste API token here"
   },
-  "rankCommand": {
+  "zaytri_chatleaderboard_rankCommand": {
     "label": "Command to check rank",
     "group": "Advanced",
     "type": "string",
     "value": "!rank"
   },
-  "rankCommandCooldown": {
+  "zaytri_chatleaderboard_rankCommandCooldown": {
     "label": "Rank command cooldown (seconds)",
     "group": "Advanced",
     "type": "number",
@@ -961,7 +1000,7 @@
     "step": 0
   },
   "widgetName": {
-    "label": "Chat Leaderboard v2.2.5",
+    "label": "Chat Leaderboard v3.0.0",
     "group": "About",
     "type": "hidden",
     "value": "Chat Leaderboard"
@@ -976,7 +1015,7 @@
     "label": "Twitch: twitch.tv/zaytri",
     "group": "About",
     "type": "hidden",
-    "value": "2.2.5"
+    "value": "3.0.0"
   },
   "widgetUpdateUrl": {
     "label": "Twitter / TikTok / Instagram: @imzaytri",
