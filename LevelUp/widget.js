@@ -35,6 +35,14 @@ const FieldData = {
 
 const themeData = {}
 
+function prefix(key) {
+  return `zaytri_chatleaderboard_${key}`
+}
+
+function removePrefix(key) {
+  return key.split('_').pop()
+}
+
 const themeKeys = [
   'layout',
   'defaultEmote',
@@ -151,7 +159,7 @@ const themeKeys = [
   'emoteShadowColor',
   'emoteShadowOffset',
   'emoteShadowBlur',
-].map(key => `zaytri_chatleaderboard_${key}`)
+].map(prefix)
 
 const EVENT = {
   MESSAGE: 'message',
@@ -207,10 +215,6 @@ function loadFieldData(data) {
   }
 
   for (const key of themeKeys) themeData[key] = data[key]
-}
-
-function prefix(key) {
-  return `zaytri_chatleaderboard.${key}`
 }
 
 function loadAPI() {
@@ -296,8 +300,8 @@ function onButton(event) {
   const { listener, field, value } = event
   if (listener !== 'widget-button' && value !== 'zaytri_chatleaderboard') return
 
-  switch(field) {
-    case prefix('testButton'): {
+  switch(removePrefix(field)) {
+    case 'testButton': {
       db = {}
       render()
       FieldData.test = !FieldData.test
@@ -315,12 +319,12 @@ function onButton(event) {
       break
     }
 
-    case prefix('importButton'): {
+    case 'importButton': {
       importThemeData()
       break
     }
 
-    case prefix('exportButton'): {
+    case 'exportButton': {
       exportThemeData()
       break
     }
