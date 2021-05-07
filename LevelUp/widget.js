@@ -335,16 +335,16 @@ function onButton(event) {
 
 function importThemeData() {
   if (!FieldData.importData) {
-    SE_API.setField('importData', 'Error: Invalid Theme Data!')
+    SE_API.setField(prefix('importData'), 'Error: Invalid Theme Data!')
   } else {
     for (const key of themeKeys) SE_API.setField(key, FieldData.importData[key])
-  	SE_API.setField('importData', 'Import Successful!')
+  	SE_API.setField(prefix('importData'), 'Import Successful!')
   }
 }
 
 
 function exportThemeData() {
-  SE_API.setField('exportData', JSON.stringify(themeData))
+  SE_API.setField(prefix('exportData'), JSON.stringify(themeData))
 }
 
 // ------------------------------------------
