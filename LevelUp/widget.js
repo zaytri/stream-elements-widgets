@@ -46,6 +46,7 @@ function removePrefix(key) {
 const themeKeys = [
   'layout',
   'defaultEmote',
+  'levelPrefix',
   'mainBackgroundColor',
   'mainBorderColor',
   'mainBorderWidth',
@@ -337,11 +338,13 @@ function importThemeData() {
   if (!FieldData.importData) {
     SE_API.setField(prefix('importData'), 'Error: Invalid Theme Data!')
   } else {
-    for (const key of themeKeys) SE_API.setField(key, FieldData.importData[key])
+    for (const key of themeKeys) {
+      const value = FieldData.importData[key]
+      if (typeof value !== 'undefined') SE_API.setField(key, value)
+    }
   	SE_API.setField(prefix('importData'), 'Import Successful!')
   }
 }
-
 
 function exportThemeData() {
   SE_API.setField(prefix('exportData'), JSON.stringify(themeData))

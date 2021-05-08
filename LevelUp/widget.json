@@ -17,7 +17,7 @@
     "label": "Level Prefix",
     "group": "General",
     "type": "text",
-    "value": "Lv"
+    "value": "Level"
   },
   "zaytri_chatleaderboard_removeCommandLabel": {
     "label": "Command to remove from leaderboard",
@@ -1000,7 +1000,7 @@
     "step": 0
   },
   "widgetName": {
-    "label": "Chat Leaderboard v3.0.0",
+    "label": "Chat Leaderboard v3.0.2",
     "group": "About",
     "type": "hidden",
     "value": "Chat Leaderboard"
@@ -1015,7 +1015,7 @@
     "label": "Twitch: twitch.tv/zaytri",
     "group": "About",
     "type": "hidden",
-    "value": "3.0.0"
+    "value": "3.0.2"
   },
   "widgetUpdateUrl": {
     "label": "Twitter / TikTok / Instagram: @imzaytri",
