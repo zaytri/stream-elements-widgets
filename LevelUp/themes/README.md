@@ -1,24 +1,37 @@
-### Twitch
-[Twitch Theme Data](themes/twitch.json)
+# Chat Leaderboard Themes
+Here are some pre-built themes that you can import into your Chat Leaderboard!
 
-![Twitch Theme Preview](themes/twitch_preview.png)
+## Theme Import Tutorial
+1. Click one of the **theme data** links below
+1. Copy everything there
+1. Go to your **Chat Leaderboard** widget
+1. Open **Settings** > **Theme Import/Export**
+1. Paste into the field **under** the **Import Theme** button
+1. Click the **Import Theme** button
+1. It should now say **"Import Successful!"** under the button
+1. Scroll up to **Preview** and click the **Toggle Preview** button to see the theme!
 
-### Hibiscus
-[Hibiscus Theme Data](themes/hibiscus.json)
+## Melon (Default Theme)
+[Melon Theme Data](melon.json?raw=true)
 
-![Hibiscus Theme Preview](themes/hibiscus_preview.png)
+![Melon Theme Preview](melon_preview.png)
 
-### Ice Cream
-[Ice Cream Theme Data](themes/icecream.json)
+## Twitch
+[Twitch Theme Data](twitch.json?raw=true)
 
-![Ice Cream Theme Preview](themes/icecream_preview.png)
+![Twitch Theme Preview](twitch_preview.png)
 
-### Frog
-[Frog Theme Data](themes/frog.json)
+## Hibiscus
+[Hibiscus Theme Data](hibiscus.json?raw=true)
 
-![Frog Theme Preview](themes/frog_preview.png)
+![Hibiscus Theme Preview](hibiscus_preview.png)
 
-### Melon
-[Melon Theme Data](themes/melon.json)
+## Ice Cream
+[Ice Cream Theme Data](icecream.json?raw=true)
 
-![Melon Theme Preview](themes/melon_preview.png)
+![Ice Cream Theme Preview](icecream_preview.png)
+
+## Frog
+[Frog Theme Data](frog.json?raw=true)
+
+![Frog Theme Preview](frog_preview.png)
