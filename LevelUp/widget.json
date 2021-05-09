@@ -1005,7 +1005,7 @@
     "type": "hidden"
   },
   "widgetName": {
-    "label": "Chat Leaderboard v3.0.4",
+    "label": "Chat Leaderboard v3.0.5",
     "group": "About",
     "type": "hidden",
     "value": "Chat Leaderboard"
@@ -1020,7 +1020,7 @@
     "label": "Twitch: twitch.tv/zaytri",
     "group": "About",
     "type": "hidden",
-    "value": "3.0.4"
+    "value": "3.0.5"
   },
   "widgetUpdateUrl": {
     "label": "Twitter / TikTok / Instagram: @imzaytri",
