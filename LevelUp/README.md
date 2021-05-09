@@ -11,7 +11,7 @@ There are many layers of customization, including:
 - And more!
 
 ## Demo
-Video: https://youtu.be/Cdr-FcjS_RU
+Video: https://youtu.be/dz9_clq6Hjg
 
 ## Themes
 Pre-built themes can be found [over here](themes)!

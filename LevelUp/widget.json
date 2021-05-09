@@ -999,8 +999,13 @@
     "min": 0,
     "step": 0
   },
+  "widgetHelp": {
+    "label": "https://youtu.be/dz9_clq6Hjg",
+    "group": "Help",
+    "type": "hidden"
+  },
   "widgetName": {
-    "label": "Chat Leaderboard v3.0.3",
+    "label": "Chat Leaderboard v3.0.4",
     "group": "About",
     "type": "hidden",
     "value": "Chat Leaderboard"
@@ -1015,7 +1020,7 @@
     "label": "Twitch: twitch.tv/zaytri",
     "group": "About",
     "type": "hidden",
-    "value": "3.0.3"
+    "value": "3.0.4"
   },
   "widgetUpdateUrl": {
     "label": "Twitter / TikTok / Instagram: @imzaytri",
