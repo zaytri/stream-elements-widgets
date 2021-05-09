@@ -8,7 +8,7 @@ let db = {}
 let jebaitedAPI
 let validToken = false
 
-const DEFAULT_EMOTE = 'https://cdn.streamelements.com/uploads/42e2c327-5bc1-4b20-b954-3063b55908d5.png'
+const DEFAULT_EMOTE = 'https://i.imgur.com/FHHwNqT.png'
 
 const FieldData = {
   ignoreList: [],
