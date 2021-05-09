@@ -7,26 +7,20 @@
   },
   "zaytri_chatleaderboard_rankCount": {
     "label": "Number of ranks on leaderboard",
-    "group": "General",
+    "group": "Basic",
     "type": "number",
     "value": 5,
     "min": 1,
     "step": 1
   },
-  "zaytri_chatleaderboard_levelPrefix": {
-    "label": "Level Prefix",
-    "group": "General",
-    "type": "text",
-    "value": "Level"
-  },
   "zaytri_chatleaderboard_removeCommandLabel": {
     "label": "Command to remove from leaderboard",
-    "group": "General",
+    "group": "Basic",
     "type": "hidden"
   },
   "zaytri_chatleaderboard_removeCommand": {
     "label": "( Usage: !deleterank TwitchUser )",
-    "group": "General",
+    "group": "Basic",
     "type": "string",
     "value": "!deleterank"
   },
@@ -113,10 +107,10 @@
     "value": "zaytri_chatleaderboard"
   },
   "zaytri_chatleaderboard_importData": {
-    "label": "Theme Data to Import",
+    "label": "Paste Imported Theme Data Here",
     "group": "Theme Import/Export",
     "type": "text",
-    "value": "Paste theme data here"
+    "value": ""
   },
   "zaytri_chatleaderboard_layout": {
     "label": "Choose Layout",
@@ -136,6 +130,12 @@
       "10": "Layout 10"
     }
   },
+  "zaytri_chatleaderboard_levelPrefix": {
+    "label": "Level Prefix",
+    "group": "General Styles",
+    "type": "text",
+    "value": "Lv"
+  },
   "zaytri_chatleaderboard_xpBoxMinHeight": {
     "label": "XP Box Minimum Height (px)",
     "group": "General Styles",
@@ -143,6 +143,16 @@
     "value": 25,
     "min": 0,
     "step": 1
+  },
+  "zaytri_chatleaderboard_displayEmote": {
+    "label": "Display emotes?",
+    "group": "General Styles",
+    "type": "dropdown",
+    "value": "flex",
+    "options": {
+      "flex": "Yes",
+      "none": "No"
+    }
   },
   "zaytri_chatleaderboard_useCustomImagesTitle": {
     "label": "Replace emotes with custom images?",
@@ -157,16 +167,6 @@
     "options": {
       "true": "Yes",
       "false": "No"
-    }
-  },
-  "zaytri_chatleaderboard_displayEmote": {
-    "label": "Display emotes?",
-    "group": "General Styles",
-    "type": "dropdown",
-    "value": "flex",
-    "options": {
-      "flex": "Yes",
-      "none": "No"
     }
   },
   "zaytri_chatleaderboard_defaultEmote": {
@@ -1000,7 +1000,7 @@
     "step": 0
   },
   "widgetName": {
-    "label": "Chat Leaderboard v3.0.2",
+    "label": "Chat Leaderboard v3.0.3",
     "group": "About",
     "type": "hidden",
     "value": "Chat Leaderboard"
@@ -1015,7 +1015,7 @@
     "label": "Twitch: twitch.tv/zaytri",
     "group": "About",
     "type": "hidden",
-    "value": "3.0.2"
+    "value": "3.0.3"
   },
   "widgetUpdateUrl": {
     "label": "Twitter / TikTok / Instagram: @imzaytri",
