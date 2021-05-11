@@ -35,3 +35,8 @@ Here are some pre-built themes that you can import into your Chat Leaderboard!
 [Frog Theme Data](frog/theme.json?raw=true)
 
 ![Frog Theme Preview](frog/preview.png)
+
+## Beach
+[Beach Theme Data](beach/theme.json?raw=true)
+
+![Beach Theme Preview](beach/preview.png)
