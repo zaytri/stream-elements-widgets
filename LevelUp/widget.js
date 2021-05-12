@@ -299,7 +299,7 @@ function deleteMessages(userId) {
 
 function onButton(event) {
   const { listener, field, value } = event
-  if (listener !== 'widget-button' && value !== 'zaytri_chatleaderboard') return
+  if (listener !== 'widget-button' || value !== 'zaytri_chatleaderboard') return
 
   switch(removePrefix(field)) {
     case 'testButton': {
