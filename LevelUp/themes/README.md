@@ -40,3 +40,8 @@ Here are some pre-built themes that you can import into your Chat Leaderboard!
 [Beach Theme Data](beach/theme.json?raw=true)
 
 ![Beach Theme Preview](beach/preview.png)
+
+## Sus
+[Sus Theme Data](sus/theme.json?raw=true)
+
+![Sus Theme Preview](sus/preview.png)
