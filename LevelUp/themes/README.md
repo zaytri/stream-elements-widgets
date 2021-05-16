@@ -45,3 +45,8 @@ Here are some pre-built themes that you can import into your Chat Leaderboard!
 [Sus Theme Data](sus/theme.json?raw=true)
 
 ![Sus Theme Preview](sus/preview.png)
+
+## Cotton Candy
+[Cotton Candy Theme Data](cottoncandy/theme.json?raw=true)
+
+![Cotton Candy Theme Preview](cottoncandy/preview.png)
