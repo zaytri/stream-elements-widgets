@@ -13,4 +13,4 @@ Chat messages appear in a random location on screen!
   - A minimum delay of 1 second is also necessary for position and size calculations
 
 ## Demo
-Watch it in action on my Twitch! https://www.twitch.tv/zaytri
+https://www.tiktok.com/@imzaytri/video/6962427336516062469
