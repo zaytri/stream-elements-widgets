@@ -1,5 +1,5 @@
 # Chat Leaderboard Themes
-Here are some pre-built themes that you can import into your Chat Leaderboard!
+Here are some pre-built themes that you can import into your [Chat Leaderboard](../LevelUp)!
 
 ## Theme Import Tutorial
 1. Click one of the **theme data** links below
