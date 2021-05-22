@@ -1,4 +1,10 @@
 {
+  "zaytri_chatbubbles_testMessageButton": {
+    "label": "Send Test Message",
+    "group": "Preview",
+    "type": "button",
+    "value": "zaytri_chatbubbles"
+  },
   "lifetime": {
     "type": "number",
     "label": "Visible Message Lifetime (seconds)",
@@ -14,6 +20,56 @@
     "min": 1,
     "step": 1,
     "group": "Timing"
+  },
+  "allowedStringsLabel": {
+    "label": "Only Allow these Phrases",
+    "group": "Filters",
+    "type": "hidden"
+  },
+  "allowedStrings": {
+    "type": "text",
+    "label": "(Comma Separated)",
+    "value": "",
+    "group": "Filters"
+  },
+  "emoteOnly": {
+    "type": "dropdown",
+    "label": "Show only emote-only messages",
+    "value": "false",
+    "options": {
+      "true": "Yes",
+      "false": "No"
+    },
+    "group": "Filters"
+  },
+  "raidCooldownLabel": {
+    "label": "Show only for _ seconds after raid",
+    "group": "Filters",
+    "type": "hidden"
+  },
+  "raidCooldown": {
+    "type": "number",
+    "label": "(0 to disable this feature)",
+    "value": 0,
+    "min": 0,
+    "step": 1,
+    "group": "Filters"
+  },
+  "messageCooldown": {
+    "type": "number",
+    "label": "Message cooldown (seconds)",
+    "value": 0,
+    "min": 0,
+    "step": 1,
+    "group": "Filters"
+  },
+  "minMessages": {
+    "type": "number",
+    "label": "Minimum messages before bubble",
+    "value": 0,
+    "min": 0,
+    "step": 1,
+    "group": "Filters"
   },
   "userLevel": {
     "type": "dropdown",
@@ -91,7 +147,7 @@
   "spacingButton": {
     "type": "button",
     "label": "Toggle Padding Bounds",
-    "value": "Toggle Padding Bounds",
+    "value": "zaytri_chatbubbles",
     "group": "Styles"
   },
   "soundUrl": {
@@ -110,9 +166,9 @@
     "group": "Sound"
   },
   "widgetName": {
-    "label": "Pop-Up Chat v1.5",
+    "label": "Chat Bubbles v1.6.0",
     "type": "hidden",
-    "value": "Pop-Up Chat",
+    "value": "Chat Bubbles",
     "group": "About"
   },
   "widgetAuthor": {
@@ -124,7 +180,7 @@
   "widgetVersion": {
     "label": "Twitch: twitch.tv/zaytri",
     "type": "hidden",
-    "value": "1.5",
+    "value": "1.6.0",
     "group": "About"
   },
   "widgetUpdateUrl": {

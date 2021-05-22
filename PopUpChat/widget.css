@@ -51,7 +51,7 @@ main.dark { color: white; }
 
 /* --- [Message Container] --- */
 
-.container {
+.bubble {
   --backgroundColor: #FFFD;
   --cornerSize: 23px;
   --userColor: #ff4a80;
@@ -76,7 +76,7 @@ main.dark { color: white; }
   -webkit-mask-repeat: no-repeat;
 }
 
-.container.animate {
+.bubble.animate {
   visibility: visible;
   animation: pop .5s calc({lifetime}s - .5s);
 }
@@ -103,16 +103,16 @@ main.dark { color: white; }
   background-repeat: no-repeat;
 }
 
-.dark .container { --backgroundColor: #000B }
+.dark .bubble { --backgroundColor: #000B }
 
 /* --- [Container Blocks] --- */
 
-.header {
+.username-box {
   z-index: 1;
   background-color: var(--userColor);
 }
 
-.title {
+.username {
   text-shadow: 0 2px 0 #0002;
   padding-left: 3px;
   padding-right: 3px;
@@ -121,7 +121,7 @@ main.dark { color: white; }
   color: black;
 }
 
-.user-color-dark .title {
+.user-color-dark .username {
   color: white;
   text-shadow: 0 2px 0 #0006;
 }

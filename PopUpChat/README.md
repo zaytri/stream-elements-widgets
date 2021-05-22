@@ -1,4 +1,4 @@
-# Pop-Up Chat
+# Chat Bubbles
 Chat messages appear in a random location on screen!
 
 ## Features
