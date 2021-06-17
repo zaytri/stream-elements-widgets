@@ -1,67 +1,63 @@
 * {
   font-family: 'Yusei Magic', sans-serif;
-  font-size: 24px;
-  color: #fc6c85;
-  padding: 0;
   margin: 0;
-}
-
-.state {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-end;
-  padding: 5px;
-  opacity: 1;
-}
-
-.state2 {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-}
-
-.p1, .p2, .name {
-  flex: 1;
-  background-color: #0008;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  border: 3px solid currentcolor;
+  padding: 0;
+  color: #952135;
   box-sizing: border-box;
-  padding: 0 10px;
-  text-shadow: 0 0 5px black, 0 0 6px currentcolor;
-  box-shadow: inset 0 0 5px currentcolor;
+  font-size: 18px;
 }
 
-.p1 {
-  text-align: start;
-  border-top-right-radius: 0;
-  border-right-width: 0;
+main {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  padding: 30px;
 }
 
-.p2 {
-  text-align: end;
-  border-top-left-radius: 0;
-  border-left-width: 0;
+.row, .column {
+  display: flex;
+  justify-content: center;
+  flex: 1;
 }
 
-.p1, .p2 {
-  border-color: #fc6c85;
-  box-shadow: inset 0 0 5px #fc6c85;
+.row {
+  flex-direction: row;
 }
 
-.state2 .p1, .state2 .p2, .state2 .name {
-  border-color: transparent;
-  color: transparent;
-  background-color: transparent;
-  box-shadow: unset;
-  text-shadow: 0 0 0 transparent;
+.column {
+  flex-direction: column;
+}
+
+.box {
+  background-color: #fc6c85;
+  padding: 5px 10px;
+  border: 2px solid #BE384E;
+  box-shadow: 2px 2px 0 1px #BE384E, inset 5px 15px 40px 1px #FFA7B5;
+  border-radius: 20px;
+  flex: 0;
+  display: flex;
+  align-items: flex-end;
+  position: relative;
 }
 
 .name {
-  text-align: center;
-  font-size: 36px;
-  padding-bottom: 5px;
-  margin-bottom: -5px;
-  color: #a9e694;
+  font-size: 32px;
+  padding: 0 10px;
+}
+
+.pronoun {
+  padding-bottom: 3px;
+  width: 70px;
+}
+
+.state-2 {
+  position: absolute;
+  padding: inherit;
+  width: 100%;
+  bottom: 3px;
+  opacity: 0;
+}
+
+.pronoun-2 {
+  text-align: right;
 }

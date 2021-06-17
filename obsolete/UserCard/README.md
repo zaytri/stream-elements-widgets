@@ -1,7 +1,5 @@
 # User Card
-My obsolete overlay for showing my name and pronouns!
+My overlay for showing my name and pronouns!
 
 ## Features
-- Adjustable **name**
-- Adjustable **pronouns** (although it's designed for 2 sets of pronouns)
-- Adjustable **swap duration** (the pronouns fade out/in and swap positions)
+- Pronouns swap every 30 seconds with a subtle crossfade effect
