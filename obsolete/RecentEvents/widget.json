@@ -1,36 +1,26 @@
 {
-  "verticalAlign": {
-    "type": "dropdown",
-    "label": "Vertical Alignment",
-    "value": "top",
-    "options": {
-      "top": "Top",
-      "bottom": "Bottom"
-    }
-  },
-  "horizontalAlign": {
-    "type": "dropdown",
-    "label": "Horizontal Alignment",
-    "value": "right",
-    "options": {
-      "left": "Left",
-      "right": "Right"
-    }
-  },
   "eventsLimit": {
     "type": "number",
     "label": "Limit displayed events to:",
     "value": 5
   },
   "includeFollowers": {
-    "type": "checkbox",
     "label": "Display followers?",
-    "value": true
+    "type": "dropdown",
+    "value": "true",
+    "options": {
+      "true": "Yes",
+      "false": "No"
+    }
   },
   "includeHosts": {
-    "type": "checkbox",
     "label": "Display hosts?",
-    "value": true
+    "type": "dropdown",
+    "value": "true",
+    "options": {
+      "true": "Yes",
+      "false": "No"
+    }
   },
   "minHost": {
     "type": "number",
@@ -38,9 +28,13 @@
     "value": 1
   },
   "includeRaids": {
-    "type": "checkbox",
     "label": "Display raids?",
-    "value": true
+    "type": "dropdown",
+    "value": "true",
+    "options": {
+      "true": "Yes",
+      "false": "No"
+    }
   },
   "minRaid": {
     "type": "number",
@@ -48,14 +42,22 @@
     "value": 1
   },
   "includeSubs": {
-    "type": "checkbox",
     "label": "Display subscribers?",
-    "value": true
+    "type": "dropdown",
+    "value": "true",
+    "options": {
+      "true": "Yes",
+      "false": "No"
+    }
   },
   "includeTips": {
-    "type": "checkbox",
     "label": "Display tips?",
-    "value": true
+    "type": "dropdown",
+    "value": "true",
+    "options": {
+      "true": "Yes",
+      "false": "No"
+    }
   },
   "minTip": {
     "type": "number",
@@ -63,9 +65,13 @@
     "value": 1
   },
   "includeCheers": {
-    "type": "checkbox",
     "label": "Display cheers?",
-    "value": true
+    "type": "dropdown",
+    "value": "true",
+    "options": {
+      "true": "Yes",
+      "false": "No"
+    }
   },
   "minCheer": {
     "type": "number",
@@ -73,19 +79,27 @@
     "value": 1
   },
   "widgetName": {
+    "label": "Recent Events v2.0",
     "type": "hidden",
-    "value": "Recent Events"
+    "value": "Recent Events",
+    "group": "About"
   },
   "widgetAuthor": {
+    "label": "Author: Zaytri",
     "type": "hidden",
-    "value": "Zaytri"
+    "value": "Zaytri",
+    "group": "About"
   },
   "widgetVersion": {
+    "label": "Twitch: twitch.tv/zaytri",
     "type": "hidden",
-    "value": "1.0"
+    "value": "2.0",
+    "group": "About"
   },
   "widgetUpdateUrl": {
+    "label": "Twitter / TikTok / Instagram: @imzaytri",
     "type": "hidden",
-    "value": "https://github.com/zaytri/stream-elements-widgets/blob/main/RecentEvents"
+    "value": "https://github.com/zaytri/stream-elements-widgets/blob/main/RecentEvents",
+    "group": "About"
   }
 }

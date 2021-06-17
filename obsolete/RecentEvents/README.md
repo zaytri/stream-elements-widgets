@@ -1,9 +1,8 @@
 # Recent Events
-My obsolete overlay for showing recent events (follower, subscriber, raid, etc.)!
+My overlay for showing recent events (follower, subscriber, raid, etc.)!
 
 ## Features
-- Spin animation when a new event occurs
-- Adjustable **alignment** (top or bottom, left or right)
+- Animation when a new event occurs
 - Adjustable **limit** of displayed events
 - Adjustable **display** of **followers**, **subscribers**, **hosts**, **raids**, **tips**, and **cheers**
   - Adjustable **minimum amount** to show for **hosts**, **raids**, **tips**, and **cheers**
