@@ -1,0 +1,40 @@
+{
+  "followGoal": {
+    "type": "number",
+    "label": "Follower Goal",
+    "value": 1,
+    "min": 0,
+    "step": 1
+  },
+  "subGoal": {
+    "type": "number",
+    "label": "Subscriber Goal",
+    "value": 1,
+    "min": 0,
+    "step": 1
+  },
+  "widgetName": {
+    "label": "Goal Bars v1.0",
+    "type": "hidden",
+    "value": "Goal Bars",
+    "group": "About"
+  },
+  "widgetAuthor": {
+    "label": "Author: Zaytri",
+    "type": "hidden",
+    "value": "Zaytri",
+    "group": "About"
+  },
+  "widgetVersion": {
+    "label": "Twitch: twitch.tv/zaytri",
+    "type": "hidden",
+    "value": "1.0",
+    "group": "About"
+  },
+  "widgetUpdateUrl": {
+    "label": "Twitter / TikTok / Instagram: @imzaytri",
+    "type": "hidden",
+    "value": "https://github.com/zaytri/stream-elements-widgets/blob/main/GoalBars",
+    "group": "About"
+  }
+}
