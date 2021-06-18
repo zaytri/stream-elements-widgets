@@ -177,7 +177,7 @@
     "group": "Sound"
   },
   "widgetName": {
-    "label": "Dynamic Chat Bubbles v1.7.1",
+    "label": "Dynamic Chat Bubbles v1.7.2",
     "type": "hidden",
     "value": "Dynamic Chat Bubbles",
     "group": "About"
@@ -191,7 +191,7 @@
   "widgetVersion": {
     "label": "Twitch: twitch.tv/zaytri",
     "type": "hidden",
-    "value": "1.7.1",
+    "value": "1.7.2",
     "group": "About"
   },
   "widgetUpdateUrl": {

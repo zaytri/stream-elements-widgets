@@ -64,9 +64,9 @@ const LEVEL = {
 }
 
 const ROLE = {
-  SUB: 'subscriber',
+  SUB: ['subscriber', 'founder'],
   VIP: 'vip',
-  MODS: ['mod', 'global_mod', 'staff', 'admin', 'broadcaster']
+  MODS: ['moderator', 'broadcaster']
 }
 
 const DATA = attribute => `data-${attribute}`
@@ -182,8 +182,8 @@ function onMessage(event) {
   if (isBlocked(name, nick)) return
 
   switch(FIELD_DATA.USER_LEVEL) {
-    case LEVEL.ONLY_SUB_VIP_MOD: if (!isRole([...ROLE.MODS, ROLE.SUB, ROLE.VIP])(badges)) return
-    case LEVEL.ONLY_SUB_MOD: if (!isRole([...ROLE.MODS, ROLE.SUB])(badges)) return
+    case LEVEL.ONLY_SUB_VIP_MOD: if (!isRole([...ROLE.MODS, ...ROLE.SUB, ROLE.VIP])(badges)) return
+    case LEVEL.ONLY_SUB_MOD: if (!isRole([...ROLE.MODS, ...ROLE.SUB])(badges)) return
     case LEVEL.ONLY_VIP_MOD: if (!isRole([...ROLE.MODS, ROLE.VIP])(badges)) return
     case LEVEL.ONLY_MOD: if (!isRole(ROLE.MODS)(badges)) return
     default: // none
