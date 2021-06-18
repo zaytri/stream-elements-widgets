@@ -402,15 +402,15 @@ const TEST_MESSAGES = [
 function onButton(event) {
   const { listener, field, value } = event
 
-  if (listener !== 'widget-button' || value !== 'zaytri_chatbubbles') return
+  if (listener !== 'widget-button' || value !== 'zaytri_dynamicchatbubbles') return
 
   switch(field) {
-    case 'zaytri_chatbubbles_spacingButton': {
+    case 'zaytri_dynamicchatbubbles_spacingButton': {
       $('main').toggleClass(CLASS.SHOW_PADDING)
       break
     }
 
-    case 'zaytri_chatbubbles_testMessageButton': {
+    case 'zaytri_dynamicchatbubbles_testMessageButton': {
       sendTestMessage(100)
       break
     }

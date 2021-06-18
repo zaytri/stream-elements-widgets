@@ -1,5 +1,5 @@
 {
-  "zaytri_chatbubbles_testMessageButton": {
+  "zaytri_dynamicchatbubbles_testMessageButton": {
     "label": "Send Test Message",
     "group": "Preview",
     "type": "button",
@@ -155,7 +155,7 @@
     "step": 1,
     "group": "Styles"
   },
-  "zaytri_chatbubbles_spacingButton": {
+  "zaytri_dynamicchatbubbles_spacingButton": {
     "type": "button",
     "label": "Toggle Padding Bounds",
     "value": "zaytri_chatbubbles",
@@ -177,7 +177,7 @@
     "group": "Sound"
   },
   "widgetName": {
-    "label": "Dynamic Chat Bubbles v1.7.0",
+    "label": "Dynamic Chat Bubbles v1.7.1",
     "type": "hidden",
     "value": "Dynamic Chat Bubbles",
     "group": "About"
@@ -191,13 +191,13 @@
   "widgetVersion": {
     "label": "Twitch: twitch.tv/zaytri",
     "type": "hidden",
-    "value": "1.7.0",
+    "value": "1.7.1",
     "group": "About"
   },
   "widgetUpdateUrl": {
     "label": "Twitter / TikTok / Instagram: @imzaytri",
     "type": "hidden",
-    "value": "https://github.com/zaytri/stream-elements-widgets/blob/main/PopUpChat",
+    "value": "https://github.com/zaytri/stream-elements-widgets/blob/main/DynamicChatBubbles",
     "group": "About"
   }
 }
