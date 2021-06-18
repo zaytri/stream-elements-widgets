@@ -116,6 +116,17 @@
     },
     "group": "Styles"
   },
+  "animation": {
+    "type": "dropdown",
+    "label": "Animation Type",
+    "value": "dynamic",
+    "options": {
+      "dynamic": "Dynamic",
+      "fade": "Fade",
+      "none": "None"
+    },
+    "group": "Styles"
+  },
   "highlightMode": {
     "type": "dropdown",
     "label": "Highlight Mode",
@@ -144,7 +155,7 @@
     "step": 1,
     "group": "Styles"
   },
-  "spacingButton": {
+  "zaytri_chatbubbles_spacingButton": {
     "type": "button",
     "label": "Toggle Padding Bounds",
     "value": "zaytri_chatbubbles",
@@ -166,9 +177,9 @@
     "group": "Sound"
   },
   "widgetName": {
-    "label": "Chat Bubbles v1.6.0",
+    "label": "Dynamic Chat Bubbles v1.7.0",
     "type": "hidden",
-    "value": "Chat Bubbles",
+    "value": "Dynamic Chat Bubbles",
     "group": "About"
   },
   "widgetAuthor": {
@@ -180,7 +191,7 @@
   "widgetVersion": {
     "label": "Twitch: twitch.tv/zaytri",
     "type": "hidden",
-    "value": "1.6.0",
+    "value": "1.7.0",
     "group": "About"
   },
   "widgetUpdateUrl": {

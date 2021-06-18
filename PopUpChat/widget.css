@@ -78,7 +78,14 @@ main.dark { color: white; }
 
 .bubble.animate {
   visibility: visible;
+}
+
+.bubble.dynamic {
   animation: pop .5s calc({lifetime}s - .5s);
+}
+
+.bubble.fade {
+  animation: fade .5s calc({lifetime}s - .5s), fade reverse .5s;
 }
 
 .container-background {
@@ -136,7 +143,7 @@ main.dark { color: white; }
   max-height: 300px;
 }
 
-.animate .message { animation: expand 2s; }
+.dynamic .message { animation: expand 2s; }
 
 /* --- [Message Parts] --- */
 
@@ -149,7 +156,7 @@ main.dark { color: white; }
   vertical-align: middle;
 }
 
-.animate .text, .animate .emote { animation: fade 1.5s; }
+.dynamic .text, .dynamic .emote { animation: fadeMessage 1.5s; }
 
 .emote-1 { height: 32px; margin: -.25rem 0; }
 .emote-2 { height: 56px; margin: -.25rem 0; }
@@ -199,8 +206,13 @@ main.dark { color: white; }
   to { opacity: 0; transform: scale(0); }
 }
 
-@keyframes fade {
+@keyframes fadeMessage {
   0%, 30% { opacity: 0; }
+}
+
+@keyframes fade {
+  from { opacity: 1; }
+  to { opacity: 0; }
 }
 
 @keyframes expand {

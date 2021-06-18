@@ -93,6 +93,7 @@ const FIELD_DATA = {
   HIGHLIGHT_ONLY: false,
   HIGHLIGHT_MODE: 'rainbow',
   ACTION_MODE: 'italics',
+  ANIMATION: 'dynamic',
   USER_LEVEL: LEVEL.EVERYONE,
   ALLOW: [],
   BLOCK: [],
@@ -110,7 +111,8 @@ window.addEventListener('onWidgetLoad', obj => {
     volume, dark, subOnly, highlightOnly,
     highlightMode, actionMode, userLevel, allow,
     block, minMessages, messageCooldown,
-    emoteOnly, allowedStrings, raidCooldown
+    emoteOnly, allowedStrings, raidCooldown,
+    animation,
   } = obj.detail.fieldData
 
   FIELD_DATA.LIFETIME = lifetime
@@ -131,6 +133,7 @@ window.addEventListener('onWidgetLoad', obj => {
   FIELD_DATA.EMOTE_ONLY = emoteOnly === 'true'
   FIELD_DATA.ALLOWED_STRINGS = stringToArray(allowedStrings)
   FIELD_DATA.RAID_COOLDOWN = raidCooldown
+  FIELD_DATA.ANIMATION = animation
 
   if (FIELD_DATA.DARK) main.addClass(CLASS.DARK)
   else main.removeClass(CLASS.DARK)
@@ -195,7 +198,6 @@ function onMessage(event) {
   const parsed = parse(htmlEncode(text), emotes)
   const size = emoteSize(parsed)
 
-  console.log({ text, allowedStrings: FIELD_DATA.ALLOWED_STRINGS })
   if (FIELD_DATA.ALLOWED_STRINGS.length && !isAllowedString(text)) return
 
   if (FIELD_DATA.EMOTE_ONLY && size <= 1) return
@@ -222,11 +224,11 @@ function onMessage(event) {
     const width = $(currentMessage).outerWidth()
     const height = $(currentMessage).outerHeight()
 
-
     const maxWidth = $(`${currentMessage} .${CLASS.MESSAGE_WRAPPER}`).width() + 1
     const minWidth = $(`${currentMessage} .${CLASS.USERNAME}`).outerWidth()
 
-    const [left, top] = calcPosition(Math.max(minWidth, maxWidth), height)
+    // i'm not entirely sure why the +30 is necessary, but it makes the calculations work correctly
+    const [left, top] = calcPosition(Math.max(minWidth, maxWidth) + 30, height)
 
     $(`${currentMessage} .${CLASS.MESSAGE}`).css({
       '--dynamicWidth': Math.max(minWidth, maxWidth),
@@ -241,6 +243,7 @@ function onMessage(event) {
   window.setTimeout(_ => {
     sound.play()
     $(currentMessage).addClass(CLASS.ANIMATE)
+    $(currentMessage).addClass(FIELD_DATA.ANIMATION)
 
     window.setTimeout(_ => {
       deleteMessage(msgId)
@@ -402,7 +405,7 @@ function onButton(event) {
   if (listener !== 'widget-button' || value !== 'zaytri_chatbubbles') return
 
   switch(field) {
-    case 'spacingButton': {
+    case 'zaytri_chatbubbles_spacingButton': {
       $('main').toggleClass(CLASS.SHOW_PADDING)
       break
     }
