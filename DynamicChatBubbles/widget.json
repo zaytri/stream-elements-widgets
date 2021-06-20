@@ -106,6 +106,36 @@
     },
     "group": "Filters"
   },
+  "maxWidth": {
+    "type": "number",
+    "label": "Message Max Width (px)",
+    "value": 400,
+    "min": 0,
+    "step": 1,
+    "group": "Styles"
+  },
+  "maxHeight": {
+    "type": "number",
+    "label": "Message Max Height (px)",
+    "value": 300,
+    "min": 0,
+    "step": 1,
+    "group": "Styles"
+  },
+  "fontSize": {
+    "type": "number",
+    "label": "Font Size (px)",
+    "value": 16,
+    "min": 0,
+    "step": 1,
+    "group": "Styles"
+  },
+  "font": {
+    "type": "text",
+    "label": "Font",
+    "value": "Nunito",
+    "group": "Styles"
+  },
   "dark": {
     "type": "dropdown",
     "label": "Enable Dark Mode",
@@ -177,7 +207,7 @@
     "group": "Sound"
   },
   "widgetName": {
-    "label": "Dynamic Chat Bubbles v1.7.3",
+    "label": "Dynamic Chat Bubbles v1.7.4",
     "type": "hidden",
     "value": "Dynamic Chat Bubbles",
     "group": "About"
@@ -191,7 +221,7 @@
   "widgetVersion": {
     "label": "Twitch: twitch.tv/zaytri",
     "type": "hidden",
-    "value": "1.7.3",
+    "value": "1.7.4",
     "group": "About"
   },
   "widgetUpdateUrl": {

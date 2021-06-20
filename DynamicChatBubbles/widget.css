@@ -1,8 +1,8 @@
 /* --- [Globals] --- */
 
 * {
-  font-family: Nunito, sans-serif;
-  font-size: 16px;
+  font-family: '{font}', Nunito, sans-serif;
+  font-size: {messageFontSize}px;
   overflow: hidden;
   overflow-wrap: break-word;
   margin: 0;
@@ -134,13 +134,13 @@ main.dark { color: white; }
 }
 
 .message {
-  --dynamicWidth: 400px;
+  --dynamicWidth: {maxWidth}px;
   padding-top: 5px;
   padding-bottom: 10px;
   padding-left: 10px;
   padding-right: 10px;
   width: var(--dynamicWidth);
-  max-height: 300px;
+  max-height: {maxHeight}px;
 }
 
 .dynamic .message { animation: expand 2s; }
@@ -227,5 +227,5 @@ main.dark { color: white; }
     width: var(--dynamicWidth);
     max-height: 0;
   }
-  70% { max-height: 300px; }
+  70% { max-height: {maxHeight}px; }
 }

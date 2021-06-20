@@ -26,6 +26,8 @@ const REGEX_AFTER = '(?=\\s|$|[.,!])'
 let cooldown = false
 let raidActive = false
 let raidTimer = null
+let WINDOW_WIDTH = 0
+let WINDOW_HEIGHT = 0
 
 const PART_TYPE = {
   TEXT: 'text',
@@ -78,9 +80,6 @@ const DEFAULT_COLORS = [
   '#5fff77', '#00f5d4', '#00bbf9', '#4371fb',
   '#9b5de5', '#f670dd',
 ]
-
-let WINDOW_WIDTH = 1920
-let WINDOW_HEIGHT = 1080
 
 const FIELD_DATA = {
   LIFETIME: 10,
@@ -648,8 +647,8 @@ function random(min, max) {
 
 function calcPosition(width, height) {
   return [
-    random(FIELD_DATA.SPACING, WINDOW_WIDTH - FIELD_DATA.SPACING - width),
-    random(FIELD_DATA.SPACING, WINDOW_HEIGHT - FIELD_DATA.SPACING - height),
+    random(FIELD_DATA.SPACING, Math.max(FIELD_DATA.SPACING, WINDOW_WIDTH - FIELD_DATA.SPACING - width)),
+    random(FIELD_DATA.SPACING, Math.max(FIELD_DATA.SPACING, WINDOW_HEIGHT - FIELD_DATA.SPACING - height)),
   ]
 }
 
