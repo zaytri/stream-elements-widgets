@@ -1,233 +1,315 @@
 {
-  "zaytri_dynamicchatbubbles_testMessageButton": {
+  "testMessageButton": {
     "label": "Send Test Message",
     "group": "Preview",
     "type": "button",
     "value": "zaytri_dynamicchatbubbles"
   },
-  "lifetime": {
-    "type": "number",
-    "label": "Visible Message Lifetime (seconds)",
-    "value": 10,
-    "min": 1,
-    "step": 1,
-    "group": "Timing"
+  "previewType": {
+    "label": "Message Type",
+    "group": "Preview",
+    "type": "dropdown",
+    "value": "random",
+    "options": {
+      "random": "Random",
+      "default": "Normal",
+      "highlight": "Highlighted",
+      "action": "/me"
+    }
   },
-  "delay": {
-    "type": "number",
-    "label": "Delay Before Visible (seconds)",
-    "value": 1,
-    "min": 1,
-    "step": 1,
-    "group": "Timing"
+  "previewMessage": {
+    "label": "Custom Message (No Emotes)",
+    "group": "Preview",
+    "type": "text",
+    "value": ""
   },
-  "allowedStringsLabel": {
-    "label": "Only Allow these Phrases",
-    "group": "Filters",
+  "ignoreUserListLabel": {
+    "label": "Ignore these users:",
+    "group": "Bot Filters",
     "type": "hidden"
   },
-  "allowedStrings": {
-    "type": "text",
+  "ignoreUserList": {
     "label": "(Comma Separated)",
-    "value": "",
-    "group": "Filters"
+    "group": "Bot Filters",
+    "type": "text",
+    "value": "StreamElements, Streamlabs, Nightbot"
   },
-  "emoteOnly": {
-    "type": "dropdown",
-    "label": "Show only emote-only messages",
-    "value": "false",
-    "options": {
-      "true": "Yes",
-      "false": "No"
-    },
-    "group": "Filters"
-  },
-  "raidCooldownLabel": {
-    "label": "Show only for _ seconds after raid",
-    "group": "Filters",
+  "ignorePrefixListLabel": {
+    "label": "Ignore messages that start with:",
+    "group": "Bot Filters",
     "type": "hidden"
   },
-  "raidCooldown": {
-    "type": "number",
-    "label": "(0 to disable this feature)",
-    "value": 0,
-    "min": 0,
-    "step": 1,
-    "group": "Filters"
-  },
-  "messageCooldown": {
-    "type": "number",
-    "label": "Message cooldown (seconds)",
-    "value": 0,
-    "min": 0,
-    "step": 1,
-    "group": "Filters"
-  },
-  "minMessages": {
-    "type": "number",
-    "label": "Minimum messages before bubble",
-    "value": 0,
-    "min": 0,
-    "step": 1,
-    "group": "Filters"
-  },
-  "userLevel": {
-    "type": "dropdown",
-    "label": "Show messages from:",
-    "value": "0",
-    "options": {
-      "0": "Everyone",
-      "1": "Only Subs, VIPs, and Mods",
-      "2": "Only Subs and Mods",
-      "3": "Only VIPs and Mods",
-      "4": "Only Mods"
-    },
-    "group": "Filters"
-  },
-  "allow": {
+  "ignorePrefixList": {
+    "label": "(Comma Separated)",
+    "group": "Bot Filters",
     "type": "text",
-    "label": "Allow Only (Comma Separated Names)",
-    "value": "",
-    "group": "Filters"
+    "value": "!"
   },
-  "block": {
-    "type": "text",
-    "label": "Block (Comma Separated Names)",
-    "value": "",
-    "group": "Filters"
-  },
-  "highlightOnly": {
+  "includeEveryone": {
+    "label": "Show messages from everyone?",
+    "group": "User Filters",
     "type": "dropdown",
-    "label": "Show Only Highlighted Messages",
-    "value": "false",
-    "options": {
-      "true": "Yes",
-      "false": "No"
-    },
-    "group": "Filters"
-  },
-  "maxWidth": {
-    "type": "number",
-    "label": "Message Max Width (px)",
-    "value": 400,
-    "min": 0,
-    "step": 1,
-    "group": "Styles"
-  },
-  "maxHeight": {
-    "type": "number",
-    "label": "Message Max Height (px)",
-    "value": 300,
-    "min": 0,
-    "step": 1,
-    "group": "Styles"
-  },
-  "fontSize": {
-    "type": "number",
-    "label": "Font Size (px)",
-    "value": 16,
-    "min": 0,
-    "step": 1,
-    "group": "Styles"
-  },
-  "font": {
-    "type": "text",
-    "label": "Font",
-    "value": "Nunito",
-    "group": "Styles"
-  },
-  "dark": {
-    "type": "dropdown",
-    "label": "Enable Dark Mode",
     "value": "true",
     "options": {
       "true": "Yes",
       "false": "No"
-    },
-    "group": "Styles"
+    }
+  },
+  "includeSubs": {
+    "label": "Show messages from subscribers?",
+    "group": "User Filters",
+    "type": "dropdown",
+    "value": "true",
+    "options": {
+      "true": "Yes",
+      "false": "No"
+    }
+  },
+  "includeVIPs": {
+    "label": "Show messages from VIPs?",
+    "group": "User Filters",
+    "type": "dropdown",
+    "value": "true",
+    "options": {
+      "true": "Yes",
+      "false": "No"
+    }
+  },
+  "includeMods": {
+    "label": "Show messages from moderators?",
+    "group": "User Filters",
+    "type": "dropdown",
+    "value": "true",
+    "options": {
+      "true": "Yes",
+      "false": "No"
+    }
+  },
+  "allowUserListLabel": {
+    "label": "Show messages only from these users:",
+    "group": "User Filters",
+    "type": "hidden"
+  },
+  "allowUserList": {
+    "label": "(Comma Separated)",
+    "group": "User Filters",
+    "type": "text",
+    "value": ""
+  },
+  "emoteOnly": {
+    "label": "Show only emote-only messages?",
+    "group": "Message Filters",
+    "type": "dropdown",
+    "value": "false",
+    "options": {
+      "true": "Yes",
+      "false": "No"
+    }
+  },
+  "highlightOnly": {
+    "label": "Show only highlighted messages?",
+    "group": "Message Filters",
+    "type": "dropdown",
+    "value": "false",
+    "options": {
+      "true": "Yes",
+      "false": "No"
+    }
+  },
+  "allowedStringsLabel": {
+    "label": "Allow only these phrases:",
+    "group": "Message Filters",
+    "type": "hidden"
+  },
+  "allowedStrings": {
+    "label": "(Comma Separated)",
+    "group": "Message Filters",
+    "type": "text",
+    "value": ""
+  },
+  "minMessagesLabel": {
+    "label": "Minimum messages a user must send",
+    "group": "Message Filters",
+    "type": "hidden"
+  },
+  "minMessages": {
+    "label": "before their messages create bubbles",
+    "group": "Message Filters",
+    "type": "number",
+    "value": 0,
+    "step": 1,
+    "min": 0
+  },
+  "messageCooldownLabel": {
+    "label": "Ignore messages for this many",
+    "group": "Message Filters",
+    "type": "hidden"
+  },
+  "messageCooldown": {
+    "label": "seconds after a chat bubble appears",
+    "group": "Message Filters",
+    "type": "number",
+    "value": 0,
+    "step": 1,
+    "min": 0
+  },
+  "raidCooldownLabel": {
+    "label": "Show chat bubbles only for this many",
+    "group": "Message Filters",
+    "type": "hidden"
+  },
+  "raidCooldown": {
+    "label": "seconds after a raid (0 to disable)",
+    "group": "Message Filters",
+    "type": "number",
+    "value": 0,
+    "step": 1,
+    "min": 0
+  },
+  "googleFont": {
+    "label": "Font",
+    "group": "Text Styles",
+    "type": "googleFont",
+    "value": "Nunito"
+  },
+  "customFont": {
+    "label": "Custom Font",
+    "group": "Text Styles",
+    "type": "text",
+    "value": ""
+  },
+  "fontSize": {
+    "label": "Font Size (px)",
+    "group": "Text Styles",
+    "type": "number",
+    "value": 16,
+    "step": 1,
+    "min": 0
+  },
+  "maxWidth": {
+    "label": "Message Max Width (px)",
+    "group": "Bubble Styles",
+    "type": "number",
+    "value": 400,
+    "step": 1,
+    "min": 0
+  },
+  "maxHeight": {
+    "label": "Message Max Height (px)",
+    "group": "Bubble Styles",
+    "type": "number",
+    "value": 300,
+    "step": 1,
+    "min": 0
+  },
+  "darkMode": {
+    "label": "Enable Dark Mode?",
+    "group": "Bubble Styles",
+    "type": "dropdown",
+    "value": "false",
+    "options": {
+      "true": "Yes",
+      "false": "No"
+    }
   },
   "animation": {
-    "type": "dropdown",
     "label": "Animation Type",
+    "group": "Bubble Styles",
+    "type": "dropdown",
     "value": "dynamic",
     "options": {
       "dynamic": "Dynamic",
       "fade": "Fade",
       "none": "None"
-    },
-    "group": "Styles"
+    }
   },
-  "highlightMode": {
+  "highlightStyle": {
+    "label": "Highlighted Style",
+    "group": "Bubble Styles",
     "type": "dropdown",
-    "label": "Highlight Mode",
     "value": "rainbow",
     "options": {
       "rainbow": "Rainbow",
       "normal": "Normal"
-    },
-    "group": "Styles"
+    }
   },
-  "actionMode": {
+  "actionStyle": {
+    "label": "/me Style",
+    "group": "Bubble Styles",
     "type": "dropdown",
-    "label": "/me Mode",
     "value": "italics",
     "options": {
       "italics": "Italics",
       "normal": "Normal"
-    },
-    "group": "Styles"
+    }
   },
-  "spacing": {
-    "type": "number",
+  "padding": {
     "label": "Padding Bounds (px)",
+    "group": "Padding Bounds",
+    "type": "number",
     "value": 60,
     "min": 0,
-    "step": 1,
-    "group": "Styles"
+    "step": 1
   },
-  "zaytri_dynamicchatbubbles_spacingButton": {
-    "type": "button",
+  "paddingButton": {
     "label": "Toggle Padding Bounds",
-    "value": "zaytri_dynamicchatbubbles",
-    "group": "Styles"
+    "group": "Padding Bounds",
+    "type": "button",
+    "value": "zaytri_dynamicchatbubbles"
+  },
+  "lifetime": {
+    "label": "Chat Bubble Lifetime (seconds)",
+    "group": "Timing",
+    "type": "number",
+    "value": 10,
+    "step": 1,
+    "min": 1
+  },
+  "delay": {
+    "label": "Delay Before Visible (seconds)",
+    "group": "Timing",
+    "type": "number",
+    "value": 1,
+    "step": 1,
+    "min": 1
   },
   "soundUrl": {
-    "type": "sound-input",
     "label": "Chat Message Sound Effect",
-    "value": "",
-    "group": "Sound"
+    "group": "Sound",
+    "type": "sound-input",
+    "value": ""
   },
   "volume": {
+    "label": "Sound Effect Volume (%)",
+    "group": "Sound",
     "type": "slider",
-    "label": "Sound Effect Volume",
     "value": 50,
-    "min": 0,
-    "max": 100,
     "step": 1,
-    "group": "Sound"
+    "min": 0,
+    "max": 100
   },
   "widgetName": {
-    "label": "Dynamic Chat Bubbles v1.7.4",
+    "label": "Dynamic Chat Bubbles v2.0.0",
+    "group": "About",
     "type": "hidden",
-    "value": "Dynamic Chat Bubbles",
-    "group": "About"
+    "value": "Dynamic Chat Bubbles"
   },
   "widgetAuthor": {
     "label": "Author: Zaytri",
+    "group": "About",
     "type": "hidden",
-    "value": "Zaytri",
-    "group": "About"
+    "value": "Zaytri"
   },
   "widgetVersion": {
     "label": "Twitch: twitch.tv/zaytri",
+    "group": "About",
     "type": "hidden",
-    "value": "1.7.4",
-    "group": "About"
+    "value": "2.0.0"
   },
   "widgetUpdateUrl": {
     "label": "Twitter / TikTok / Instagram: @imzaytri",
+    "group": "About",
     "type": "hidden",
-    "value": "https://github.com/zaytri/stream-elements-widgets/blob/main/DynamicChatBubbles",
-    "group": "About"
+    "value": "https://github.com/zaytri/stream-elements-widgets/blob/main/DynamicChatBubbles"
   }
 }

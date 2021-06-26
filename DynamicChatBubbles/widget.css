@@ -1,8 +1,8 @@
 /* --- [Globals] --- */
 
 * {
-  font-family: '{font}', Nunito, sans-serif;
-  font-size: {messageFontSize}px;
+  font-family: '{googleFont}', '{customfont}', Nunito, Arial, sans-serif;
+  font-size: {fontSize}px;
   overflow: hidden;
   overflow-wrap: break-word;
   margin: 0;
@@ -25,10 +25,10 @@ main.show-padding::before {
   content: '';
   --borderSize: 10px;
   position: absolute;
-  height: calc(100% - {spacing}px * 2);
-  width: calc(100% - {spacing}px * 2);
-  top: calc({spacing}px - var(--borderSize));
-  left: calc({spacing}px - var(--borderSize));
+  height: calc(100% - {padding}px * 2);
+  width: calc(100% - {padding}px * 2);
+  top: calc({padding}px - var(--borderSize));
+  left: calc({padding}px - var(--borderSize));
   border: var(--borderSize) dashed red;
   filter: drop-shadow(0 0 3px #0008);
 }
@@ -47,9 +47,9 @@ main.show-padding::after {
   white-space: pre;
 }
 
-main.dark { color: white; }
+main.dark-mode { color: white; }
 
-/* --- [Message Container] --- */
+/* --- [Bubble Container] --- */
 
 .bubble {
   --backgroundColor: #FFFD;
@@ -88,7 +88,7 @@ main.dark { color: white; }
   animation: fade .5s calc({lifetime}s - .5s), fade reverse .5s;
 }
 
-.container-background {
+.bubble-background {
   z-index: -1;
   position: absolute;
   top: 0;
@@ -110,7 +110,7 @@ main.dark { color: white; }
   background-repeat: no-repeat;
 }
 
-.dark .bubble { --backgroundColor: #000B }
+.dark-mode .bubble { --backgroundColor: #000B }
 
 /* --- [Container Blocks] --- */
 
@@ -154,17 +154,18 @@ main.dark { color: white; }
 .emote {
   position: relative;
   vertical-align: middle;
+  margin: -.25rem 0;
 }
 
 .dynamic .text, .dynamic .emote { animation: fadeMessage 1.5s; }
 
-.emote-1 { height: 32px; margin: -.25rem 0; }
-.emote-2 { height: 56px; margin: -.25rem 0; }
+.emote-1 { height: 32px; }
+.emote-2 { height: 56px; }
 .emote-4 { height: 112px; }
 
 /* --- [Message Types] --- */
 
-.highlight .container-background {
+.highlight .bubble-background {
   background:
     linear-gradient( 0deg,   var(--userColor) calc(var(--borderSize) + .1px), transparent 0),
     linear-gradient( 90deg,  var(--userColor) calc(var(--borderSize) + .1px), transparent 0),
