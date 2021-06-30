@@ -1,0 +1,112 @@
+* {
+  font-family: 'Nunito', sans-serif;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  box-sizing: border-box;
+}
+
+main {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+#timer {
+  position: absolute;
+  z-index: 1;
+  left: calc(50% - 35px);
+  bottom: 0;
+  font-size: 2rem;
+  width: 100px;
+}
+
+#timer.soon, #timer.soon {
+  background-color: #F008;
+
+  transform-origin: bottom;
+}
+
+#timer.soon {
+  animation: soon 1s infinite;
+}
+
+#timer.deathTime {
+  animation: death 1s forwards;
+}
+
+.user {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0;
+}
+
+.animate {
+  animation: fadeIn .5s forwards;
+}
+
+.death .emote-box {
+  transform-origin: bottom;
+  animation: crunch 1s 1s forwards;
+}
+
+.death .name-box {
+  animation: fadeOut 1s 1s forwards;
+}
+
+.emote-box {
+  height: 56px;
+  margin-top: 5px;
+}
+
+.emote {
+  max-height: 100%;
+  animation: float 3s infinite;
+}
+
+.name-box, #timer {
+  background-color: #0008;
+  padding: 3px 7px;
+  border-radius: 5px;
+}
+
+.name, #timer {
+  color: white;
+  font-weight: bold;
+  text-shadow: 1px 1px 1px #0008;
+  text-align: center;
+}
+
+.name {
+  font-size: 18px;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1 }
+}
+
+@keyframes float {
+  50% { transform: translateY(5px) }
+}
+
+@keyframes crunch {
+  to { transform: scaleY(0) }
+}
+
+@keyframes fadeOut {
+  to { opacity: 0 }
+}
+
+@keyframes soon {
+  50% { transform: scale(1.25) }
+}
+
+@keyframes death {
+  to { transform: scale(1.5) }
+}

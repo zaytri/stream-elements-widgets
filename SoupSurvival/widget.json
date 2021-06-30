@@ -1,0 +1,63 @@
+{
+  "image": {
+    "label": "Initial Avatar",
+    "type": "image-input"
+  },
+  "deathImage": {
+    "label": "Death Avatar",
+    "type": "image-input"
+  },
+  "sound": {
+    "label": "Death Sound",
+    "type": "sound-input"
+  },
+  "volume": {
+    "label": "Death Sound Volume (%)",
+    "type": "slider",
+    "value": 50,
+    "step": 1,
+    "min": 0,
+    "max": 100
+  },
+  "duration": {
+    "label": "Timer (seconds)",
+    "type": "number",
+    "value": 300,
+    "min": 0,
+    "step": 1
+  },
+  "ignoreList": {
+    "label": "Ignore List (comma separated)",
+    "type": "text",
+    "value": "StreamElements, MelonyAI"
+  },
+  "token": {
+    "label": "Jebaited.net Token",
+    "type": "text",
+    "value": ""
+  },
+  "widgetName": {
+    "label": "Chat Soup Survival v1.0.0",
+    "type": "hidden",
+    "value": "Chat Soup Survival",
+    "group": "About"
+  },
+  "widgetAuthor": {
+    "label": "Author: Zaytri",
+    "type": "hidden",
+    "value": "Zaytri",
+    "group": "About"
+  },
+  "widgetVersion": {
+    "label": "Twitch: twitch.tv/zaytri",
+    "type": "hidden",
+    "value": "1.0.0",
+    "group": "About"
+  },
+  "widgetUpdateUrl": {
+    "label": "Twitter / TikTok / Instagram: @imzaytri",
+    "type": "hidden",
+    "value": "https://github.com/zaytri/stream-elements-widgets/blob/main/SoupSurvival",
+    "group": "About"
+  }
+}
