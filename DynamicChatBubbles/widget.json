@@ -289,7 +289,7 @@
     "max": 100
   },
   "widgetName": {
-    "label": "Dynamic Chat Bubbles v2.0.0",
+    "label": "Dynamic Chat Bubbles v2.0.1",
     "group": "About",
     "type": "hidden",
     "value": "Dynamic Chat Bubbles"
@@ -304,7 +304,7 @@
     "label": "Twitch: twitch.tv/zaytri",
     "group": "About",
     "type": "hidden",
-    "value": "2.0.0"
+    "value": "2.0.1"
   },
   "widgetUpdateUrl": {
     "label": "Twitter / TikTok / Instagram: @imzaytri",

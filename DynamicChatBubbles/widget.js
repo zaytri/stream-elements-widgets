@@ -371,7 +371,7 @@ function onRaid() {
 
   Widget.raidActive = true
   Widget.raidTimer = window.setTimeout(() => {
-    raidActive = false
+    Widget.raidActive = false
   }, FieldData.raidCooldown * 1000)
 }
 
