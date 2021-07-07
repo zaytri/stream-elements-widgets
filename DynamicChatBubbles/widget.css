@@ -34,7 +34,7 @@ main.show-padding::before {
 }
 
 main.show-padding::after {
-  content: 'Messages will only appear within these bounds\a(Make sure to toggle this off before streaming)';
+  content: 'Messages will only appear within these bounds\a(You can move and resize the widget too!)';
   color: white;
   font-size: 32px;
   font-weight: 900;

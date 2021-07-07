@@ -23,6 +23,20 @@
     "type": "text",
     "value": ""
   },
+  "paddingButton": {
+    "label": "Toggle Bubble Area",
+    "group": "Bubble Area",
+    "type": "button",
+    "value": "zaytri_dynamicchatbubbles"
+  },
+  "padding": {
+    "label": "Space from Widget Edges (px)",
+    "group": "Bubble Area",
+    "type": "number",
+    "value": 60,
+    "min": 0,
+    "step": 1
+  },
   "ignoreUserListLabel": {
     "label": "Ignore these users:",
     "group": "Bot Filters",
@@ -141,12 +155,12 @@
     "min": 0
   },
   "messageCooldownLabel": {
-    "label": "Ignore messages for this many",
+    "label": "Limit chat bubbles to once per",
     "group": "Message Filters",
     "type": "hidden"
   },
   "messageCooldown": {
-    "label": "seconds after a chat bubble appears",
+    "label": "this many seconds",
     "group": "Message Filters",
     "type": "number",
     "value": 0,
@@ -154,12 +168,12 @@
     "min": 0
   },
   "raidCooldownLabel": {
-    "label": "Show chat bubbles only for this many",
+    "label": "Show chat bubbles only after a raid",
     "group": "Message Filters",
     "type": "hidden"
   },
   "raidCooldown": {
-    "label": "seconds after a raid (0 to disable)",
+    "label": "for this many seconds (0 to disable)",
     "group": "Message Filters",
     "type": "number",
     "value": 0,
@@ -243,20 +257,6 @@
       "normal": "Normal"
     }
   },
-  "padding": {
-    "label": "Padding Bounds (px)",
-    "group": "Padding Bounds",
-    "type": "number",
-    "value": 60,
-    "min": 0,
-    "step": 1
-  },
-  "paddingButton": {
-    "label": "Toggle Padding Bounds",
-    "group": "Padding Bounds",
-    "type": "button",
-    "value": "zaytri_dynamicchatbubbles"
-  },
   "lifetime": {
     "label": "Chat Bubble Lifetime (seconds)",
     "group": "Timing",
@@ -289,7 +289,7 @@
     "max": 100
   },
   "widgetName": {
-    "label": "Dynamic Chat Bubbles v2.0.4",
+    "label": "Dynamic Chat Bubbles v2.0.5",
     "group": "About",
     "type": "hidden",
     "value": "Dynamic Chat Bubbles"
@@ -304,7 +304,7 @@
     "label": "Twitch: twitch.tv/zaytri",
     "group": "About",
     "type": "hidden",
-    "value": "2.0.4"
+    "value": "2.0.5"
   },
   "widgetUpdateUrl": {
     "label": "Twitter / TikTok / Instagram: @imzaytri",
