@@ -289,27 +289,32 @@
     "max": 100
   },
   "widgetName": {
-    "label": "Dynamic Chat Bubbles v2.0.7",
+    "label": "[Dynamic Chat Bubbles - v2.0.8]",
     "group": "About",
     "type": "hidden",
     "value": "Dynamic Chat Bubbles"
   },
   "widgetAuthor": {
-    "label": "Author: Zaytri",
+    "label": "Created by Zaytri",
     "group": "About",
     "type": "hidden",
     "value": "Zaytri"
   },
   "widgetVersion": {
-    "label": "Twitch: twitch.tv/zaytri",
+    "label": "Twitch - twitch.tv/zaytri",
     "group": "About",
     "type": "hidden",
-    "value": "2.0.7"
+    "value": "2.0.8"
   },
   "widgetUpdateUrl": {
-    "label": "Twitter / TikTok / Instagram: @imzaytri",
+    "label": "Twitter / TikTok / Instagram - @imzaytri",
     "group": "About",
     "type": "hidden",
     "value": "https://github.com/zaytri/stream-elements-widgets/blob/main/DynamicChatBubbles"
+  },
+  "widgetMore": {
+    "label": "More Widgets by Zaytri - zaytri.com",
+    "group": "About",
+    "type": "hidden"
   }
 }
