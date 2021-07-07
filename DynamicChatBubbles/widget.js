@@ -295,6 +295,7 @@ function onMessage(event) {
 
   // Filters
   if (FieldData.raidCooldown > 0 && !Widget.raidActive) return
+  if (hasIgnoredPrefix(text)) return
   if (!passedMinMessageThreshold(userId)) return
   if (FieldData.allowUserList.length && !userListIncludes(FieldData.allowUserList, name, nick)) return
   if (userListIncludes(FieldData.ignoreUserList, name, nick)) return
@@ -520,6 +521,13 @@ function Component(tag, props) {
 // ---------------------
 //    Helper Functions
 // ---------------------
+
+function hasIgnoredPrefix(text) {
+  for (const prefix of FieldData.ignorePrefixList) {
+    if (text.startsWith(prefix)) return true
+  }
+  return false
+}
 
 function passedMinMessageThreshold(userId) {
   if (FieldData.minMessages === 0) return true
