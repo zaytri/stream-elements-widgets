@@ -22,29 +22,36 @@ main {
 }
 
 main.show-padding::before {
-  content: '';
   --borderSize: 10px;
+  content: '';
   position: absolute;
   height: calc(100% - {padding}px * 2);
   width: calc(100% - {padding}px * 2);
   top: calc({padding}px - var(--borderSize));
   left: calc({padding}px - var(--borderSize));
-  border: var(--borderSize) dashed red;
-  filter: drop-shadow(0 0 3px #0008);
+  border: var(--borderSize) dashed white;
+  box-shadow: 0 0 5px #000;
+  background-color: #0008;
+  z-index: -2;
 }
 
 main.show-padding::after {
-  content: 'Messages will only appear within these bounds\a(You can move and resize the widget too!)';
+  --borderSize: 10px;
+  --space: 10px;
+  content: 'Messages will only appear within this area.\a\aTip 1: You can move and resize the widget in here!\aTip 2: Test this while your streaming software is open!';
   color: white;
-  font-size: 32px;
-  font-weight: 900;
+  font-size: 24px;
   position: absolute;
-  width: 100%;
+  width: calc(100% - ({padding}px + var(--space)) * 2);
   top: 30%;
-  left: 0;
+  left: calc({padding}px + var(--space));
   text-align: center;
-  text-shadow: 0 0 3px black, 0 0 5px black;
+  padding: 30px 0;
+  text-shadow: 0 0 5px black;
   white-space: pre;
+  font-weight: bold;
+  font-family: Roboto, Arial, sans-serif;
+  z-index: -1;
 }
 
 main.dark-mode { color: white; }
