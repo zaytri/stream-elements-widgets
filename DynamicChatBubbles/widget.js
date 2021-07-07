@@ -401,13 +401,15 @@ function onButton(event) {
 function sendTestMessage(amount = 1) {
   for (let i = 0; i < amount; i++) {
     window.setTimeout(_ => {
+      const name = `user_${numbered.stringify(random(1, 100))}`.replace('-', '_')
       const event = {
         data: {
+          userId: name,
           tags: {},
           text: 'test',
-          displayName: `user ${numbered.stringify(random(1, 100))}`.replace(' ', '_'),
+          displayName: name,
           nick: '',
-          msgId: `test_${Date.now()}`,
+          msgId: `${name}_${Date.now()}`,
         }
       }
 
