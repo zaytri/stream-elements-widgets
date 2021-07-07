@@ -348,8 +348,9 @@ function onMessage(event) {
   }, 300)
 
   // Show Bubble and Play Sound
+  let sound = null
   if (FieldData.soundUrl) {
-    const sound = new Audio(FieldData.soundUrl)
+    sound = new Audio(FieldData.soundUrl)
     sound.volume = parseInt(FieldData.volume) / 100
   }
 

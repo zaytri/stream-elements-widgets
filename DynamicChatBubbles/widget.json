@@ -275,13 +275,13 @@
   },
   "soundUrl": {
     "label": "Chat Message Sound Effect",
-    "group": "Sound",
+    "group": "Sound Effect",
     "type": "sound-input",
     "value": ""
   },
   "volume": {
     "label": "Sound Effect Volume (%)",
-    "group": "Sound",
+    "group": "Sound Effect",
     "type": "slider",
     "value": 50,
     "step": 1,
@@ -289,7 +289,7 @@
     "max": 100
   },
   "widgetName": {
-    "label": "Dynamic Chat Bubbles v2.0.6",
+    "label": "Dynamic Chat Bubbles v2.0.7",
     "group": "About",
     "type": "hidden",
     "value": "Dynamic Chat Bubbles"
@@ -304,7 +304,7 @@
     "label": "Twitch: twitch.tv/zaytri",
     "group": "About",
     "type": "hidden",
-    "value": "2.0.6"
+    "value": "2.0.7"
   },
   "widgetUpdateUrl": {
     "label": "Twitter / TikTok / Instagram: @imzaytri",
