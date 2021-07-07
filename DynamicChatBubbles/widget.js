@@ -314,7 +314,7 @@ function onMessage(event) {
       return
     } else {
       Widget.cooldown = true
-      window.setTimeout(() => { cooldown = false }, FieldData.messageCooldown * 1000)
+      window.setTimeout(() => { Widget.cooldown = false }, FieldData.messageCooldown * 1000)
     }
   }
 
