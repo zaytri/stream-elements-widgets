@@ -289,12 +289,12 @@
     "max": 100
   },
   "help": {
-    "label": "youtube link",
+    "label": "https://youtu.be/RbG10UmKaqM",
     "group": "Help",
     "type": "hidden"
   },
   "widgetName": {
-    "label": "[Dynamic Chat Bubbles - v2.0.9]",
+    "label": "[Dynamic Chat Bubbles - v2.1.0]",
     "group": "About",
     "type": "hidden",
     "value": "Dynamic Chat Bubbles"
@@ -309,7 +309,7 @@
     "label": "Twitch - twitch.tv/zaytri",
     "group": "About",
     "type": "hidden",
-    "value": "2.0.9"
+    "value": "2.1.0"
   },
   "widgetUpdateUrl": {
     "label": "Twitter / TikTok / Instagram - @imzaytri",
