@@ -88,11 +88,11 @@ main.dark-mode { color: white; }
 }
 
 .bubble.dynamic {
-  animation: pop .5s calc({lifetime}s - .5s);
+  animation: pop .5s calc({lifetime}s - .5s) forwards;
 }
 
 .bubble.fade {
-  animation: fade .5s calc({lifetime}s - .5s), fade reverse .5s;
+  animation: fade .5s calc({lifetime}s - .5s) forwards, fade reverse .5s;
 }
 
 .bubble-background {
