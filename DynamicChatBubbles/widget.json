@@ -181,13 +181,13 @@
     "min": 0
   },
   "googleFont": {
-    "label": "Font",
+    "label": "Google Font",
     "group": "Text Styles",
     "type": "googleFont",
     "value": "Nunito"
   },
   "customFont": {
-    "label": "Custom Font",
+    "label": "Custom Font Name",
     "group": "Text Styles",
     "type": "text",
     "value": ""
@@ -294,7 +294,7 @@
     "type": "hidden"
   },
   "widgetName": {
-    "label": "[Dynamic Chat Bubbles - v2.1.0]",
+    "label": "[Dynamic Chat Bubbles - v2.1.1]",
     "group": "About",
     "type": "hidden",
     "value": "Dynamic Chat Bubbles"
@@ -309,7 +309,7 @@
     "label": "Twitch - twitch.tv/zaytri",
     "group": "About",
     "type": "hidden",
-    "value": "2.1.0"
+    "value": "2.1.1"
   },
   "widgetUpdateUrl": {
     "label": "Twitter / TikTok / Instagram - @imzaytri",

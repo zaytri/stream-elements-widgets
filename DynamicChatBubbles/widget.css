@@ -1,7 +1,7 @@
 /* --- [Globals] --- */
 
 * {
-  font-family: '{googleFont}', '{customfont}', Nunito, Arial, sans-serif;
+  font-family: '{customFont}', '{googleFont}', Nunito, Arial, sans-serif;
   font-size: {fontSize}px;
   overflow: hidden;
   overflow-wrap: break-word;
