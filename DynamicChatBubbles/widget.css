@@ -12,6 +12,10 @@
 /* --- [Widget Container] --- */
 
 main {
+  --customBorderColor: {borderColor};
+  --customNameColor: {nameColor};
+  --customBackgroundColor: {backgroundColor};
+  --customTextColor: {textColor};
   color: black;
   box-sizing: border-box;
   position: absolute;
@@ -56,12 +60,16 @@ main.show-padding::after {
 
 main.dark-mode { color: white; }
 
+main.custom-message-colors { color: var(--customTextColor) }
+
 /* --- [Bubble Container] --- */
 
 .bubble {
-  --backgroundColor: #FFFD;
+  --defaultBackgroundColor: #FFFD;
+  --backgroundColor: var(--defaultBackgroundColor);
   --cornerSize: 23px;
   --userColor: #ff4a80;
+  --borderColor: var(--userColor);
   --borderSize: 5px;
   position: absolute;
   top: 30px;
@@ -81,6 +89,14 @@ main.dark-mode { color: white; }
   ;
   -webkit-mask-size: 51% 51%;
   -webkit-mask-repeat: no-repeat;
+}
+
+.custom-border-colors .bubble {
+  --borderColor: var(--customBorderColor);
+}
+
+.custom-message-colors .bubble {
+  --backgroundColor: var(--customBackgroundColor);
 }
 
 .bubble.animate {
@@ -103,27 +119,27 @@ main.dark-mode { color: white; }
   height: 100%;
   width: 100%;
   background:
-    linear-gradient( 0deg,   var(--userColor) calc(var(--borderSize) + 1px), transparent 0),
-    linear-gradient( 90deg,  var(--userColor) calc(var(--borderSize) + 1px), transparent 0),
-    linear-gradient( 180deg, var(--userColor) calc(var(--borderSize) + 1px), transparent 0),
-    linear-gradient( 270deg, var(--userColor) calc(var(--borderSize) + 1px), transparent 0),
-    linear-gradient( 135deg, var(--userColor) 0 calc(var(--topLeftCorner, 0px) + var(--borderSize)),     transparent 0) top left     / 50% 50%,
-    linear-gradient(-135deg, var(--userColor) 0 calc(var(--topRightCorner, 0px) + var(--borderSize)),    transparent 0) top right    / 50% 50%,
-    linear-gradient(  45deg, var(--userColor) 0 calc(var(--bottomLeftCorner, 0px) + var(--borderSize)),  transparent 0) bottom left  / 50% 50%,
-    linear-gradient( -45deg, var(--userColor) 0 calc(var(--bottomRightCorner, 0px) + var(--borderSize)), transparent 0) bottom right / 50% 50%,
+    linear-gradient( 0deg,   var(--borderColor) calc(var(--borderSize) + 1px), transparent 0),
+    linear-gradient( 90deg,  var(--borderColor) calc(var(--borderSize) + 1px), transparent 0),
+    linear-gradient( 180deg, var(--borderColor) calc(var(--borderSize) + 1px), transparent 0),
+    linear-gradient( 270deg, var(--borderColor) calc(var(--borderSize) + 1px), transparent 0),
+    linear-gradient( 135deg, var(--borderColor) 0 calc(var(--topLeftCorner, 0px) + var(--borderSize)),     transparent 0) top left     / 50% 50%,
+    linear-gradient(-135deg, var(--borderColor) 0 calc(var(--topRightCorner, 0px) + var(--borderSize)),    transparent 0) top right    / 50% 50%,
+    linear-gradient(  45deg, var(--borderColor) 0 calc(var(--bottomLeftCorner, 0px) + var(--borderSize)),  transparent 0) bottom left  / 50% 50%,
+    linear-gradient( -45deg, var(--borderColor) 0 calc(var(--bottomRightCorner, 0px) + var(--borderSize)), transparent 0) bottom right / 50% 50%,
     var(--backgroundColor)
   ;
   background-origin: border-box;
   background-repeat: no-repeat;
 }
 
-.dark-mode .bubble { --backgroundColor: #000B }
+.dark-mode .bubble { --defaultBackgroundColor: #000B; }
 
 /* --- [Container Blocks] --- */
 
 .username-box {
   z-index: 1;
-  background-color: var(--userColor);
+  background-color: var(--borderColor);
 }
 
 .username {
@@ -137,7 +153,12 @@ main.dark-mode { color: white; }
 
 .user-color-dark .username {
   color: white;
-  text-shadow: 0 2px 0 #0006;
+  text-shadow: 0 1px 0 #0006;
+}
+
+.custom-border-colors .username {
+  color: var(--customNameColor);
+  text-shadow: 0 1px 0 #0004;
 }
 
 .message {
@@ -174,14 +195,14 @@ main.dark-mode { color: white; }
 
 .highlight .bubble-background {
   background:
-    linear-gradient( 0deg,   var(--userColor) calc(var(--borderSize) + .1px), transparent 0),
-    linear-gradient( 90deg,  var(--userColor) calc(var(--borderSize) + .1px), transparent 0),
-    linear-gradient( 180deg, var(--userColor) calc(var(--borderSize) + .1px), transparent 0),
-    linear-gradient( 270deg, var(--userColor) calc(var(--borderSize) + .1px), transparent 0),
-    linear-gradient( 135deg, var(--userColor) 0 calc(var(--topLeftCorner, 0px) + var(--borderSize)),     transparent 0) top left     / 50% 50%,
-    linear-gradient(-135deg, var(--userColor) 0 calc(var(--topRightCorner, 0px) + var(--borderSize)),    transparent 0) top right    / 50% 50%,
-    linear-gradient(  45deg, var(--userColor) 0 calc(var(--bottomLeftCorner, 0px) + var(--borderSize)),  transparent 0) bottom left  / 50% 50%,
-    linear-gradient( -45deg, var(--userColor) 0 calc(var(--bottomRightCorner, 0px) + var(--borderSize)), transparent 0) bottom right / 50% 50%,
+    linear-gradient( 0deg,   var(--borderColor) calc(var(--borderSize) + .1px), transparent 0),
+    linear-gradient( 90deg,  var(--borderColor) calc(var(--borderSize) + .1px), transparent 0),
+    linear-gradient( 180deg, var(--borderColor) calc(var(--borderSize) + .1px), transparent 0),
+    linear-gradient( 270deg, var(--borderColor) calc(var(--borderSize) + .1px), transparent 0),
+    linear-gradient( 135deg, var(--borderColor) 0 calc(var(--topLeftCorner, 0px) + var(--borderSize)),     transparent 0) top left     / 50% 50%,
+    linear-gradient(-135deg, var(--borderColor) 0 calc(var(--topRightCorner, 0px) + var(--borderSize)),    transparent 0) top right    / 50% 50%,
+    linear-gradient(  45deg, var(--borderColor) 0 calc(var(--bottomLeftCorner, 0px) + var(--borderSize)),  transparent 0) bottom left  / 50% 50%,
+    linear-gradient( -45deg, var(--borderColor) 0 calc(var(--bottomRightCorner, 0px) + var(--borderSize)), transparent 0) bottom right / 50% 50%,
     linear-gradient(-45deg, #ffadaddd, #ffd6a5dd, #fdffb6dd, #caffbfdd, #9bf6ffdd, #a0c4ffdd, #bdb2ffdd, #ffc6ffdd, #ffadaddd, #ffd6a5dd) 100% 100% / 900% 900%
   ;
   background-origin: border-box;

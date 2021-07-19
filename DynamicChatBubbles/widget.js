@@ -15,7 +15,206 @@ const Widget = {
 }
 
 const TEST_MESSAGES = [
-  ['this is a message that i\'m adding words to just to make it a longer message weeeee'],
+  ['HYPE'],
+  ['uwu'],
+  ['popCat', [
+    {
+      "type": "bttv",
+      "name": "popCat",
+      "id": "60d5abc38ed8b373e421952f",
+      "gif": true,
+      "urls": {
+        "1": "https://cdn.betterttv.net/emote/60d5abc38ed8b373e421952f/1x",
+        "2": "https://cdn.betterttv.net/emote/60d5abc38ed8b373e421952f/2x",
+        "4": "https://cdn.betterttv.net/emote/60d5abc38ed8b373e421952f/3x"
+      },
+      "start": 0,
+      "end": 6
+    }
+  ]],
+  ['catHYPE hypeE catHYPE', [
+    {
+      "type": "bttv",
+      "name": "catHYPE",
+      "id": "6090e9cc39b5010444d0b3ff",
+      "gif": true,
+      "urls": {
+        "1": "https://cdn.betterttv.net/emote/6090e9cc39b5010444d0b3ff/1x",
+        "2": "https://cdn.betterttv.net/emote/6090e9cc39b5010444d0b3ff/2x",
+        "4": "https://cdn.betterttv.net/emote/6090e9cc39b5010444d0b3ff/3x"
+      },
+      "start": 0,
+      "end": 7
+    },
+    {
+      "type": "bttv",
+      "name": "hypeE",
+      "id": "5b6ded5560d17f4657e1319e",
+      "gif": true,
+      "urls": {
+        "1": "https://cdn.betterttv.net/emote/5b6ded5560d17f4657e1319e/1x",
+        "2": "https://cdn.betterttv.net/emote/5b6ded5560d17f4657e1319e/2x",
+        "4": "https://cdn.betterttv.net/emote/5b6ded5560d17f4657e1319e/3x"
+      },
+      "start": 8,
+      "end": 13
+    },
+    {
+      "type": "bttv",
+      "name": "catHYPE",
+      "id": "6090e9cc39b5010444d0b3ff",
+      "gif": true,
+      "urls": {
+        "1": "https://cdn.betterttv.net/emote/6090e9cc39b5010444d0b3ff/1x",
+        "2": "https://cdn.betterttv.net/emote/6090e9cc39b5010444d0b3ff/2x",
+        "4": "https://cdn.betterttv.net/emote/6090e9cc39b5010444d0b3ff/3x"
+      },
+      "start": 14,
+      "end": 21
+    }
+  ]],
+  ['zaytriLOVE', [
+    {
+      "type": "twitch",
+      "name": "zaytriLOVE",
+      "id": "307974105",
+      "gif": false,
+      "urls": {
+        "1": "https://static-cdn.jtvnw.net/emoticons/v2/307974105/default/dark/1.0",
+        "2": "https://static-cdn.jtvnw.net/emoticons/v2/307974105/default/dark/2.0",
+        "4": "https://static-cdn.jtvnw.net/emoticons/v2/307974105/default/dark/3.0"
+      },
+      "start": 0,
+      "end": 9
+    }
+  ]],
+  ['D: D: D:', [
+    {
+      "type": "bttv",
+      "name": "D:",
+      "id": "55028cd2135896936880fdd7",
+      "gif": false,
+      "urls": {
+        "1": "https://cdn.betterttv.net/emote/55028cd2135896936880fdd7/1x",
+        "2": "https://cdn.betterttv.net/emote/55028cd2135896936880fdd7/2x",
+        "4": "https://cdn.betterttv.net/emote/55028cd2135896936880fdd7/3x"
+      },
+      "start": 0,
+      "end": 2
+    },
+    {
+      "type": "bttv",
+      "name": "D:",
+      "id": "55028cd2135896936880fdd7",
+      "gif": false,
+      "urls": {
+        "1": "https://cdn.betterttv.net/emote/55028cd2135896936880fdd7/1x",
+        "2": "https://cdn.betterttv.net/emote/55028cd2135896936880fdd7/2x",
+        "4": "https://cdn.betterttv.net/emote/55028cd2135896936880fdd7/3x"
+      },
+      "start": 3,
+      "end": 5
+    },
+    {
+      "type": "bttv",
+      "name": "D:",
+      "id": "55028cd2135896936880fdd7",
+      "gif": false,
+      "urls": {
+        "1": "https://cdn.betterttv.net/emote/55028cd2135896936880fdd7/1x",
+        "2": "https://cdn.betterttv.net/emote/55028cd2135896936880fdd7/2x",
+        "4": "https://cdn.betterttv.net/emote/55028cd2135896936880fdd7/3x"
+      },
+      "start": 6,
+      "end": 8
+    }
+  ]],
+  ['SCREME', [
+    {
+      "type": "bttv",
+      "name": "SCREME",
+      "id": "5fea41766b06e834ffd76103",
+      "gif": true,
+      "urls": {
+        "1": "https://cdn.betterttv.net/emote/5fea41766b06e834ffd76103/1x",
+        "2": "https://cdn.betterttv.net/emote/5fea41766b06e834ffd76103/2x",
+        "4": "https://cdn.betterttv.net/emote/5fea41766b06e834ffd76103/3x"
+      },
+      "start": 0,
+      "end": 6
+    }
+  ]],
+  ['toad sings but make it nightcore zaytriSCREME', [
+    {
+      "type": "twitch",
+      "name": "zaytriSCREME",
+      "id": "305161229",
+      "gif": false,
+      "urls": {
+        "1": "https://static-cdn.jtvnw.net/emoticons/v2/305161229/default/dark/1.0",
+        "2": "https://static-cdn.jtvnw.net/emoticons/v2/305161229/default/dark/2.0",
+        "4": "https://static-cdn.jtvnw.net/emoticons/v2/305161229/default/dark/3.0"
+      },
+      "start": 33,
+      "end": 44
+    }
+  ]],
+  ['bobDance bobDance bobDance', [
+    {
+      "type": "bttv",
+      "name": "bobDance",
+      "id": "5e2a1da9bca2995f13fc0261",
+      "gif": true,
+      "urls": {
+        "1": "https://cdn.betterttv.net/emote/5e2a1da9bca2995f13fc0261/1x",
+        "2": "https://cdn.betterttv.net/emote/5e2a1da9bca2995f13fc0261/2x",
+        "4": "https://cdn.betterttv.net/emote/5e2a1da9bca2995f13fc0261/3x"
+      },
+      "start": 0,
+      "end": 8
+    },
+    {
+      "type": "bttv",
+      "name": "bobDance",
+      "id": "5e2a1da9bca2995f13fc0261",
+      "gif": true,
+      "urls": {
+        "1": "https://cdn.betterttv.net/emote/5e2a1da9bca2995f13fc0261/1x",
+        "2": "https://cdn.betterttv.net/emote/5e2a1da9bca2995f13fc0261/2x",
+        "4": "https://cdn.betterttv.net/emote/5e2a1da9bca2995f13fc0261/3x"
+      },
+      "start": 9,
+      "end": 17
+    },
+    {
+      "type": "bttv",
+      "name": "bobDance",
+      "id": "5e2a1da9bca2995f13fc0261",
+      "gif": true,
+      "urls": {
+        "1": "https://cdn.betterttv.net/emote/5e2a1da9bca2995f13fc0261/1x",
+        "2": "https://cdn.betterttv.net/emote/5e2a1da9bca2995f13fc0261/2x",
+        "4": "https://cdn.betterttv.net/emote/5e2a1da9bca2995f13fc0261/3x"
+      },
+      "start": 18,
+      "end": 26
+    }
+  ]],
+  ['bongoTap', [
+    {
+      "type": "bttv",
+      "name": "bongoTap",
+      "id": "5ba6d5ba6ee0c23989d52b10",
+      "gif": true,
+      "urls": {
+        "1": "https://cdn.betterttv.net/emote/5ba6d5ba6ee0c23989d52b10/1x",
+        "2": "https://cdn.betterttv.net/emote/5ba6d5ba6ee0c23989d52b10/2x",
+        "4": "https://cdn.betterttv.net/emote/5ba6d5ba6ee0c23989d52b10/3x"
+      },
+      "start": 0,
+      "end": 8
+    }
+  ]],
   ['VoHiYo hello!', [
     {
       "type": "twitch",
@@ -87,125 +286,6 @@ const TEST_MESSAGES = [
       "end": 30
     }
   ]],
-  ['TransgenderPride PansexualPride NonbinaryPride LesbianPride IntersexPride GenderFluidPride GayPride BisexualPride AsexualPride', [
-    {
-      "type": "twitch",
-      "name": "TransgenderPride",
-      "id": "307827377",
-      "gif": false,
-      "urls": {
-        "1": "https://static-cdn.jtvnw.net/emoticons/v2/307827377/default/dark/1.0",
-        "2": "https://static-cdn.jtvnw.net/emoticons/v2/307827377/default/dark/2.0",
-        "4": "https://static-cdn.jtvnw.net/emoticons/v2/307827377/default/dark/3.0"
-      },
-      "start": 0,
-      "end": 15
-    },
-    {
-      "type": "twitch",
-      "name": "PansexualPride",
-      "id": "307827370",
-      "gif": false,
-      "urls": {
-        "1": "https://static-cdn.jtvnw.net/emoticons/v2/307827370/default/dark/1.0",
-        "2": "https://static-cdn.jtvnw.net/emoticons/v2/307827370/default/dark/2.0",
-        "4": "https://static-cdn.jtvnw.net/emoticons/v2/307827370/default/dark/3.0"
-      },
-      "start": 17,
-      "end": 30
-    },
-    {
-      "type": "twitch",
-      "name": "NonbinaryPride",
-      "id": "307827356",
-      "gif": false,
-      "urls": {
-        "1": "https://static-cdn.jtvnw.net/emoticons/v2/307827356/default/dark/1.0",
-        "2": "https://static-cdn.jtvnw.net/emoticons/v2/307827356/default/dark/2.0",
-        "4": "https://static-cdn.jtvnw.net/emoticons/v2/307827356/default/dark/3.0"
-      },
-      "start": 32,
-      "end": 45
-    },
-    {
-      "type": "twitch",
-      "name": "LesbianPride",
-      "id": "307827340",
-      "gif": false,
-      "urls": {
-        "1": "https://static-cdn.jtvnw.net/emoticons/v2/307827340/default/dark/1.0",
-        "2": "https://static-cdn.jtvnw.net/emoticons/v2/307827340/default/dark/2.0",
-        "4": "https://static-cdn.jtvnw.net/emoticons/v2/307827340/default/dark/3.0"
-      },
-      "start": 47,
-      "end": 58
-    },
-    {
-      "type": "twitch",
-      "name": "IntersexPride",
-      "id": "307827332",
-      "gif": false,
-      "urls": {
-        "1": "https://static-cdn.jtvnw.net/emoticons/v2/307827332/default/dark/1.0",
-        "2": "https://static-cdn.jtvnw.net/emoticons/v2/307827332/default/dark/2.0",
-        "4": "https://static-cdn.jtvnw.net/emoticons/v2/307827332/default/dark/3.0"
-      },
-      "start": 60,
-      "end": 72
-    },
-    {
-      "type": "twitch",
-      "name": "GenderFluidPride",
-      "id": "307827326",
-      "gif": false,
-      "urls": {
-        "1": "https://static-cdn.jtvnw.net/emoticons/v2/307827326/default/dark/1.0",
-        "2": "https://static-cdn.jtvnw.net/emoticons/v2/307827326/default/dark/2.0",
-        "4": "https://static-cdn.jtvnw.net/emoticons/v2/307827326/default/dark/3.0"
-      },
-      "start": 74,
-      "end": 89
-    },
-    {
-      "type": "twitch",
-      "name": "GayPride",
-      "id": "307827321",
-      "gif": false,
-      "urls": {
-        "1": "https://static-cdn.jtvnw.net/emoticons/v2/307827321/default/dark/1.0",
-        "2": "https://static-cdn.jtvnw.net/emoticons/v2/307827321/default/dark/2.0",
-        "4": "https://static-cdn.jtvnw.net/emoticons/v2/307827321/default/dark/3.0"
-      },
-      "start": 91,
-      "end": 98
-    },
-    {
-      "type": "twitch",
-      "name": "BisexualPride",
-      "id": "307827313",
-      "gif": false,
-      "urls": {
-        "1": "https://static-cdn.jtvnw.net/emoticons/v2/307827313/default/dark/1.0",
-        "2": "https://static-cdn.jtvnw.net/emoticons/v2/307827313/default/dark/2.0",
-        "4": "https://static-cdn.jtvnw.net/emoticons/v2/307827313/default/dark/3.0"
-      },
-      "start": 100,
-      "end": 112
-    },
-    {
-      "type": "twitch",
-      "name": "AsexualPride",
-      "id": "307827267",
-      "gif": false,
-      "urls": {
-        "1": "https://static-cdn.jtvnw.net/emoticons/v2/307827267/default/dark/1.0",
-        "2": "https://static-cdn.jtvnw.net/emoticons/v2/307827267/default/dark/2.0",
-        "4": "https://static-cdn.jtvnw.net/emoticons/v2/307827267/default/dark/3.0"
-      },
-      "start": 114,
-      "end": 125
-    }
-  ]],
 ]
 
 // ---------------------------
@@ -223,6 +303,12 @@ window.addEventListener('onWidgetLoad', obj => {
 
   if (FieldData.darkMode) main.addClass('dark-mode')
   else main.removeClass('dark-mode')
+
+  if (FieldData.useCustomMessageColors) main.addClass('custom-message-colors')
+  else main.removeClass('custom-message-colors')
+
+  if (FieldData.useCustomBorderColors) main.addClass('custom-border-colors')
+  else main.removeClass('custom-border-colors')
 })
 
 function loadFieldData(data) {
@@ -242,7 +328,9 @@ function loadFieldData(data) {
     'includeMods',
     'emoteOnly',
     'highlightOnly',
-    'darkMode'
+    'darkMode',
+    'useCustomMessageColors',
+    'useCustomBorderColors',
   )
 }
 
@@ -402,7 +490,7 @@ function onButton(event) {
 function sendTestMessage(amount = 1) {
   for (let i = 0; i < amount; i++) {
     window.setTimeout(_ => {
-      const name = `user_${numbered.stringify(random(1, 99))}`.replace('-', '_')
+      const name = `user_${numbered.stringify(random(1, 10))}`.replace('-', '_')
       const event = {
         data: {
           userId: name,

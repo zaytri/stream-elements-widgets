@@ -257,6 +257,60 @@
       "normal": "Normal"
     }
   },
+  "useCustomBorderColorsLabel": {
+    "label": "Use Custom Border/Name Colors?",
+    "group": "Custom Colors",
+    "type": "hidden"
+  },
+  "useCustomBorderColors": {
+    "label": "(Overrides user colors)",
+    "group": "Custom Colors",
+    "type": "dropdown",
+    "value": "false",
+    "options": {
+      "true": "Yes",
+      "false": "No"
+    }
+  },
+  "borderColor": {
+    "label": "Custom Border Color",
+    "group": "Custom Colors",
+    "type": "colorpicker",
+    "value": "#000000"
+  },
+  "nameColor": {
+    "label": "Custom Name Color",
+    "group": "Custom Colors",
+    "type": "colorpicker",
+    "value": "#ffffff"
+  },
+  "useCustomMessageColorsLabel": {
+    "label": "Use Custom Background/Text Colors?",
+    "group": "Custom Colors",
+    "type": "hidden"
+  },
+  "useCustomMessageColors": {
+    "label": "(Overrides dark/light mode)",
+    "group": "Custom Colors",
+    "type": "dropdown",
+    "value": "false",
+    "options": {
+      "true": "Yes",
+      "false": "No"
+    }
+  },
+  "backgroundColor": {
+    "label": "Custom Background Color",
+    "group": "Custom Colors",
+    "type": "colorpicker",
+    "value": "#ffffff"
+  },
+  "textColor": {
+    "label": "Custom Text Color",
+    "group": "Custom Colors",
+    "type": "colorpicker",
+    "value": "#000000"
+  },
   "lifetime": {
     "label": "Chat Bubble Lifetime (seconds)",
     "group": "Timing",
@@ -294,7 +348,7 @@
     "type": "hidden"
   },
   "widgetName": {
-    "label": "[Dynamic Chat Bubbles - v2.1.2]",
+    "label": "[Dynamic Chat Bubbles - v2.2.0]",
     "group": "About",
     "type": "hidden",
     "value": "Dynamic Chat Bubbles"
@@ -309,7 +363,7 @@
     "label": "Twitch - twitch.tv/zaytri",
     "group": "About",
     "type": "hidden",
-    "value": "2.1.2"
+    "value": "2.2.0"
   },
   "widgetUpdateUrl": {
     "label": "Twitter / TikTok / Instagram - @imzaytri",

@@ -19,7 +19,7 @@ window.addEventListener('onWidgetLoad', obj => {
     session: {
       data: {
         ['follower-total']: { count: followCount },
-    	['subscriber-total']: { count: subCount },
+        ['subscriber-total']: { count: subCount },
       }
     }
   } = obj.detail
