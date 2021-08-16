@@ -3,7 +3,6 @@
 * {
   font-family: '{customFont}', '{googleFont}', Nunito, Arial, sans-serif;
   font-size: {fontSize}px;
-  overflow: hidden;
   overflow-wrap: break-word;
   margin: 0;
   padding: 0;
@@ -75,8 +74,9 @@ main.custom-message-colors { color: var(--customTextColor) }
   top: 30px;
   left: 30px;
   visibility: hidden;
-  padding: var(--borderSize);
+}
 
+.corner-diagonal .bubble {
   --topRightCorner: calc(var(--cornerSize) - var(--borderSize));
   --bottomLeftCorner: calc(var(--cornerSize) / 2);
   --bottomRightCorner: calc(var(--cornerSize) / 2);
@@ -89,6 +89,16 @@ main.custom-message-colors { color: var(--customTextColor) }
   ;
   -webkit-mask-size: 51% 51%;
   -webkit-mask-repeat: no-repeat;
+  padding: var(--borderSize);
+  overflow: hidden;
+}
+
+.corner-round .bubble, .corner-square .bubble {
+  border: var(--borderSize) solid var(--borderColor);
+}
+
+.corner-round .bubble {
+  border-radius: 10px;
 }
 
 .custom-border-colors .bubble {
@@ -118,6 +128,10 @@ main.custom-message-colors { color: var(--customTextColor) }
   left: 0;
   height: 100%;
   width: 100%;
+  background-color: var(--backgroundColor);
+}
+
+.corner-diagonal .bubble-background {
   background:
     linear-gradient( 0deg,   var(--borderColor) calc(var(--borderSize) + 1px), transparent 0),
     linear-gradient( 90deg,  var(--borderColor) calc(var(--borderSize) + 1px), transparent 0),
@@ -133,6 +147,11 @@ main.custom-message-colors { color: var(--customTextColor) }
   background-repeat: no-repeat;
 }
 
+.corner-round .bubble-background {
+  border-radius: 5px;
+}
+
+
 .dark-mode .bubble { --defaultBackgroundColor: #000B; }
 
 /* --- [Container Blocks] --- */
@@ -140,6 +159,7 @@ main.custom-message-colors { color: var(--customTextColor) }
 .username-box {
   z-index: 1;
   background-color: var(--borderColor);
+  box-shadow: 0 -1px 0 1px var(--borderColor);
 }
 
 .username {
@@ -169,6 +189,7 @@ main.custom-message-colors { color: var(--customTextColor) }
   padding-right: 10px;
   width: var(--dynamicWidth);
   max-height: {maxHeight}px;
+  overflow: hidden;
 }
 
 .dynamic .message { animation: expand 2s; }
@@ -194,6 +215,11 @@ main.custom-message-colors { color: var(--customTextColor) }
 /* --- [Message Types] --- */
 
 .highlight .bubble-background {
+  background: linear-gradient(-45deg, #ffadaddd, #ffd6a5dd, #fdffb6dd, #caffbfdd, #9bf6ffdd, #a0c4ffdd, #bdb2ffdd, #ffc6ffdd, #ffadaddd, #ffd6a5dd) 100% 100% / 900% 900%;
+  animation: gradientShift 5s infinite linear;
+}
+
+.corner-diagonal .highlight .bubble-background {
   background:
     linear-gradient( 0deg,   var(--borderColor) calc(var(--borderSize) + .1px), transparent 0),
     linear-gradient( 90deg,  var(--borderColor) calc(var(--borderSize) + .1px), transparent 0),
@@ -207,7 +233,7 @@ main.custom-message-colors { color: var(--customTextColor) }
   ;
   background-origin: border-box;
   background-repeat: no-repeat;
-  animation: gradientShift 5s infinite linear;
+  animation: gradientShift-cornerDiagonal 5s infinite linear;
 }
 
 .highlight .text {
@@ -216,7 +242,6 @@ main.custom-message-colors { color: var(--customTextColor) }
 
 .action .text {
   font-style: italic;
-  text-shadow: 0 1px 0 #0008;
 }
 
 .action .emote {
@@ -225,9 +250,14 @@ main.custom-message-colors { color: var(--customTextColor) }
 
 /* --- [Animations] --- */
 
-@keyframes gradientShift {
+@keyframes gradientShift-cornerDiagonal {
   from { background-position: 0 0, 0 0, 0 0, 0 0, top left, top right, bottom left, bottom right, 100% 100%; }
   to { background-position: 0 0, 0 0, 0 0, 0 0, top left, top right, bottom left, bottom right, 0 0; }
+}
+
+@keyframes gradientShift {
+  from { background-position: 100% 100%; }
+  to { background-position: 0 0; }
 }
 
 @keyframes pop {
