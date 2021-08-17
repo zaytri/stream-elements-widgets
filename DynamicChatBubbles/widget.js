@@ -357,7 +357,7 @@ window.addEventListener('onEventReceived', obj => {
   switch(listener) {
     case 'message': onMessage(event)
       break
-    case 'raid-latest': onRaid()
+    case 'raid-latest': onRaid(event)
       break
     case 'delete-message': deleteMessage(event.msgId)
       break
@@ -453,8 +453,9 @@ function onMessage(event) {
   }, FieldData.delay * 1000)
 }
 
-function onRaid() {
+function onRaid(event) {
   if (FieldData.raidCooldown === 0) return
+  if (event.amount < FieldData.raidMin) return
 
   // Reset timer if another raid happens during an active raid timer
   clearTimeout(Widget.raidTimer)
