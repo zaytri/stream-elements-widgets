@@ -414,7 +414,7 @@ function onMessage(event) {
 
   // Render Bubble
   $('main').append(MessageComponent({ ...elementData }))
-  const currentMessage = `.bubble[data-message-id=${msgId}]`
+  const currentMessage = `.bubble[data-message-id="${msgId}"]`
 
   // Calcute Bubble Position
   window.setTimeout(_ => {
@@ -467,11 +467,11 @@ function onRaid(event) {
 }
 
 function deleteMessage(msgId) {
-  $(`.bubble[data-message-id=${msgId}]`).remove()
+  $(`.bubble[data-message-id="${msgId}"]`).remove()
 }
 
 function deleteMessages(userId) {
-  $(`.bubble[data-user-id=${userId}]`).remove()
+  $(`.bubble[data-user-id="${userId}"]`).remove()
 }
 
 function onButton(event) {
