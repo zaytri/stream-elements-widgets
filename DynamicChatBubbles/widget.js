@@ -373,13 +373,37 @@ window.addEventListener('onEventReceived', obj => {
 //    Event Functions
 // ---------------------
 
+const twitchToTrovoPerms = {
+  streamer: 'broadcaster',
+  mod: 'moderator',
+  supermod: 'moderator',
+  follower: '', //can be set to 'vip' to allow a follower mode on Trovo
+  subscriber: 'subscriber',
+ // "custom role": 'vip', //Add custom role here
+};
+
 function onMessage(event) {
-  const {
+  let {
     badges, emotes, msgId,
     userId, text, nick,
     displayColor: color,
     displayName: name,
   } = event.data
+
+  if(event.data.service = 'trovo') {
+    try {
+    	let msgTimeStamp = event.data.content_data.user_time; //TROVO CATCH ... prevents reading of old messages when loaded
+    	emotes = ''; //unknown mapping
+    	msgId = event.data.messageId;
+    	userId = `${event.data.userId}`;
+    	text = event.data.content;
+    	nick = event.data.nick_name;
+      event.data.roles.forEach(i => badges.push({type: twitchToTrovoPerms[i]}));
+    } catch (e) {
+      console.log('Trovo Mapping Error: ', e);
+      return;
+    };
+  };
 
   // Filters
   if (FieldData.raidCooldown > 0 && !Widget.raidActive) return
@@ -657,6 +681,7 @@ function hasIncludedBadge(badges = []) {
 }
 
 function getMessageType(data) {
+  if (data.service = 'trovo') return 'default'
   if (data.isAction) return 'action'
   if (data.tags['msg-id'] === 'highlighted-message') return 'highlight'
   return 'default'
