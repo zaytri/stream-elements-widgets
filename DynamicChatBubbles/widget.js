@@ -293,13 +293,14 @@ const TEST_MESSAGES = [
 // ---------------------------
 
 window.addEventListener('onWidgetLoad', obj => {
+  loadFieldData(obj.detail.fieldData)
+
   const main = $('main')
   window.setTimeout(_ => {
     Widget.width = main.innerWidth()
     Widget.height = main.innerHeight()
-  }, 1000)
-
-  loadFieldData(obj.detail.fieldData)
+    if (FieldData.previewMode) sendTestMessage(10, 500)
+  }, 100)
 
   if (FieldData.darkMode) main.addClass('dark-mode')
   else main.removeClass('dark-mode')
@@ -331,6 +332,7 @@ function loadFieldData(data) {
     'darkMode',
     'useCustomMessageColors',
     'useCustomBorderColors',
+    'previewMode',
   )
 }
 
@@ -480,15 +482,13 @@ function onButton(event) {
   if (listener !== 'widget-button' || value !== 'zaytri_dynamicchatbubbles') return
 
   switch(field) {
-    case 'paddingButton': $('main').toggleClass('show-padding')
-      break
     case 'testMessageButton': sendTestMessage()
       break
     default: return
   }
 }
 
-function sendTestMessage(amount = 1) {
+function sendTestMessage(amount = 1, delay = 250) {
   for (let i = 0; i < amount; i++) {
     window.setTimeout(_ => {
       const name = `user_${numbered.stringify(random(1, 10))}`.replace('-', '_')
@@ -529,7 +529,7 @@ function sendTestMessage(amount = 1) {
         event.data.tags['msg-id'] = 'highlighted-message'
       }
       onMessage(event)
-    }, i * 250)
+    }, i * delay)
   }
 }
 

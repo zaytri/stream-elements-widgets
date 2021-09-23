@@ -5,6 +5,21 @@
     "type": "button",
     "value": "zaytri_dynamicchatbubbles"
   },
+  "previewModeLabel": {
+    "label": "Preview Mode",
+    "group": "Preview",
+    "type": "hidden"
+  },
+  "previewMode": {
+    "label": "(Shows bubbles when settings change)",
+    "group": "Preview",
+    "type": "dropdown",
+    "value": "false",
+    "options": {
+      "true": "On",
+      "false": "Off"
+    }
+  },
   "previewType": {
     "label": "Message Type",
     "group": "Preview",
@@ -22,20 +37,6 @@
     "group": "Preview",
     "type": "text",
     "value": ""
-  },
-  "paddingButton": {
-    "label": "Toggle Bubble Area",
-    "group": "Bubble Area",
-    "type": "button",
-    "value": "zaytri_dynamicchatbubbles"
-  },
-  "padding": {
-    "label": "Space from Widget Edges (px)",
-    "group": "Bubble Area",
-    "type": "number",
-    "value": 30,
-    "min": 0,
-    "step": 1
   },
   "ignoreUserListLabel": {
     "label": "Ignore these users:",
@@ -208,6 +209,14 @@
     "step": 1,
     "min": 0
   },
+  "padding": {
+    "label": "Space from Widget Edges (px)",
+    "group": "Bubble Styles",
+    "type": "number",
+    "value": 30,
+    "min": 0,
+    "step": 1
+  },
   "maxWidth": {
     "label": "Message Max Width (px)",
     "group": "Bubble Styles",
@@ -252,7 +261,12 @@
     "value": "dynamic",
     "options": {
       "dynamic": "Dynamic",
+      "zoom": "Bounce Zoom",
       "fade": "Fade",
+      "fade-up": "Fade Up",
+      "fade-down": "Fade Down",
+      "fade-left": "Fade Left",
+      "fade-right": "Fade Right",
       "none": "None"
     }
   },
@@ -367,7 +381,7 @@
     "type": "hidden"
   },
   "widgetName": {
-    "label": "[Dynamic Chat Bubbles - v2.3.2]",
+    "label": "[Dynamic Chat Bubbles - v2.4.0]",
     "group": "About",
     "type": "hidden",
     "value": "Dynamic Chat Bubbles"
@@ -382,7 +396,7 @@
     "label": "Twitch - twitch.tv/zaytri",
     "group": "About",
     "type": "hidden",
-    "value": "2.3.2"
+    "value": "2.4.0"
   },
   "widgetUpdateUrl": {
     "label": "Twitter / TikTok / Instagram - @imzaytri",

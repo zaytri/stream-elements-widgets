@@ -24,7 +24,7 @@ main {
   left: 0;
 }
 
-main.show-padding::before {
+main.preview-true::before {
   --borderSize: 10px;
   content: '';
   position: absolute;
@@ -38,10 +38,10 @@ main.show-padding::before {
   z-index: -2;
 }
 
-main.show-padding::after {
+main.preview-true::after {
   --borderSize: 10px;
   --space: 10px;
-  content: 'Messages will only appear within this area.\a\aTip 1: You can move and resize the widget in here!\aTip 2: Test this while your streaming software is open!';
+  content: 'Messages will only appear within this area.\a\a Drag and resize this box to change the area.\aSpace from Widget Edges in Bubble Styles also affects this area.';
   color: white;
   font-size: 24px;
   position: absolute;
@@ -55,6 +55,10 @@ main.show-padding::after {
   font-weight: bold;
   font-family: Roboto, Arial, sans-serif;
   z-index: -1;
+}
+
+main.preview-true::before, main.preview-true::after {
+  animation: fade .4s reverse forwards;
 }
 
 main.dark-mode { color: white; }
@@ -118,7 +122,53 @@ main.custom-message-colors { color: var(--customTextColor) }
 }
 
 .bubble.fade {
-  animation: fade .5s calc({lifetime}s - .5s) forwards, fade reverse .5s;
+  animation:
+    fade reverse .5s,
+    fade .5s calc({lifetime}s - .5s) forwards
+  ;
+}
+
+.bubble.fade-up {
+  animation:
+    fade reverse .5s,
+    fade .5s calc({lifetime}s - .5s) forwards,
+  	up .5s,
+  	up reverse .5s calc({lifetime}s - .5s) forwards
+  ;
+}
+
+.bubble.fade-down {
+  animation:
+    fade reverse .5s,
+    fade .5s calc({lifetime}s - .5s) forwards,
+  	down .5s,
+  	down reverse .5s calc({lifetime}s - .5s) forwards
+  ;
+}
+
+.bubble.fade-left {
+  animation:
+    fade reverse .5s,
+    fade .5s calc({lifetime}s - .5s) forwards,
+  	left .5s,
+  	left reverse .5s calc({lifetime}s - .5s) forwards
+  ;
+}
+
+.bubble.fade-right {
+  animation:
+    fade reverse .5s,
+    fade .5s calc({lifetime}s - .5s) forwards,
+  	right .5s,
+  	right reverse .5s calc({lifetime}s - .5s) forwards
+  ;
+}
+
+.bubble.zoom {
+  animation:
+    pop reverse .5s,
+    pop .5s calc({lifetime}s - .5s) forwards
+  ;
 }
 
 .bubble-background {
@@ -272,6 +322,26 @@ main.custom-message-colors { color: var(--customTextColor) }
 @keyframes fade {
   from { opacity: 1; }
   to { opacity: 0; }
+}
+
+@keyframes up {
+  from { transform: translateY(50px); }
+  to { transform: translateY(0px); }
+}
+
+@keyframes down {
+  from { transform: translateY(-50px); }
+  to { transform: translateY(0px); }
+}
+
+@keyframes left {
+  from { transform: translateX(50px); }
+  to { transform: translateX(0px); }
+}
+
+@keyframes right {
+  from { transform: translateX(-50px); }
+  to { transform: translateX(0px); }
 }
 
 @keyframes expand {
