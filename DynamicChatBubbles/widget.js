@@ -14,280 +14,6 @@ const Widget = {
   userMessageCount: {},
 }
 
-const TEST_MESSAGES = [
-  ['HYPE'],
-  ['uwu'],
-  ['popCat', [
-    {
-      "type": "bttv",
-      "name": "popCat",
-      "id": "60d5abc38ed8b373e421952f",
-      "gif": true,
-      "urls": {
-        "1": "https://cdn.betterttv.net/emote/60d5abc38ed8b373e421952f/1x",
-        "2": "https://cdn.betterttv.net/emote/60d5abc38ed8b373e421952f/2x",
-        "4": "https://cdn.betterttv.net/emote/60d5abc38ed8b373e421952f/3x"
-      },
-      "start": 0,
-      "end": 6
-    }
-  ]],
-  ['catHYPE hypeE catHYPE', [
-    {
-      "type": "bttv",
-      "name": "catHYPE",
-      "id": "6090e9cc39b5010444d0b3ff",
-      "gif": true,
-      "urls": {
-        "1": "https://cdn.betterttv.net/emote/6090e9cc39b5010444d0b3ff/1x",
-        "2": "https://cdn.betterttv.net/emote/6090e9cc39b5010444d0b3ff/2x",
-        "4": "https://cdn.betterttv.net/emote/6090e9cc39b5010444d0b3ff/3x"
-      },
-      "start": 0,
-      "end": 7
-    },
-    {
-      "type": "bttv",
-      "name": "hypeE",
-      "id": "5b6ded5560d17f4657e1319e",
-      "gif": true,
-      "urls": {
-        "1": "https://cdn.betterttv.net/emote/5b6ded5560d17f4657e1319e/1x",
-        "2": "https://cdn.betterttv.net/emote/5b6ded5560d17f4657e1319e/2x",
-        "4": "https://cdn.betterttv.net/emote/5b6ded5560d17f4657e1319e/3x"
-      },
-      "start": 8,
-      "end": 13
-    },
-    {
-      "type": "bttv",
-      "name": "catHYPE",
-      "id": "6090e9cc39b5010444d0b3ff",
-      "gif": true,
-      "urls": {
-        "1": "https://cdn.betterttv.net/emote/6090e9cc39b5010444d0b3ff/1x",
-        "2": "https://cdn.betterttv.net/emote/6090e9cc39b5010444d0b3ff/2x",
-        "4": "https://cdn.betterttv.net/emote/6090e9cc39b5010444d0b3ff/3x"
-      },
-      "start": 14,
-      "end": 21
-    }
-  ]],
-  ['zaytriLOVE', [
-    {
-      "type": "twitch",
-      "name": "zaytriLOVE",
-      "id": "307974105",
-      "gif": false,
-      "urls": {
-        "1": "https://static-cdn.jtvnw.net/emoticons/v2/307974105/default/dark/1.0",
-        "2": "https://static-cdn.jtvnw.net/emoticons/v2/307974105/default/dark/2.0",
-        "4": "https://static-cdn.jtvnw.net/emoticons/v2/307974105/default/dark/3.0"
-      },
-      "start": 0,
-      "end": 9
-    }
-  ]],
-  ['D: D: D:', [
-    {
-      "type": "bttv",
-      "name": "D:",
-      "id": "55028cd2135896936880fdd7",
-      "gif": false,
-      "urls": {
-        "1": "https://cdn.betterttv.net/emote/55028cd2135896936880fdd7/1x",
-        "2": "https://cdn.betterttv.net/emote/55028cd2135896936880fdd7/2x",
-        "4": "https://cdn.betterttv.net/emote/55028cd2135896936880fdd7/3x"
-      },
-      "start": 0,
-      "end": 2
-    },
-    {
-      "type": "bttv",
-      "name": "D:",
-      "id": "55028cd2135896936880fdd7",
-      "gif": false,
-      "urls": {
-        "1": "https://cdn.betterttv.net/emote/55028cd2135896936880fdd7/1x",
-        "2": "https://cdn.betterttv.net/emote/55028cd2135896936880fdd7/2x",
-        "4": "https://cdn.betterttv.net/emote/55028cd2135896936880fdd7/3x"
-      },
-      "start": 3,
-      "end": 5
-    },
-    {
-      "type": "bttv",
-      "name": "D:",
-      "id": "55028cd2135896936880fdd7",
-      "gif": false,
-      "urls": {
-        "1": "https://cdn.betterttv.net/emote/55028cd2135896936880fdd7/1x",
-        "2": "https://cdn.betterttv.net/emote/55028cd2135896936880fdd7/2x",
-        "4": "https://cdn.betterttv.net/emote/55028cd2135896936880fdd7/3x"
-      },
-      "start": 6,
-      "end": 8
-    }
-  ]],
-  ['SCREME', [
-    {
-      "type": "bttv",
-      "name": "SCREME",
-      "id": "5fea41766b06e834ffd76103",
-      "gif": true,
-      "urls": {
-        "1": "https://cdn.betterttv.net/emote/5fea41766b06e834ffd76103/1x",
-        "2": "https://cdn.betterttv.net/emote/5fea41766b06e834ffd76103/2x",
-        "4": "https://cdn.betterttv.net/emote/5fea41766b06e834ffd76103/3x"
-      },
-      "start": 0,
-      "end": 6
-    }
-  ]],
-  ['toad sings but make it nightcore zaytriSCREME', [
-    {
-      "type": "twitch",
-      "name": "zaytriSCREME",
-      "id": "305161229",
-      "gif": false,
-      "urls": {
-        "1": "https://static-cdn.jtvnw.net/emoticons/v2/305161229/default/dark/1.0",
-        "2": "https://static-cdn.jtvnw.net/emoticons/v2/305161229/default/dark/2.0",
-        "4": "https://static-cdn.jtvnw.net/emoticons/v2/305161229/default/dark/3.0"
-      },
-      "start": 33,
-      "end": 44
-    }
-  ]],
-  ['bobDance bobDance bobDance', [
-    {
-      "type": "bttv",
-      "name": "bobDance",
-      "id": "5e2a1da9bca2995f13fc0261",
-      "gif": true,
-      "urls": {
-        "1": "https://cdn.betterttv.net/emote/5e2a1da9bca2995f13fc0261/1x",
-        "2": "https://cdn.betterttv.net/emote/5e2a1da9bca2995f13fc0261/2x",
-        "4": "https://cdn.betterttv.net/emote/5e2a1da9bca2995f13fc0261/3x"
-      },
-      "start": 0,
-      "end": 8
-    },
-    {
-      "type": "bttv",
-      "name": "bobDance",
-      "id": "5e2a1da9bca2995f13fc0261",
-      "gif": true,
-      "urls": {
-        "1": "https://cdn.betterttv.net/emote/5e2a1da9bca2995f13fc0261/1x",
-        "2": "https://cdn.betterttv.net/emote/5e2a1da9bca2995f13fc0261/2x",
-        "4": "https://cdn.betterttv.net/emote/5e2a1da9bca2995f13fc0261/3x"
-      },
-      "start": 9,
-      "end": 17
-    },
-    {
-      "type": "bttv",
-      "name": "bobDance",
-      "id": "5e2a1da9bca2995f13fc0261",
-      "gif": true,
-      "urls": {
-        "1": "https://cdn.betterttv.net/emote/5e2a1da9bca2995f13fc0261/1x",
-        "2": "https://cdn.betterttv.net/emote/5e2a1da9bca2995f13fc0261/2x",
-        "4": "https://cdn.betterttv.net/emote/5e2a1da9bca2995f13fc0261/3x"
-      },
-      "start": 18,
-      "end": 26
-    }
-  ]],
-  ['bongoTap', [
-    {
-      "type": "bttv",
-      "name": "bongoTap",
-      "id": "5ba6d5ba6ee0c23989d52b10",
-      "gif": true,
-      "urls": {
-        "1": "https://cdn.betterttv.net/emote/5ba6d5ba6ee0c23989d52b10/1x",
-        "2": "https://cdn.betterttv.net/emote/5ba6d5ba6ee0c23989d52b10/2x",
-        "4": "https://cdn.betterttv.net/emote/5ba6d5ba6ee0c23989d52b10/3x"
-      },
-      "start": 0,
-      "end": 8
-    }
-  ]],
-  ['VoHiYo hello!', [
-    {
-      "type": "twitch",
-      "name": "VoHiYo",
-      "id": "81274",
-      "gif": false,
-      "urls": {
-        "1": "https://static-cdn.jtvnw.net/emoticons/v2/81274/default/dark/1.0",
-        "2": "https://static-cdn.jtvnw.net/emoticons/v2/81274/default/dark/2.0",
-        "4": "https://static-cdn.jtvnw.net/emoticons/v2/81274/default/dark/3.0"
-      },
-      "start": 0,
-      "end": 5
-    }
-  ]],
-  ['TwitchUnity', [
-    {
-      "type": "twitch",
-      "name": "TwitchUnity",
-      "id": "196892",
-      "gif": false,
-      "urls": {
-        "1": "https://static-cdn.jtvnw.net/emoticons/v2/196892/default/dark/1.0",
-        "2": "https://static-cdn.jtvnw.net/emoticons/v2/196892/default/dark/2.0",
-        "4": "https://static-cdn.jtvnw.net/emoticons/v2/196892/default/dark/3.0"
-      },
-      "start": 0,
-      "end": 10
-    }
-  ]],
-  ['MercyWing1 PinkMercy MercyWing2', [
-    {
-      "type": "twitch",
-      "name": "MercyWing1",
-      "id": "1003187",
-      "gif": false,
-      "urls": {
-        "1": "https://static-cdn.jtvnw.net/emoticons/v1/1003187/1.0",
-        "2": "https://static-cdn.jtvnw.net/emoticons/v1/1003187/1.0",
-        "4": "https://static-cdn.jtvnw.net/emoticons/v1/1003187/3.0"
-      },
-      "start": 0,
-      "end": 9
-    },
-    {
-      "type": "twitch",
-      "name": "PinkMercy",
-      "id": "1003190",
-      "gif": false,
-      "urls": {
-        "1": "https://static-cdn.jtvnw.net/emoticons/v1/1003190/1.0",
-        "2": "https://static-cdn.jtvnw.net/emoticons/v1/1003190/1.0",
-        "4": "https://static-cdn.jtvnw.net/emoticons/v1/1003190/3.0"
-      },
-      "start": 11,
-      "end": 19
-    },
-    {
-      "type": "twitch",
-      "name": "MercyWing2",
-      "id": "1003189",
-      "gif": false,
-      "urls": {
-        "1": "https://static-cdn.jtvnw.net/emoticons/v1/1003189/1.0",
-        "2": "https://static-cdn.jtvnw.net/emoticons/v1/1003189/1.0",
-        "4": "https://static-cdn.jtvnw.net/emoticons/v1/1003189/3.0"
-      },
-      "start": 21,
-      "end": 30
-    }
-  ]],
-]
-
 // ---------------------------
 //    Widget Initialization
 // ---------------------------
@@ -722,6 +448,280 @@ function joinIfArray(possibleArray, delimiter = '') {
   if (Array.isArray(possibleArray)) return possibleArray.join(delimiter)
   return possibleArray
 }
+
+const TEST_MESSAGES = [
+  ['HYPE'],
+  ['uwu'],
+  ['popCat', [
+    {
+      "type": "bttv",
+      "name": "popCat",
+      "id": "60d5abc38ed8b373e421952f",
+      "gif": true,
+      "urls": {
+        "1": "https://cdn.betterttv.net/emote/60d5abc38ed8b373e421952f/1x",
+        "2": "https://cdn.betterttv.net/emote/60d5abc38ed8b373e421952f/2x",
+        "4": "https://cdn.betterttv.net/emote/60d5abc38ed8b373e421952f/3x"
+      },
+      "start": 0,
+      "end": 6
+    }
+  ]],
+  ['catHYPE hypeE catHYPE', [
+    {
+      "type": "bttv",
+      "name": "catHYPE",
+      "id": "6090e9cc39b5010444d0b3ff",
+      "gif": true,
+      "urls": {
+        "1": "https://cdn.betterttv.net/emote/6090e9cc39b5010444d0b3ff/1x",
+        "2": "https://cdn.betterttv.net/emote/6090e9cc39b5010444d0b3ff/2x",
+        "4": "https://cdn.betterttv.net/emote/6090e9cc39b5010444d0b3ff/3x"
+      },
+      "start": 0,
+      "end": 7
+    },
+    {
+      "type": "bttv",
+      "name": "hypeE",
+      "id": "5b6ded5560d17f4657e1319e",
+      "gif": true,
+      "urls": {
+        "1": "https://cdn.betterttv.net/emote/5b6ded5560d17f4657e1319e/1x",
+        "2": "https://cdn.betterttv.net/emote/5b6ded5560d17f4657e1319e/2x",
+        "4": "https://cdn.betterttv.net/emote/5b6ded5560d17f4657e1319e/3x"
+      },
+      "start": 8,
+      "end": 13
+    },
+    {
+      "type": "bttv",
+      "name": "catHYPE",
+      "id": "6090e9cc39b5010444d0b3ff",
+      "gif": true,
+      "urls": {
+        "1": "https://cdn.betterttv.net/emote/6090e9cc39b5010444d0b3ff/1x",
+        "2": "https://cdn.betterttv.net/emote/6090e9cc39b5010444d0b3ff/2x",
+        "4": "https://cdn.betterttv.net/emote/6090e9cc39b5010444d0b3ff/3x"
+      },
+      "start": 14,
+      "end": 21
+    }
+  ]],
+  ['zaytriLOVE', [
+    {
+      "type": "twitch",
+      "name": "zaytriLOVE",
+      "id": "307974105",
+      "gif": false,
+      "urls": {
+        "1": "https://static-cdn.jtvnw.net/emoticons/v2/307974105/default/dark/1.0",
+        "2": "https://static-cdn.jtvnw.net/emoticons/v2/307974105/default/dark/2.0",
+        "4": "https://static-cdn.jtvnw.net/emoticons/v2/307974105/default/dark/3.0"
+      },
+      "start": 0,
+      "end": 9
+    }
+  ]],
+  ['D: D: D:', [
+    {
+      "type": "bttv",
+      "name": "D:",
+      "id": "55028cd2135896936880fdd7",
+      "gif": false,
+      "urls": {
+        "1": "https://cdn.betterttv.net/emote/55028cd2135896936880fdd7/1x",
+        "2": "https://cdn.betterttv.net/emote/55028cd2135896936880fdd7/2x",
+        "4": "https://cdn.betterttv.net/emote/55028cd2135896936880fdd7/3x"
+      },
+      "start": 0,
+      "end": 2
+    },
+    {
+      "type": "bttv",
+      "name": "D:",
+      "id": "55028cd2135896936880fdd7",
+      "gif": false,
+      "urls": {
+        "1": "https://cdn.betterttv.net/emote/55028cd2135896936880fdd7/1x",
+        "2": "https://cdn.betterttv.net/emote/55028cd2135896936880fdd7/2x",
+        "4": "https://cdn.betterttv.net/emote/55028cd2135896936880fdd7/3x"
+      },
+      "start": 3,
+      "end": 5
+    },
+    {
+      "type": "bttv",
+      "name": "D:",
+      "id": "55028cd2135896936880fdd7",
+      "gif": false,
+      "urls": {
+        "1": "https://cdn.betterttv.net/emote/55028cd2135896936880fdd7/1x",
+        "2": "https://cdn.betterttv.net/emote/55028cd2135896936880fdd7/2x",
+        "4": "https://cdn.betterttv.net/emote/55028cd2135896936880fdd7/3x"
+      },
+      "start": 6,
+      "end": 8
+    }
+  ]],
+  ['SCREME', [
+    {
+      "type": "bttv",
+      "name": "SCREME",
+      "id": "5fea41766b06e834ffd76103",
+      "gif": true,
+      "urls": {
+        "1": "https://cdn.betterttv.net/emote/5fea41766b06e834ffd76103/1x",
+        "2": "https://cdn.betterttv.net/emote/5fea41766b06e834ffd76103/2x",
+        "4": "https://cdn.betterttv.net/emote/5fea41766b06e834ffd76103/3x"
+      },
+      "start": 0,
+      "end": 6
+    }
+  ]],
+  ['toad sings but make it nightcore zaytriSCREME', [
+    {
+      "type": "twitch",
+      "name": "zaytriSCREME",
+      "id": "305161229",
+      "gif": false,
+      "urls": {
+        "1": "https://static-cdn.jtvnw.net/emoticons/v2/305161229/default/dark/1.0",
+        "2": "https://static-cdn.jtvnw.net/emoticons/v2/305161229/default/dark/2.0",
+        "4": "https://static-cdn.jtvnw.net/emoticons/v2/305161229/default/dark/3.0"
+      },
+      "start": 33,
+      "end": 44
+    }
+  ]],
+  ['bobDance bobDance bobDance', [
+    {
+      "type": "bttv",
+      "name": "bobDance",
+      "id": "5e2a1da9bca2995f13fc0261",
+      "gif": true,
+      "urls": {
+        "1": "https://cdn.betterttv.net/emote/5e2a1da9bca2995f13fc0261/1x",
+        "2": "https://cdn.betterttv.net/emote/5e2a1da9bca2995f13fc0261/2x",
+        "4": "https://cdn.betterttv.net/emote/5e2a1da9bca2995f13fc0261/3x"
+      },
+      "start": 0,
+      "end": 8
+    },
+    {
+      "type": "bttv",
+      "name": "bobDance",
+      "id": "5e2a1da9bca2995f13fc0261",
+      "gif": true,
+      "urls": {
+        "1": "https://cdn.betterttv.net/emote/5e2a1da9bca2995f13fc0261/1x",
+        "2": "https://cdn.betterttv.net/emote/5e2a1da9bca2995f13fc0261/2x",
+        "4": "https://cdn.betterttv.net/emote/5e2a1da9bca2995f13fc0261/3x"
+      },
+      "start": 9,
+      "end": 17
+    },
+    {
+      "type": "bttv",
+      "name": "bobDance",
+      "id": "5e2a1da9bca2995f13fc0261",
+      "gif": true,
+      "urls": {
+        "1": "https://cdn.betterttv.net/emote/5e2a1da9bca2995f13fc0261/1x",
+        "2": "https://cdn.betterttv.net/emote/5e2a1da9bca2995f13fc0261/2x",
+        "4": "https://cdn.betterttv.net/emote/5e2a1da9bca2995f13fc0261/3x"
+      },
+      "start": 18,
+      "end": 26
+    }
+  ]],
+  ['bongoTap', [
+    {
+      "type": "bttv",
+      "name": "bongoTap",
+      "id": "5ba6d5ba6ee0c23989d52b10",
+      "gif": true,
+      "urls": {
+        "1": "https://cdn.betterttv.net/emote/5ba6d5ba6ee0c23989d52b10/1x",
+        "2": "https://cdn.betterttv.net/emote/5ba6d5ba6ee0c23989d52b10/2x",
+        "4": "https://cdn.betterttv.net/emote/5ba6d5ba6ee0c23989d52b10/3x"
+      },
+      "start": 0,
+      "end": 8
+    }
+  ]],
+  ['VoHiYo hello!', [
+    {
+      "type": "twitch",
+      "name": "VoHiYo",
+      "id": "81274",
+      "gif": false,
+      "urls": {
+        "1": "https://static-cdn.jtvnw.net/emoticons/v2/81274/default/dark/1.0",
+        "2": "https://static-cdn.jtvnw.net/emoticons/v2/81274/default/dark/2.0",
+        "4": "https://static-cdn.jtvnw.net/emoticons/v2/81274/default/dark/3.0"
+      },
+      "start": 0,
+      "end": 5
+    }
+  ]],
+  ['TwitchUnity', [
+    {
+      "type": "twitch",
+      "name": "TwitchUnity",
+      "id": "196892",
+      "gif": false,
+      "urls": {
+        "1": "https://static-cdn.jtvnw.net/emoticons/v2/196892/default/dark/1.0",
+        "2": "https://static-cdn.jtvnw.net/emoticons/v2/196892/default/dark/2.0",
+        "4": "https://static-cdn.jtvnw.net/emoticons/v2/196892/default/dark/3.0"
+      },
+      "start": 0,
+      "end": 10
+    }
+  ]],
+  ['MercyWing1 PinkMercy MercyWing2', [
+    {
+      "type": "twitch",
+      "name": "MercyWing1",
+      "id": "1003187",
+      "gif": false,
+      "urls": {
+        "1": "https://static-cdn.jtvnw.net/emoticons/v1/1003187/1.0",
+        "2": "https://static-cdn.jtvnw.net/emoticons/v1/1003187/1.0",
+        "4": "https://static-cdn.jtvnw.net/emoticons/v1/1003187/3.0"
+      },
+      "start": 0,
+      "end": 9
+    },
+    {
+      "type": "twitch",
+      "name": "PinkMercy",
+      "id": "1003190",
+      "gif": false,
+      "urls": {
+        "1": "https://static-cdn.jtvnw.net/emoticons/v1/1003190/1.0",
+        "2": "https://static-cdn.jtvnw.net/emoticons/v1/1003190/1.0",
+        "4": "https://static-cdn.jtvnw.net/emoticons/v1/1003190/3.0"
+      },
+      "start": 11,
+      "end": 19
+    },
+    {
+      "type": "twitch",
+      "name": "MercyWing2",
+      "id": "1003189",
+      "gif": false,
+      "urls": {
+        "1": "https://static-cdn.jtvnw.net/emoticons/v1/1003189/1.0",
+        "2": "https://static-cdn.jtvnw.net/emoticons/v1/1003189/1.0",
+        "4": "https://static-cdn.jtvnw.net/emoticons/v1/1003189/3.0"
+      },
+      "start": 21,
+      "end": 30
+    }
+  ]],
+]
 
 function htmlEncode(text) {
   return text.replace(/[\<\>\"\'\^\=]/g, char => `&#${char.charCodeAt(0)};`)
