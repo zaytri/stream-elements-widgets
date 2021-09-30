@@ -22,11 +22,6 @@ window.addEventListener('onWidgetLoad', obj => {
   loadFieldData(obj.detail.fieldData)
 
   const main = $('main')
-  window.setTimeout(_ => {
-    Widget.width = main.innerWidth()
-    Widget.height = main.innerHeight()
-    if (FieldData.previewMode) sendTestMessage(10, 500)
-  }, 100)
 
   if (FieldData.darkMode) main.addClass('dark-mode')
   else main.removeClass('dark-mode')
@@ -36,6 +31,8 @@ window.addEventListener('onWidgetLoad', obj => {
 
   if (FieldData.useCustomBorderColors) main.addClass('custom-border-colors')
   else main.removeClass('custom-border-colors')
+
+  if (FieldData.previewMode) sendTestMessage(10, 500)
 })
 
 function loadFieldData(data) {
@@ -437,10 +434,13 @@ function random(min, max) {
 }
 
 function calcPosition(width, height) {
+  const main = $('main')
+  const widgetWidth = main.innerWidth()
+  const widgetHeight = main.innerHeight()
   const { padding } = FieldData
   return [
-    random(padding, Math.max(padding, Widget.width - padding - width)),
-    random(padding, Math.max(padding, Widget.height - padding - height)),
+    random(padding, Math.max(padding, widgetWidth - padding - width)),
+    random(padding, Math.max(padding, widgetHeight - padding - height)),
   ]
 }
 
