@@ -173,13 +173,17 @@
     "group": "Message Filters",
     "type": "hidden"
   },
-  "raidCooldown": {
+  "raidCooldownLabel2": {
     "label": "for this many seconds (0 to disable)",
+    "group": "Message Filters",
+    "type": "hidden"
+  },
+  "raidCooldown": {
+    "label": "(negatives hide bubbles instead)",
     "group": "Message Filters",
     "type": "number",
     "value": 0,
-    "step": 1,
-    "min": 0
+    "step": 1
   },
   "raidMin": {
     "label": "Raid Viewer Minimum for ^",

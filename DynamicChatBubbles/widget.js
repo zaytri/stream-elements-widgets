@@ -108,6 +108,7 @@ function onMessage(event) {
 
   // Filters
   if (FieldData.raidCooldown > 0 && !Widget.raidActive) return
+  if (FieldData.raidCooldown < 0 && Widget.raidActive) return
   if (hasIgnoredPrefix(text)) return
   if (!passedMinMessageThreshold(userId)) return
   if (FieldData.allowUserList.length && !userListIncludes(FieldData.allowUserList, name, nick)) return
@@ -188,7 +189,7 @@ function onRaid(event) {
   Widget.raidActive = true
   Widget.raidTimer = window.setTimeout(() => {
     Widget.raidActive = false
-  }, FieldData.raidCooldown * 1000)
+  }, Math.abs(FieldData.raidCooldown) * 1000)
 }
 
 function deleteMessage(msgId) {
