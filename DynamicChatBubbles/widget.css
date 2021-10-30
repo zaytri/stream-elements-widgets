@@ -84,9 +84,12 @@ main.list-mode {
   --borderColor: var(--userColor);
   --borderSize: 5px;
   position: absolute;
+  visibility: hidden;
+}
+
+.random-mode .bubble {
   top: 30px;
   left: 30px;
-  visibility: hidden;
 }
 
 .list-mode .bubble {

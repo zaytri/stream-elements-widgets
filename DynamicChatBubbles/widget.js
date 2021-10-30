@@ -148,17 +148,19 @@ function onMessage(event) {
     const maxWidth = $(`${currentMessage} .message-wrapper`).width() + 1
     const minWidth = $(`${currentMessage} .username`).outerWidth()
 
-    // I'm not entirely sure why the + 30 is necessary,
-    // but it makes the calculations work correctly
-    const [left, top] = calcPosition(Math.max(minWidth, maxWidth) + 30, height)
-
     $(`${currentMessage} .message`).css({
       '--dynamicWidth': Math.max(minWidth, maxWidth),
     })
 
-    window.setTimeout(_ => {
-      $(currentMessage).css({ left, top })
-    }, 300)
+    if (FieldData.positionMode === 'random') {
+      // I'm not entirely sure why the + 30 is necessary,
+      // but it makes the calculations work correctly
+      const [left, top] = calcPosition(Math.max(minWidth, maxWidth) + 30, height)
+
+      window.setTimeout(_ => {
+        $(currentMessage).css({ left, top })
+      }, 300)
+    }
   }, 300)
 
   // Show Bubble and Play Sound
@@ -172,7 +174,7 @@ function onMessage(event) {
     if (FieldData.soundUrl) sound.play()
     $(currentMessage).addClass('animate')
     $(currentMessage).addClass(FieldData.animation)
-    if (FieldData.positionMode === 'list') $(currentMessage).css({ position: 'static' })
+    if (FieldData.positionMode === 'list') $(currentMessage).css({ position: 'relative' })
 
     window.setTimeout(_ => {
       deleteMessage(msgId)
