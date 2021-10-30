@@ -21,16 +21,9 @@ const Widget = {
 window.addEventListener('onWidgetLoad', obj => {
   loadFieldData(obj.detail.fieldData)
 
-  const main = $('main')
-
-  if (FieldData.darkMode) main.addClass('dark-mode')
-  else main.removeClass('dark-mode')
-
-  if (FieldData.useCustomMessageColors) main.addClass('custom-message-colors')
-  else main.removeClass('custom-message-colors')
-
-  if (FieldData.useCustomBorderColors) main.addClass('custom-border-colors')
-  else main.removeClass('custom-border-colors')
+  conditionalMainClass('dark-mode', FieldData.darkMode)
+  conditionalMainClass('custom-message-colors', FieldData.useCustomMessageColors)
+  conditionalMainClass('custom-border-colors', FieldData.useCustomBorderColors)
 
   if (FieldData.previewMode) sendTestMessage(10, 500)
 })
@@ -71,6 +64,13 @@ function stringToArray(string = '', separator = ',') {
     if (trimmed !== '') acc.push(trimmed)
     return acc
   }, [])
+}
+
+function conditionalMainClass(className, condition = true) {
+  const main = $('main')
+
+  if (condition) main.addClass(className)
+  else main.removeClass(className)
 }
 
 // --------------------
@@ -139,7 +139,7 @@ function onMessage(event) {
   }
 
   // Render Bubble
-  $('main').append(MessageComponent({ ...elementData }))
+  $('main').prepend(MessageComponent({ ...elementData }))
   const currentMessage = `.bubble[data-message-id="${msgId}"]`
 
   // Calcute Bubble Position
@@ -172,6 +172,7 @@ function onMessage(event) {
     if (FieldData.soundUrl) sound.play()
     $(currentMessage).addClass('animate')
     $(currentMessage).addClass(FieldData.animation)
+    if (FieldData.positionMode === 'list') $(currentMessage).css({ position: 'static' })
 
     window.setTimeout(_ => {
       deleteMessage(msgId)

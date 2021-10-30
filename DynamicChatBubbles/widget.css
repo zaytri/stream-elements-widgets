@@ -18,19 +18,19 @@ main {
   color: black;
   box-sizing: border-box;
   position: absolute;
-  height: 100%;
+  min-height: 100%;
   width: 100%;
-  top: 0;
+  bottom: 0;
   left: 0;
 }
 
-main.preview-true::before {
+main.random-mode.preview-true::before {
   --borderSize: 10px;
   content: '';
   position: absolute;
   height: calc(100% - {padding}px * 2);
   width: calc(100% - {padding}px * 2);
-  top: calc({padding}px - var(--borderSize));
+  bottom: calc({padding}px - var(--borderSize));
   left: calc({padding}px - var(--borderSize));
   border: var(--borderSize) dashed white;
   box-shadow: 0 0 5px #000;
@@ -38,10 +38,10 @@ main.preview-true::before {
   z-index: -2;
 }
 
-main.preview-true::after {
+main.random-mode.preview-true::after {
   --borderSize: 10px;
   --space: 10px;
-  content: 'Messages will only appear within this area.\a\a Drag and resize this box to change the area.\aSpace from Widget Edges in Bubble Styles also affects this area.';
+  content: 'Messages will only appear within this area (random position mode only).\a\a Drag and resize this box to change the area.\aSpace from Widget Edges in Bubble Styles also affects this area.';
   color: white;
   font-size: 24px;
   position: absolute;
@@ -65,6 +65,15 @@ main.dark-mode { color: white; }
 
 main.custom-message-colors { color: var(--customTextColor) }
 
+main.list-mode {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: flex-start;
+  align-content: start;
+  overflow: visible;
+  padding: {padding}px;
+}
+
 /* --- [Bubble Container] --- */
 
 .bubble {
@@ -78,6 +87,10 @@ main.custom-message-colors { color: var(--customTextColor) }
   top: 30px;
   left: 30px;
   visibility: hidden;
+}
+
+.list-mode .bubble {
+  margin-top: 10px;
 }
 
 .corner-diagonal .bubble {

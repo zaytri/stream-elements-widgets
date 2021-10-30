@@ -213,6 +213,16 @@
     "step": 1,
     "min": 0
   },
+  "positionMode": {
+    "label": "Position Mode",
+    "group": "Bubble Styles",
+    "type": "dropdown",
+    "value": "random",
+    "options": {
+      "random": "Random",
+      "list": "List"
+    }
+  },
   "padding": {
     "label": "Space from Widget Edges (px)",
     "group": "Bubble Styles",
