@@ -223,6 +223,17 @@
       "list": "List"
     }
   },
+  "listAlignment": {
+    "label": "Alignment (For List Mode)",
+    "group": "Bubble Styles",
+    "type": "dropdown",
+    "value": "flex-start",
+    "options": {
+      "flex-start": "Left",
+      "center": "Center",
+      "flex-end": "Right"
+    }
+  },
   "padding": {
     "label": "Space from Widget Edges (px)",
     "group": "Bubble Styles",
@@ -395,7 +406,7 @@
     "type": "hidden"
   },
   "widgetName": {
-    "label": "[Chat Bubbles - v2.5.0]",
+    "label": "[Chat Bubbles - v2.5.1]",
     "group": "About",
     "type": "hidden",
     "value": "Chat Bubbles"
@@ -410,7 +421,7 @@
     "label": "Twitch - twitch.tv/zaytri",
     "group": "About",
     "type": "hidden",
-    "value": "2.5.0"
+    "value": "2.5.1"
   },
   "widgetUpdateUrl": {
     "label": "Twitter / TikTok / Instagram - @imzaytri",

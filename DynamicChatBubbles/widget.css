@@ -68,7 +68,7 @@ main.custom-message-colors { color: var(--customTextColor) }
 main.list-mode {
   display: flex;
   flex-direction: column-reverse;
-  align-items: flex-start;
+  align-items: {listAlignment};
   align-content: start;
   overflow: visible;
   padding: {padding}px;
