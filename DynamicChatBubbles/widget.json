@@ -395,10 +395,10 @@
     "type": "hidden"
   },
   "widgetName": {
-    "label": "[Dynamic Chat Bubbles - v2.5.0]",
+    "label": "[Chat Bubbles - v2.5.0]",
     "group": "About",
     "type": "hidden",
-    "value": "Dynamic Chat Bubbles"
+    "value": "Chat Bubbles"
   },
   "widgetAuthor": {
     "label": "Created by Zaytri",
