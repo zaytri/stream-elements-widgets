@@ -38,183 +38,8 @@
     "type": "text",
     "value": ""
   },
-  "ignoreUserListLabel": {
-    "label": "Ignore these users:",
-    "group": "Bot Filters",
-    "type": "hidden"
-  },
-  "ignoreUserList": {
-    "label": "(Comma Separated)",
-    "group": "Bot Filters",
-    "type": "text",
-    "value": "StreamElements, Streamlabs, Nightbot"
-  },
-  "ignorePrefixListLabel": {
-    "label": "Ignore messages that start with:",
-    "group": "Bot Filters",
-    "type": "hidden"
-  },
-  "ignorePrefixList": {
-    "label": "(Comma Separated)",
-    "group": "Bot Filters",
-    "type": "text",
-    "value": "!"
-  },
-  "includeEveryone": {
-    "label": "Show messages from everyone?",
-    "group": "User Filters",
-    "type": "dropdown",
-    "value": "true",
-    "options": {
-      "true": "Yes",
-      "false": "No"
-    }
-  },
-  "includeSubs": {
-    "label": "Show messages from subscribers?",
-    "group": "User Filters",
-    "type": "dropdown",
-    "value": "true",
-    "options": {
-      "true": "Yes",
-      "false": "No"
-    }
-  },
-  "includeVIPs": {
-    "label": "Show messages from VIPs?",
-    "group": "User Filters",
-    "type": "dropdown",
-    "value": "true",
-    "options": {
-      "true": "Yes",
-      "false": "No"
-    }
-  },
-  "includeMods": {
-    "label": "Show messages from moderators?",
-    "group": "User Filters",
-    "type": "dropdown",
-    "value": "true",
-    "options": {
-      "true": "Yes",
-      "false": "No"
-    }
-  },
-  "allowUserListLabel": {
-    "label": "Show messages only from these users:",
-    "group": "User Filters",
-    "type": "hidden"
-  },
-  "allowUserList": {
-    "label": "(Comma Separated)",
-    "group": "User Filters",
-    "type": "text",
-    "value": ""
-  },
-  "emoteOnly": {
-    "label": "Show only emote-only messages?",
-    "group": "Message Filters",
-    "type": "dropdown",
-    "value": "false",
-    "options": {
-      "true": "Yes",
-      "false": "No"
-    }
-  },
-  "highlightOnly": {
-    "label": "Show only highlighted messages?",
-    "group": "Message Filters",
-    "type": "dropdown",
-    "value": "false",
-    "options": {
-      "true": "Yes",
-      "false": "No"
-    }
-  },
-  "allowedStringsLabel": {
-    "label": "Allow only these phrases:",
-    "group": "Message Filters",
-    "type": "hidden"
-  },
-  "allowedStrings": {
-    "label": "(Comma Separated)",
-    "group": "Message Filters",
-    "type": "text",
-    "value": ""
-  },
-  "minMessagesLabel": {
-    "label": "Minimum messages a user must send",
-    "group": "Message Filters",
-    "type": "hidden"
-  },
-  "minMessages": {
-    "label": "before their messages create bubbles",
-    "group": "Message Filters",
-    "type": "number",
-    "value": 0,
-    "step": 1,
-    "min": 0
-  },
-  "messageCooldownLabel": {
-    "label": "Limit chat bubbles to once per",
-    "group": "Message Filters",
-    "type": "hidden"
-  },
-  "messageCooldown": {
-    "label": "this many seconds",
-    "group": "Message Filters",
-    "type": "number",
-    "value": 0,
-    "step": 1,
-    "min": 0
-  },
-  "raidCooldownLabel": {
-    "label": "Show chat bubbles only after a raid",
-    "group": "Message Filters",
-    "type": "hidden"
-  },
-  "raidCooldownLabel2": {
-    "label": "for this many seconds (0 to disable)",
-    "group": "Message Filters",
-    "type": "hidden"
-  },
-  "raidCooldown": {
-    "label": "(negatives hide bubbles instead)",
-    "group": "Message Filters",
-    "type": "number",
-    "value": 0,
-    "step": 1
-  },
-  "raidMin": {
-    "label": "Raid Viewer Minimum for ^",
-    "group": "Message Filters",
-    "type": "number",
-    "value": 0,
-    "step": 1,
-    "min": 0
-  },
-  "googleFont": {
-    "label": "Google Font",
-    "group": "Text Styles",
-    "type": "googleFont",
-    "value": "Nunito"
-  },
-  "customFont": {
-    "label": "Custom Font Name",
-    "group": "Text Styles",
-    "type": "text",
-    "value": ""
-  },
-  "fontSize": {
-    "label": "Font Size (px)",
-    "group": "Text Styles",
-    "type": "number",
-    "value": 16,
-    "step": 1,
-    "min": 0
-  },
   "positionMode": {
-    "label": "Position Mode",
+    "label": "Position Mode (Random/List)",
     "group": "Bubble Styles",
     "type": "dropdown",
     "value": "random",
@@ -325,6 +150,26 @@
       "normal": "Normal"
     }
   },
+  "googleFont": {
+    "label": "Google Font",
+    "group": "Text Styles",
+    "type": "googleFont",
+    "value": "Nunito"
+  },
+  "customFont": {
+    "label": "Custom Font Name",
+    "group": "Text Styles",
+    "type": "text",
+    "value": ""
+  },
+  "fontSize": {
+    "label": "Font Size (px)",
+    "group": "Text Styles",
+    "type": "number",
+    "value": 16,
+    "step": 1,
+    "min": 0
+  },
   "useCustomBorderColorsLabel": {
     "label": "Use Custom Border/Name Colors?",
     "group": "Custom Colors",
@@ -378,6 +223,161 @@
     "group": "Custom Colors",
     "type": "colorpicker",
     "value": "#000000"
+  },
+  "emoteOnly": {
+    "label": "Show only emote-only messages?",
+    "group": "Message Filters",
+    "type": "dropdown",
+    "value": "false",
+    "options": {
+      "true": "Yes",
+      "false": "No"
+    }
+  },
+  "highlightOnly": {
+    "label": "Show only highlighted messages?",
+    "group": "Message Filters",
+    "type": "dropdown",
+    "value": "false",
+    "options": {
+      "true": "Yes",
+      "false": "No"
+    }
+  },
+  "allowedStringsLabel": {
+    "label": "Allow only these phrases:",
+    "group": "Message Filters",
+    "type": "hidden"
+  },
+  "allowedStrings": {
+    "label": "(Comma Separated)",
+    "group": "Message Filters",
+    "type": "text",
+    "value": ""
+  },
+  "minMessagesLabel": {
+    "label": "Minimum messages a user must send",
+    "group": "Message Filters",
+    "type": "hidden"
+  },
+  "minMessages": {
+    "label": "before their messages create bubbles",
+    "group": "Message Filters",
+    "type": "number",
+    "value": 0,
+    "step": 1,
+    "min": 0
+  },
+  "messageCooldownLabel": {
+    "label": "Limit chat bubbles to once per",
+    "group": "Message Filters",
+    "type": "hidden"
+  },
+  "messageCooldown": {
+    "label": "this many seconds",
+    "group": "Message Filters",
+    "type": "number",
+    "value": 0,
+    "step": 1,
+    "min": 0
+  },
+  "raidCooldownLabel": {
+    "label": "Show chat bubbles only after a raid",
+    "group": "Message Filters",
+    "type": "hidden"
+  },
+  "raidCooldownLabel2": {
+    "label": "for this many seconds (0 to disable)",
+    "group": "Message Filters",
+    "type": "hidden"
+  },
+  "raidCooldown": {
+    "label": "(negatives hide bubbles instead)",
+    "group": "Message Filters",
+    "type": "number",
+    "value": 0,
+    "step": 1
+  },
+  "raidMin": {
+    "label": "Raid Viewer Minimum for ^",
+    "group": "Message Filters",
+    "type": "number",
+    "value": 0,
+    "step": 1,
+    "min": 0
+  },
+  "includeEveryone": {
+    "label": "Show messages from everyone?",
+    "group": "User Filters",
+    "type": "dropdown",
+    "value": "true",
+    "options": {
+      "true": "Yes",
+      "false": "No"
+    }
+  },
+  "includeSubs": {
+    "label": "Show messages from subscribers?",
+    "group": "User Filters",
+    "type": "dropdown",
+    "value": "true",
+    "options": {
+      "true": "Yes",
+      "false": "No"
+    }
+  },
+  "includeVIPs": {
+    "label": "Show messages from VIPs?",
+    "group": "User Filters",
+    "type": "dropdown",
+    "value": "true",
+    "options": {
+      "true": "Yes",
+      "false": "No"
+    }
+  },
+  "includeMods": {
+    "label": "Show messages from moderators?",
+    "group": "User Filters",
+    "type": "dropdown",
+    "value": "true",
+    "options": {
+      "true": "Yes",
+      "false": "No"
+    }
+  },
+  "allowUserListLabel": {
+    "label": "Show messages only from these users:",
+    "group": "User Filters",
+    "type": "hidden"
+  },
+  "allowUserList": {
+    "label": "(Comma Separated)",
+    "group": "User Filters",
+    "type": "text",
+    "value": ""
+  },
+  "ignoreUserListLabel": {
+    "label": "Ignore these users:",
+    "group": "Bot Filters",
+    "type": "hidden"
+  },
+  "ignoreUserList": {
+    "label": "(Comma Separated)",
+    "group": "Bot Filters",
+    "type": "text",
+    "value": "StreamElements, Streamlabs, Nightbot"
+  },
+  "ignorePrefixListLabel": {
+    "label": "Ignore messages that start with:",
+    "group": "Bot Filters",
+    "type": "hidden"
+  },
+  "ignorePrefixList": {
+    "label": "(Comma Separated)",
+    "group": "Bot Filters",
+    "type": "text",
+    "value": "!"
   },
   "lifetime": {
     "label": "Chat Bubble Lifetime (seconds)",
