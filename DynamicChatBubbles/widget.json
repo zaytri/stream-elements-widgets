@@ -234,6 +234,16 @@
       "flex-end": "Right"
     }
   },
+  "listDirection": {
+    "label": "Direction (For List Mode)",
+    "group": "Bubble Styles",
+    "type": "dropdown",
+    "value": "bottom",
+    "options": {
+      "bottom": "Bottom Up",
+      "top": "Top Down"
+    }
+  },
   "padding": {
     "label": "Space from Widget Edges (px)",
     "group": "Bubble Styles",

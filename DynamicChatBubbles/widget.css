@@ -20,7 +20,6 @@ main {
   position: absolute;
   min-height: 100%;
   width: 100%;
-  bottom: 0;
   left: 0;
 }
 
@@ -67,12 +66,26 @@ main.custom-message-colors { color: var(--customTextColor) }
 
 main.list-mode {
   display: flex;
-  flex-direction: column-reverse;
   align-items: {listAlignment};
   align-content: start;
   overflow: visible;
   padding: {padding}px;
 }
+
+main.direction-bottom {
+  flex-direction: column-reverse;
+  bottom: 0;
+}
+
+main.direction-top {
+  flex-direction: column;
+}
+
+main.direction-top main.random-mode {
+  top: 0;
+}
+
+
 
 /* --- [Bubble Container] --- */
 
