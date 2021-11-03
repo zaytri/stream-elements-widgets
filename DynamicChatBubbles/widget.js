@@ -54,6 +54,7 @@ function loadFieldData(data) {
     'useCustomMessageColors',
     'useCustomBorderColors',
     'previewMode',
+    'largeEmotes'
   )
 
   const soundData = {}
@@ -347,7 +348,7 @@ function MessageComponent(props) {
 
   const parsedElements = parsedText.map(({ type, data }) => {
     switch(type) {
-      case 'emote': return EmoteComponent(data, emoteSize)
+      case 'emote': return EmoteComponent(data, FieldData.largeEmotes ? emoteSize : 1)
       case 'text':
       default: return TextComponent(data)
     }

@@ -170,6 +170,16 @@
     "step": 1,
     "min": 0
   },
+  "largeEmotes": {
+    "label": "Larger emotes for emote messages?",
+    "group": "Text Styles",
+    "type": "dropdown",
+    "value": "true",
+    "options": {
+      "true": "Yes",
+      "false": "No"
+    }
+  },
   "useCustomBorderColorsLabel": {
     "label": "Use Custom Border/Name Colors?",
     "group": "Custom Colors",
