@@ -54,7 +54,8 @@ function loadFieldData(data) {
     'useCustomMessageColors',
     'useCustomBorderColors',
     'previewMode',
-    'largeEmotes'
+    'largeEmotes',
+    'showBadges'
   )
 
   const soundData = {}
@@ -204,11 +205,11 @@ function onMessage(event) {
   const elementData = {
     parsedText, name, emoteSize,
     messageType, msgId, userId,
-    color,
+    color, badges,
   }
 
   // Render Bubble
-  $('main').prepend(MessageComponent({ ...elementData }))
+  $('main').prepend(MessageComponent(elementData))
   const currentMessage = `.bubble[data-message-id="${msgId}"]`
 
   // Calcute Bubble Position
@@ -288,7 +289,9 @@ function onButton(event) {
 function sendTestMessage(amount = 1, delay = 250) {
   for (let i = 0; i < amount; i++) {
     window.setTimeout(_ => {
-      const name = `user_${numbered.stringify(random(1, 10))}`.replace('-', '_')
+      const number = numbered.stringify(random(1, 10))
+      const isUser = random(0, 1)
+      const name = `${isUser ? 'user' : 'moderator'}_${numbered.stringify(random(1, 10))}`
       const event = {
         data: {
           userId: name,
@@ -297,6 +300,10 @@ function sendTestMessage(amount = 1, delay = 250) {
           displayName: name,
           nick: '',
           msgId: `${name}_${Date.now()}`,
+          badges: isUser ? [] : [{
+            type: 'moderator',
+            url: 'https://static-cdn.jtvnw.net/badges/v1/3267646d-33f0-4b17-b3df-f923a41db1d0/3'
+          }]
         }
       }
 
@@ -338,7 +345,7 @@ function MessageComponent(props) {
   const {
     parsedText, name, emoteSize,
     messageType, msgId, userId,
-    color: userColor,
+    color: userColor, badges,
   } = props
 
   const color = userColor || generateColor(name)
@@ -369,6 +376,11 @@ function MessageComponent(props) {
 
   if (isDark) containerClasses.push('user-color-dark')
 
+  const usernameChildren = FieldData.showBadges
+  	// badges inside p.username because that's used for dynamic width calculations
+  	? [...BadgesComponent(badges), name]
+  	: name
+
   return Component('section', {
     class: containerClasses,
     style: { '--userColor': color },
@@ -377,13 +389,17 @@ function MessageComponent(props) {
     children: [
       Component('div', { class: 'bubble-background' }),
       Component('div', { class: 'username-box', children:
-        Component('p', { class: 'username', children: name })
+        Component('p', { class: 'username', children: usernameChildren })
       }),
       Component('div', { class: 'message', children:
         Component('span', { class: 'message-wrapper', children: parsedElements })
       }),
     ],
   })
+}
+
+function BadgesComponent(badges) {
+  return badges.map(badge => Component('img', { class: 'badge', src: badge.url, alt: badge.type }))
 }
 
 function TextComponent(text) {

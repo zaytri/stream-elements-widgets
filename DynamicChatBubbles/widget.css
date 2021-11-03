@@ -327,6 +327,14 @@ main.direction-top main.random-mode {
   transform: skew(-5deg);
 }
 
+.badge {
+  height: 1rem;
+  padding-bottom: .25rem;
+  padding-right: 5px;
+  position: relative;
+  vertical-align: middle;
+}
+
 /* --- [Animations] --- */
 
 @keyframes gradientShift-cornerDiagonal {

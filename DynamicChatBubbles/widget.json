@@ -93,6 +93,16 @@
     "step": 1,
     "min": 0
   },
+  "showBadges": {
+    "label": "Show Badges?",
+    "group": "Bubble Styles",
+    "type": "dropdown",
+    "value": "false",
+    "options": {
+      "true": "Yes",
+      "false": "No"
+    }
+  },
   "corner": {
     "label": "Corner Type",
     "group": "Bubble Styles",
