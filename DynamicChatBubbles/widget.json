@@ -29,7 +29,7 @@
       "random": "Random",
       "default": "Normal",
       "highlight": "Highlighted",
-      "action": "/me"
+      "action": "Action (/me)"
     }
   },
   "previewMessage": {
@@ -395,20 +395,454 @@
     "step": 1,
     "min": 1
   },
-  "soundUrl": {
-    "label": "Chat Message Sound Effect",
-    "group": "Sound Effect",
-    "type": "sound-input",
-    "value": ""
-  },
   "volume": {
-    "label": "Sound Effect Volume (%)",
-    "group": "Sound Effect",
+    "label": "Sound Effects Volume (%)",
+    "group": "Sound Effects",
     "type": "slider",
     "value": 50,
     "step": 1,
     "min": 0,
     "max": 100
+  },
+  "soundGroupLabel": {
+    "label": "Plays a sound effect per chat message",
+    "group": "Sound Effects",
+    "type": "Hidden"
+  },
+  "soundGroupLabel2": {
+    "label": "...depending on which group it's in.",
+    "group": "Sound Effects",
+    "type": "Hidden"
+  },
+  "soundGroupLabel3": {
+    "label": "Each group can have multiple sounds,",
+    "group": "Sound Effects",
+    "type": "Hidden"
+  },
+  "soundGroupLabel4": {
+    "label": "...playing a sound at random.",
+    "group": "Sound Effects",
+    "type": "Hidden"
+  },
+  "soundGroup1": {
+    "label": "Group 1 Sound Effects",
+    "group": "Sound Effects",
+    "type": "sound-input",
+    "value": [],
+    "multiple": true
+  },
+  "userLevelSoundGroup1": {
+    "label": "Group 1 User Level",
+    "group": "Sound Effects",
+    "type": "dropdown",
+    "value": "everyone",
+    "options": {
+      "everyone": "Everyone",
+      "subs": "Subscribers",
+      "vips": "VIPs",
+      "mods": "Moderators"
+    }
+  },
+  "specificUsersSoundGroup1Label": {
+    "label": "Group 1 Specific Users",
+    "group": "Sound Effects",
+    "type": "hidden"
+  },
+  "specificUsersSoundGroup1": {
+    "label": "(Comma Separated)",
+    "group": "Sound Effects",
+    "type": "text",
+    "value": ""
+  },
+  "messageTypeSoundGroup1": {
+    "label": "Group 1 Message Type",
+    "group": "Sound Effects",
+    "type": "dropdown",
+    "value": "all",
+    "options": {
+      "all": "All",
+      "default": "Normal",
+      "highlight": "Highlighted",
+      "action": "Action (/me)"
+    }
+  },
+  "soundGroup2": {
+    "label": "Group 2 Sound Effects",
+    "group": "Sound Effects",
+    "type": "sound-input",
+    "value": [],
+    "multiple": true
+  },
+  "userLevelSoundGroup2": {
+    "label": "Group 2 User Level",
+    "group": "Sound Effects",
+    "type": "dropdown",
+    "value": "everyone",
+    "options": {
+      "everyone": "Everyone",
+      "subs": "Subscribers",
+      "vips": "VIPs",
+      "mods": "Moderators"
+    }
+  },
+  "specificUsersSoundGroup2Label": {
+    "label": "Group 2 Specific Users",
+    "group": "Sound Effects",
+    "type": "hidden"
+  },
+  "specificUsersSoundGroup2": {
+    "label": "(Comma Separated)",
+    "group": "Sound Effects",
+    "type": "text",
+    "value": ""
+  },
+  "messageTypeSoundGroup2": {
+    "label": "Group 2 Message Type",
+    "group": "Sound Effects",
+    "type": "dropdown",
+    "value": "all",
+    "options": {
+      "all": "All",
+      "default": "Normal",
+      "highlight": "Highlighted",
+      "action": "Action (/me)"
+    }
+  },
+  "soundGroup3": {
+    "label": "Group 3 Sound Effects",
+    "group": "Sound Effects",
+    "type": "sound-input",
+    "value": [],
+    "multiple": true
+  },
+  "userLevelSoundGroup3": {
+    "label": "Group 3 User Level",
+    "group": "Sound Effects",
+    "type": "dropdown",
+    "value": "everyone",
+    "options": {
+      "everyone": "Everyone",
+      "subs": "Subscribers",
+      "vips": "VIPs",
+      "mods": "Moderators"
+    }
+  },
+  "specificUsersSoundGroup3Label": {
+    "label": "Group 3 Specific Users",
+    "group": "Sound Effects",
+    "type": "hidden"
+  },
+  "specificUsersSoundGroup3": {
+    "label": "(Comma Separated)",
+    "group": "Sound Effects",
+    "type": "text",
+    "value": ""
+  },
+  "messageTypeSoundGroup3": {
+    "label": "Group 3 Message Type",
+    "group": "Sound Effects",
+    "type": "dropdown",
+    "value": "all",
+    "options": {
+      "all": "All",
+      "default": "Normal",
+      "highlight": "Highlighted",
+      "action": "Action (/me)"
+    }
+  },
+  "soundGroup4": {
+    "label": "Group 4 Sound Effects",
+    "group": "Sound Effects",
+    "type": "sound-input",
+    "value": [],
+    "multiple": true
+  },
+  "userLevelSoundGroup4": {
+    "label": "Group 4 User Level",
+    "group": "Sound Effects",
+    "type": "dropdown",
+    "value": "everyone",
+    "options": {
+      "everyone": "Everyone",
+      "subs": "Subscribers",
+      "vips": "VIPs",
+      "mods": "Moderators"
+    }
+  },
+  "specificUsersSoundGroup4Label": {
+    "label": "Group 4 Specific Users",
+    "group": "Sound Effects",
+    "type": "hidden"
+  },
+  "specificUsersSoundGroup4": {
+    "label": "(Comma Separated)",
+    "group": "Sound Effects",
+    "type": "text",
+    "value": ""
+  },
+  "messageTypeSoundGroup4": {
+    "label": "Group 4 Message Type",
+    "group": "Sound Effects",
+    "type": "dropdown",
+    "value": "all",
+    "options": {
+      "all": "All",
+      "default": "Normal",
+      "highlight": "Highlighted",
+      "action": "Action (/me)"
+    }
+  },
+  "soundGroup5": {
+    "label": "Group 5 Sound Effects",
+    "group": "Sound Effects",
+    "type": "sound-input",
+    "value": [],
+    "multiple": true
+  },
+  "userLevelSoundGroup5": {
+    "label": "Group 5 User Level",
+    "group": "Sound Effects",
+    "type": "dropdown",
+    "value": "everyone",
+    "options": {
+      "everyone": "Everyone",
+      "subs": "Subscribers",
+      "vips": "VIPs",
+      "mods": "Moderators"
+    }
+  },
+  "specificUsersSoundGroup5Label": {
+    "label": "Group 5 Specific Users",
+    "group": "Sound Effects",
+    "type": "hidden"
+  },
+  "specificUsersSoundGroup5": {
+    "label": "(Comma Separated)",
+    "group": "Sound Effects",
+    "type": "text",
+    "value": ""
+  },
+  "messageTypeSoundGroup5": {
+    "label": "Group 5 Message Type",
+    "group": "Sound Effects",
+    "type": "dropdown",
+    "value": "all",
+    "options": {
+      "all": "All",
+      "default": "Normal",
+      "highlight": "Highlighted",
+      "action": "Action (/me)"
+    }
+  },
+  "soundGroup6": {
+    "label": "Group 6 Sound Effects",
+    "group": "Sound Effects",
+    "type": "sound-input",
+    "value": [],
+    "multiple": true
+  },
+  "userLevelSoundGroup6": {
+    "label": "Group 6 User Level",
+    "group": "Sound Effects",
+    "type": "dropdown",
+    "value": "everyone",
+    "options": {
+      "everyone": "Everyone",
+      "subs": "Subscribers",
+      "vips": "VIPs",
+      "mods": "Moderators"
+    }
+  },
+  "specificUsersSoundGroup6Label": {
+    "label": "Group 6 Specific Users",
+    "group": "Sound Effects",
+    "type": "hidden"
+  },
+  "specificUsersSoundGroup6": {
+    "label": "(Comma Separated)",
+    "group": "Sound Effects",
+    "type": "text",
+    "value": ""
+  },
+  "messageTypeSoundGroup6": {
+    "label": "Group 6 Message Type",
+    "group": "Sound Effects",
+    "type": "dropdown",
+    "value": "all",
+    "options": {
+      "all": "All",
+      "default": "Normal",
+      "highlight": "Highlighted",
+      "action": "Action (/me)"
+    }
+  },
+  "soundGroup7": {
+    "label": "Group 7 Sound Effects",
+    "group": "Sound Effects",
+    "type": "sound-input",
+    "value": [],
+    "multiple": true
+  },
+  "userLevelSoundGroup7": {
+    "label": "Group 7 User Level",
+    "group": "Sound Effects",
+    "type": "dropdown",
+    "value": "everyone",
+    "options": {
+      "everyone": "Everyone",
+      "subs": "Subscribers",
+      "vips": "VIPs",
+      "mods": "Moderators"
+    }
+  },
+  "specificUsersSoundGroup7Label": {
+    "label": "Group 7 Specific Users",
+    "group": "Sound Effects",
+    "type": "hidden"
+  },
+  "specificUsersSoundGroup7": {
+    "label": "(Comma Separated)",
+    "group": "Sound Effects",
+    "type": "text",
+    "value": ""
+  },
+  "messageTypeSoundGroup7": {
+    "label": "Group 7 Message Type",
+    "group": "Sound Effects",
+    "type": "dropdown",
+    "value": "all",
+    "options": {
+      "all": "All",
+      "default": "Normal",
+      "highlight": "Highlighted",
+      "action": "Action (/me)"
+    }
+  },
+  "soundGroup8": {
+    "label": "Group 8 Sound Effects",
+    "group": "Sound Effects",
+    "type": "sound-input",
+    "value": [],
+    "multiple": true
+  },
+  "userLevelSoundGroup8": {
+    "label": "Group 8 User Level",
+    "group": "Sound Effects",
+    "type": "dropdown",
+    "value": "everyone",
+    "options": {
+      "everyone": "Everyone",
+      "subs": "Subscribers",
+      "vips": "VIPs",
+      "mods": "Moderators"
+    }
+  },
+  "specificUsersSoundGroup8Label": {
+    "label": "Group 8 Specific Users",
+    "group": "Sound Effects",
+    "type": "hidden"
+  },
+  "specificUsersSoundGroup8": {
+    "label": "(Comma Separated)",
+    "group": "Sound Effects",
+    "type": "text",
+    "value": ""
+  },
+  "messageTypeSoundGroup8": {
+    "label": "Group 8 Message Type",
+    "group": "Sound Effects",
+    "type": "dropdown",
+    "value": "all",
+    "options": {
+      "all": "All",
+      "default": "Normal",
+      "highlight": "Highlighted",
+      "action": "Action (/me)"
+    }
+  },
+  "soundGroup9": {
+    "label": "Group 9 Sound Effects",
+    "group": "Sound Effects",
+    "type": "sound-input",
+    "value": [],
+    "multiple": true
+  },
+  "userLevelSoundGroup9": {
+    "label": "Group 9 User Level",
+    "group": "Sound Effects",
+    "type": "dropdown",
+    "value": "everyone",
+    "options": {
+      "everyone": "Everyone",
+      "subs": "Subscribers",
+      "vips": "VIPs",
+      "mods": "Moderators"
+    }
+  },
+  "specificUsersSoundGroup9Label": {
+    "label": "Group 9 Specific Users",
+    "group": "Sound Effects",
+    "type": "hidden"
+  },
+  "specificUsersSoundGroup9": {
+    "label": "(Comma Separated)",
+    "group": "Sound Effects",
+    "type": "text",
+    "value": ""
+  },
+  "messageTypeSoundGroup9": {
+    "label": "Group 9 Message Type",
+    "group": "Sound Effects",
+    "type": "dropdown",
+    "value": "all",
+    "options": {
+      "all": "All",
+      "default": "Normal",
+      "highlight": "Highlighted",
+      "action": "Action (/me)"
+    }
+  },
+  "soundGroup10": {
+    "label": "Group 10 Sound Effects",
+    "group": "Sound Effects",
+    "type": "sound-input",
+    "value": [],
+    "multiple": true
+  },
+  "userLevelSoundGroup10": {
+    "label": "Group 10 User Level",
+    "group": "Sound Effects",
+    "type": "dropdown",
+    "value": "everyone",
+    "options": {
+      "everyone": "Everyone",
+      "subs": "Subscribers",
+      "vips": "VIPs",
+      "mods": "Moderators"
+    }
+  },
+  "specificUsersSoundGroup10Label": {
+    "label": "Group 10 Specific Users",
+    "group": "Sound Effects",
+    "type": "hidden"
+  },
+  "specificUsersSoundGroup10": {
+    "label": "(Comma Separated)",
+    "group": "Sound Effects",
+    "type": "text",
+    "value": ""
+  },
+  "messageTypeSoundGroup10": {
+    "label": "Group 10 Message Type",
+    "group": "Sound Effects",
+    "type": "dropdown",
+    "value": "all",
+    "options": {
+      "all": "All",
+      "default": "Normal",
+      "highlight": "Highlighted",
+      "action": "Action (/me)"
+    }
   },
   "help": {
     "label": "https://youtu.be/RbG10UmKaqM",

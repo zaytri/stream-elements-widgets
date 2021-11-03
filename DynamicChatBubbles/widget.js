@@ -12,6 +12,7 @@ const Widget = {
   raidActive: false,
   raidTimer: null,
   userMessageCount: {},
+  soundEffects: [],
 }
 
 // ---------------------------
@@ -30,13 +31,17 @@ window.addEventListener('onWidgetLoad', obj => {
 
 function loadFieldData(data) {
   FieldData = data
+
+  const specificUsersSoundGroups = Array(10).fill('specificUsersSoundGroup').map((text, i) => `${text}${i + 1}`)
   processFieldData(
     value => stringToArray(value),
     'ignoreUserList',
     'ignorePrefixList',
     'allowUserList',
     'allowedStrings',
+    ...specificUsersSoundGroups
   )
+
   processFieldData(
     value => value === 'true',
     'includeEveryone',
@@ -50,6 +55,46 @@ function loadFieldData(data) {
     'useCustomBorderColors',
     'previewMode',
   )
+
+  const soundData = {}
+  for (let i = 1; i <= 10; i++) {
+    const group = FieldData[`soundGroup${i}`]
+    const specificUsers = FieldData[`specificUsersSoundGroup${i}`]
+    const isSpecific = specificUsers.length > 0
+    // specific-index so multiple specifics don't override each other
+    const userLevel = isSpecific ? `specific-${i}` : FieldData[`userLevelSoundGroup${i}`]
+    const messageType = FieldData[`messageTypeSoundGroup${i}`]
+    if (group && group.length > 0) {
+      if (!soundData[userLevel]) {
+        soundData[userLevel] = {}
+      }
+
+      if (isSpecific) {
+        soundData[userLevel].users = specificUsers
+      }
+
+      if (!soundData[userLevel][messageType]) {
+        soundData[userLevel][messageType] = []
+      }
+
+      soundData[userLevel][messageType].push(...group)
+    }
+  }
+
+  Widget.soundEffects = Object.entries(soundData).reduce((acc, entry) => {
+    const [userLevel, { users, ...messageTypes }] = entry
+    for (const [messageType, soundEffects] of Object.entries(messageTypes)) {
+      acc.push({
+        userLevel, messageType, soundEffects, users,
+        order: soundSortOrder(userLevel, messageType)
+      })
+    }
+    return [...acc]
+  }, []).sort(({ order: a }, { order: b }) => {
+    // sort by userLevel (0) then by messageType (1)
+    if (a[0] !== b[0]) return b[0] - a[0]
+    else return b[1] - a[1]
+  })
 }
 
 function processFieldData(process, ...keys) {
@@ -71,6 +116,29 @@ function conditionalMainClass(className, condition = true) {
 
   if (condition) main.addClass(className)
   else main.removeClass(className)
+}
+
+function soundSortOrder(userLevel, messageType) {
+  return [userLevelSortOrder(userLevel), messageTypeSortOrder(messageType)]
+}
+
+function userLevelSortOrder(userLevel) {
+  switch (userLevel) {
+    case 'everyone': return 0
+    case 'subs': return 100
+    case 'vips': return 200
+    case 'mods': return 300
+    default: return 1000 // assume specific
+  }
+}
+
+function messageTypeSortOrder(messageType) {
+  switch (messageType) {
+    case 'highlight': return 1000
+    case 'action': return 500
+    case 'default': return 100
+    default: return 0 // assume all
+  }
 }
 
 // --------------------
@@ -165,13 +233,14 @@ function onMessage(event) {
 
   // Show Bubble and Play Sound
   let sound = null
-  if (FieldData.soundUrl) {
-    sound = new Audio(FieldData.soundUrl)
+  const soundUrls = getSound(nick, name, badges, messageType)
+  if (soundUrls) {
+    sound = new Audio(soundUrls[random(0, soundUrls.length - 1)])
     sound.volume = parseInt(FieldData.volume) / 100
   }
 
   window.setTimeout(_ => {
-    if (FieldData.soundUrl) sound.play()
+    if (soundUrls) sound.play()
     $(currentMessage).addClass('animate')
     $(currentMessage).addClass(FieldData.animation)
     if (FieldData.positionMode === 'list') $(currentMessage).css({ position: 'relative' })
@@ -360,10 +429,7 @@ function passedMinMessageThreshold(userId) {
 
 function userListIncludes(userList, ...names) {
   const lowercaseNames = names.map(name => name.toLowerCase())
-  for (const user of userList) {
-    if (lowercaseNames.includes(user.toLowerCase())) return true
-  }
-  return false
+  return userList.some(user => lowercaseNames.includes(user.toLowerCase()))
 }
 
 function hasIncludedBadge(badges = []) {
@@ -376,17 +442,50 @@ function hasIncludedBadge(badges = []) {
   if (FieldData.includeVIPs) includedBadges.push('vip')
   if (FieldData.includeMods) includedBadges.push('moderator')
 
-  for (const badge of badges) {
-    if (includedBadges.includes(badge.type)) return true
-  }
+  return hasBadge(badges, ...includedBadges)
+}
 
-  return false
+function isMod(badges = []) {
+  return hasBadge(badges, 'moderator', 'broadcaster')
+}
+
+function isVIP(badges = []) {
+  return hasBadge(badges, 'vip', 'broadcaster')
+}
+
+function isSub(badges = []) {
+  return hasBadge(badges, 'subscriber', 'founder', 'broadcaster')
+}
+
+function hasBadge(userBadges = [], ...badgeTypes) {
+  return userBadges.some(({ type }) => badgeTypes.includes(type))
 }
 
 function getMessageType(data) {
   if (data.isAction) return 'action'
   if (data.tags['msg-id'] === 'highlighted-message') return 'highlight'
   return 'default'
+}
+
+function getSound(nick, name, badges, messageType) {
+  for (const soundGroup of Widget.soundEffects) {
+    const { userLevel, messageType: soundMessageType, users = [], soundEffects } = soundGroup
+    if (soundMessageType === 'all' || soundMessageType === messageType) {
+      switch(userLevel) {
+        case 'everyone': return soundEffects
+        case 'subs': if (isSub(badges)) return soundEffects
+          break
+        case 'vips': if (isVIP(badges)) return soundEffects
+          break
+        case 'mods': if (isMod(badges)) return soundEffects
+          break
+        // assume specific
+        default: if (userListIncludes(users, nick, name)) return soundEffects
+          break
+      }
+    }
+  }
+  return null
 }
 
 function parse(text, emotes) {
