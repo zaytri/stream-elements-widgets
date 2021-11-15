@@ -40,7 +40,7 @@ main.random-mode.preview-true::before {
 main.random-mode.preview-true::after {
   --borderSize: 10px;
   --space: 10px;
-  content: 'Messages will only appear within this area (random position mode only).\a\a Drag and resize this box to change the area.\aSpace from Widget Edges in Bubble Styles also affects this area.';
+  content: 'Messages will only appear within this area (random position mode only).\a\a Drag and resize this box to change the area.\aSpace from Widget Edges in Bubble Styles also affects this area.\a\aSet Preview Mode to Off to hide this message.';
   color: white;
   font-size: 24px;
   position: absolute;
