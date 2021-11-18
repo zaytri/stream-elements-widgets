@@ -289,6 +289,12 @@ main.direction-top main.random-mode {
   margin-left: 15px;
 }
 
+.emote-4 .message {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
 .dark-mode.theme-animal-crossing .message {
   --backgroundColor: #1A3850CC;
 }
@@ -309,9 +315,9 @@ main.direction-top main.random-mode {
 
 .dynamic .text, .dynamic .emote { animation: fadeMessage 1.5s; }
 
-.emote-1 { height: 32px; }
-.emote-2 { height: 56px; }
-.emote-4 { height: 112px; }
+.emote-1 .emote { height: 32px; }
+.emote-2 .emote { height: 56px; }
+.emote-4 .emote { height: 112px; }
 
 /* --- [Message Types] --- */
 

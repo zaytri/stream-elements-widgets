@@ -218,8 +218,6 @@ function onMessage(event) {
     let maxWidth = $(`${currentMessage} .message-wrapper`).width() + 1
     const minWidth = $(`${currentMessage} .username`).outerWidth()
 
-
-
     $(`${currentMessage} .message`).css({
       '--dynamicWidth': Math.max(minWidth, maxWidth),
     })
@@ -363,13 +361,13 @@ function BubbleComponent(props) {
 
   const parsedElements = parsedText.map(({ type, data }) => {
     switch(type) {
-      case 'emote': return EmoteComponent(data, FieldData.largeEmotes ? emoteSize : 1)
+      case 'emote': return EmoteComponent(data)
       case 'text':
       default: return TextComponent(data)
     }
   })
 
-  let containerClasses = ['bubble']
+  let containerClasses = ['bubble', `emote-${FieldData.largeEmotes ? emoteSize : 1}`]
   switch (messageType) {
     case 'highlight': {
       if (FieldData.highlightStyle === 'rainbow') containerClasses.push('highlight')
@@ -415,8 +413,8 @@ function TextComponent(text) {
   return Component('span', { class: 'text', children: text })
 }
 
-function EmoteComponent({ urls: { '4': url }, name }, emoteSize = 1) {
-  return Component('img', { class: ['emote', `emote-${emoteSize}`], src: url, alt: name })
+function EmoteComponent({ urls: { '4': url }, name }) {
+  return Component('img', { class: ['emote'], src: url, alt: name })
 }
 
 const ClassComponent = (tag, className) => (children, props = {}) => Component(tag, { children, class: className, ...props })
