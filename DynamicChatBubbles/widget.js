@@ -209,14 +209,16 @@ function onMessage(event) {
   }
 
   // Render Bubble
-  $('main').prepend(MessageComponent(elementData))
+  $('main').prepend(BubbleComponent(elementData))
   const currentMessage = `.bubble[data-message-id="${msgId}"]`
 
   // Calcute Bubble Position
   window.setTimeout(_ => {
     const height = $(currentMessage).outerHeight()
-    const maxWidth = $(`${currentMessage} .message-wrapper`).width() + 1
+    let maxWidth = $(`${currentMessage} .message-wrapper`).width() + 1
     const minWidth = $(`${currentMessage} .username`).outerWidth()
+
+
 
     $(`${currentMessage} .message`).css({
       '--dynamicWidth': Math.max(minWidth, maxWidth),
@@ -225,7 +227,13 @@ function onMessage(event) {
     if (FieldData.positionMode === 'random') {
       // I'm not entirely sure why the + 30 is necessary,
       // but it makes the calculations work correctly
-      const [left, top] = calcPosition(Math.max(minWidth, maxWidth) + 30, height)
+      let xMax = Math.max(minWidth, maxWidth) + 30
+
+      if (FieldData.theme === 'animal-crossing') {
+        xMax += 15 // due to margin-left 15 on .message
+      }
+
+      const [left, top] = calcPosition(xMax, height)
 
       window.setTimeout(_ => {
         $(currentMessage).css({ left, top })
@@ -291,7 +299,7 @@ function sendTestMessage(amount = 1, delay = 250) {
     window.setTimeout(_ => {
       const number = numbered.stringify(random(1, 10))
       const isUser = random(0, 1)
-      const name = `${isUser ? 'user' : 'moderator'}_${numbered.stringify(random(1, 10))}`
+      const name = `${isUser ? 'User' : 'Moderator'}_${numbered.stringify(random(1, 10))}`
       const event = {
         data: {
           userId: name,
@@ -341,7 +349,7 @@ function sendTestMessage(amount = 1, delay = 250) {
 //    Component Functions
 // -------------------------
 
-function MessageComponent(props) {
+function BubbleComponent(props) {
   const {
     parsedText, name, emoteSize,
     messageType, msgId, userId,
@@ -381,20 +389,21 @@ function MessageComponent(props) {
   	? [...BadgesComponent(badges), name]
   	: name
 
+  const bubbleChildren = [
+    UsernameBoxComponent(UsernameComponent(usernameChildren)),
+    MessageComponent(MessageWrapperComponent(parsedElements)),
+  ]
+
+  if (FieldData.theme === 'default') {
+    bubbleChildren.unshift(BackgroundComponent())
+  }
+
   return Component('section', {
     class: containerClasses,
     style: { '--userColor': color },
     'data-message-id': msgId,
     'data-user-id': userId,
-    children: [
-      Component('div', { class: 'bubble-background' }),
-      Component('div', { class: 'username-box', children:
-        Component('p', { class: 'username', children: usernameChildren })
-      }),
-      Component('div', { class: 'message', children:
-        Component('span', { class: 'message-wrapper', children: parsedElements })
-      }),
-    ],
+    children: bubbleChildren,
   })
 }
 
@@ -409,6 +418,13 @@ function TextComponent(text) {
 function EmoteComponent({ urls: { '4': url }, name }, emoteSize = 1) {
   return Component('img', { class: ['emote', `emote-${emoteSize}`], src: url, alt: name })
 }
+
+const ClassComponent = (tag, className) => (children, props = {}) => Component(tag, { children, class: className, ...props })
+const BackgroundComponent = ClassComponent('div', 'bubble-background')
+const UsernameBoxComponent = ClassComponent('div', 'username-box')
+const UsernameComponent = ClassComponent('p', 'username')
+const MessageComponent = ClassComponent('div', 'message')
+const MessageWrapperComponent = ClassComponent('span', 'message-wrapper')
 
 function Component(tag, props) {
   const { children, 'class': classes, style, ...rest } = props
@@ -558,6 +574,15 @@ function calcPosition(width, height) {
   const widgetWidth = main.innerWidth()
   const widgetHeight = main.innerHeight()
   const { padding } = FieldData
+
+  // edge testing
+  /*-*
+  return [
+    random(0, 1) ? padding : Math.max(padding, widgetWidth - padding - width),
+    random(0, 1) ? padding : Math.max(padding, widgetHeight - padding - height),
+  ]
+  /*-*/
+
   return [
     random(padding, Math.max(padding, widgetWidth - padding - width)),
     random(padding, Math.max(padding, widgetHeight - padding - height)),

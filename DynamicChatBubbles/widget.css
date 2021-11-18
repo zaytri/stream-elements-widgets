@@ -3,6 +3,7 @@
 * {
   font-family: '{customFont}', '{googleFont}', Nunito, Arial, sans-serif;
   font-size: {fontSize}px;
+  font-weight: {fontWeight};
   overflow-wrap: break-word;
   margin: 0;
   padding: 0;
@@ -21,6 +22,10 @@ main {
   min-height: 100%;
   width: 100%;
   left: 0;
+}
+
+main.theme-animal-crossing {
+  color: #807256;
 }
 
 main.random-mode.preview-true::before {
@@ -61,6 +66,7 @@ main.preview-true::before, main.preview-true::after {
 }
 
 main.dark-mode { color: white; }
+main.dark-mode.theme-animal-crossing { color: #DDFFFF; }
 
 main.custom-message-colors { color: var(--customTextColor) }
 
@@ -85,8 +91,6 @@ main.direction-top main.random-mode {
   top: 0;
 }
 
-
-
 /* --- [Bubble Container] --- */
 
 .bubble {
@@ -109,7 +113,7 @@ main.direction-top main.random-mode {
   margin-top: 10px;
 }
 
-.corner-diagonal .bubble {
+.theme-default.corner-diagonal .bubble {
   --topRightCorner: calc(var(--cornerSize) - var(--borderSize));
   --bottomLeftCorner: calc(var(--cornerSize) / 2);
   --bottomRightCorner: calc(var(--cornerSize) / 2);
@@ -126,11 +130,11 @@ main.direction-top main.random-mode {
   overflow: hidden;
 }
 
-.corner-round .bubble, .corner-square .bubble {
+.theme-default.corner-round .bubble, .corner-square .bubble {
   border: var(--borderSize) solid var(--borderColor);
 }
 
-.corner-round .bubble {
+.theme-default.corner-round .bubble {
   border-radius: 10px;
 }
 
@@ -210,7 +214,7 @@ main.direction-top main.random-mode {
   background-color: var(--backgroundColor);
 }
 
-.corner-diagonal .bubble-background {
+.theme-default.corner-diagonal .bubble-background {
   background:
     linear-gradient( 0deg,   var(--borderColor) calc(var(--borderSize) + 1px), transparent 0),
     linear-gradient( 90deg,  var(--borderColor) calc(var(--borderSize) + 1px), transparent 0),
@@ -226,7 +230,7 @@ main.direction-top main.random-mode {
   background-repeat: no-repeat;
 }
 
-.corner-round .bubble-background {
+.theme-default.corner-round .bubble-background {
   border-radius: 5px;
 }
 
@@ -241,23 +245,25 @@ main.direction-top main.random-mode {
   box-shadow: 0 -1px 0 1px var(--borderColor);
 }
 
+.theme-animal-crossing .username-box {
+  border-radius: 30px;
+  display: inline-block;
+  padding: 4px 8px;
+}
+
 .username {
-  text-shadow: 0 2px 0 #0002;
   padding-left: 3px;
   padding-right: 3px;
-  margin-bottom: -3px;
   display: inline-block;
   color: black;
 }
 
 .user-color-dark .username {
-  color: white;
-  text-shadow: 0 1px 0 #0006;
+  color: #FFFC;
 }
 
 .custom-border-colors .username {
   color: var(--customNameColor);
-  text-shadow: 0 1px 0 #0004;
 }
 
 .message {
@@ -271,13 +277,29 @@ main.direction-top main.random-mode {
   overflow: hidden;
 }
 
+.theme-animal-crossing .message {
+  --backgroundColor: #FDF8E3CC;
+  background-color: var(--backgroundColor);
+  border-radius: 30px / 25px;
+  padding-top: 30px;
+  padding-bottom: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-top: -20px;
+  margin-left: 15px;
+}
+
+.dark-mode.theme-animal-crossing .message {
+  --backgroundColor: #1A3850CC;
+}
+
+.theme-animal-crossing.custom-message-colors .message {
+  --backgroundColor: var(--customBackgroundColor);
+}
+
 .dynamic .message { animation: expand 2s; }
 
 /* --- [Message Parts] --- */
-
-.text {
-  text-shadow: 0 1px 0 #0004;
-}
 
 .emote {
   position: relative;
@@ -293,12 +315,19 @@ main.direction-top main.random-mode {
 
 /* --- [Message Types] --- */
 
-.highlight .bubble-background {
+.highlight .bubble-background, .theme-animal-crossing .highlight .message {
   background: linear-gradient(-45deg, #ffadaddd, #ffd6a5dd, #fdffb6dd, #caffbfdd, #9bf6ffdd, #a0c4ffdd, #bdb2ffdd, #ffc6ffdd, #ffadaddd, #ffd6a5dd) 100% 100% / 900% 900%;
+}
+
+.highlight .bubble-background {
   animation: gradientShift 5s infinite linear;
 }
 
-.corner-diagonal .highlight .bubble-background {
+.theme-animal-crossing .dynamic.highlight .message {
+  animation: gradientShift 5s infinite linear, expand 2s;
+}
+
+.theme-default.corner-diagonal .highlight .bubble-background {
   background:
     linear-gradient( 0deg,   var(--borderColor) calc(var(--borderSize) + .1px), transparent 0),
     linear-gradient( 90deg,  var(--borderColor) calc(var(--borderSize) + .1px), transparent 0),
@@ -316,7 +345,7 @@ main.direction-top main.random-mode {
 }
 
 .highlight .text {
-  color: black;
+  color: #000C;
 }
 
 .action .text {
@@ -328,11 +357,15 @@ main.direction-top main.random-mode {
 }
 
 .badge {
-  height: 1rem;
+  height: 1.1rem;
   padding-bottom: .25rem;
   padding-right: 5px;
   position: relative;
   vertical-align: middle;
+}
+
+.theme-animal-crossing .badge {
+  padding-bottom: .15rem;
 }
 
 /* --- [Animations] --- */
