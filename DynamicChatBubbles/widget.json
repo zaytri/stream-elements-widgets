@@ -14,7 +14,7 @@
     "label": "(Shows bubbles when settings change)",
     "group": "Preview",
     "type": "dropdown",
-    "value": "false",
+    "value": "true",
     "options": {
       "true": "On",
       "false": "Off"
@@ -26,7 +26,7 @@
     "type": "dropdown",
     "value": "random",
     "options": {
-      "random": "Random",
+      "random": "Any",
       "default": "Normal",
       "highlight": "Highlighted",
       "action": "Action (/me)"
@@ -122,10 +122,10 @@
     "label": "Corner Type",
     "group": "Bubble Styles",
     "type": "dropdown",
-    "value": "diagonal",
+    "value": "round",
     "options": {
-      "diagonal": "Diagonal",
       "round": "Round",
+      "diagonal": "Diagonal",
       "square": "Square"
     }
   },
