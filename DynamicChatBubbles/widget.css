@@ -16,7 +16,7 @@ main {
   --customNameColor: {nameColor};
   --customBackgroundColor: {backgroundColor};
   --customTextColor: {textColor};
-  color: black;
+  color: #444;
   box-sizing: border-box;
   position: absolute;
   min-height: 100%;
@@ -359,7 +359,7 @@ main.direction-top main.random-mode {
 }
 
 .highlight .text {
-  color: #000C;
+  color: #000B;
 }
 
 .action .text {
