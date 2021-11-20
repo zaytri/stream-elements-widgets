@@ -113,8 +113,12 @@ main.direction-top main.random-mode {
   left: 30px;
 }
 
-.list-mode .bubble {
-  margin-top: 10px;
+.list-mode.direction-top .bubble {
+  margin-bottom: 15px;
+}
+
+.list-mode.direction-bottom .bubble {
+  margin-top: 15px;
 }
 
 .theme-default.corner-diagonal .bubble {
