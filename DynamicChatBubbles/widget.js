@@ -441,8 +441,17 @@ function BubbleComponent(props) {
   	? [...BadgesComponent(badges), name]
   	: name
 
+  const usernameProps = {}
+  if (!FieldData.useCustomBorderColors) {
+    usernameProps.style = {
+      color: isDark
+        ? tinycolor.mix(color, 'white', 80).toString()
+        : tinycolor.mix(color, 'black', 65).toString()
+    }
+  }
+
   const bubbleChildren = [
-    UsernameBoxComponent(UsernameComponent(usernameChildren)),
+    UsernameBoxComponent(UsernameComponent(usernameChildren, usernameProps)),
     MessageComponent(MessageWrapperComponent(parsedElements)),
   ]
 
