@@ -243,7 +243,7 @@ main.direction-top main.random-mode {
 }
 
 
-.dark-mode .bubble { --defaultBackgroundColor: #000C; }
+.dark-mode .bubble { --defaultBackgroundColor: #000D; }
 
 /* --- [Container Blocks] --- */
 
@@ -286,7 +286,7 @@ main.direction-top main.random-mode {
 }
 
 .theme-animal-crossing .message {
-  --backgroundColor: #E8E4CDCC;
+  --backgroundColor: #E8E4CDDD;
   background-color: var(--backgroundColor);
   border-radius: 30px / 25px;
   padding-top: 30px;
@@ -304,7 +304,7 @@ main.direction-top main.random-mode {
 }
 
 .dark-mode.theme-animal-crossing .message {
-  --backgroundColor: #1B3852CC;
+  --backgroundColor: #1B3852DD;
 }
 
 .theme-animal-crossing.custom-message-colors .message {
@@ -330,7 +330,7 @@ main.direction-top main.random-mode {
 /* --- [Message Types] --- */
 
 .highlight .bubble-background, .theme-animal-crossing .highlight .message {
-  background: linear-gradient(-45deg, #FFADADCC, #FFD6A5CC, #FDFFB6CC, #CAFFBFCC, #9BF6FFCC, #A0C4FFCC, #BDB2FFCC, #FFC6FFCC, #FFADADCC, #FFD6A5CC) 100% 100% / 900% 900%;
+  background: linear-gradient(-45deg, #FFADADDD, #FFD6A5DD, #FDFFB6DD, #CAFFBFDD, #9BF6FFDD, #A0C4FFDD, #BDB2FFDD, #FFC6FFDD, #FFADADDD, #FFD6A5DD) 100% 100% / 900% 900%;
 }
 
 .highlight .bubble-background {
@@ -351,7 +351,7 @@ main.direction-top main.random-mode {
     linear-gradient(-135deg, var(--borderColor) 0 calc(var(--topRightCorner, 0px) + var(--borderSize)),    transparent 0) top right    / 50% 50%,
     linear-gradient(  45deg, var(--borderColor) 0 calc(var(--bottomLeftCorner, 0px) + var(--borderSize)),  transparent 0) bottom left  / 50% 50%,
     linear-gradient( -45deg, var(--borderColor) 0 calc(var(--bottomRightCorner, 0px) + var(--borderSize)), transparent 0) bottom right / 50% 50%,
-    linear-gradient(-45deg, #FFADADCC, #FFD6A5CC, #FDFFB6CC, #CAFFBFCC, #9BF6FFCC, #A0C4FFCC, #BDB2FFCC, #FFC6FFCC, #FFADADCC, #FFD6A5CC) 100% 100% / 900% 900%
+    linear-gradient(-45deg, #FFADADDD, #FFD6A5DD, #FDFFB6DD, #CAFFBFDD, #9BF6FFDD, #A0C4FFDD, #BDB2FFDD, #FFC6FFDD, #FFADADDD, #FFD6A5DD) 100% 100% / 900% 900%
   ;
   background-origin: border-box;
   background-repeat: no-repeat;
