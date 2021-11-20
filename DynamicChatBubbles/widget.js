@@ -1,7 +1,7 @@
 const DEFAULT_COLORS = [
-  '#ff4a80', '#ff7070', '#fa8e4b', '#fee440',
-  '#5fff77', '#00f5d4', '#00bbf9', '#4371fb',
-  '#9b5de5', '#f670dd',
+  '#FF4A80', '#FF7070', '#FA8E4B', '#FEE440',
+  '#5FFF77', '#00F5D4', '#00BBF9', '#4371FB',
+  '#9B5DE5', '#F670DD',
 ]
 
 let FieldData = {}
