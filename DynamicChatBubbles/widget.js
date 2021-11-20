@@ -409,9 +409,10 @@ function BubbleComponent(props) {
   } = props
 
   const color = userColor || generateColor(name)
-
   const tColor = tinycolor(color)
-  const isDark = tColor.isDark()
+
+  // based on https://stackoverflow.com/a/69869976
+  const isDark = tColor.getLuminance() < 0.4
 
   const parsedElements = parsedText.map(({ type, data }) => {
     switch(type) {
@@ -446,7 +447,7 @@ function BubbleComponent(props) {
     usernameProps.style = {
       color: isDark
         ? tinycolor.mix(color, 'white', 80).toString()
-        : tinycolor.mix(color, 'black', 65).toString()
+        : tinycolor.mix(color, 'black', 55).toString()
     }
   }
 
