@@ -13,6 +13,7 @@ const Widget = {
   raidTimer: null,
   userMessageCount: {},
   soundEffects: [],
+  messageCount: 0,
 }
 
 // ---------------------------
@@ -239,7 +240,7 @@ function onMessage(event) {
     }
   }, 300)
 
-  // Show Bubble and Play Sound
+  // Get Sound
   let sound = null
   const soundUrls = getSound(nick, name, badges, messageType)
   if (soundUrls) {
@@ -247,11 +248,22 @@ function onMessage(event) {
     sound.volume = parseInt(FieldData.volume) / 100
   }
 
+  // Show Bubble and Play Sound
   window.setTimeout(_ => {
+    Widget.messageCount++
     if (soundUrls) sound.play()
     $(currentMessage).addClass('animate')
     $(currentMessage).addClass(FieldData.animation)
     if (FieldData.positionMode === 'list') $(currentMessage).css({ position: 'relative' })
+
+    // Max message handling
+    if (FieldData.maxMessages > 0 && Widget.messageCount > FieldData.maxMessages) {
+      const oldestMsgId = $('.bubble:not(.expired)').last().attr('data-message-id')
+      const selector = `.bubble[data-message-id="${oldestMsgId}"]`
+
+      $(selector).addClass('expired')
+      $(selector).fadeOut('fast', _ => deleteMessage(oldestMsgId))
+    }
 
     window.setTimeout(_ => {
       deleteMessage(msgId)
@@ -273,11 +285,15 @@ function onRaid(event) {
 }
 
 function deleteMessage(msgId) {
-  $(`.bubble[data-message-id="${msgId}"]`).remove()
+  const messages = $(`.bubble[data-message-id="${msgId}"]`)
+  Widget.messageCount -= messages.length
+  messages.remove()
 }
 
 function deleteMessages(userId) {
-  $(`.bubble[data-user-id="${userId}"]`).remove()
+  const messages = $(`.bubble[data-user-id="${userId}"]`)
+  Widget.messageCount -= messages.length
+  messages.remove()
 }
 
 function onButton(event) {

@@ -278,6 +278,19 @@
     "type": "colorpicker",
     "value": "#000000"
   },
+  "maxMessagesLabel": {
+    "label": "Max number of displayed messages",
+    "group": "Message Filters",
+    "type": "hidden"
+  },
+  "maxMessages": {
+    "label": "(0 for unlimited)",
+    "group": "Message Filters",
+    "type": "number",
+    "value": 0,
+    "step": 1,
+    "min": 0
+  },
   "emoteOnly": {
     "label": "Show only emote-only messages?",
     "group": "Message Filters",
