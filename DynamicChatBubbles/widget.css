@@ -30,7 +30,7 @@ main.theme-animal-crossing {
   color: #564A39;
 }
 
-main.random-mode.preview-true::before {
+main.preview-true::before {
   --borderSize: 10px;
   content: '';
   position: absolute;
@@ -44,22 +44,24 @@ main.random-mode.preview-true::before {
   z-index: -2;
 }
 
-main.random-mode.preview-true::after {
+main.preview-true::after {
   --borderSize: 10px;
   --space: 10px;
-  content: 'Messages will only appear within this area (random position mode only).\a\a Drag and resize this box to change the area.\aSpace from Widget Edges in Bubble Styles also affects this area.\a\aSet Preview Mode to Off to hide this message.';
+  content: 'Preview Mode is On!\a Set [Preview > Preview Mode] to Off to hide this.\a\a Whenever you update the settings, a few test message bubbles will appear!\a Messages will only appear within the dotted area.\a\a Drag and resize this box to change the area.\a [Bubble Styles > Space from Widget Edges] also affects this area.';
+  white-space: pre-wrap;
   color: white;
   font-size: 24px;
   position: absolute;
-  width: calc(100% - ({padding}px + var(--space)) * 2);
-  top: 30%;
-  left: calc({padding}px + var(--space));
-  text-align: center;
-  padding: 30px 0;
-  text-shadow: 0 0 5px black;
-  white-space: pre;
+  top: {padding}px;
+  left: {padding}px;
+  right: {padding}px;
+  text-align: left;
+  padding: 30px;
+  text-shadow: 0 0 5px black, 0 0 3px black, 0 0 1px black;
+
   font-weight: bold;
   font-family: Roboto, Arial, sans-serif;
+  background-color: #000B;
   z-index: -1;
 }
 
