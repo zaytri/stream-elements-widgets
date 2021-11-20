@@ -170,12 +170,50 @@ window.addEventListener('onEventReceived', obj => {
 // ---------------------
 
 function onMessage(event) {
+  const { service } = event
   const {
-    badges, emotes, msgId,
-    userId, text, nick,
-    displayColor: color,
-    displayName: name,
+    // facebook
+    attachment,
+    // trovo
+    content_data, messageId, content,
+    // general
+    badges = [], userId = '', nick = '',
+    displayName: name = '',
   } = event.data
+
+  let {
+    emotes = [], text = '', msgId = '',
+    displayColor: color,
+  } = event.data
+
+  // handle facebook
+  if (service === 'facebook' && attachment && attachment.type === 'sticker') {
+    const { url, target } = attachment
+    text = "sticker"
+    emotes.push({
+      "type": "sticker",
+      "name": text,
+      "id": target.id,
+      "gif": false,
+      "urls": {
+        "1": url,
+        "2": url,
+        "4": url
+      },
+      "start": 0,
+      "end": text.length
+    })
+  }
+
+  // handle trovo
+  if (service === 'trovo') {
+    // remove messages from before the widget was loaded... idk why trovo sends these
+    if (!content_data) return
+
+    msgId = messageId
+    text = content
+    color = undefined
+  }
 
   // Filters
   if (FieldData.raidCooldown > 0 && !Widget.raidActive) return
@@ -510,7 +548,7 @@ function hasBadge(userBadges = [], ...badgeTypes) {
 
 function getMessageType(data) {
   if (data.isAction) return 'action'
-  if (data.tags['msg-id'] === 'highlighted-message') return 'highlight'
+  if (data.tags && data.tags['msg-id'] === 'highlighted-message') return 'highlight'
   return 'default'
 }
 
