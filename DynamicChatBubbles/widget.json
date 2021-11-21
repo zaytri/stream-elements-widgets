@@ -49,7 +49,7 @@
     "type": "dropdown",
     "value": "default",
     "options": {
-      "default": "Default",
+      "default": "Original",
       "animal-crossing": "Animal Crossing"
     }
   },
@@ -125,8 +125,8 @@
     "value": "round",
     "options": {
       "round": "Round",
-      "diagonal": "Diagonal",
-      "square": "Square"
+      "square": "Square",
+      "diagonal": "Diagonal"
     }
   },
   "darkMode": {
