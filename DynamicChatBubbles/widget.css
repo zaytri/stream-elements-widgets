@@ -138,7 +138,7 @@ main.direction-top main.random-mode {
   overflow: hidden;
 }
 
-.theme-default.corner-round .bubble, .corner-square .bubble {
+.theme-default.corner-round .bubble, .theme-default.corner-square .bubble {
   border: var(--borderSize) solid var(--borderColor);
 }
 
@@ -257,6 +257,8 @@ main.direction-top main.random-mode {
   border-radius: 30px;
   display: inline-block;
   padding: 4px 8px;
+.theme-animal-crossing.corner-square .username-box {
+  border-radius: 0;
 }
 
 .username {
@@ -297,6 +299,9 @@ main.direction-top main.random-mode {
   margin-left: 15px;
 }
 
+.theme-animal-crossing.corner-square .message {
+  border-radius: 0;
+}
 .emote-4 .message {
   display: flex;
   justify-content: center;
