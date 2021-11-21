@@ -346,24 +346,39 @@ function onButton(event) {
   }
 }
 
+const TEST_USER_TYPES = [
+  { name: 'User', badges: [] },
+  {
+    name: 'Moderator',
+    badges: [{
+      type: 'moderator',
+      url: 'https://static-cdn.jtvnw.net/badges/v1/3267646d-33f0-4b17-b3df-f923a41db1d0/3'
+    }],
+  },
+  {
+    name: 'VIP',
+    badges: [{
+      type: 'vip',
+      url: 'https://static-cdn.jtvnw.net/badges/v1/b817aba4-fad8-49e2-b88a-7cc744dfa6ec/3'
+    }],
+  },
+]
+
 function sendTestMessage(amount = 1, delay = 250) {
   for (let i = 0; i < amount; i++) {
     window.setTimeout(_ => {
       const number = numbered.stringify(random(1, 10))
-      const isUser = random(0, 1)
-      const name = `${isUser ? 'User' : 'Moderator'}_${numbered.stringify(random(1, 10))}`
+      const userType = TEST_USER_TYPES[random(0, TEST_USER_TYPES.length - 1)]
+      const name = `${userType.name}_${numbered.stringify(random(1, 10))}`
       const event = {
         data: {
           userId: name,
           tags: {},
           text: 'test',
-          displayName: name,
+          displayName: random(0, 1) ? name : name.toLowerCase(),
           nick: '',
           msgId: `${name}_${Date.now()}`,
-          badges: isUser ? [] : [{
-            type: 'moderator',
-            url: 'https://static-cdn.jtvnw.net/badges/v1/3267646d-33f0-4b17-b3df-f923a41db1d0/3'
-          }]
+          badges: userType.badges
         }
       }
 
