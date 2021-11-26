@@ -56,7 +56,8 @@ function loadFieldData(data) {
     'useCustomBorderColors',
     'previewMode',
     'largeEmotes',
-    'showBadges'
+    'showBadges',
+    'fixedWidth'
   )
 
   const soundData = {}
@@ -254,7 +255,7 @@ function onMessage(event) {
   // Calcute Bubble Position
   window.setTimeout(_ => {
     const height = $(currentMessage).outerHeight()
-    let maxWidth = $(`${currentMessage} .message-wrapper`).width() + 1
+    let maxWidth = FieldData.fixedWidth ? FieldData.maxWidth : $(`${currentMessage} .message-wrapper`).width() + 1
     const minWidth = $(`${currentMessage} .username`).outerWidth()
 
     $(`${currentMessage} .message`).css({

@@ -300,7 +300,7 @@ main.direction-top main.random-mode {
   border-radius: 0;
 }
 
-.emote-4 .message {
+.fixed-width-false .emote-4 .message {
   display: flex;
   justify-content: center;
   align-items: flex-start;
