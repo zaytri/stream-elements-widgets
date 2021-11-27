@@ -249,7 +249,11 @@ function onMessage(event) {
   }
 
   // Render Bubble
-  $('main').prepend(BubbleComponent(elementData))
+  if (FieldData.positionMode === 'random') {
+    $('main').append(BubbleComponent(elementData))
+  } else {
+    $('main').prepend(BubbleComponent(elementData))
+  }
   const currentMessage = `.bubble[data-message-id="${msgId}"]`
 
   // Calcute Bubble Position
@@ -297,7 +301,9 @@ function onMessage(event) {
 
     // Max message handling
     if (FieldData.maxMessages > 0 && Widget.messageCount > FieldData.maxMessages) {
-      const oldestMsgId = $('.bubble:not(.expired)').last().attr('data-message-id')
+      const oldestMsgId = FieldData.positionMode === 'random'
+        ? $('.bubble:not(.expired)').first().attr('data-message-id')
+        : $('.bubble:not(.expired)').last().attr('data-message-id')
       const selector = `.bubble[data-message-id="${oldestMsgId}"]`
 
       $(selector).addClass('expired')
