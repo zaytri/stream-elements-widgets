@@ -288,7 +288,7 @@ main.direction-top main.random-mode {
 }
 
 .theme-animal-crossing .message {
-  --backgroundColor: #E8E4CDDD;
+  --backgroundColor: #FFFAE4DD;
   background-color: var(--backgroundColor);
   border-radius: 30px / 25px;
   padding: 1.75rem .75rem .75rem .75rem;
