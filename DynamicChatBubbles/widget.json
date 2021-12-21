@@ -288,6 +288,11 @@
     "type": "colorpicker",
     "value": "#000000"
   },
+  "pronounsInfo": {
+    "label": "Integrated from pronouns.alejo.io",
+    "group": "Pronouns",
+    "type": "hidden"
+  },
   "pronounsMode": {
     "label": "Pronouns Display",
     "group": "Pronouns",
