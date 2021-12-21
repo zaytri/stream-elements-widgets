@@ -326,8 +326,8 @@ main.direction-top main.random-mode {
 
 .dynamic .text, .dynamic .emote { animation: fadeMessage 1.5s; }
 
-.emote-1 .emote { height: 32px; }
-.emote-2 .emote { height: 56px; }
+.emote-1 .emote { height: 1.75rem; max-height: 112px; }
+.emote-2 .emote { height: 3.5rem; max-height: 112px; }
 .emote-4 .emote { height: 112px; }
 
 /* --- [Message Types] --- */
@@ -374,7 +374,7 @@ main.direction-top main.random-mode {
 }
 
 .badge {
-  height: 1.1rem;
+  height: 1.5rem;
   padding-bottom: .25rem;
   padding-right: .25rem;
   position: relative;
