@@ -14,18 +14,31 @@ const Widget = {
   userMessageCount: {},
   soundEffects: [],
   messageCount: 0,
+  pronouns: {},
+  pronounsCache: {},
+}
+
+const PRONOUNS_API = {
+  base: 'https://pronouns.alejo.io/api/',
+  user: (username) => `users/${username}`,
+  pronouns: 'pronouns',
 }
 
 // ---------------------------
 //    Widget Initialization
 // ---------------------------
 
-window.addEventListener('onWidgetLoad', obj => {
+window.addEventListener('onWidgetLoad', async obj => {
   loadFieldData(obj.detail.fieldData)
 
   conditionalMainClass('dark-mode', FieldData.darkMode)
   conditionalMainClass('custom-message-colors', FieldData.useCustomMessageColors)
   conditionalMainClass('custom-border-colors', FieldData.useCustomBorderColors)
+  conditionalMainClass('custom-pronouns-badge-colors', FieldData.pronounsBadgeCustomColors)
+
+  if (FieldData.pronounsMode !== 'off') {
+    await getPronouns()
+  }
 
   if (FieldData.previewMode) sendTestMessage(10, 500)
 })
@@ -57,7 +70,9 @@ function loadFieldData(data) {
     'previewMode',
     'largeEmotes',
     'showBadges',
-    'fixedWidth'
+    'fixedWidth',
+    'pronounsLowercase',
+    'pronounsBadgeCustomColors',
   )
 
   const soundData = {}
@@ -170,7 +185,7 @@ window.addEventListener('onEventReceived', obj => {
 //    Event Functions
 // ---------------------
 
-function onMessage(event) {
+async function onMessage(event, testMessage = false) {
   const { service } = event
   const {
     // facebook
@@ -186,6 +201,21 @@ function onMessage(event) {
     emotes = [], text = '', msgId = '',
     displayColor: color,
   } = event.data
+
+  let pronouns = null
+  if (FieldData.pronounsMode !== 'off') {
+    if (testMessage) {
+      const allPronounKeys = Object.keys(Widget.pronouns)
+      const randomPronounKey = allPronounKeys[random(0, allPronounKeys.length - 1)]
+      pronouns = Widget.pronouns[randomPronounKey]
+    } else if (service === 'twitch') {
+      pronouns = await getUserPronoun(nick)
+    }
+  }
+
+  if (pronouns && FieldData.pronounsLowercase) {
+    pronouns = pronouns.toLowerCase()
+  }
 
   // handle facebook
   if (service === 'facebook' && attachment && attachment.type === 'sticker') {
@@ -245,7 +275,7 @@ function onMessage(event) {
   const elementData = {
     parsedText, name, emoteSize,
     messageType, msgId, userId,
-    color, badges,
+    color, badges, pronouns,
   }
 
   // Render Bubble
@@ -414,7 +444,7 @@ function sendTestMessage(amount = 1, delay = 250) {
       } else if (messageType === 3) {
         event.data.tags['msg-id'] = 'highlighted-message'
       }
-      onMessage(event)
+      onMessage(event, true)
     }, i * delay)
   }
 }
@@ -425,10 +455,19 @@ function sendTestMessage(amount = 1, delay = 250) {
 
 function BubbleComponent(props) {
   const {
-    parsedText, name, emoteSize,
+    parsedText, emoteSize,
     messageType, msgId, userId,
     color: userColor, badges,
+    pronouns,
   } = props
+
+  let {
+    name,
+  } = props
+
+  if (FieldData.pronounsMode === 'suffix' && pronouns) {
+    name = `${name} (${pronouns})`
+  }
 
   const color = userColor || generateColor(name)
   const tColor = tinycolor(color)
@@ -459,10 +498,14 @@ function BubbleComponent(props) {
 
   if (isDark) containerClasses.push('user-color-dark')
 
-  const usernameChildren = FieldData.showBadges
-  	// badges inside p.username because that's used for dynamic width calculations
-  	? [...BadgesComponent(badges), name]
-  	: name
+  let usernameChildren = []
+  if (FieldData.showBadges) {
+    usernameChildren = BadgesComponent(badges)
+  }
+  if (FieldData.pronounsMode === 'badge' && pronouns) {
+    usernameChildren.push(PronounsBadgeComponent(pronouns))
+  }
+  usernameChildren.push(name)
 
   const usernameProps = {}
   if (!FieldData.useCustomBorderColors) {
@@ -507,6 +550,7 @@ const ClassComponent = (tag, className) => (children, props = {}) => Component(t
 const BackgroundComponent = ClassComponent('div', 'bubble-background')
 const UsernameBoxComponent = ClassComponent('div', 'username-box')
 const UsernameComponent = ClassComponent('p', 'username')
+const PronounsBadgeComponent = ClassComponent('span', 'pronouns-badge')
 const MessageComponent = ClassComponent('div', 'message')
 const MessageWrapperComponent = ClassComponent('span', 'message-wrapper')
 
@@ -523,9 +567,45 @@ function Component(tag, props) {
   return `<${tag}${attributes}>${children !== undefined ? joinIfArray(children) : ''}</${tag}>`
 }
 
+// ----------------------------
+//    Pronouns API Functions
+// ----------------------------
+async function getPronouns() {
+  const res = await get(`${PRONOUNS_API.base}${PRONOUNS_API.pronouns}`)
+  res.forEach(pronoun => {
+    Widget.pronouns[pronoun.name] = pronoun.display
+  })
+}
+
+async function getUserPronoun(username) {
+  const lowercaseUsername = username.toLowerCase()
+  let pronouns = Widget.pronounsCache[lowercaseUsername]
+
+  if (!pronouns || pronouns.expire < Date.now()) {
+    const res = await get(`${PRONOUNS_API.base}${PRONOUNS_API.user(lowercaseUsername)}`)
+    const [newPronouns] = res
+    Widget.pronounsCache[lowercaseUsername] = {
+      ...newPronouns,
+      expire: Date.now() + (1000 * 60 * 60) // 1 hour in the future
+    }
+    pronouns = Widget.pronounsCache[lowercaseUsername]
+  }
+
+  if (!pronouns.pronoun_id) {
+    return null
+  }
+
+  return Widget.pronouns[pronouns.pronoun_id]
+}
+
 // ---------------------
 //    Helper Functions
 // ---------------------
+async function get(URL) {
+  return await fetch(URL).then(async (res) => {
+    return res.json()
+  })
+}
 
 function hasIgnoredPrefix(text) {
   for (const prefix of FieldData.ignorePrefixList) {

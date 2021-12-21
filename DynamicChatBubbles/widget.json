@@ -288,6 +288,55 @@
     "type": "colorpicker",
     "value": "#000000"
   },
+  "pronounsMode": {
+    "label": "Pronouns Display",
+    "group": "Pronouns",
+    "type": "dropdown",
+    "value": "off",
+    "options": {
+      "off": "Off",
+      "badge": "Badge",
+      "suffix": "Suffix"
+    }
+  },
+  "pronounsLowercase": {
+    "label": "Lowercase Pronouns?",
+    "group": "Pronouns",
+    "type": "dropdown",
+    "value": "false",
+    "options": {
+      "true": "Yes",
+      "false": "No"
+    }
+  },
+  "pronounsBadgeCustomColors": {
+    "label": "Use Custom Pronouns Badge Colors?",
+    "group": "Pronouns",
+    "type": "dropdown",
+    "value": "false",
+    "options": {
+      "true": "Yes",
+      "false": "No"
+    }
+  },
+  "pronounsBadgeBackgroundColor": {
+    "label": "Pronouns Badge Background Color",
+    "group": "Pronouns",
+    "type": "colorpicker",
+    "value": "#000000"
+  },
+  "pronounsBadgeBorderColor": {
+    "label": "Pronouns Badge Border Color",
+    "group": "Pronouns",
+    "type": "colorpicker",
+    "value": "#FFFFFF"
+  },
+  "pronounsBadgeTextColor": {
+    "label": "Pronouns Badge Text Color",
+    "group": "Pronouns",
+    "type": "colorpicker",
+    "value": "#FFFFFF"
+  },
   "maxMessagesLabel": {
     "label": "Max number of displayed messages",
     "group": "Message Filters",
@@ -927,7 +976,7 @@
     "type": "hidden"
   },
   "widgetName": {
-    "label": "[Chat Bubbles - v2.7.4]",
+    "label": "[Chat Bubbles - v2.8.0]",
     "group": "About",
     "type": "hidden",
     "value": "Chat Bubbles"
@@ -942,7 +991,7 @@
     "label": "Twitch - twitch.tv/zaytri",
     "group": "About",
     "type": "hidden",
-    "value": "2.7.4"
+    "value": "2.8.0"
   },
   "widgetUpdateUrl": {
     "label": "Twitter / TikTok / Instagram - @imzaytri",

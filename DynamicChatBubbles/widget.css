@@ -381,6 +381,22 @@ main.direction-top main.random-mode {
   vertical-align: middle;
 }
 
+.pronouns-badge {
+  display: inline-block;
+  margin-right: .25rem;
+  border-radius: 5px;
+  border: 2px solid currentcolor;
+  padding-left: .25rem;
+  padding-right: .25rem;
+  margin-bottom: .25rem;
+}
+
+.custom-pronouns-badge-colors .pronouns-badge {
+  color: {pronounsBadgeTextColor};
+  background-color: {pronounsBadgeBackgroundColor};
+  border-color: {pronounsBadgeBorderColor};
+}
+
 .theme-animal-crossing .badge {
   padding-bottom: .15rem;
 }
