@@ -514,7 +514,7 @@ function BubbleComponent(props) {
     usernameProps.style = {
       color: isDark
         ? tinycolor.mix(color, 'white', 80).toString()
-        : tinycolor.mix(color, 'black', 55).toString()
+        : tinycolor.mix(color, 'black', 65).toString()
     }
   }
 
