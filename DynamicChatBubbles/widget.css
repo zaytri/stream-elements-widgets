@@ -41,7 +41,7 @@ main.preview-true::before {
   border: var(--borderSize) dashed white;
   box-shadow: 0 0 5px #000;
   background-color: #0008;
-  z-index: -2;
+  z-index: -20;
 }
 
 main.preview-true::after {
@@ -58,11 +58,10 @@ main.preview-true::after {
   text-align: left;
   padding: 30px;
   text-shadow: 0 0 5px black, 0 0 3px black, 0 0 1px black;
-
   font-weight: bold;
   font-family: Roboto, Arial, sans-serif;
   background-color: #000B;
-  z-index: -1;
+  z-index: -10;
 }
 
 main.preview-true::before, main.preview-true::after {
@@ -162,10 +161,21 @@ main.direction-top main.random-mode {
   animation: pop .5s calc({lifetime}s - .5s) forwards;
 }
 
+.lifetime-0 .bubble.dynamic {
+  animation: fade reverse 0s 1s;
+}
+
 .bubble.fade {
   animation:
     fade reverse .5s,
     fade .5s calc({lifetime}s - .5s) forwards
+  ;
+}
+
+.lifetime-0 .bubble.fade {
+  animation:
+    fade reverse .5s,
+    fade reverse 0s 1s
   ;
 }
 
@@ -178,12 +188,28 @@ main.direction-top main.random-mode {
   ;
 }
 
+.lifetime-0 .bubble.fade-up {
+  animation:
+    fade reverse .5s,
+    up .5s,
+    fade reverse 0s 1s
+  ;
+}
+
 .bubble.fade-down {
   animation:
     fade reverse .5s,
     fade .5s calc({lifetime}s - .5s) forwards,
   	down .5s,
   	down reverse .5s calc({lifetime}s - .5s) forwards
+  ;
+}
+
+.lifetime-0 .bubble.fade-down {
+  animation:
+    fade reverse .5s,
+    down .5s,
+    fade reverse 0s 1s
   ;
 }
 
@@ -196,6 +222,14 @@ main.direction-top main.random-mode {
   ;
 }
 
+.lifetime-0 .bubble.fade-left {
+  animation:
+    fade reverse .5s,
+    left .5s,
+    fade reverse 0s 1s
+  ;
+}
+
 .bubble.fade-right {
   animation:
     fade reverse .5s,
@@ -205,10 +239,25 @@ main.direction-top main.random-mode {
   ;
 }
 
+.lifetime-0 .bubble.fade-right {
+  animation:
+    fade reverse .5s,
+    right .5s,
+    fade reverse 0s 1s
+  ;
+}
+
 .bubble.zoom {
   animation:
     pop reverse .5s,
     pop .5s calc({lifetime}s - .5s) forwards
+  ;
+}
+
+.lifetime-0 .bubble.zoom {
+  animation:
+    pop reverse .5s,
+    fade reverse 0s 1s
   ;
 }
 
@@ -241,7 +290,6 @@ main.direction-top main.random-mode {
 .theme-default.corner-round .bubble-background {
   border-radius: 5px;
 }
-
 
 .dark-mode .bubble { --defaultBackgroundColor: #000D; }
 

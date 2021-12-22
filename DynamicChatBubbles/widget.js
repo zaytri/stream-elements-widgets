@@ -340,9 +340,11 @@ async function onMessage(event, testMessage = false) {
       $(selector).fadeOut('fast', _ => deleteMessage(oldestMsgId))
     }
 
-    window.setTimeout(_ => {
-      deleteMessage(msgId)
-    }, FieldData.lifetime * 1000 )
+    if (FieldData.lifetime > 0) {
+      window.setTimeout(_ => {
+        deleteMessage(msgId)
+      }, FieldData.lifetime * 1000 )
+    }
   }, FieldData.delay * 1000)
 }
 
