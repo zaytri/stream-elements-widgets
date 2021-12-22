@@ -513,7 +513,7 @@ function BubbleComponent(props) {
   if (!FieldData.useCustomBorderColors) {
     usernameProps.style = {
       color: isDark
-        ? tinycolor.mix(color, 'white', 80).toString()
+        ? tinycolor.mix(color, 'white', 85).toString()
         : tinycolor.mix(color, 'black', 65).toString()
     }
   }
