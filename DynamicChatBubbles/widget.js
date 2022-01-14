@@ -1,7 +1,14 @@
 const DEFAULT_COLORS = [
-  '#FF4A80', '#FF7070', '#FA8E4B', '#FEE440',
-  '#5FFF77', '#00F5D4', '#00BBF9', '#4371FB',
-  '#9B5DE5', '#F670DD',
+  '#FF4A80',
+  '#FF7070',
+  '#FA8E4B',
+  '#FEE440',
+  '#5FFF77',
+  '#00F5D4',
+  '#00BBF9',
+  '#4371FB',
+  '#9B5DE5',
+  '#F670DD',
 ]
 
 let FieldData = {}
@@ -20,7 +27,7 @@ const Widget = {
 
 const PRONOUNS_API = {
   base: 'https://pronouns.alejo.io/api/',
-  user: (username) => `users/${username}`,
+  user: username => `users/${username}`,
   pronouns: 'pronouns',
 }
 
@@ -32,9 +39,15 @@ window.addEventListener('onWidgetLoad', async obj => {
   loadFieldData(obj.detail.fieldData)
 
   conditionalMainClass('dark-mode', FieldData.darkMode)
-  conditionalMainClass('custom-message-colors', FieldData.useCustomMessageColors)
+  conditionalMainClass(
+    'custom-message-colors',
+    FieldData.useCustomMessageColors,
+  )
   conditionalMainClass('custom-border-colors', FieldData.useCustomBorderColors)
-  conditionalMainClass('custom-pronouns-badge-colors', FieldData.pronounsBadgeCustomColors)
+  conditionalMainClass(
+    'custom-pronouns-badge-colors',
+    FieldData.pronounsBadgeCustomColors,
+  )
 
   if (FieldData.pronounsMode !== 'off') {
     await getPronouns()
@@ -46,14 +59,16 @@ window.addEventListener('onWidgetLoad', async obj => {
 function loadFieldData(data) {
   FieldData = data
 
-  const specificUsersSoundGroups = Array(10).fill('specificUsersSoundGroup').map((text, i) => `${text}${i + 1}`)
+  const specificUsersSoundGroups = Array(10)
+    .fill('specificUsersSoundGroup')
+    .map((text, i) => `${text}${i + 1}`)
   processFieldData(
     value => stringToArray(value),
     'ignoreUserList',
     'ignorePrefixList',
     'allowUserList',
     'allowedStrings',
-    ...specificUsersSoundGroups
+    ...specificUsersSoundGroups,
   )
 
   processFieldData(
@@ -81,7 +96,9 @@ function loadFieldData(data) {
     const specificUsers = FieldData[`specificUsersSoundGroup${i}`]
     const isSpecific = specificUsers.length > 0
     // specific-index so multiple specifics don't override each other
-    const userLevel = isSpecific ? `specific-${i}` : FieldData[`userLevelSoundGroup${i}`]
+    const userLevel = isSpecific
+      ? `specific-${i}`
+      : FieldData[`userLevelSoundGroup${i}`]
     const messageType = FieldData[`messageTypeSoundGroup${i}`]
     if (group && group.length > 0) {
       if (!soundData[userLevel]) {
@@ -100,20 +117,25 @@ function loadFieldData(data) {
     }
   }
 
-  Widget.soundEffects = Object.entries(soundData).reduce((acc, entry) => {
-    const [userLevel, { users, ...messageTypes }] = entry
-    for (const [messageType, soundEffects] of Object.entries(messageTypes)) {
-      acc.push({
-        userLevel, messageType, soundEffects, users,
-        order: soundSortOrder(userLevel, messageType)
-      })
-    }
-    return [...acc]
-  }, []).sort(({ order: a }, { order: b }) => {
-    // sort by userLevel (0) then by messageType (1)
-    if (a[0] !== b[0]) return b[0] - a[0]
-    else return b[1] - a[1]
-  })
+  Widget.soundEffects = Object.entries(soundData)
+    .reduce((acc, entry) => {
+      const [userLevel, { users, ...messageTypes }] = entry
+      for (const [messageType, soundEffects] of Object.entries(messageTypes)) {
+        acc.push({
+          userLevel,
+          messageType,
+          soundEffects,
+          users,
+          order: soundSortOrder(userLevel, messageType),
+        })
+      }
+      return [...acc]
+    }, [])
+    .sort(({ order: a }, { order: b }) => {
+      // sort by userLevel (0) then by messageType (1)
+      if (a[0] !== b[0]) return b[0] - a[0]
+      else return b[1] - a[1]
+    })
 }
 
 function processFieldData(process, ...keys) {
@@ -143,20 +165,29 @@ function soundSortOrder(userLevel, messageType) {
 
 function userLevelSortOrder(userLevel) {
   switch (userLevel) {
-    case 'everyone': return 0
-    case 'subs': return 100
-    case 'vips': return 200
-    case 'mods': return 300
-    default: return 1000 // assume specific
+    case 'everyone':
+      return 0
+    case 'subs':
+      return 100
+    case 'vips':
+      return 200
+    case 'mods':
+      return 300
+    default:
+      return 1000 // assume specific
   }
 }
 
 function messageTypeSortOrder(messageType) {
   switch (messageType) {
-    case 'highlight': return 1000
-    case 'action': return 500
-    case 'default': return 100
-    default: return 0 // assume all
+    case 'highlight':
+      return 1000
+    case 'action':
+      return 500
+    case 'default':
+      return 100
+    default:
+      return 0 // assume all
   }
 }
 
@@ -166,18 +197,24 @@ function messageTypeSortOrder(messageType) {
 
 window.addEventListener('onEventReceived', obj => {
   const { listener, event } = obj.detail
-  switch(listener) {
-    case 'message': onMessage(event)
+  switch (listener) {
+    case 'message':
+      onMessage(event)
       break
-    case 'raid-latest': onRaid(event)
+    case 'raid-latest':
+      onRaid(event)
       break
-    case 'delete-message': deleteMessage(event.msgId)
+    case 'delete-message':
+      deleteMessage(event.msgId)
       break
-    case 'delete-messages': deleteMessages(event.userId)
+    case 'delete-messages':
+      deleteMessages(event.userId)
       break
-    case 'event:test': onButton(event)
+    case 'event:test':
+      onButton(event)
       break
-    default: return
+    default:
+      return
   }
 })
 
@@ -191,22 +228,24 @@ async function onMessage(event, testMessage = false) {
     // facebook
     attachment,
     // trovo
-    content_data, messageId, content,
+    content_data,
+    messageId,
+    content,
     // general
-    badges = [], userId = '', nick = '',
+    badges = [],
+    userId = '',
+    nick = '',
     displayName: name = '',
   } = event.data
 
-  let {
-    emotes = [], text = '', msgId = '',
-    displayColor: color,
-  } = event.data
+  let { emotes = [], text = '', msgId = '', displayColor: color } = event.data
 
   let pronouns = null
   if (FieldData.pronounsMode !== 'off') {
     if (testMessage) {
       const allPronounKeys = Object.keys(Widget.pronouns)
-      const randomPronounKey = allPronounKeys[random(0, allPronounKeys.length - 1)]
+      const randomPronounKey =
+        allPronounKeys[random(0, allPronounKeys.length - 1)]
       pronouns = Widget.pronouns[randomPronounKey]
     } else if (service === 'twitch') {
       pronouns = await getUserPronoun(nick)
@@ -220,19 +259,19 @@ async function onMessage(event, testMessage = false) {
   // handle facebook
   if (service === 'facebook' && attachment && attachment.type === 'sticker') {
     const { url, target } = attachment
-    text = "sticker"
+    text = 'sticker'
     emotes.push({
-      "type": "sticker",
-      "name": text,
-      "id": target.id,
-      "gif": false,
-      "urls": {
-        "1": url,
-        "2": url,
-        "4": url
+      type: 'sticker',
+      name: text,
+      id: target.id,
+      gif: false,
+      urls: {
+        1: url,
+        2: url,
+        4: url,
       },
-      "start": 0,
-      "end": text.length
+      start: 0,
+      end: text.length,
     })
   }
 
@@ -251,10 +290,18 @@ async function onMessage(event, testMessage = false) {
   if (FieldData.raidCooldown < 0 && Widget.raidActive) return
   if (hasIgnoredPrefix(text)) return
   if (!passedMinMessageThreshold(userId)) return
-  if (FieldData.allowUserList.length && !userListIncludes(FieldData.allowUserList, name, nick)) return
+  if (
+    FieldData.allowUserList.length &&
+    !userListIncludes(FieldData.allowUserList, name, nick)
+  )
+    return
   if (userListIncludes(FieldData.ignoreUserList, name, nick)) return
   if (!hasIncludedBadge(badges)) return
-  if (FieldData.allowedStrings.length && !FieldData.allowedStrings.includes(text)) return
+  if (
+    FieldData.allowedStrings.length &&
+    !FieldData.allowedStrings.includes(text)
+  )
+    return
 
   const messageType = getMessageType(event.data)
   if (FieldData.highlightOnly && messageType !== 'highlight') return
@@ -268,14 +315,22 @@ async function onMessage(event, testMessage = false) {
       return
     } else {
       Widget.cooldown = true
-      window.setTimeout(() => { Widget.cooldown = false }, FieldData.messageCooldown * 1000)
+      window.setTimeout(() => {
+        Widget.cooldown = false
+      }, FieldData.messageCooldown * 1000)
     }
   }
 
   const elementData = {
-    parsedText, name, emoteSize,
-    messageType, msgId, userId,
-    color, badges, pronouns,
+    parsedText,
+    name,
+    emoteSize,
+    messageType,
+    msgId,
+    userId,
+    color,
+    badges,
+    pronouns,
   }
 
   // Render Bubble
@@ -289,7 +344,9 @@ async function onMessage(event, testMessage = false) {
   // Calcute Bubble Position
   window.setTimeout(_ => {
     const height = $(currentMessage).outerHeight()
-    let maxWidth = FieldData.fixedWidth ? FieldData.maxWidth : $(`${currentMessage} .message-wrapper`).width() + 1
+    let maxWidth = FieldData.fixedWidth
+      ? FieldData.maxWidth
+      : $(`${currentMessage} .message-wrapper`).width() + 1
     const minWidth = $(`${currentMessage} .username`).outerWidth()
 
     $(`${currentMessage} .message`).css({
@@ -327,13 +384,18 @@ async function onMessage(event, testMessage = false) {
     if (soundUrls) sound.play()
     $(currentMessage).addClass('animate')
     $(currentMessage).addClass(FieldData.animation)
-    if (FieldData.positionMode === 'list') $(currentMessage).css({ position: 'relative' })
+    if (FieldData.positionMode === 'list')
+      $(currentMessage).css({ position: 'relative' })
 
     // Max message handling
-    if (FieldData.maxMessages > 0 && Widget.messageCount > FieldData.maxMessages) {
-      const oldestMsgId = FieldData.positionMode === 'random'
-        ? $('.bubble:not(.expired)').first().attr('data-message-id')
-        : $('.bubble:not(.expired)').last().attr('data-message-id')
+    if (
+      FieldData.maxMessages > 0 &&
+      Widget.messageCount > FieldData.maxMessages
+    ) {
+      const oldestMsgId =
+        FieldData.positionMode === 'random'
+          ? $('.bubble:not(.expired)').first().attr('data-message-id')
+          : $('.bubble:not(.expired)').last().attr('data-message-id')
       const selector = `.bubble[data-message-id="${oldestMsgId}"]`
 
       $(selector).addClass('expired')
@@ -343,7 +405,7 @@ async function onMessage(event, testMessage = false) {
     if (FieldData.lifetime > 0) {
       window.setTimeout(_ => {
         deleteMessage(msgId)
-      }, FieldData.lifetime * 1000 )
+      }, FieldData.lifetime * 1000)
     }
   }, FieldData.delay * 1000)
 }
@@ -376,12 +438,15 @@ function deleteMessages(userId) {
 function onButton(event) {
   const { listener, field, value } = event
 
-  if (listener !== 'widget-button' || value !== 'zaytri_dynamicchatbubbles') return
+  if (listener !== 'widget-button' || value !== 'zaytri_dynamicchatbubbles')
+    return
 
-  switch(field) {
-    case 'testMessageButton': sendTestMessage()
+  switch (field) {
+    case 'testMessageButton':
+      sendTestMessage()
       break
-    default: return
+    default:
+      return
   }
 }
 
@@ -389,17 +454,21 @@ const TEST_USER_TYPES = [
   { name: 'User', badges: [] },
   {
     name: 'Moderator',
-    badges: [{
-      type: 'moderator',
-      url: 'https://static-cdn.jtvnw.net/badges/v1/3267646d-33f0-4b17-b3df-f923a41db1d0/3'
-    }],
+    badges: [
+      {
+        type: 'moderator',
+        url: 'https://static-cdn.jtvnw.net/badges/v1/3267646d-33f0-4b17-b3df-f923a41db1d0/3',
+      },
+    ],
   },
   {
     name: 'VIP',
-    badges: [{
-      type: 'vip',
-      url: 'https://static-cdn.jtvnw.net/badges/v1/b817aba4-fad8-49e2-b88a-7cc744dfa6ec/3'
-    }],
+    badges: [
+      {
+        type: 'vip',
+        url: 'https://static-cdn.jtvnw.net/badges/v1/b817aba4-fad8-49e2-b88a-7cc744dfa6ec/3',
+      },
+    ],
   },
 ]
 
@@ -417,28 +486,33 @@ function sendTestMessage(amount = 1, delay = 250) {
           displayName: random(0, 1) ? name : name.toLowerCase(),
           nick: '',
           msgId: `${name}_${Date.now()}`,
-          badges: userType.badges
-        }
+          badges: userType.badges,
+        },
       }
 
       const previewMessage = FieldData.previewMessage.trim()
       if (previewMessage !== '') {
         event.data.text = previewMessage
       } else {
-        const [text, emotes] = TEST_MESSAGES[random(0, TEST_MESSAGES.length - 1)]
+        const [text, emotes] =
+          TEST_MESSAGES[random(0, TEST_MESSAGES.length - 1)]
         event.data.text = text
         event.data.emotes = emotes
       }
 
       let messageType = 1
-      switch(FieldData.previewType) {
-        case 'random': messageType = random(1, 3)
+      switch (FieldData.previewType) {
+        case 'random':
+          messageType = random(1, 3)
           break
-        case 'action': messageType = 2
+        case 'action':
+          messageType = 2
           break
-        case 'highlight': messageType = 3
+        case 'highlight':
+          messageType = 3
           break
-        default: messageType = 1
+        default:
+          messageType = 1
       }
 
       if (messageType === 2) {
@@ -457,15 +531,17 @@ function sendTestMessage(amount = 1, delay = 250) {
 
 function BubbleComponent(props) {
   const {
-    parsedText, emoteSize,
-    messageType, msgId, userId,
-    color: userColor, badges,
+    parsedText,
+    emoteSize,
+    messageType,
+    msgId,
+    userId,
+    color: userColor,
+    badges,
     pronouns,
   } = props
 
-  let {
-    name,
-  } = props
+  let { name } = props
 
   if (FieldData.pronounsMode === 'suffix' && pronouns) {
     name = `${name} (${pronouns})`
@@ -478,17 +554,23 @@ function BubbleComponent(props) {
   const isDark = tColor.getLuminance() < 0.4
 
   const parsedElements = parsedText.map(({ type, data }) => {
-    switch(type) {
-      case 'emote': return EmoteComponent(data)
+    switch (type) {
+      case 'emote':
+        return EmoteComponent(data)
       case 'text':
-      default: return TextComponent(data)
+      default:
+        return TextComponent(data)
     }
   })
 
-  let containerClasses = ['bubble', `emote-${FieldData.largeEmotes ? emoteSize : 1}`]
+  let containerClasses = [
+    'bubble',
+    `emote-${FieldData.largeEmotes ? emoteSize : 1}`,
+  ]
   switch (messageType) {
     case 'highlight': {
-      if (FieldData.highlightStyle === 'rainbow') containerClasses.push('highlight')
+      if (FieldData.highlightStyle === 'rainbow')
+        containerClasses.push('highlight')
       break
     }
     case 'action': {
@@ -537,18 +619,23 @@ function BubbleComponent(props) {
 }
 
 function BadgesComponent(badges) {
-  return badges.map(badge => Component('img', { class: 'badge', src: badge.url, alt: badge.type }))
+  return badges.map(badge =>
+    Component('img', { class: 'badge', src: badge.url, alt: badge.type }),
+  )
 }
 
 function TextComponent(text) {
   return Component('span', { class: 'text', children: text })
 }
 
-function EmoteComponent({ urls: { '4': url }, name }) {
+function EmoteComponent({ urls: { 4: url }, name }) {
   return Component('img', { class: ['emote'], src: url, alt: name })
 }
 
-const ClassComponent = (tag, className) => (children, props = {}) => Component(tag, { children, class: className, ...props })
+const ClassComponent =
+  (tag, className) =>
+  (children, props = {}) =>
+    Component(tag, { children, class: className, ...props })
 const BackgroundComponent = ClassComponent('div', 'bubble-background')
 const UsernameBoxComponent = ClassComponent('div', 'username-box')
 const UsernameComponent = ClassComponent('p', 'username')
@@ -557,16 +644,22 @@ const MessageComponent = ClassComponent('div', 'message')
 const MessageWrapperComponent = ClassComponent('span', 'message-wrapper')
 
 function Component(tag, props) {
-  const { children, 'class': classes, style, ...rest } = props
+  const { children, class: classes, style, ...rest } = props
 
   if (classes) rest.class = joinIfArray(classes, ' ')
 
-  if (style) rest.style = Object.entries(style)
-    .map(([key, value]) => `${key}: ${value}`).join(';')
+  if (style)
+    rest.style = Object.entries(style)
+      .map(([key, value]) => `${key}: ${value}`)
+      .join(';')
 
-  const attributes = Object.entries(rest)
-    .reduce((acc, [attr, value]) => `${acc} ${attr}='${value}'`, '')
-  return `<${tag}${attributes}>${children !== undefined ? joinIfArray(children) : ''}</${tag}>`
+  const attributes = Object.entries(rest).reduce(
+    (acc, [attr, value]) => `${acc} ${attr}='${value}'`,
+    '',
+  )
+  return `<${tag}${attributes}>${
+    children !== undefined ? joinIfArray(children) : ''
+  }</${tag}>`
 }
 
 // ----------------------------
@@ -584,11 +677,13 @@ async function getUserPronoun(username) {
   let pronouns = Widget.pronounsCache[lowercaseUsername]
 
   if (!pronouns || pronouns.expire < Date.now()) {
-    const res = await get(`${PRONOUNS_API.base}${PRONOUNS_API.user(lowercaseUsername)}`)
+    const res = await get(
+      `${PRONOUNS_API.base}${PRONOUNS_API.user(lowercaseUsername)}`,
+    )
     const [newPronouns] = res
     Widget.pronounsCache[lowercaseUsername] = {
       ...newPronouns,
-      expire: Date.now() + (1000 * 60 * 60) // 1 hour in the future
+      expire: Date.now() + 1000 * 60 * 60, // 1 hour in the future
     }
     pronouns = Widget.pronounsCache[lowercaseUsername]
   }
@@ -604,7 +699,7 @@ async function getUserPronoun(username) {
 //    Helper Functions
 // ---------------------
 async function get(URL) {
-  return await fetch(URL).then(async (res) => {
+  return await fetch(URL).then(async res => {
     return res.json()
   })
 }
@@ -662,24 +757,35 @@ function hasBadge(userBadges = [], ...badgeTypes) {
 
 function getMessageType(data) {
   if (data.isAction) return 'action'
-  if (data.tags && data.tags['msg-id'] === 'highlighted-message') return 'highlight'
+  if (data.tags && data.tags['msg-id'] === 'highlighted-message')
+    return 'highlight'
   return 'default'
 }
 
 function getSound(nick, name, badges, messageType) {
   for (const soundGroup of Widget.soundEffects) {
-    const { userLevel, messageType: soundMessageType, users = [], soundEffects } = soundGroup
+    const {
+      userLevel,
+      messageType: soundMessageType,
+      users = [],
+      soundEffects,
+    } = soundGroup
     if (soundMessageType === 'all' || soundMessageType === messageType) {
-      switch(userLevel) {
-        case 'everyone': return soundEffects
-        case 'subs': if (isSub(badges)) return soundEffects
+      switch (userLevel) {
+        case 'everyone':
+          return soundEffects
+        case 'subs':
+          if (isSub(badges)) return soundEffects
           break
-        case 'vips': if (isVIP(badges)) return soundEffects
+        case 'vips':
+          if (isVIP(badges)) return soundEffects
           break
-        case 'mods': if (isMod(badges)) return soundEffects
+        case 'mods':
+          if (isMod(badges)) return soundEffects
           break
         // assume specific
-        default: if (userListIncludes(users, nick, name)) return soundEffects
+        default:
+          if (userListIncludes(users, nick, name)) return soundEffects
           break
       }
     }
@@ -692,7 +798,8 @@ function parse(text, emotes) {
 
   const regex = createRegex(emotes.map(e => htmlEncode(e.name)))
 
-  const textObjs = text.split(regex)
+  const textObjs = text
+    .split(regex)
     .map(string => ({ type: 'text', data: string }))
   const last = textObjs.pop()
 
@@ -719,7 +826,9 @@ function calcEmoteSize(parsedText) {
 // Regex is so useful but it's so confusing
 // This is all to parse out the emote text
 const createRegex = strings => {
-  const regexStrings = strings.sort().reverse()
+  const regexStrings = strings
+    .sort()
+    .reverse()
     .map(string => string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'))
   const regex = `(?<=\\s|^)(?:${regexStrings.join('|')})(?=\\s|$|[.,!])`
   return new RegExp(regex, 'g')
@@ -727,7 +836,9 @@ const createRegex = strings => {
 
 function generateColor(name) {
   if (!name) return DEFAULT_COLORS[0]
-  const value = name.split('').reduce((sum, letter) => sum + letter.charCodeAt(0), 0)
+  const value = name
+    .split('')
+    .reduce((sum, letter) => sum + letter.charCodeAt(0), 0)
   return DEFAULT_COLORS[value % DEFAULT_COLORS.length]
 }
 
@@ -763,275 +874,308 @@ function joinIfArray(possibleArray, delimiter = '') {
 const TEST_MESSAGES = [
   ['HYPE'],
   ['uwu'],
-  ['popCat', [
-    {
-      "type": "bttv",
-      "name": "popCat",
-      "id": "60d5abc38ed8b373e421952f",
-      "gif": true,
-      "urls": {
-        "1": "https://cdn.betterttv.net/emote/60d5abc38ed8b373e421952f/1x",
-        "2": "https://cdn.betterttv.net/emote/60d5abc38ed8b373e421952f/2x",
-        "4": "https://cdn.betterttv.net/emote/60d5abc38ed8b373e421952f/3x"
+  [
+    'popCat',
+    [
+      {
+        type: 'bttv',
+        name: 'popCat',
+        id: '60d5abc38ed8b373e421952f',
+        gif: true,
+        urls: {
+          1: 'https://cdn.betterttv.net/emote/60d5abc38ed8b373e421952f/1x',
+          2: 'https://cdn.betterttv.net/emote/60d5abc38ed8b373e421952f/2x',
+          4: 'https://cdn.betterttv.net/emote/60d5abc38ed8b373e421952f/3x',
+        },
+        start: 0,
+        end: 6,
       },
-      "start": 0,
-      "end": 6
-    }
-  ]],
-  ['catHYPE hypeE catHYPE', [
-    {
-      "type": "bttv",
-      "name": "catHYPE",
-      "id": "6090e9cc39b5010444d0b3ff",
-      "gif": true,
-      "urls": {
-        "1": "https://cdn.betterttv.net/emote/6090e9cc39b5010444d0b3ff/1x",
-        "2": "https://cdn.betterttv.net/emote/6090e9cc39b5010444d0b3ff/2x",
-        "4": "https://cdn.betterttv.net/emote/6090e9cc39b5010444d0b3ff/3x"
+    ],
+  ],
+  [
+    'catHYPE hypeE catHYPE',
+    [
+      {
+        type: 'bttv',
+        name: 'catHYPE',
+        id: '6090e9cc39b5010444d0b3ff',
+        gif: true,
+        urls: {
+          1: 'https://cdn.betterttv.net/emote/6090e9cc39b5010444d0b3ff/1x',
+          2: 'https://cdn.betterttv.net/emote/6090e9cc39b5010444d0b3ff/2x',
+          4: 'https://cdn.betterttv.net/emote/6090e9cc39b5010444d0b3ff/3x',
+        },
+        start: 0,
+        end: 7,
       },
-      "start": 0,
-      "end": 7
-    },
-    {
-      "type": "bttv",
-      "name": "hypeE",
-      "id": "5b6ded5560d17f4657e1319e",
-      "gif": true,
-      "urls": {
-        "1": "https://cdn.betterttv.net/emote/5b6ded5560d17f4657e1319e/1x",
-        "2": "https://cdn.betterttv.net/emote/5b6ded5560d17f4657e1319e/2x",
-        "4": "https://cdn.betterttv.net/emote/5b6ded5560d17f4657e1319e/3x"
+      {
+        type: 'bttv',
+        name: 'hypeE',
+        id: '5b6ded5560d17f4657e1319e',
+        gif: true,
+        urls: {
+          1: 'https://cdn.betterttv.net/emote/5b6ded5560d17f4657e1319e/1x',
+          2: 'https://cdn.betterttv.net/emote/5b6ded5560d17f4657e1319e/2x',
+          4: 'https://cdn.betterttv.net/emote/5b6ded5560d17f4657e1319e/3x',
+        },
+        start: 8,
+        end: 13,
       },
-      "start": 8,
-      "end": 13
-    },
-    {
-      "type": "bttv",
-      "name": "catHYPE",
-      "id": "6090e9cc39b5010444d0b3ff",
-      "gif": true,
-      "urls": {
-        "1": "https://cdn.betterttv.net/emote/6090e9cc39b5010444d0b3ff/1x",
-        "2": "https://cdn.betterttv.net/emote/6090e9cc39b5010444d0b3ff/2x",
-        "4": "https://cdn.betterttv.net/emote/6090e9cc39b5010444d0b3ff/3x"
+      {
+        type: 'bttv',
+        name: 'catHYPE',
+        id: '6090e9cc39b5010444d0b3ff',
+        gif: true,
+        urls: {
+          1: 'https://cdn.betterttv.net/emote/6090e9cc39b5010444d0b3ff/1x',
+          2: 'https://cdn.betterttv.net/emote/6090e9cc39b5010444d0b3ff/2x',
+          4: 'https://cdn.betterttv.net/emote/6090e9cc39b5010444d0b3ff/3x',
+        },
+        start: 14,
+        end: 21,
       },
-      "start": 14,
-      "end": 21
-    }
-  ]],
-  ['zaytriLOVE', [
-    {
-      "type": "twitch",
-      "name": "zaytriLOVE",
-      "id": "307974105",
-      "gif": false,
-      "urls": {
-        "1": "https://static-cdn.jtvnw.net/emoticons/v2/307974105/default/dark/1.0",
-        "2": "https://static-cdn.jtvnw.net/emoticons/v2/307974105/default/dark/2.0",
-        "4": "https://static-cdn.jtvnw.net/emoticons/v2/307974105/default/dark/3.0"
+    ],
+  ],
+  [
+    'zaytriLOVE',
+    [
+      {
+        type: 'twitch',
+        name: 'zaytriLOVE',
+        id: '307974105',
+        gif: false,
+        urls: {
+          1: 'https://static-cdn.jtvnw.net/emoticons/v2/307974105/default/dark/1.0',
+          2: 'https://static-cdn.jtvnw.net/emoticons/v2/307974105/default/dark/2.0',
+          4: 'https://static-cdn.jtvnw.net/emoticons/v2/307974105/default/dark/3.0',
+        },
+        start: 0,
+        end: 9,
       },
-      "start": 0,
-      "end": 9
-    }
-  ]],
-  ['D: D: D:', [
-    {
-      "type": "bttv",
-      "name": "D:",
-      "id": "55028cd2135896936880fdd7",
-      "gif": false,
-      "urls": {
-        "1": "https://cdn.betterttv.net/emote/55028cd2135896936880fdd7/1x",
-        "2": "https://cdn.betterttv.net/emote/55028cd2135896936880fdd7/2x",
-        "4": "https://cdn.betterttv.net/emote/55028cd2135896936880fdd7/3x"
+    ],
+  ],
+  [
+    'D: D: D:',
+    [
+      {
+        type: 'bttv',
+        name: 'D:',
+        id: '55028cd2135896936880fdd7',
+        gif: false,
+        urls: {
+          1: 'https://cdn.betterttv.net/emote/55028cd2135896936880fdd7/1x',
+          2: 'https://cdn.betterttv.net/emote/55028cd2135896936880fdd7/2x',
+          4: 'https://cdn.betterttv.net/emote/55028cd2135896936880fdd7/3x',
+        },
+        start: 0,
+        end: 2,
       },
-      "start": 0,
-      "end": 2
-    },
-    {
-      "type": "bttv",
-      "name": "D:",
-      "id": "55028cd2135896936880fdd7",
-      "gif": false,
-      "urls": {
-        "1": "https://cdn.betterttv.net/emote/55028cd2135896936880fdd7/1x",
-        "2": "https://cdn.betterttv.net/emote/55028cd2135896936880fdd7/2x",
-        "4": "https://cdn.betterttv.net/emote/55028cd2135896936880fdd7/3x"
+      {
+        type: 'bttv',
+        name: 'D:',
+        id: '55028cd2135896936880fdd7',
+        gif: false,
+        urls: {
+          1: 'https://cdn.betterttv.net/emote/55028cd2135896936880fdd7/1x',
+          2: 'https://cdn.betterttv.net/emote/55028cd2135896936880fdd7/2x',
+          4: 'https://cdn.betterttv.net/emote/55028cd2135896936880fdd7/3x',
+        },
+        start: 3,
+        end: 5,
       },
-      "start": 3,
-      "end": 5
-    },
-    {
-      "type": "bttv",
-      "name": "D:",
-      "id": "55028cd2135896936880fdd7",
-      "gif": false,
-      "urls": {
-        "1": "https://cdn.betterttv.net/emote/55028cd2135896936880fdd7/1x",
-        "2": "https://cdn.betterttv.net/emote/55028cd2135896936880fdd7/2x",
-        "4": "https://cdn.betterttv.net/emote/55028cd2135896936880fdd7/3x"
+      {
+        type: 'bttv',
+        name: 'D:',
+        id: '55028cd2135896936880fdd7',
+        gif: false,
+        urls: {
+          1: 'https://cdn.betterttv.net/emote/55028cd2135896936880fdd7/1x',
+          2: 'https://cdn.betterttv.net/emote/55028cd2135896936880fdd7/2x',
+          4: 'https://cdn.betterttv.net/emote/55028cd2135896936880fdd7/3x',
+        },
+        start: 6,
+        end: 8,
       },
-      "start": 6,
-      "end": 8
-    }
-  ]],
-  ['SCREME', [
-    {
-      "type": "bttv",
-      "name": "SCREME",
-      "id": "5fea41766b06e834ffd76103",
-      "gif": true,
-      "urls": {
-        "1": "https://cdn.betterttv.net/emote/5fea41766b06e834ffd76103/1x",
-        "2": "https://cdn.betterttv.net/emote/5fea41766b06e834ffd76103/2x",
-        "4": "https://cdn.betterttv.net/emote/5fea41766b06e834ffd76103/3x"
+    ],
+  ],
+  [
+    'SCREME',
+    [
+      {
+        type: 'bttv',
+        name: 'SCREME',
+        id: '5fea41766b06e834ffd76103',
+        gif: true,
+        urls: {
+          1: 'https://cdn.betterttv.net/emote/5fea41766b06e834ffd76103/1x',
+          2: 'https://cdn.betterttv.net/emote/5fea41766b06e834ffd76103/2x',
+          4: 'https://cdn.betterttv.net/emote/5fea41766b06e834ffd76103/3x',
+        },
+        start: 0,
+        end: 6,
       },
-      "start": 0,
-      "end": 6
-    }
-  ]],
-  ['toad sings but make it nightcore zaytriSCREME', [
-    {
-      "type": "twitch",
-      "name": "zaytriSCREME",
-      "id": "305161229",
-      "gif": false,
-      "urls": {
-        "1": "https://static-cdn.jtvnw.net/emoticons/v2/305161229/default/dark/1.0",
-        "2": "https://static-cdn.jtvnw.net/emoticons/v2/305161229/default/dark/2.0",
-        "4": "https://static-cdn.jtvnw.net/emoticons/v2/305161229/default/dark/3.0"
+    ],
+  ],
+  [
+    'toad sings but make it nightcore zaytriSCREME',
+    [
+      {
+        type: 'twitch',
+        name: 'zaytriSCREME',
+        id: '305161229',
+        gif: false,
+        urls: {
+          1: 'https://static-cdn.jtvnw.net/emoticons/v2/305161229/default/dark/1.0',
+          2: 'https://static-cdn.jtvnw.net/emoticons/v2/305161229/default/dark/2.0',
+          4: 'https://static-cdn.jtvnw.net/emoticons/v2/305161229/default/dark/3.0',
+        },
+        start: 33,
+        end: 44,
       },
-      "start": 33,
-      "end": 44
-    }
-  ]],
-  ['bobDance bobDance bobDance', [
-    {
-      "type": "bttv",
-      "name": "bobDance",
-      "id": "5e2a1da9bca2995f13fc0261",
-      "gif": true,
-      "urls": {
-        "1": "https://cdn.betterttv.net/emote/5e2a1da9bca2995f13fc0261/1x",
-        "2": "https://cdn.betterttv.net/emote/5e2a1da9bca2995f13fc0261/2x",
-        "4": "https://cdn.betterttv.net/emote/5e2a1da9bca2995f13fc0261/3x"
+    ],
+  ],
+  [
+    'bobDance bobDance bobDance',
+    [
+      {
+        type: 'bttv',
+        name: 'bobDance',
+        id: '5e2a1da9bca2995f13fc0261',
+        gif: true,
+        urls: {
+          1: 'https://cdn.betterttv.net/emote/5e2a1da9bca2995f13fc0261/1x',
+          2: 'https://cdn.betterttv.net/emote/5e2a1da9bca2995f13fc0261/2x',
+          4: 'https://cdn.betterttv.net/emote/5e2a1da9bca2995f13fc0261/3x',
+        },
+        start: 0,
+        end: 8,
       },
-      "start": 0,
-      "end": 8
-    },
-    {
-      "type": "bttv",
-      "name": "bobDance",
-      "id": "5e2a1da9bca2995f13fc0261",
-      "gif": true,
-      "urls": {
-        "1": "https://cdn.betterttv.net/emote/5e2a1da9bca2995f13fc0261/1x",
-        "2": "https://cdn.betterttv.net/emote/5e2a1da9bca2995f13fc0261/2x",
-        "4": "https://cdn.betterttv.net/emote/5e2a1da9bca2995f13fc0261/3x"
+      {
+        type: 'bttv',
+        name: 'bobDance',
+        id: '5e2a1da9bca2995f13fc0261',
+        gif: true,
+        urls: {
+          1: 'https://cdn.betterttv.net/emote/5e2a1da9bca2995f13fc0261/1x',
+          2: 'https://cdn.betterttv.net/emote/5e2a1da9bca2995f13fc0261/2x',
+          4: 'https://cdn.betterttv.net/emote/5e2a1da9bca2995f13fc0261/3x',
+        },
+        start: 9,
+        end: 17,
       },
-      "start": 9,
-      "end": 17
-    },
-    {
-      "type": "bttv",
-      "name": "bobDance",
-      "id": "5e2a1da9bca2995f13fc0261",
-      "gif": true,
-      "urls": {
-        "1": "https://cdn.betterttv.net/emote/5e2a1da9bca2995f13fc0261/1x",
-        "2": "https://cdn.betterttv.net/emote/5e2a1da9bca2995f13fc0261/2x",
-        "4": "https://cdn.betterttv.net/emote/5e2a1da9bca2995f13fc0261/3x"
+      {
+        type: 'bttv',
+        name: 'bobDance',
+        id: '5e2a1da9bca2995f13fc0261',
+        gif: true,
+        urls: {
+          1: 'https://cdn.betterttv.net/emote/5e2a1da9bca2995f13fc0261/1x',
+          2: 'https://cdn.betterttv.net/emote/5e2a1da9bca2995f13fc0261/2x',
+          4: 'https://cdn.betterttv.net/emote/5e2a1da9bca2995f13fc0261/3x',
+        },
+        start: 18,
+        end: 26,
       },
-      "start": 18,
-      "end": 26
-    }
-  ]],
-  ['bongoTap', [
-    {
-      "type": "bttv",
-      "name": "bongoTap",
-      "id": "5ba6d5ba6ee0c23989d52b10",
-      "gif": true,
-      "urls": {
-        "1": "https://cdn.betterttv.net/emote/5ba6d5ba6ee0c23989d52b10/1x",
-        "2": "https://cdn.betterttv.net/emote/5ba6d5ba6ee0c23989d52b10/2x",
-        "4": "https://cdn.betterttv.net/emote/5ba6d5ba6ee0c23989d52b10/3x"
+    ],
+  ],
+  [
+    'bongoTap',
+    [
+      {
+        type: 'bttv',
+        name: 'bongoTap',
+        id: '5ba6d5ba6ee0c23989d52b10',
+        gif: true,
+        urls: {
+          1: 'https://cdn.betterttv.net/emote/5ba6d5ba6ee0c23989d52b10/1x',
+          2: 'https://cdn.betterttv.net/emote/5ba6d5ba6ee0c23989d52b10/2x',
+          4: 'https://cdn.betterttv.net/emote/5ba6d5ba6ee0c23989d52b10/3x',
+        },
+        start: 0,
+        end: 8,
       },
-      "start": 0,
-      "end": 8
-    }
-  ]],
-  ['VoHiYo hello!', [
-    {
-      "type": "twitch",
-      "name": "VoHiYo",
-      "id": "81274",
-      "gif": false,
-      "urls": {
-        "1": "https://static-cdn.jtvnw.net/emoticons/v2/81274/default/dark/1.0",
-        "2": "https://static-cdn.jtvnw.net/emoticons/v2/81274/default/dark/2.0",
-        "4": "https://static-cdn.jtvnw.net/emoticons/v2/81274/default/dark/3.0"
+    ],
+  ],
+  [
+    'VoHiYo hello!',
+    [
+      {
+        type: 'twitch',
+        name: 'VoHiYo',
+        id: '81274',
+        gif: false,
+        urls: {
+          1: 'https://static-cdn.jtvnw.net/emoticons/v2/81274/default/dark/1.0',
+          2: 'https://static-cdn.jtvnw.net/emoticons/v2/81274/default/dark/2.0',
+          4: 'https://static-cdn.jtvnw.net/emoticons/v2/81274/default/dark/3.0',
+        },
+        start: 0,
+        end: 5,
       },
-      "start": 0,
-      "end": 5
-    }
-  ]],
-  ['TwitchUnity', [
-    {
-      "type": "twitch",
-      "name": "TwitchUnity",
-      "id": "196892",
-      "gif": false,
-      "urls": {
-        "1": "https://static-cdn.jtvnw.net/emoticons/v2/196892/default/dark/1.0",
-        "2": "https://static-cdn.jtvnw.net/emoticons/v2/196892/default/dark/2.0",
-        "4": "https://static-cdn.jtvnw.net/emoticons/v2/196892/default/dark/3.0"
+    ],
+  ],
+  [
+    'TwitchUnity',
+    [
+      {
+        type: 'twitch',
+        name: 'TwitchUnity',
+        id: '196892',
+        gif: false,
+        urls: {
+          1: 'https://static-cdn.jtvnw.net/emoticons/v2/196892/default/dark/1.0',
+          2: 'https://static-cdn.jtvnw.net/emoticons/v2/196892/default/dark/2.0',
+          4: 'https://static-cdn.jtvnw.net/emoticons/v2/196892/default/dark/3.0',
+        },
+        start: 0,
+        end: 10,
       },
-      "start": 0,
-      "end": 10
-    }
-  ]],
-  ['MercyWing1 PinkMercy MercyWing2', [
-    {
-      "type": "twitch",
-      "name": "MercyWing1",
-      "id": "1003187",
-      "gif": false,
-      "urls": {
-        "1": "https://static-cdn.jtvnw.net/emoticons/v1/1003187/1.0",
-        "2": "https://static-cdn.jtvnw.net/emoticons/v1/1003187/1.0",
-        "4": "https://static-cdn.jtvnw.net/emoticons/v1/1003187/3.0"
+    ],
+  ],
+  [
+    'MercyWing1 PinkMercy MercyWing2',
+    [
+      {
+        type: 'twitch',
+        name: 'MercyWing1',
+        id: '1003187',
+        gif: false,
+        urls: {
+          1: 'https://static-cdn.jtvnw.net/emoticons/v1/1003187/1.0',
+          2: 'https://static-cdn.jtvnw.net/emoticons/v1/1003187/1.0',
+          4: 'https://static-cdn.jtvnw.net/emoticons/v1/1003187/3.0',
+        },
+        start: 0,
+        end: 9,
       },
-      "start": 0,
-      "end": 9
-    },
-    {
-      "type": "twitch",
-      "name": "PinkMercy",
-      "id": "1003190",
-      "gif": false,
-      "urls": {
-        "1": "https://static-cdn.jtvnw.net/emoticons/v1/1003190/1.0",
-        "2": "https://static-cdn.jtvnw.net/emoticons/v1/1003190/1.0",
-        "4": "https://static-cdn.jtvnw.net/emoticons/v1/1003190/3.0"
+      {
+        type: 'twitch',
+        name: 'PinkMercy',
+        id: '1003190',
+        gif: false,
+        urls: {
+          1: 'https://static-cdn.jtvnw.net/emoticons/v1/1003190/1.0',
+          2: 'https://static-cdn.jtvnw.net/emoticons/v1/1003190/1.0',
+          4: 'https://static-cdn.jtvnw.net/emoticons/v1/1003190/3.0',
+        },
+        start: 11,
+        end: 19,
       },
-      "start": 11,
-      "end": 19
-    },
-    {
-      "type": "twitch",
-      "name": "MercyWing2",
-      "id": "1003189",
-      "gif": false,
-      "urls": {
-        "1": "https://static-cdn.jtvnw.net/emoticons/v1/1003189/1.0",
-        "2": "https://static-cdn.jtvnw.net/emoticons/v1/1003189/1.0",
-        "4": "https://static-cdn.jtvnw.net/emoticons/v1/1003189/3.0"
+      {
+        type: 'twitch',
+        name: 'MercyWing2',
+        id: '1003189',
+        gif: false,
+        urls: {
+          1: 'https://static-cdn.jtvnw.net/emoticons/v1/1003189/1.0',
+          2: 'https://static-cdn.jtvnw.net/emoticons/v1/1003189/1.0',
+          4: 'https://static-cdn.jtvnw.net/emoticons/v1/1003189/3.0',
+        },
+        start: 21,
+        end: 30,
       },
-      "start": 21,
-      "end": 30
-    }
-  ]],
+    ],
+  ],
 ]
 
 function htmlEncode(text) {
