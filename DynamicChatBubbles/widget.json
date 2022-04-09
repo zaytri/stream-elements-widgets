@@ -515,7 +515,7 @@
     "label": "(Comma Separated)",
     "group": "Bot Filters",
     "type": "text",
-    "value": "StreamElements, Streamlabs, Nightbot"
+    "value": "StreamElements, Streamlabs, Nightbot, Sery_Bot"
   },
   "ignorePrefixListLabel": {
     "label": "Ignore messages that start with:",
