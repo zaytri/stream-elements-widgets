@@ -23,12 +23,21 @@ const Widget = {
   messageCount: 0,
   pronouns: {},
   pronounsCache: {},
+  channel: {},
+  service: '',
+  followCache: {},
 }
 
+const PRONOUNS_API_BASE = 'https://pronouns.alejo.io/api'
 const PRONOUNS_API = {
-  base: 'https://pronouns.alejo.io/api/',
-  user: username => `users/${username}`,
-  pronouns: 'pronouns',
+  user: username => `${PRONOUNS_API_BASE}/users/${username}`,
+  pronouns: `${PRONOUNS_API_BASE}/pronouns`,
+}
+
+const DEC_API_BASE = 'https://decapi.me/twitch'
+const DEC_API = {
+  followedSeconds: username =>
+    `${DEC_API_BASE}/followed/${Widget.channel.username}/${username}?format=U`,
 }
 
 // ---------------------------
@@ -36,6 +45,7 @@ const PRONOUNS_API = {
 // ---------------------------
 
 window.addEventListener('onWidgetLoad', async obj => {
+  Widget.channel = obj.detail.channel
   loadFieldData(obj.detail.fieldData)
 
   conditionalMainClass('dark-mode', FieldData.darkMode)
@@ -88,6 +98,7 @@ function loadFieldData(data) {
     'fixedWidth',
     'pronounsLowercase',
     'pronounsBadgeCustomColors',
+    'includeFollowers',
   )
 
   const soundData = {}
@@ -224,6 +235,7 @@ window.addEventListener('onEventReceived', obj => {
 
 async function onMessage(event, testMessage = false) {
   const { service } = event
+  Widget.service = service
   const {
     // facebook
     attachment,
@@ -234,8 +246,8 @@ async function onMessage(event, testMessage = false) {
     // general
     badges = [],
     userId = '',
-    nick = '',
-    displayName: name = '',
+    nick: username = '',
+    displayName = '',
   } = event.data
 
   let { emotes = [], text = '', msgId = '', displayColor: color } = event.data
@@ -248,7 +260,7 @@ async function onMessage(event, testMessage = false) {
         allPronounKeys[random(0, allPronounKeys.length - 1)]
       pronouns = Widget.pronouns[randomPronounKey]
     } else if (service === 'twitch') {
-      pronouns = await getUserPronoun(nick)
+      pronouns = await getUserPronoun(username)
     }
   }
 
@@ -292,11 +304,13 @@ async function onMessage(event, testMessage = false) {
   if (!passedMinMessageThreshold(userId)) return
   if (
     FieldData.allowUserList.length &&
-    !userListIncludes(FieldData.allowUserList, name, nick)
+    !userListIncludes(FieldData.allowUserList, displayName, username)
   )
     return
-  if (userListIncludes(FieldData.ignoreUserList, name, nick)) return
-  if (!hasIncludedBadge(badges)) return
+  if (userListIncludes(FieldData.ignoreUserList, displayName, username)) return
+
+  const permittedUserLevel = await hasIncludedBadge(badges, username)
+  if (!permittedUserLevel) return
   if (
     FieldData.allowedStrings.length &&
     !FieldData.allowedStrings.includes(text)
@@ -323,7 +337,7 @@ async function onMessage(event, testMessage = false) {
 
   const elementData = {
     parsedText,
-    name,
+    name: displayName,
     emoteSize,
     messageType,
     msgId,
@@ -372,7 +386,7 @@ async function onMessage(event, testMessage = false) {
 
   // Get Sound
   let sound = null
-  const soundUrls = getSound(nick, name, badges, messageType)
+  const soundUrls = getSound(username, displayName, badges, messageType)
   if (soundUrls) {
     sound = new Audio(soundUrls[random(0, soundUrls.length - 1)])
     sound.volume = parseInt(FieldData.volume) / 100
@@ -666,7 +680,7 @@ function Component(tag, props) {
 //    Pronouns API Functions
 // ----------------------------
 async function getPronouns() {
-  const res = await get(`${PRONOUNS_API.base}${PRONOUNS_API.pronouns}`)
+  const res = await get(PRONOUNS_API.pronouns)
   if (res) {
     res.forEach(pronoun => {
       Widget.pronouns[pronoun.name] = pronoun.display
@@ -679,9 +693,7 @@ async function getUserPronoun(username) {
   let pronouns = Widget.pronounsCache[lowercaseUsername]
 
   if (!pronouns || pronouns.expire < Date.now()) {
-    const res = await get(
-      `${PRONOUNS_API.base}${PRONOUNS_API.user(lowercaseUsername)}`,
-    )
+    const res = await get(PRONOUNS_API.user(lowercaseUsername))
     const [newPronouns] = res
     Widget.pronounsCache[lowercaseUsername] = {
       ...newPronouns,
@@ -709,6 +721,42 @@ async function get(URL) {
     .catch(error => null)
 }
 
+async function getFollowDate(username) {
+  let followData = Widget.followCache[username]
+
+  if (!followData || followData.expire < Date.now()) {
+    const data = await get(DEC_API.followedSeconds(username))
+    const seconds = parseInt(data)
+    if (isNaN(seconds)) return null
+
+    date = new Date(seconds * 1000) // convert to milliseconds then date
+
+    Widget.followCache[username] = {
+      date,
+      expire: Date.now() + 1000 * 60 * 60, // 1 hour in the future
+    }
+    followData = Widget.followCache[username]
+  }
+
+  return followData.date
+}
+
+async function followCheck(username) {
+  if (
+    Widget.service !== 'twitch' || // only works on twitch
+    Widget.channel.username.toLowerCase() === username.toLowerCase() // is broadcaster
+  ) {
+    return true
+  }
+
+  const followDate = await getFollowDate(username)
+  if (!followDate) return false
+
+  // convert minFollowTime from days to milliseconds
+  const minFollowTime = 1000 * 60 * 60 * 24 * FieldData.minFollowTime
+  return Date.now() - followDate >= minFollowTime
+}
+
 function hasIgnoredPrefix(text) {
   for (const prefix of FieldData.ignorePrefixList) {
     if (text.startsWith(prefix)) return true
@@ -731,17 +779,27 @@ function userListIncludes(userList, ...names) {
   return userList.some(user => lowercaseNames.includes(user.toLowerCase()))
 }
 
-function hasIncludedBadge(badges = []) {
+async function hasIncludedBadge(badges = [], username) {
+  const codeBadges = [...badges]
+
   if (FieldData.includeEveryone) return true
-  if (!badges.length) return false
+  if (!codeBadges.length) return false
 
   const includedBadges = ['broadcaster']
+
+  if (FieldData.includeFollowers) {
+    includedBadges.push('follower')
+    const isFollower = await followCheck(username)
+    if (isFollower) {
+      codeBadges.push({ type: 'follower' })
+    }
+  }
 
   if (FieldData.includeSubs) includedBadges.push('subscriber', 'founder')
   if (FieldData.includeVIPs) includedBadges.push('vip')
   if (FieldData.includeMods) includedBadges.push('moderator')
 
-  return hasBadge(badges, ...includedBadges)
+  return hasBadge(codeBadges, ...includedBadges)
 }
 
 function isMod(badges = []) {
