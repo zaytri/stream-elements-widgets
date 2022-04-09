@@ -241,7 +241,7 @@ async function onMessage(event, testMessage = false) {
   let { emotes = [], text = '', msgId = '', displayColor: color } = event.data
 
   let pronouns = null
-  if (FieldData.pronounsMode !== 'off') {
+  if (FieldData.pronounsMode !== 'off' && Widget.pronouns.length > 0) {
     if (testMessage) {
       const allPronounKeys = Object.keys(Widget.pronouns)
       const randomPronounKey =
@@ -667,9 +667,11 @@ function Component(tag, props) {
 // ----------------------------
 async function getPronouns() {
   const res = await get(`${PRONOUNS_API.base}${PRONOUNS_API.pronouns}`)
-  res.forEach(pronoun => {
-    Widget.pronouns[pronoun.name] = pronoun.display
-  })
+  if (res) {
+    res.forEach(pronoun => {
+      Widget.pronouns[pronoun.name] = pronoun.display
+    })
+  }
 }
 
 async function getUserPronoun(username) {
@@ -683,7 +685,7 @@ async function getUserPronoun(username) {
     const [newPronouns] = res
     Widget.pronounsCache[lowercaseUsername] = {
       ...newPronouns,
-      expire: Date.now() + 1000 * 60 * 60, // 1 hour in the future
+      expire: Date.now() + 1000 * 60 * 5, // 5 minutes in the future
     }
     pronouns = Widget.pronounsCache[lowercaseUsername]
   }
@@ -699,9 +701,12 @@ async function getUserPronoun(username) {
 //    Helper Functions
 // ---------------------
 async function get(URL) {
-  return await fetch(URL).then(async res => {
-    return res.json()
-  })
+  return await fetch(URL)
+    .then(async res => {
+      if (!res.ok) return null
+      return res.json()
+    })
+    .catch(error => null)
 }
 
 function hasIgnoredPrefix(text) {
