@@ -53,7 +53,7 @@ window.addEventListener('onWidgetLoad', async obj => {
     await getPronouns()
   }
 
-  if (FieldData.previewMode) sendTestMessage(10, 500)
+  if (FieldData.previewMode) sendTestMessage(5, 500)
 })
 
 function loadFieldData(data) {
