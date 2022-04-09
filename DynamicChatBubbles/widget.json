@@ -57,7 +57,7 @@
     "label": "Position Mode (Random/List)",
     "group": "Bubble Styles",
     "type": "dropdown",
-    "value": "random",
+    "value": "list",
     "options": {
       "random": "Random",
       "list": "List"
@@ -67,7 +67,7 @@
     "label": "Alignment (For List Mode)",
     "group": "Bubble Styles",
     "type": "dropdown",
-    "value": "flex-start",
+    "value": "flex-end",
     "options": {
       "flex-start": "Left",
       "center": "Center",
