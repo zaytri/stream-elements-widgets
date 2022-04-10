@@ -253,9 +253,9 @@ async function onMessage(event, testMessage = false) {
   let { emotes = [], text = '', msgId = '', displayColor: color } = event.data
 
   let pronouns = null
-  if (FieldData.pronounsMode !== 'off' && Widget.pronouns.length > 0) {
+  const allPronounKeys = Object.keys(Widget.pronouns)
+  if (FieldData.pronounsMode !== 'off' && allPronounKeys.length > 0) {
     if (testMessage) {
-      const allPronounKeys = Object.keys(Widget.pronouns)
       const randomPronounKey =
         allPronounKeys[random(0, allPronounKeys.length - 1)]
       pronouns = Widget.pronouns[randomPronounKey]
