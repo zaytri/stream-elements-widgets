@@ -90,6 +90,14 @@ main.direction-top {
   flex-direction: column;
 }
 
+main.direction-left {
+  flex-direction: row;
+}
+
+main.direction-right {
+  flex-direction: row-reverse;
+}
+
 main.direction-top main.random-mode {
   top: 0;
 }
@@ -103,6 +111,7 @@ main.direction-top main.random-mode {
   --userColor: #FF4A80;
   --borderColor: var(--userColor);
   --borderSize: 5px;
+  --marginSize: 15px;
   position: absolute;
   visibility: hidden;
 }
@@ -113,11 +122,19 @@ main.direction-top main.random-mode {
 }
 
 .list-mode.direction-top .bubble {
-  margin-bottom: 15px;
+  margin-bottom: var(--marginSize);
 }
 
 .list-mode.direction-bottom .bubble {
-  margin-top: 15px;
+  margin-top: var(--marginSize);
+}
+
+.list-mode.direction-left .bubble {
+  margin-right: var(--marginSize);
+}
+
+.list-mode.direction-right .bubble {
+  margin-left: var(--marginSize);
 }
 
 .theme-default.corner-diagonal .bubble {

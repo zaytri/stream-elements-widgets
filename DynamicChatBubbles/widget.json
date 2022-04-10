@@ -63,25 +63,27 @@
       "list": "List"
     }
   },
-  "listAlignment": {
-    "label": "Alignment (For List Mode)",
-    "group": "Bubble Styles",
-    "type": "dropdown",
-    "value": "flex-end",
-    "options": {
-      "flex-start": "Left",
-      "center": "Center",
-      "flex-end": "Right"
-    }
-  },
   "listDirection": {
     "label": "Direction (For List Mode)",
     "group": "Bubble Styles",
     "type": "dropdown",
     "value": "bottom",
     "options": {
-      "bottom": "Bottom Up",
-      "top": "Top Down"
+      "bottom": "Vertical (From Bottom)",
+      "top": "Vertical (From Top)",
+      "left": "Horizontal (From Left)",
+      "right": "Horizontal (From Right)"
+    }
+  },
+  "listAlignment": {
+    "label": "Alignment (For List Mode)",
+    "group": "Bubble Styles",
+    "type": "dropdown",
+    "value": "flex-end",
+    "options": {
+      "flex-start": "Left (Vertical) / Top (Horizontal)",
+      "center": "Center",
+      "flex-end": "Right (Vertical) / Bottom (Horizontal)"
     }
   },
   "padding": {
