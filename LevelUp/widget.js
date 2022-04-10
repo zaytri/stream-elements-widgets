@@ -208,6 +208,9 @@ function loadFieldData(data) {
   FieldData.rankCommand = data[prefix('rankCommand')]
   FieldData.rankCommandCooldown = data[prefix('rankCommandCooldown')]
   FieldData.useCustomImages = data[prefix('useCustomImages')] === 'true'
+  FieldData.chooseCommand = data[prefix('chooseCommand')]
+  FieldData.subEntries = data[prefix('subEntries')]
+
   try {
     const importData = JSON.parse(data[prefix('importData')])
     FieldData.importData = importData
@@ -271,6 +274,38 @@ function onMessage(event) {
     return
   }
 
+  if (FieldData.enableAdvanced && validToken && isBroadcaster(badges) && text.startsWith(FieldData.chooseCommand)) {
+    const levelText = text.split(' ')[1]
+    if (isNaN(levelText)) return // not a number
+
+    const level = parseInt(levelText)
+
+    const users = Object.values(db)
+      .filter(user => user.level >= level)
+      .reduce((acc, user) => {
+        if (user.level >= level) {
+          if (user.sub && FieldData.subEntries > 1) {
+            const entries = Array(FieldData.subEntries).fill(user)
+            acc.push(...entries)
+          } else {
+            acc.push(user)
+          }
+        }
+        return acc
+      }, [])
+
+    console.log(users.map(user => user.name))
+
+    const chosen = users[random(0, users.length - 1)]
+
+    if (chosen) {
+      jebaitedAPI.sayMessage(`Choosing someone who's at least level ${level}...`)
+      setTimeout(_ => jebaitedAPI.sayMessage(`@${chosen.name} has been chosen!`), 5000)
+    } else {
+      jebaitedAPI.sayMessage(`Nobody is at least level ${level}!`)
+    }
+  }
+
   if (FieldData.ignoreCommands && text.startsWith('!')) return
 
   let charCount = text.length
@@ -282,7 +317,7 @@ function onMessage(event) {
   if (charCount < FieldData.charMin) return
   if (isIgnored(name, nick)) return
 
-  if (!db[userId]) db[userId] = new User(userId, name)
+  if (!db[userId]) db[userId] = new User(userId, name, isSub(badges))
 
   if (emotes.length > 0) {
     const lastEmote = emotes[emotes.length - 1]
@@ -355,7 +390,7 @@ function exportThemeData() {
 // ------------------------------------------
 
 class User {
-  constructor(id, name) {
+  constructor(id, name, sub = false) {
     this.id = id
     this.name = name
     this.xp = 0
@@ -364,6 +399,7 @@ class User {
     this.messagesLastMinute = 0
     this.emote = FieldData.defaultEmote
     this.rankCommandInCooldown = false
+    this.sub = sub
   }
 
   addMessage() {
@@ -483,7 +519,7 @@ function LayoutComponent() {
     case '8': return Layout8()
     case '9': return Layout9()
     case '10': return Layout10()
-    default: []
+    default: return []
   }
 }
 
@@ -639,6 +675,24 @@ function joinIfArray(possibleArray, delimiter = '') {
 // ----------------------
 //    Helper Functions
 // ----------------------
+
+function isSub(badges) {
+  for (const badge of badges) {
+    const { type } = badge
+    if (type === 'subscriber' || type === 'founder') return true
+  }
+
+  return false
+}
+
+function isBroadcaster(badges) {
+  for (const badge of badges) {
+    const { type } = badge
+    if (type === 'broadcaster') return true
+  }
+
+  return false
+}
 
 function isMod(badges) {
   for (const badge of badges) {
