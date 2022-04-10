@@ -167,6 +167,13 @@
       "none": "None"
     }
   },
+  "dynamicModifier": {
+    "label": "Dynamic Animation Width Multiplier",
+    "group": "Bubble Styles",
+    "type": "number",
+    "value": 1.75,
+    "min": 0
+  },
   "highlightStyle": {
     "label": "Highlighted Style",
     "group": "Bubble Styles",

@@ -518,7 +518,7 @@ main.direction-top main.random-mode {
     max-height: 0;
   }
 
-  10% { width: calc(var(--dynamicWidth) * 1.75); }
+  10% { width: calc(var(--dynamicWidth) * {dynamicModifier}); }
 
   30% {
     width: var(--dynamicWidth);
