@@ -26,6 +26,7 @@ const Widget = {
   channel: {},
   service: '',
   followCache: {},
+  globalEmotes: {},
 }
 
 const PRONOUNS_API_BASE = 'https://pronouns.alejo.io/api'
@@ -40,6 +41,35 @@ const DEC_API = {
     `${DEC_API_BASE}/followed/${Widget.channel.username}/${username}?format=U`,
 }
 
+const GLOBAL_EMOTES = {
+  ffz: {
+    api: 'https://api2.frankerfacez.com/v1/set/global',
+    transformer: response => {
+      const { default_sets, sets } = response
+      const emoteNames = []
+      for (const set of default_sets) {
+        const { emoticons } = sets[set]
+        for (const emote of emoticons) {
+          emoteNames.push(emote.name)
+        }
+      }
+      return emoteNames
+    },
+  },
+  bttv: {
+    api: 'https://api.betterttv.net/3/cached/emotes/global',
+    transformer: response => {
+      return response.map(emote => emote.code)
+    },
+  },
+  '7tv': {
+    api: 'https://api.7tv.app/v2/emotes/global',
+    transformer: response => {
+      return response.map(emote => emote.name)
+    },
+  },
+}
+
 // ---------------------------
 //    Widget Initialization
 // ---------------------------
@@ -47,6 +77,7 @@ const DEC_API = {
 window.addEventListener('onWidgetLoad', async obj => {
   Widget.channel = obj.detail.channel
   loadFieldData(obj.detail.fieldData)
+  loadGlobalEmotes()
 
   conditionalMainClass('dark-mode', FieldData.darkMode)
   conditionalMainClass(
@@ -99,6 +130,8 @@ function loadFieldData(data) {
     'pronounsLowercase',
     'pronounsBadgeCustomColors',
     'includeFollowers',
+    'ffzGlobal',
+    'bttvGlobal',
   )
 
   const soundData = {}
@@ -199,6 +232,16 @@ function messageTypeSortOrder(messageType) {
       return 100
     default:
       return 0 // assume all
+  }
+}
+
+async function loadGlobalEmotes() {
+  for (const [key, value] of Object.entries(GLOBAL_EMOTES)) {
+    const { api, transformer } = value
+    const response = await get(api)
+    if (response != null) {
+      Widget.globalEmotes[key] = transformer(response)
+    }
   }
 }
 
@@ -857,9 +900,25 @@ function getSound(nick, name, badges, messageType) {
 }
 
 function parse(text, emotes) {
-  if (!emotes || emotes.length === 0) return [{ type: 'text', data: text }]
+  const filteredEmotes = emotes.filter(emote => {
+    const { name, type } = emote
+    if (
+      (type === 'ffz' && FieldData.ffzGlobal) ||
+      (type === 'bttv' && FieldData.bttvGlobal)
+    )
+      return true
 
-  const regex = createRegex(emotes.map(e => htmlEncode(e.name)))
+    const globalEmotes = Widget.globalEmotes[type]
+    if (!globalEmotes) return true
+
+    return !globalEmotes.includes(name)
+  })
+
+  if (!filteredEmotes || filteredEmotes.length === 0) {
+    return [{ type: 'text', data: text }]
+  }
+
+  const regex = createRegex(filteredEmotes.map(e => htmlEncode(e.name)))
 
   const textObjs = text
     .split(regex)
@@ -867,7 +926,7 @@ function parse(text, emotes) {
   const last = textObjs.pop()
 
   const parsedText = textObjs.reduce((acc, textObj, index) => {
-    return [...acc, textObj, { type: 'emote', data: emotes[index] }]
+    return [...acc, textObj, { type: 'emote', data: filteredEmotes[index] }]
   }, [])
 
   parsedText.push(last)

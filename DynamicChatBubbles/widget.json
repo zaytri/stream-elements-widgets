@@ -233,16 +233,6 @@
       "900": "900"
     }
   },
-  "largeEmotes": {
-    "label": "Larger emotes for emote messages?",
-    "group": "Text Styles",
-    "type": "dropdown",
-    "value": "true",
-    "options": {
-      "true": "Yes",
-      "false": "No"
-    }
-  },
   "useCustomBorderColorsLabel": {
     "label": "Use Custom Border/Name Colors?",
     "group": "Custom Colors",
@@ -350,6 +340,36 @@
     "group": "Pronouns",
     "type": "colorpicker",
     "value": "#FFFFFF"
+  },
+  "largeEmotes": {
+    "label": "Larger emotes for emote messages?",
+    "group": "Emotes",
+    "type": "dropdown",
+    "value": "true",
+    "options": {
+      "true": "Yes",
+      "false": "No"
+    }
+  },
+  "ffzGlobal": {
+    "label": "Show global FrankerFaceZ emotes?",
+    "group": "Emotes",
+    "type": "dropdown",
+    "value": "false",
+    "options": {
+      "true": "Yes",
+      "false": "No"
+    }
+  },
+  "bttvGlobal": {
+    "label": "Show global BetterTTV emotes?",
+    "group": "Emotes",
+    "type": "dropdown",
+    "value": "false",
+    "options": {
+      "true": "Yes",
+      "false": "No"
+    }
   },
   "maxMessagesLabel": {
     "label": "Max number of displayed messages",
