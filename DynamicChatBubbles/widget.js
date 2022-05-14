@@ -826,7 +826,6 @@ async function hasIncludedBadge(badges = [], username) {
   const codeBadges = [...badges]
 
   if (FieldData.includeEveryone) return true
-  if (!codeBadges.length) return false
 
   const includedBadges = ['broadcaster']
 
@@ -837,6 +836,8 @@ async function hasIncludedBadge(badges = [], username) {
       codeBadges.push({ type: 'follower' })
     }
   }
+
+  if (!codeBadges.length) return false
 
   if (FieldData.includeSubs) includedBadges.push('subscriber', 'founder')
   if (FieldData.includeVIPs) includedBadges.push('vip')
