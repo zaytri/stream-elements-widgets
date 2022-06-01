@@ -142,6 +142,8 @@ function loadFieldData(data) {
     'hideOutOfBounds',
   )
 
+  processFieldData(value => (value ? value : 1), 'delay')
+
   const soundData = {}
   for (let i = 1; i <= 10; i++) {
     const group = FieldData[`soundGroup${i}`]
