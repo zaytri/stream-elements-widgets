@@ -116,11 +116,6 @@ main.direction-top main.random-mode {
   visibility: hidden;
 }
 
-.random-mode .bubble {
-  top: 30px;
-  left: 30px;
-}
-
 .list-mode.direction-top .bubble {
   margin-bottom: var(--marginSize);
 }

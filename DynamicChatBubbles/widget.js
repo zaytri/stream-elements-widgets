@@ -132,9 +132,11 @@ function loadFieldData(data) {
     'includeFollowers',
     'ffzGlobal',
     'bttvGlobal',
+    'topEdge',
+    'bottomEdge',
+    'leftEdge',
+    'rightEdge',
   )
-
-  processFieldData(value => (value ? value : 1), 'delay')
 
   const soundData = {}
   for (let i = 1; i <= 10; i++) {
@@ -393,7 +395,7 @@ async function onMessage(event, testMessage = false) {
   }
 
   // Render Bubble
-  if (FieldData.positionMode === 'random') {
+  if (FieldData.positionMode !== 'list') {
     $('main').append(BubbleComponent(elementData))
   } else {
     $('main').prepend(BubbleComponent(elementData))
@@ -412,7 +414,7 @@ async function onMessage(event, testMessage = false) {
       '--dynamicWidth': Math.max(minWidth, maxWidth),
     })
 
-    if (FieldData.positionMode === 'random') {
+    if (FieldData.positionMode !== 'list') {
       // I'm not entirely sure why the + 30 is necessary,
       // but it makes the calculations work correctly
       let xMax = Math.max(minWidth, maxWidth) + 30
@@ -421,10 +423,10 @@ async function onMessage(event, testMessage = false) {
         xMax += 15 // due to margin-left 15 on .message
       }
 
-      const [left, top] = calcPosition(xMax, height)
+      const { left, top, right, bottom } = calcPosition(xMax, height)
 
       window.setTimeout(_ => {
-        $(currentMessage).css({ left, top })
+        $(currentMessage).css({ left, top, right, bottom })
       }, 300)
     }
   }, 300)
@@ -452,7 +454,7 @@ async function onMessage(event, testMessage = false) {
       Widget.messageCount > FieldData.maxMessages
     ) {
       const oldestMsgId =
-        FieldData.positionMode === 'random'
+        FieldData.positionMode !== 'list'
           ? $('.bubble:not(.expired)').first().attr('data-message-id')
           : $('.bubble:not(.expired)').last().attr('data-message-id')
       const selector = `.bubble[data-message-id="${oldestMsgId}"]`
@@ -984,11 +986,41 @@ function calcPosition(width, height) {
     random(0, 1) ? padding : Math.max(padding, widgetHeight - padding - height),
   ]
   /*-*/
+  const minX = padding
+  const maxX = Math.max(padding, widgetWidth - padding - width)
+  const minY = padding
+  const maxY = Math.max(padding, widgetHeight - padding - height)
 
-  return [
-    random(padding, Math.max(padding, widgetWidth - padding - width)),
-    random(padding, Math.max(padding, widgetHeight - padding - height)),
-  ]
+  const randomX = random(minX, maxX)
+  const randomY = random(minY, maxY)
+
+  const randomXCoords = {}
+  if (randomX < (minX + maxX) * 0.75) {
+    randomXCoords.left = randomX
+  } else {
+    // render bubbles from the right if they pass the 75% X threshold
+    // so that the dynamic animation doesn't go off screen
+    randomXCoords.right = maxX - randomX
+  }
+
+  if (FieldData.positionMode === 'random') {
+    return { ...randomXCoords, top: randomY }
+  } else {
+    const possibleCoords = []
+
+    if (FieldData.topEdge) possibleCoords.push({ ...randomXCoords, top: minY })
+    if (FieldData.bottomEdge)
+      possibleCoords.push({ ...randomXCoords, bottom: minY })
+    if (FieldData.leftEdge) possibleCoords.push({ left: minX, top: randomY })
+    if (FieldData.rightEdge) possibleCoords.push({ right: minX, top: randomY })
+
+    // no edges chosen so just put all chats in the middle as an easter egg
+    if (possibleCoords.length === 0) {
+      return { left: (minX + maxX) / 2, top: (minY + maxY) / 2 }
+    }
+
+    return possibleCoords[random(0, possibleCoords.length - 1)]
+  }
 }
 
 function joinIfArray(possibleArray, delimiter = '') {
