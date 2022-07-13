@@ -53,83 +53,6 @@
       "animal-crossing": "Animal Crossing"
     }
   },
-  "positionMode": {
-    "label": "Position Mode (Random/List)",
-    "group": "Bubble Styles",
-    "type": "dropdown",
-    "value": "list",
-    "options": {
-      "random": "Random",
-      "list": "List"
-    }
-  },
-  "listDirection": {
-    "label": "Direction (For List Mode)",
-    "group": "Bubble Styles",
-    "type": "dropdown",
-    "value": "bottom",
-    "options": {
-      "bottom": "Vertical (From Bottom)",
-      "top": "Vertical (From Top)",
-      "left": "Horizontal (From Left)",
-      "right": "Horizontal (From Right)"
-    }
-  },
-  "listAlignment": {
-    "label": "Alignment (For List Mode)",
-    "group": "Bubble Styles",
-    "type": "dropdown",
-    "value": "flex-end",
-    "options": {
-      "flex-start": "Left (Vertical) / Top (Horizontal)",
-      "center": "Center",
-      "flex-end": "Right (Vertical) / Bottom (Horizontal)"
-    }
-  },
-  "padding": {
-    "label": "Space from Widget Edges (px)",
-    "group": "Bubble Styles",
-    "type": "number",
-    "value": 30,
-    "min": 0,
-    "step": 1
-  },
-  "maxWidth": {
-    "label": "Message Max Width (px)",
-    "group": "Bubble Styles",
-    "type": "number",
-    "value": 400,
-    "step": 1,
-    "min": 0
-  },
-  "maxHeight": {
-    "label": "Message Max Height (px)",
-    "group": "Bubble Styles",
-    "type": "number",
-    "value": 300,
-    "step": 1,
-    "min": 0
-  },
-  "fixedWidth": {
-    "label": "Set width to always be max width?",
-    "group": "Bubble Styles",
-    "type": "dropdown",
-    "value": "false",
-    "options": {
-      "true": "Yes",
-      "false": "No"
-    }
-  },
-  "showBadges": {
-    "label": "Show Badges?",
-    "group": "Bubble Styles",
-    "type": "dropdown",
-    "value": "false",
-    "options": {
-      "true": "Yes",
-      "false": "No"
-    }
-  },
   "corner": {
     "label": "Corner Type",
     "group": "Bubble Styles",
@@ -193,6 +116,114 @@
       "italics": "Italics",
       "normal": "Normal"
     }
+  },
+  "maxWidth": {
+    "label": "Message Max Width (px)",
+    "group": "Bubble Size",
+    "type": "number",
+    "value": 400,
+    "step": 1,
+    "min": 0
+  },
+  "maxHeight": {
+    "label": "Message Max Height (px)",
+    "group": "Bubble Size",
+    "type": "number",
+    "value": 300,
+    "step": 1,
+    "min": 0
+  },
+  "fixedWidth": {
+    "label": "Set width to always be max width?",
+    "group": "Bubble Size",
+    "type": "dropdown",
+    "value": "false",
+    "options": {
+      "true": "Yes",
+      "false": "No"
+    }
+  },
+  "positionMode": {
+    "label": "Position (Random/Random Edge/List)",
+    "group": "Bubble Position",
+    "type": "dropdown",
+    "value": "list",
+    "options": {
+      "random": "Random",
+      "random-edge": "Random Edge",
+      "list": "List"
+    }
+  },
+  "listDirection": {
+    "label": "Direction (For List)",
+    "group": "Bubble Position",
+    "type": "dropdown",
+    "value": "bottom",
+    "options": {
+      "bottom": "Vertical (From Bottom)",
+      "top": "Vertical (From Top)",
+      "left": "Horizontal (From Left)",
+      "right": "Horizontal (From Right)"
+    }
+  },
+  "listAlignment": {
+    "label": "Alignment (For List)",
+    "group": "Bubble Position",
+    "type": "dropdown",
+    "value": "flex-end",
+    "options": {
+      "flex-start": "Left (Vertical) / Top (Horizontal)",
+      "center": "Center",
+      "flex-end": "Right (Vertical) / Bottom (Horizontal)"
+    }
+  },
+  "topEdge": {
+    "label": "Use Top Edge? (For Random Edge)",
+    "group": "Bubble Position",
+    "type": "dropdown",
+    "value": "true",
+    "options": {
+      "true": "Yes",
+      "false": "No"
+    }
+  },
+  "bottomEdge": {
+    "label": "Use Bottom Edge? (For Random Edge)",
+    "group": "Bubble Position",
+    "type": "dropdown",
+    "value": "true",
+    "options": {
+      "true": "Yes",
+      "false": "No"
+    }
+  },
+  "leftEdge": {
+    "label": "Use Left Edge? (For Random Edge)",
+    "group": "Bubble Position",
+    "type": "dropdown",
+    "value": "true",
+    "options": {
+      "true": "Yes",
+      "false": "No"
+    }
+  },
+  "rightEdge": {
+    "label": "Use Right Edge? (For Random Edge)",
+    "group": "Bubble Position",
+    "type": "dropdown",
+    "value": "true",
+    "options": {
+      "true": "Yes",
+      "false": "No"
+    }
+  },
+  "padding": {
+    "label": "Space from Widget Edges (px)",
+    "group": "Bubble Position",
+    "type": "number",
+    "value": 30,
+    "min": 0,
+    "step": 1
   },
   "googleFont": {
     "label": "Google Font",
@@ -340,6 +371,16 @@
     "group": "Pronouns",
     "type": "colorpicker",
     "value": "#FFFFFF"
+  },
+  "showBadges": {
+    "label": "Show Twitch Badges?",
+    "group": "Badges",
+    "type": "dropdown",
+    "value": "false",
+    "options": {
+      "true": "Yes",
+      "false": "No"
+    }
   },
   "largeEmotes": {
     "label": "Larger emotes for emote messages?",
