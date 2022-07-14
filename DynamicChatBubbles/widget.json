@@ -217,6 +217,14 @@
       "false": "No"
     }
   },
+  "edgeDeviation": {
+    "label": "Edge Deviation (px) (For Random Edge)",
+    "group": "Bubble Position",
+    "type": "number",
+    "value": 0,
+    "min": 0,
+    "step": 1
+  },
   "padding": {
     "label": "Space from Widget Edges (px)",
     "group": "Bubble Position",

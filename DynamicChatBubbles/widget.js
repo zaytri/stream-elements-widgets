@@ -1007,12 +1007,23 @@ function calcPosition(width, height) {
     return { ...randomXCoords, top: randomY }
   } else {
     const possibleCoords = []
+    const deviation = random(0, FieldData.edgeDeviation)
 
-    if (FieldData.topEdge) possibleCoords.push({ ...randomXCoords, top: minY })
-    if (FieldData.bottomEdge)
-      possibleCoords.push({ ...randomXCoords, bottom: minY })
-    if (FieldData.leftEdge) possibleCoords.push({ left: minX, top: randomY })
-    if (FieldData.rightEdge) possibleCoords.push({ right: minX, top: randomY })
+    if (FieldData.topEdge) {
+      possibleCoords.push({ ...randomXCoords, top: minY + deviation })
+    }
+
+    if (FieldData.bottomEdge) {
+      possibleCoords.push({ ...randomXCoords, bottom: minY + deviation })
+    }
+
+    if (FieldData.leftEdge) {
+      possibleCoords.push({ left: minX + deviation, top: randomY })
+    }
+
+    if (FieldData.rightEdge) {
+      possibleCoords.push({ right: minX + deviation, top: randomY })
+    }
 
     // no edges chosen so just put all chats in the middle as an easter egg
     if (possibleCoords.length === 0) {
