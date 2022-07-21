@@ -405,9 +405,10 @@ async function onMessage(event, testMessage = false) {
   // Calcute Bubble Position
   window.setTimeout(_ => {
     const height = $(currentMessage).outerHeight()
-    let maxWidth = FieldData.fixedWidth
-      ? FieldData.maxWidth
-      : $(`${currentMessage} .message-wrapper`).width() + 1
+    let maxWidth =
+      FieldData.fixedWidth || FieldData.theme.includes('.css')
+        ? FieldData.maxWidth
+        : $(`${currentMessage} .message-wrapper`).width() + 1
     const minWidth = $(`${currentMessage} .username`).outerWidth()
 
     $(`${currentMessage} .message`).css({
@@ -610,6 +611,13 @@ function BubbleComponent(props) {
 
   const color = userColor || generateColor(name)
   const tColor = tinycolor(color)
+  const darkerColor = tinycolor
+    .mix(
+      FieldData.useCustomBorderColors ? FieldData.borderColor : color,
+      'black',
+      25,
+    )
+    .toString()
 
   // based on https://stackoverflow.com/a/69869976
   const isDark = tColor.getLuminance() < 0.4
@@ -641,7 +649,8 @@ function BubbleComponent(props) {
     default: // nothing
   }
 
-  if (isDark) containerClasses.push('user-color-dark')
+  if (isDark && !FieldData.theme.includes('.css'))
+    containerClasses.push('user-color-dark')
 
   let usernameChildren = []
   if (FieldData.showBadges) {
@@ -653,7 +662,7 @@ function BubbleComponent(props) {
   usernameChildren.push(name)
 
   const usernameProps = {}
-  if (!FieldData.useCustomBorderColors) {
+  if (!FieldData.useCustomBorderColors && !FieldData.theme.includes('.css')) {
     usernameProps.style = {
       color: isDark
         ? tinycolor.mix(color, 'white', 85).toString()
@@ -661,8 +670,28 @@ function BubbleComponent(props) {
     }
   }
 
+  const usernameBoxProps = {}
+  if (FieldData.theme.includes('.css')) {
+    usernameChildren.push(SpacerComponent())
+    usernameChildren.push(
+      Component('div', {
+        class: 'title-bar-controls',
+        children: [
+          Component('button', { 'aria-label': 'Minimize' }),
+          Component('button', { 'aria-label': 'Maximize' }),
+          Component('button', { 'aria-label': 'Close' }),
+        ],
+      }),
+    )
+    containerClasses.push('window')
+    usernameBoxProps.class = 'title-bar'
+  }
+
   const bubbleChildren = [
-    UsernameBoxComponent(UsernameComponent(usernameChildren, usernameProps)),
+    UsernameBoxComponent(
+      UsernameComponent(usernameChildren, usernameProps),
+      usernameBoxProps,
+    ),
     MessageComponent(MessageWrapperComponent(parsedElements)),
   ]
 
@@ -672,7 +701,7 @@ function BubbleComponent(props) {
 
   return Component('section', {
     class: containerClasses,
-    style: { '--userColor': color },
+    style: { '--userColor': color, '--darkerColor': darkerColor },
     'data-message-id': msgId,
     'data-user-id': userId,
     children: bubbleChildren,
@@ -695,14 +724,21 @@ function EmoteComponent({ urls: { 4: url }, name }) {
 
 const ClassComponent =
   (tag, className) =>
-  (children, props = {}) =>
-    Component(tag, { children, class: className, ...props })
+  (children, props = {}) => {
+    const { class: classNames, ...rest } = props
+    return Component(tag, {
+      children,
+      class: [joinIfArray(classNames), className],
+      ...rest,
+    })
+  }
 const BackgroundComponent = ClassComponent('div', 'bubble-background')
 const UsernameBoxComponent = ClassComponent('div', 'username-box')
-const UsernameComponent = ClassComponent('p', 'username')
+const UsernameComponent = ClassComponent('div', 'username')
 const PronounsBadgeComponent = ClassComponent('span', 'pronouns-badge')
 const MessageComponent = ClassComponent('div', 'message')
 const MessageWrapperComponent = ClassComponent('span', 'message-wrapper')
+const SpacerComponent = ClassComponent('span', 'spacer')
 
 function Component(tag, props) {
   const { children, class: classes, style, ...rest } = props

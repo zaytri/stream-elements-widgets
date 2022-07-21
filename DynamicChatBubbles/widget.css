@@ -30,6 +30,14 @@ main.theme-animal-crossing {
   color: #564A39;
 }
 
+main.theme-98\.css {
+  color: black;
+}
+
+main.theme-xp\.css {
+  color: #222;
+}
+
 main.preview-true::before {
   --borderSize: 10px;
   content: '';
@@ -70,6 +78,7 @@ main.preview-true::before, main.preview-true::after {
 
 main.dark-mode { color: white; }
 main.dark-mode.theme-animal-crossing { color: #DEFEFE; }
+main.dark-mode..theme-98\.css { color: black; }
 
 main.custom-message-colors { color: var(--customTextColor) }
 
@@ -102,6 +111,10 @@ main.direction-top main.random-mode {
   top: 0;
 }
 
+.spacer {
+  flex: 1;
+}
+
 /* --- [Bubble Container] --- */
 
 .bubble {
@@ -114,6 +127,24 @@ main.direction-top main.random-mode {
   --marginSize: 15px;
   position: absolute;
   visibility: hidden;
+}
+
+.theme-98\.css .bubble {
+  --backgroundColor: silver;
+  background-color: var(--backgroundColor);
+}
+
+.theme-xp\.css .bubble {
+  --backgroundColor: #ece9d8;
+  background-color: var(--backgroundColor);
+  box-shadow:
+    inset -1px -1px var(--darkerColor),
+    inset 1px 1px var(--darkerColor),
+    inset -2px -2px var(--darkerColor),
+    inset 2px 2px var(--darkerColor),
+    inset -3px -3px var(--darkerColor),
+    inset 3px 3px var(--darkerColor)
+  ;
 }
 
 .list-mode.direction-top .bubble {
@@ -169,12 +200,30 @@ main.direction-top main.random-mode {
   visibility: visible;
 }
 
+.theme-98\.css .highlight.bubble, .theme-xp\.css .highlight.bubble {
+  animation: gradientShift 5s infinite linear;
+}
+
 .bubble.dynamic {
   animation: pop .5s calc({lifetime}s - .5s) forwards;
 }
 
 .lifetime-0 .bubble.dynamic {
   animation: fade reverse 0s 1s;
+}
+
+.theme-98\.css .highlight.bubble.dynamic, .theme-xp\.css .highlight.bubble.dynamic {
+  animation:
+    pop .5s calc({lifetime}s - .5s) forwards,
+    gradientShift 5s infinite linear
+  ;
+}
+
+.lifetime-0.theme-98\.css .highlight.bubble.dynamic, .lifetime-0.theme-xp\.css .highlight.bubble.dynamic {
+  animation:
+    fade reverse 0s 1s,
+    gradientShift 5s infinite linear
+  ;
 }
 
 .bubble.fade {
@@ -188,6 +237,22 @@ main.direction-top main.random-mode {
   animation:
     fade reverse .5s,
     fade reverse 0s 1s
+  ;
+}
+
+.theme-98\.css .highlight.bubble.fade, .theme-xp\.css .highlight.bubble.fade {
+  animation:
+    fade reverse .5s,
+    fade .5s calc({lifetime}s - .5s) forwards,
+    gradientShift 5s infinite linear
+  ;
+}
+
+.lifetime-0.theme-98\.css .highlight.bubble.fade, .lifetime-0.theme-xp\.css .highlight.bubble.fade {
+  animation:
+    fade reverse .5s,
+    fade reverse 0s 1s,
+    gradientShift 5s infinite linear
   ;
 }
 
@@ -208,6 +273,25 @@ main.direction-top main.random-mode {
   ;
 }
 
+.theme-98\.css .highlight.bubble.fade-up, .theme-xp\.css .highlight.bubble.fade-up {
+  animation:
+    fade reverse .5s,
+    fade .5s calc({lifetime}s - .5s) forwards,
+  	up .5s,
+  	up reverse .5s calc({lifetime}s - .5s) forwards,
+    gradientShift 5s infinite linear
+  ;
+}
+
+.lifetime-0.theme-98\.css .highlight.bubble.fade-up, .lifetime-0.theme-xp\.css .highlight.bubble.fade-up {
+  animation:
+    fade reverse .5s,
+    up .5s,
+    fade reverse 0s 1s,
+    gradientShift 5s infinite linear
+  ;
+}
+
 .bubble.fade-down {
   animation:
     fade reverse .5s,
@@ -222,6 +306,25 @@ main.direction-top main.random-mode {
     fade reverse .5s,
     down .5s,
     fade reverse 0s 1s
+  ;
+}
+
+.theme-98\.css .highlight.bubble.fade-down, .theme-xp\.css .highlight.bubble.fade-down {
+  animation:
+    fade reverse .5s,
+    fade .5s calc({lifetime}s - .5s) forwards,
+  	down .5s,
+  	down reverse .5s calc({lifetime}s - .5s) forwards,
+    gradientShift 5s infinite linear
+  ;
+}
+
+.lifetime-0.theme-98\.css .highlight.bubble.fade-down, .lifetime-0.theme-xp\.css .highlight.bubble.fade-down {
+  animation:
+    fade reverse .5s,
+    down .5s,
+    fade reverse 0s 1s,
+    gradientShift 5s infinite linear
   ;
 }
 
@@ -242,6 +345,25 @@ main.direction-top main.random-mode {
   ;
 }
 
+.theme-98\.css .highlight.bubble.fade-left, .theme-xp\.css .highlight.bubble.fade-left {
+  animation:
+    fade reverse .5s,
+    fade .5s calc({lifetime}s - .5s) forwards,
+  	left .5s,
+  	left reverse .5s calc({lifetime}s - .5s) forwards,
+    gradientShift 5s infinite linear
+  ;
+}
+
+.lifetime-0.theme-98\.css .highlight.bubble.fade-left, .lifetime-0.theme-xp\.css .highlight.bubble.fade-left {
+  animation:
+    fade reverse .5s,
+    left .5s,
+    fade reverse 0s 1s,
+    gradientShift 5s infinite linear
+  ;
+}
+
 .bubble.fade-right {
   animation:
     fade reverse .5s,
@@ -259,6 +381,25 @@ main.direction-top main.random-mode {
   ;
 }
 
+.theme-98\.css .highlight.bubble.fade-right, .theme-xp\.css .highlight.bubble.fade-right {
+  animation:
+    fade reverse .5s,
+    fade .5s calc({lifetime}s - .5s) forwards,
+  	right .5s,
+  	right reverse .5s calc({lifetime}s - .5s) forwards,
+    gradientShift 5s infinite linear
+  ;
+}
+
+.lifetime-0.theme-98\.css .highlight.bubble.fade-right, .lifetime-0.theme-xp\.css .highlight.bubble.fade-right {
+  animation:
+    fade reverse .5s,
+    right .5s,
+    fade reverse 0s 1s,
+    gradientShift 5s infinite linear
+  ;
+}
+
 .bubble.zoom {
   animation:
     pop reverse .5s,
@@ -270,6 +411,22 @@ main.direction-top main.random-mode {
   animation:
     pop reverse .5s,
     fade reverse 0s 1s
+  ;
+}
+
+.theme-98\.css .highlight.bubble.zoom, .theme-xp\.css .highlight.bubble.zoom {
+  animation:
+    pop reverse .5s,
+    pop .5s calc({lifetime}s - .5s) forwards,
+    gradientShift 5s infinite linear
+  ;
+}
+
+.lifetime-0.theme-98\.css .highlight.bubble.zoom, .lifetime-0.theme-xp\.css .highlight.bubble.zoom {
+  animation:
+    pop reverse .5s,
+    fade reverse 0s 1s,
+    gradientShift 5s infinite linear
   ;
 }
 
@@ -314,6 +471,19 @@ main.direction-top main.random-mode {
   padding: .2rem 0;
 }
 
+.theme-98\.css .username-box {
+  background-image: linear-gradient(90deg, #000C, transparent);
+  padding: .1rem 0;
+}
+
+.theme-xp\.css .username-box {
+  padding: .2rem !important;
+  border-color: var(--darkerColor);
+  background-image: linear-gradient(180deg, var(--borderColor), var(--darkerColor) 8%, var(--borderColor) 95%, var(--darkerColor));
+  text-shadow: 1px 1px #000B;
+  position: relative;
+}
+
 .theme-animal-crossing .username-box {
   border-radius: 30px;
   display: inline-block;
@@ -322,6 +492,10 @@ main.direction-top main.random-mode {
 
 .theme-animal-crossing.corner-square .username-box {
   border-radius: 0;
+}
+
+.theme-98\.css .username-box, .theme-xp\.css .username-box {
+  box-shadow: none;
 }
 
 .username {
@@ -333,6 +507,26 @@ main.direction-top main.random-mode {
 
 .user-color-dark .username {
   color: #FFFC;
+}
+
+.theme-xp\.css .username {
+  padding-left: .1rem;
+  padding-right: .1rem;
+}
+
+.theme-98\.css .username, .theme-xp\.css .username {
+  color: white;
+}
+
+.theme-98\.css .username, .theme-xp\.css .username {
+  display: flex;
+  align-items: center;
+}
+
+.theme-98\.css .username {
+  -webkit-font-smoothing: none;
+  padding-left: .2rem;
+  padding-right: .2rem;
 }
 
 .custom-border-colors .username {
@@ -396,6 +590,10 @@ main.direction-top main.random-mode {
   background: linear-gradient(-45deg, #FFADADDD, #FFD6A5DD, #FDFFB6DD, #CAFFBFDD, #9BF6FFDD, #A0C4FFDD, #BDB2FFDD, #FFC6FFDD, #FFADADDD, #FFD6A5DD) 100% 100% / 900% 900%;
 }
 
+.theme-98\.css .highlight.bubble, .theme-xp\.css .highlight.bubble {
+  background: linear-gradient(-45deg, #FFADAD, #FFD6A5, #FDFFB6, #CAFFBF, #9BF6FF, #A0C4FF, #BDB2FF, #FFC6FF, #FFADAD, #FFD6A5) 100% 100% / 900% 900%;
+}
+
 .highlight .bubble-background {
   animation: gradientShift 5s infinite linear;
 }
@@ -441,6 +639,11 @@ main.direction-top main.random-mode {
   vertical-align: middle;
 }
 
+.theme-98\.css .badge, .theme-xp\.css .badge {
+  height: 1rem;
+  padding-bottom: 0;
+}
+
 .pronouns-badge {
   display: inline-block;
   margin-right: .25rem;
@@ -451,6 +654,20 @@ main.direction-top main.random-mode {
   margin-bottom: .25rem;
 }
 
+.theme-98\.css .pronouns-badge, .theme-xp\.css .pronouns-badge {
+  margin-bottom: 0;
+  font-size: .7rem;
+  border-radius: 3px;
+}
+
+.theme-xp\.css .pronouns-badge, .theme-xp\.css .badge {
+  filter: drop-shadow(1px 1px #000B);
+}
+
+.theme-xp\.css .pronouns-badge {
+  text-shadow: none;
+}
+
 .custom-pronouns-badge-colors .pronouns-badge {
   color: {pronounsBadgeTextColor};
   background-color: {pronounsBadgeBackgroundColor};
@@ -459,6 +676,26 @@ main.direction-top main.random-mode {
 
 .theme-animal-crossing .badge {
   padding-bottom: .15rem;
+}
+
+/* --- [Overrides for 98.css and xp.css] --- */
+.title-bar {
+  background-color: var(--borderColor) !important;
+  display: block !important;
+}
+
+.title-bar-controls {
+  display: inline-block;
+  padding-left: .25rem;
+}
+
+.title-bar-controls button {
+  display: inline-block;
+}
+
+.theme-xp\.css .title-bar-controls button[aria-label=Minimize], .theme-xp\.css .title-bar-controls button[aria-label=Maximize] {
+  mix-blend-mode: luminosity;
+  display: inline-block;
 }
 
 /* --- [Animations] --- */

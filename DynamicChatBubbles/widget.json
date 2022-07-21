@@ -50,7 +50,9 @@
     "value": "animal-crossing",
     "options": {
       "default": "Original",
-      "animal-crossing": "Animal Crossing"
+      "animal-crossing": "Animal Crossing",
+      "98.css": "Windows 98",
+      "xp.css": "Windows XP"
     }
   },
   "corner": {
