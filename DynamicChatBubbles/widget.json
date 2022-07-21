@@ -47,7 +47,7 @@
     "label": "(Not everything works in other themes)",
     "group": "Bubble Styles",
     "type": "dropdown",
-    "value": "default",
+    "value": "animal-crossing",
     "options": {
       "default": "Original",
       "animal-crossing": "Animal Crossing"
@@ -335,7 +335,7 @@
     "label": "Pronouns Display",
     "group": "Pronouns",
     "type": "dropdown",
-    "value": "off",
+    "value": "suffix",
     "options": {
       "off": "Off",
       "badge": "Badge",
@@ -346,7 +346,7 @@
     "label": "Lowercase Pronouns?",
     "group": "Pronouns",
     "type": "dropdown",
-    "value": "false",
+    "value": "true",
     "options": {
       "true": "Yes",
       "false": "No"
@@ -384,7 +384,7 @@
     "label": "Show Twitch Badges?",
     "group": "Badges",
     "type": "dropdown",
-    "value": "false",
+    "value": "true",
     "options": {
       "true": "Yes",
       "false": "No"
