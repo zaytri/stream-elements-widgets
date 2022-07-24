@@ -38,7 +38,7 @@ main.theme-xp\.css {
   color: #222;
 }
 
-main.preview-true::before {
+main.preview-true.editor::before {
   --borderSize: 10px;
   content: '';
   position: absolute;
@@ -52,10 +52,10 @@ main.preview-true::before {
   z-index: -20;
 }
 
-main.preview-true::after {
+main.preview-true.editor::after {
   --borderSize: 10px;
   --space: 10px;
-  content: 'Welcome to Chat Bubbles!\a\a ⚠️ Preview Mode is On! ⚠️\a ➡️ Set [Preview > Preview Mode] to Off to hide this. ⬅️\a\a Whenever you update the settings, a few test message bubbles will appear!\a Messages will only appear within the dotted area.\a\a Drag and resize this box to change the area.\a [Bubble Styles > Space from Widget Edges] also affects this area.\a\aLooking for the Animal Crossing theme? [Bubble Styles > Pre-built Themes > Animal Crossing]\a Want the bubbles showing randomly instead of in a list? [Bubble Styles > Position Mode > Random]\a\a To add this to your streaming software (such as OBS):\a - On the top right, click Save\a - Click on 🔗 to copy the overlay URL\a - Create a new Browser Source in your streaming software and paste the URL\a - Set the Width to 1920 and Height to 1080';
+  content: '⚠️ Preview Mode is On! ⚠️ (Only shows up in the editor)\a ➡️ Set [Preview > Preview Mode] to Off to hide this. ⬅️\a\a Whenever you change the settings, a few test message bubbles will automatically appear!';
   white-space: pre-wrap;
   color: white;
   font-size: 24px;
@@ -72,7 +72,7 @@ main.preview-true::after {
   z-index: -10;
 }
 
-main.preview-true::before, main.preview-true::after {
+main.preview-true.editor::before, main.preview-true.editor::after {
   animation: fade .4s reverse forwards;
 }
 

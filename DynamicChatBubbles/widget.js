@@ -79,6 +79,9 @@ window.addEventListener('onWidgetLoad', async obj => {
   loadFieldData(obj.detail.fieldData)
   loadGlobalEmotes()
 
+  const { isEditorMode } = await SE_API.getOverlayStatus()
+  conditionalMainClass('editor', isEditorMode)
+
   conditionalMainClass('dark-mode', FieldData.darkMode)
   conditionalMainClass(
     'custom-message-colors',
@@ -94,7 +97,7 @@ window.addEventListener('onWidgetLoad', async obj => {
     await getPronouns()
   }
 
-  if (FieldData.previewMode) sendTestMessage(5, 500)
+  if (FieldData.previewMode && isEditorMode) sendTestMessage(5, 500)
 })
 
 function loadFieldData(data) {
