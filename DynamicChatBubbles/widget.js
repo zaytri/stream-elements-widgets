@@ -1030,27 +1030,18 @@ function calcPosition(width, height) {
   const randomX = random(minX, maxX)
   const randomY = random(minY, maxY)
 
-  const randomXCoords = {}
-  if (randomX < (minX + maxX) * 0.75) {
-    randomXCoords.left = randomX
-  } else {
-    // render bubbles from the right if they pass the 75% X threshold
-    // so that the dynamic animation doesn't go off screen
-    randomXCoords.right = maxX - randomX
-  }
-
   if (FieldData.positionMode === 'random') {
-    return { ...randomXCoords, top: randomY }
+    return { top: randomY, left: randomX }
   } else {
     const possibleCoords = []
     const deviation = random(0, FieldData.edgeDeviation)
 
     if (FieldData.topEdge) {
-      possibleCoords.push({ ...randomXCoords, top: minY + deviation })
+      possibleCoords.push({ top: minY + deviation, left: randomX })
     }
 
     if (FieldData.bottomEdge) {
-      possibleCoords.push({ ...randomXCoords, bottom: minY + deviation })
+      possibleCoords.push({ bottom: minY + deviation, left: randomX })
     }
 
     if (FieldData.leftEdge) {
