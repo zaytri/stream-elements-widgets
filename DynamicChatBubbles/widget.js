@@ -721,7 +721,8 @@ function TextComponent(text) {
   return Component('span', { class: 'text', children: text })
 }
 
-function EmoteComponent({ urls: { 4: url }, name }) {
+function EmoteComponent({ urls, name }) {
+  const url = urls[4] ?? urls[2] ?? urls[1]
   return Component('img', { class: ['emote'], src: url, alt: name })
 }
 
