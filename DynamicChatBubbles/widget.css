@@ -19,7 +19,7 @@ main {
   color: #444;
   box-sizing: border-box;
   position: absolute;
-  min-height: 100%;
+  height: 100%;
   width: 100%;
   left: 0;
 }
@@ -86,7 +86,7 @@ main.list-mode {
   display: flex;
   align-items: {listAlignment};
   align-content: start;
-  overflow: visible;
+  overflow: hidden;
   padding: {padding}px;
 }
 

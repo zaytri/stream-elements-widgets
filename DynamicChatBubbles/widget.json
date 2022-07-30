@@ -49,8 +49,8 @@
     "type": "dropdown",
     "value": "animal-crossing",
     "options": {
-      "default": "Original",
       "animal-crossing": "Animal Crossing",
+      "default": "Original",
       "98.css": "Windows 98",
       "xp.css": "Windows XP"
     }
@@ -75,29 +75,6 @@
       "true": "Yes",
       "false": "No"
     }
-  },
-  "animation": {
-    "label": "Animation Type",
-    "group": "Bubble Styles",
-    "type": "dropdown",
-    "value": "dynamic",
-    "options": {
-      "dynamic": "Dynamic",
-      "zoom": "Bounce Zoom",
-      "fade": "Fade",
-      "fade-up": "Fade Up",
-      "fade-down": "Fade Down",
-      "fade-left": "Fade Left",
-      "fade-right": "Fade Right",
-      "none": "None"
-    }
-  },
-  "dynamicModifier": {
-    "label": "Dynamic Animation Width Multiplier",
-    "group": "Bubble Styles",
-    "type": "number",
-    "value": 1.75,
-    "min": 0
   },
   "highlightStyle": {
     "label": "Highlighted Style",
@@ -234,6 +211,73 @@
     "value": 30,
     "min": 0,
     "step": 1
+  },
+  "animation": {
+    "label": "Animation Type",
+    "group": "Animation and Lifetime",
+    "type": "dropdown",
+    "value": "dynamic",
+    "options": {
+      "dynamic": "Dynamic",
+      "zoom": "Bounce Zoom",
+      "fade": "Fade",
+      "fade-up": "Fade Up",
+      "fade-down": "Fade Down",
+      "fade-left": "Fade Left",
+      "fade-right": "Fade Right",
+      "none": "None"
+    }
+  },
+  "dynamicModifier": {
+    "label": "Dynamic Animation Width Multiplier",
+    "group": "Animation and Lifetime",
+    "type": "number",
+    "value": 1.75,
+    "min": 0
+  },
+  "maxMessagesLabel": {
+    "label": "Max number of displayed bubbles",
+    "group": "Animation and Lifetime",
+    "type": "hidden"
+  },
+  "maxMessages": {
+    "label": "(0 for unlimited)",
+    "group": "Animation and Lifetime",
+    "type": "number",
+    "value": 25,
+    "step": 1,
+    "min": 0
+  },
+  "hideOutOfBounds": {
+    "label": "Hide out of bounds bubbles? (For List)",
+    "group": "Animation and Lifetime",
+    "type": "dropdown",
+    "value": "true",
+    "options": {
+      "true": "Yes",
+      "false": "No"
+    }
+  },
+  "lifetimeLabel": {
+    "label": "Hide bubbles after this many seconds",
+    "group": "Animation and Lifetime",
+    "type": "hidden"
+  },
+  "lifetime": {
+    "label": "(Set to 0 to never hide)",
+    "group": "Animation and Lifetime",
+    "type": "number",
+    "value": 10,
+    "step": 1,
+    "min": 0
+  },
+  "delay": {
+    "label": "Delay before visible (seconds)",
+    "group": "Animation and Lifetime",
+    "type": "number",
+    "value": 1,
+    "step": 1,
+    "min": 1
   },
   "googleFont": {
     "label": "Google Font",
@@ -422,21 +466,8 @@
       "false": "No"
     }
   },
-  "maxMessagesLabel": {
-    "label": "Max number of displayed messages",
-    "group": "Message Filters",
-    "type": "hidden"
-  },
-  "maxMessages": {
-    "label": "(0 for unlimited)",
-    "group": "Message Filters",
-    "type": "number",
-    "value": 25,
-    "step": 1,
-    "min": 0
-  },
   "emoteOnly": {
-    "label": "Show only emote-only messages?",
+    "label": "Hide messages with text?",
     "group": "Message Filters",
     "type": "dropdown",
     "value": "false",
@@ -607,27 +638,6 @@
     "group": "Bot Filters",
     "type": "text",
     "value": "!"
-  },
-  "lifetimeLabel": {
-    "label": "Hide bubbles after this many seconds",
-    "group": "Timing",
-    "type": "hidden"
-  },
-  "lifetime": {
-    "label": "(Set to 0 to never hide)",
-    "group": "Timing",
-    "type": "number",
-    "value": 10,
-    "step": 1,
-    "min": 0
-  },
-  "delay": {
-    "label": "Delay before visible (seconds)",
-    "group": "Timing",
-    "type": "number",
-    "value": 1,
-    "step": 1,
-    "min": 1
   },
   "volume": {
     "label": "Sound Effects Volume (%)",

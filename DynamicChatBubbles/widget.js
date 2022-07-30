@@ -139,6 +139,7 @@ function loadFieldData(data) {
     'bottomEdge',
     'leftEdge',
     'rightEdge',
+    'hideOutOfBounds',
   )
 
   const soundData = {}
@@ -452,19 +453,75 @@ async function onMessage(event, testMessage = false) {
     if (FieldData.positionMode === 'list')
       $(currentMessage).css({ position: 'relative' })
 
+    const getOldest = () => {
+      const oldestMsgId =
+        FieldData.positionMode !== 'list'
+          ? $('.bubble:not(.expired)').first().attr('data-message-id')
+          : $('.bubble:not(.expired)').last().attr('data-message-id')
+      return [`.bubble[data-message-id="${oldestMsgId}"]`, oldestMsgId]
+    }
+
+    const earlyDelete = (selector, id) => {
+      $(selector).addClass('expired')
+      $(selector).fadeOut(400, _ => deleteMessage(id))
+    }
+
     // Max message handling
     if (
       FieldData.maxMessages > 0 &&
       Widget.messageCount > FieldData.maxMessages
     ) {
-      const oldestMsgId =
-        FieldData.positionMode !== 'list'
-          ? $('.bubble:not(.expired)').first().attr('data-message-id')
-          : $('.bubble:not(.expired)').last().attr('data-message-id')
-      const selector = `.bubble[data-message-id="${oldestMsgId}"]`
+      const [selector, id] = getOldest()
+      earlyDelete(selector, id)
+    }
 
-      $(selector).addClass('expired')
-      $(selector).fadeOut('fast', _ => deleteMessage(oldestMsgId))
+    if (FieldData.hideOutOfBounds && FieldData.positionMode === 'list') {
+      let hideDelay = 0
+      if (FieldData.animation === 'dynamic') {
+        if (
+          FieldData.listDirection === 'left' ||
+          FieldData.listDirection === 'right'
+        )
+          hideDelay = 200
+        if (
+          FieldData.listDirection === 'top' ||
+          FieldData.listDirection === 'bottom'
+        )
+          hideDelay = 1000
+      }
+      window.setTimeout(_ => {
+        let tryDelete = true
+        while (tryDelete) {
+          const [selector, id] = getOldest()
+          const { left, top } = $(selector).position()
+          const height = $(selector).outerHeight()
+          const width = $(selector).outerWidth()
+          const widgetWidth = $('main').innerWidth()
+          const widgetHeight = $('main').innerHeight()
+
+          switch (FieldData.listDirection) {
+            case 'bottom':
+              if (top < FieldData.padding) earlyDelete(selector, id)
+              else tryDelete = false
+              break
+            case 'top':
+              if (top > widgetHeight - FieldData.padding - height)
+                earlyDelete(selector, id)
+              else tryDelete = false
+              break
+            case 'left':
+              if (left > widgetWidth - FieldData.padding - width)
+                earlyDelete(selector, id)
+              else tryDelete = false
+              break
+            case 'right':
+              if (left < FieldData.padding) earlyDelete(selector, id)
+              else tryDelete = false
+              break
+            default: // nothing
+          }
+        }
+      }, hideDelay)
     }
 
     if (FieldData.lifetime > 0) {
