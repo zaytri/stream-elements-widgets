@@ -177,7 +177,6 @@ main.direction-top main.random-mode {
   -webkit-mask-size: 51% 51%;
   -webkit-mask-repeat: no-repeat;
   padding: var(--borderSize);
-  overflow: hidden;
 }
 
 .theme-default.corner-round .bubble, .theme-default.corner-square .bubble {
