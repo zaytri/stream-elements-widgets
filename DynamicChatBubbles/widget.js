@@ -781,7 +781,9 @@ function TextComponent(text) {
 }
 
 function EmoteComponent({ urls, name }) {
-  const url = urls[4] ?? urls[2] ?? urls[1]
+  let url = urls[4]
+  if (!url) url = urls[2]
+  if (!url) url = urls[1]
   return Component('img', { class: ['emote'], src: url, alt: name })
 }
 
