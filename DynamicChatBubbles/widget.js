@@ -1044,9 +1044,9 @@ function calcEmoteSize(parsedText) {
   for (const { type, data } of parsedText) {
     if (type === 'emote') {
       emotesFound++
-      if (emotesFound > 1) return 2
     } else if (data.trim() !== '') return 1
   }
+  if (emotesFound > 1) return 2
   return 4
 }
 
