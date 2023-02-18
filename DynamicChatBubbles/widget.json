@@ -267,7 +267,7 @@
     "label": "(Set to 0 to never hide)",
     "group": "Animation and Lifetime",
     "type": "number",
-    "value": 10,
+    "value": 0,
     "step": 1,
     "min": 0
   },
