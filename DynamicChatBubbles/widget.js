@@ -554,9 +554,18 @@ function deleteMessage(msgId) {
 }
 
 function deleteMessages(userId) {
-  const messages = $(`.bubble[data-user-id="${userId}"]`)
+  // userId is undefined when clear chat is used
+  // when userId is defined, that user has been banned or timed out
+  let selector = '.bubble'
+
+  if (userId) {
+    selector = `.bubble[data-user-id="${userId}"]`
   Widget.messageCount -= messages.length
-  messages.remove()
+  } else {
+    Widget.messageCount = 0
+  }
+
+  $(selector).remove()
 }
 
 function onButton(event) {
