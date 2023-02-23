@@ -560,7 +560,7 @@ function deleteMessages(userId) {
 
   if (userId) {
     selector = `.bubble[data-user-id="${userId}"]`
-    Widget.messageCount -= messages.length
+    Widget.messageCount -= $(selector).length
   } else {
     Widget.messageCount = 0
   }
