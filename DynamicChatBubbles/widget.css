@@ -538,6 +538,7 @@ main.direction-top main.random-mode {
   width: var(--dynamicWidth);
   max-height: {maxHeight}px;
   overflow: hidden;
+  direction: {textDirection};
 }
 
 .theme-animal-crossing .message {

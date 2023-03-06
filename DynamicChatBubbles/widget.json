@@ -318,6 +318,16 @@
       "900": "900"
     }
   },
+  "textDirection": {
+    "label": "Message Text Direction",
+    "group": "Text Styles",
+    "type": "dropdown",
+    "value": "ltr",
+    "options": {
+      "ltr": "Left to Right",
+      "rtl": "Right to Left"
+    }
+  },
   "useCustomBorderColorsLabel": {
     "label": "Use Custom Border/Name Colors?",
     "group": "Custom Colors",
