@@ -1017,6 +1017,9 @@ function getSound(nick, name, badges, messageType) {
 function parse(text, emotes) {
   const filteredEmotes = emotes.filter(emote => {
     const { name, type } = emote
+
+    if (type === '7tv') return false
+
     if (
       (type === 'ffz' && FieldData.ffzGlobal) ||
       (type === 'bttv' && FieldData.bttvGlobal)
