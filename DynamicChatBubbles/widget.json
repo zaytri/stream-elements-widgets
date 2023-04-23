@@ -1104,7 +1104,7 @@
     "type": "hidden"
   },
   "widgetName": {
-    "label": "[Chat Bubbles - v2.12.1]",
+    "label": "[Chat Bubbles - v2.12.2]",
     "group": "About",
     "type": "hidden",
     "value": "Chat Bubbles"
@@ -1119,7 +1119,7 @@
     "label": "Twitch - twitch.tv/zaytri",
     "group": "About",
     "type": "hidden",
-    "value": "2.12.1"
+    "value": "2.12.2"
   },
   "widgetUpdateUrl": {
     "label": "Twitter / TikTok / Instagram - @imzaytri",
