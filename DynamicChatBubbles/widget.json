@@ -476,6 +476,16 @@
       "false": "No"
     }
   },
+  "ignoreFirst": {
+    "label": "Hide first-time chat messages?",
+    "group": "Message Filters",
+    "type": "dropdown",
+    "value": "false",
+    "options": {
+      "true": "Yes",
+      "false": "No"
+    }
+  },
   "emoteOnly": {
     "label": "Hide messages with text?",
     "group": "Message Filters",

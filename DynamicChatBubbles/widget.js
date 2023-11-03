@@ -108,6 +108,7 @@ function loadFieldData(data) {
     'includeSubs',
     'includeVIPs',
     'includeMods',
+    'ignoreFirst',
     'emoteOnly',
     'highlightOnly',
     'darkMode',
@@ -355,6 +356,8 @@ async function onMessage(event, testMessage = false) {
     !FieldData.allowedStrings.includes(text)
   )
     return
+
+  if (FieldData.ignoreFirst && isFirstTimeChat(event.data)) return
 
   const messageType = getMessageType(event.data)
   if (FieldData.highlightOnly && messageType !== 'highlight') return
@@ -923,6 +926,10 @@ function getMessageType(data) {
   if (data.tags && data.tags['msg-id'] === 'highlighted-message')
     return 'highlight'
   return 'default'
+}
+
+function isFirstTimeChat(data) {
+  return !!data.tags && data.tags['first-msg'] === '1'
 }
 
 function getSound(nick, name, badges, messageType) {
