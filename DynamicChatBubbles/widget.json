@@ -568,24 +568,6 @@
       "false": "No"
     }
   },
-  "includeFollowers": {
-    "label": "Show messages from followers?",
-    "group": "User Filters",
-    "type": "dropdown",
-    "value": "true",
-    "options": {
-      "true": "Yes",
-      "false": "No"
-    }
-  },
-  "minFollowTime": {
-    "label": "Minimum days followed",
-    "group": "User Filters",
-    "type": "number",
-    "value": 1,
-    "step": 1,
-    "min": 0
-  },
   "includeSubs": {
     "label": "Show messages from subscribers?",
     "group": "User Filters",

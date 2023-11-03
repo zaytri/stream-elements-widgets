@@ -25,7 +25,6 @@ const Widget = {
   pronounsCache: {},
   channel: {},
   service: '',
-  followCache: {},
   globalEmotes: {},
 }
 
@@ -33,12 +32,6 @@ const PRONOUNS_API_BASE = 'https://pronouns.alejo.io/api'
 const PRONOUNS_API = {
   user: username => `${PRONOUNS_API_BASE}/users/${username}`,
   pronouns: `${PRONOUNS_API_BASE}/pronouns`,
-}
-
-const DEC_API_BASE = 'https://decapi.me/twitch'
-const DEC_API = {
-  followedSeconds: username =>
-    `${DEC_API_BASE}/followed/${Widget.channel.username}/${username}?format=U`,
 }
 
 const GLOBAL_EMOTES = {
@@ -60,12 +53,6 @@ const GLOBAL_EMOTES = {
     api: 'https://api.betterttv.net/3/cached/emotes/global',
     transformer: response => {
       return response.map(emote => emote.code)
-    },
-  },
-  '7tv': {
-    api: 'https://api.7tv.app/v2/emotes/global',
-    transformer: response => {
-      return response.map(emote => emote.name)
     },
   },
 }
@@ -132,7 +119,6 @@ function loadFieldData(data) {
     'fixedWidth',
     'pronounsLowercase',
     'pronounsBadgeCustomColors',
-    'includeFollowers',
     'ffzGlobal',
     'bttvGlobal',
     'topEdge',
@@ -878,42 +864,6 @@ async function get(URL) {
     .catch(error => null)
 }
 
-async function getFollowDate(username) {
-  let followData = Widget.followCache[username]
-
-  if (!followData || followData.expire < Date.now()) {
-    const data = await get(DEC_API.followedSeconds(username))
-    const seconds = parseInt(data)
-    if (isNaN(seconds)) return null
-
-    date = new Date(seconds * 1000) // convert to milliseconds then date
-
-    Widget.followCache[username] = {
-      date,
-      expire: Date.now() + 1000 * 60 * 60, // 1 hour in the future
-    }
-    followData = Widget.followCache[username]
-  }
-
-  return followData.date
-}
-
-async function followCheck(username) {
-  if (
-    Widget.service !== 'twitch' || // only works on twitch
-    Widget.channel.username.toLowerCase() === username.toLowerCase() // is broadcaster
-  ) {
-    return true
-  }
-
-  const followDate = await getFollowDate(username)
-  if (!followDate) return false
-
-  // convert minFollowTime from days to milliseconds
-  const minFollowTime = 1000 * 60 * 60 * 24 * FieldData.minFollowTime
-  return Date.now() - followDate >= minFollowTime
-}
-
 function hasIgnoredPrefix(text) {
   for (const prefix of FieldData.ignorePrefixList) {
     if (text.startsWith(prefix)) return true
@@ -942,14 +892,6 @@ async function hasIncludedBadge(badges = [], username) {
   if (FieldData.includeEveryone) return true
 
   const includedBadges = ['broadcaster']
-
-  if (FieldData.includeFollowers) {
-    includedBadges.push('follower')
-    const isFollower = await followCheck(username)
-    if (isFollower) {
-      codeBadges.push({ type: 'follower' })
-    }
-  }
 
   if (!codeBadges.length) return false
 
@@ -1018,7 +960,7 @@ function parse(text, emotes) {
   const filteredEmotes = emotes.filter(emote => {
     const { name, type } = emote
 
-    if (type === '7tv') return false
+    if (!['twitch', 'ffz', 'bttv', 'sticker'].includes(type)) return false
 
     if (
       (type === 'ffz' && FieldData.ffzGlobal) ||
@@ -1044,7 +986,19 @@ function parse(text, emotes) {
   const last = textObjs.pop()
 
   const parsedText = textObjs.reduce((acc, textObj, index) => {
-    return [...acc, textObj, { type: 'emote', data: filteredEmotes[index] }]
+    const emoteData = filteredEmotes[index]
+    if (emoteData.type === 'twitch') {
+      emoteData.urls[
+        '1'
+      ] = `https://static-cdn.jtvnw.net/emoticons/v2/${emoteData.id}/default/light/1.0`
+      emoteData.urls[
+        '2'
+      ] = `https://static-cdn.jtvnw.net/emoticons/v2/${emoteData.id}/default/light/2.0`
+      emoteData.urls[
+        '4'
+      ] = `https://static-cdn.jtvnw.net/emoticons/v2/${emoteData.id}/default/light/3.0`
+    }
+    return [...acc, textObj, { type: 'emote', data: emoteData }]
   }, [])
 
   parsedText.push(last)
